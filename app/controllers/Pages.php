@@ -3,18 +3,20 @@
 class Pages extends Controller{
     public function __construct(){
 
-    }
-    
-    public function index(){
 
         if (!isLoggedIn()) {
             redirect('users/login');
         }
 
     }
+    
+    public function index(){
+        
+    }
+
+
 
     public function home() {
-
             $data = [
                 'title' => 'Homepage'
             ]; 
