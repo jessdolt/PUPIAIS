@@ -19,7 +19,17 @@ class Pages extends Controller{
         // }
 
 
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+
     }
+    
+    public function index(){
+        
+    }
+
+
 
     public function home() {
         // if (isLoggedIn()) {
@@ -29,6 +39,10 @@ class Pages extends Controller{
         //     $this->view('pages/home' ,$data);
         // }
 
+            $data = [
+                'title' => 'Homepage'
+            ]; 
+            $this->view('pages/home' ,$data);
     }
 
 
