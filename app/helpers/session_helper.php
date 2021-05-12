@@ -17,4 +17,13 @@
         } elseif ($_SESSION['user_type'] == "Content Creator") {
             return 'Content Creator';
         }
+
+    }
+
+        function isAdmin() {
+            if ($_SESSION['user_type'] == "Admin" || $_SESSION['user_type'] == "Content Creator") {
+                return true;
+            } else {
+                return false;
+            }
     }

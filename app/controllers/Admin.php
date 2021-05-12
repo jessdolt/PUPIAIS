@@ -2,18 +2,19 @@
 
     class Admin extends Controller {
 
-        public function __contstruct() {
+        public function __construct() {
+
             if (!isLoggedIn()) {
                 redirect('users/login');
             }
+
+            if (!isAdmin()) {
+                redirect('pages/home');
+            }
+
         }
 
         public function index(){
-            if (isAdmin()) {
-                redirect('admin_d/dashboard');
-            } else {
-                redirect('pages/home');
-            }
 
         }
 
@@ -33,11 +34,19 @@
             $this->view('admin_d/events', $events);
         }
 
-        public function job_portal(){
-            $this->jobModel = $this->model('job_portal');
-            $job_portal = $this->jobModel->showJobs();
-            $this->view('admin_d/job_portal',$job_portal);
+        public function news() {
+            $this->postModel = $this->model('post');
+            $data = $this->postModel->showNews();
+            $this->view('admin_d/news', $data);
         }
+
+        public function job_portal() {
+            $this->jobModel = $this->model('job_portal');
+            $data = $this->jobModel->showJobs();
+            $this->view('admin_d/job_portal', $data);
+        }
+
+
         
 
 

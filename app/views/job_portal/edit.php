@@ -90,7 +90,7 @@
                             SAVE
                         </button>
                     </div>
-                    <input type="text" name="isUploaded" id="hiddenBool">
+                    <input type="hidden" name="isUploaded" id="hiddenBool">
                     </form>
             </section>
         </main>
