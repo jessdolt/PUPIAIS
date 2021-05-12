@@ -2,15 +2,33 @@
 
 class Pages extends Controller{
     public function __construct(){
-       
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
     }
     
     public function index(){
-        $data = [
-            'title' => 'Homepage'
-        ]; 
+        if (isLoggedIn()) {
+            if (userType() == "Admin") {
+                redirect('admin/dashboard');
+            } elseif (userType() == "Alumni") {
+                redirect('pages/home');
+            } elseif (userType() == "Content Creator") {
+                redirect('admin/dashboard');
+            }
+        }
 
-       $this->view('pages/home' ,$data);
+
+    }
+
+    public function home() {
+        if (isLoggedIn()) {
+            $data = [
+                'title' => 'Homepage'
+            ]; 
+            $this->view('pages/home' ,$data);
+        }
+
     }
 
 
@@ -18,7 +36,7 @@ class Pages extends Controller{
         $data = [
             'title' => 'Login'
         ];
-        $this->view('pages/login',$data);
+        $this->view('users/login',$data);
     }
 
 }

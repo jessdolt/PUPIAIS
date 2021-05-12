@@ -2,12 +2,12 @@
 
     class Users extends Controller{
         public function __construct(){
-           
+            $this->userModel = $this->model('user');
         }
 
         public function index(){
             $data = [];
-            $this->view('users/index',$data);
+            $this->view('users/index', $data);
         }
 
         public function register(){
@@ -94,9 +94,77 @@
             $this->view('users/register',$data);
         }
 
-        public function login(){
+        public function login() {
+            $data = [
+                'email' => '',
+                'password' => '',
+                'emailError' => '',
+                'passwordError' => ''
+            ];
+    
+            //Check for post
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                //Sanitize post data
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                $data = [
+                    'email' => trim($_POST['email']),
+                    'password' => trim($_POST['password']),
+                    'emailError' => '',
+                    'passwordError' => '',
+                ];
+              
+                
+                //Validate email
+                if (empty($data['email'])) {
+                    $data['emailError'] = 'Please enter an email.';
+                }
+    
+                //Validate password
+                if (empty($data['password'])) {
+                    $data['passwordError'] = 'Please enter a password.';
+                } 
+                
+    
+                //Check if all errors are empty
+                if (empty($data['emailError']) && empty($data['passwordError'])) {
+                    $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+    
+                    if ($loggedInUser) {
+                        $this->createUserSession($loggedInUser);
+                    }
+                    else {
+                        $data['passwordError'] = 'Password or email is incorrect. Please try again.';
+                    }
+                }
+    
+            } else {
+                $data = [
+                    'email' => '',
+                    'password' => '',
+                    'emailError' => '',
+                    'passwordError' => ''
+                ];
+            }
+            
+            $this->view('users/login', $data);
+        }
 
+        public function createUserSession($user) {
+            $newUser = $this->userModel->forSession($user);
+            $_SESSION['id'] = $newUser->id;
+            $_SESSION['email'] = $newUser->email;
+            $_SESSION['name'] = $newUser->name;
+            $_SESSION['user_type'] = $newUser->user_control;
+            redirect('pages');
+        }
 
+        public function logout() {
+            unset($_SESSION['id']);
+            unset($_SESSION['email']);
+            unset($_SESSION['name']);
+            unset($_SESSION['user_type']);
+            header('location:' . URLROOT . '/users/login');
         }
 
         public function edit($id){
