@@ -2,7 +2,7 @@
 <main class="admin jobPortal">
                 <section class="pageSpecificHeader">
                     <div>
-                        <h2>Job Portal</h2>
+                        <h2>Content > Job Portal</h2>
                         <div class="btnContainer">
                             <a href="<?php echo URLROOT;?>/job_portals/add">
                                 Add
