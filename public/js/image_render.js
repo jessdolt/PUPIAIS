@@ -1,3 +1,5 @@
+CKEDITOR.replace( 'description' );
+
 const fileUpload = document.getElementById('fileUpload');
 const img_box = document.getElementById('myImg');
 const reader = new FileReader();

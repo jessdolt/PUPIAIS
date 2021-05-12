@@ -2,18 +2,19 @@
 
     class Admin extends Controller {
 
-        public function __contstruct() {
+        public function __construct() {
+
             if (!isLoggedIn()) {
                 redirect('users/login');
             }
+
+            if (!isAdmin()) {
+                redirect('pages/home');
+            }
+
         }
 
         public function index(){
-            if (isAdmin()) {
-                redirect('admin_d/dashboard');
-            } else {
-                redirect('pages/home');
-            }
 
         }
 
@@ -26,6 +27,13 @@
             $data = [];
             $this->view('admin_d/events', $data);
         }
+
+        public function news() {
+            $this->postModel = $this->model('post');
+            $data = $this->postModel->showNews();
+            $this->view('admin_d/news', $data);
+        }
+
 
         
     }

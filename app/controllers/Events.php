@@ -165,8 +165,6 @@
             $this->view('events/edit', $data); 
         }
         
-
-        
         public function delete($id){
             if($this->eventModel->deleteEvent($id)){
                 redirect('events');

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2021 at 09:18 AM
+-- Generation Time: May 12, 2021 at 06:07 PM
 -- Server version: 10.4.18-MariaDB
--- PHP Version: 7.3.27
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -70,14 +70,14 @@ CREATE TABLE `events` (
   `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `image` mediumblob NOT NULL,
-  `data_time` datetime NOT NULL DEFAULT current_timestamp()
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `title`, `description`, `image`, `data_time`) VALUES
+INSERT INTO `events` (`id`, `title`, `description`, `image`, `created_at`) VALUES
 (13, '3rd event', 'asdqwezxczxc', 0x36303761366639333235306433302e35303030343236392e6a7067, '2021-04-14 11:25:05'),
 (16, 'God', 'GOD MODE', 0x36303832396466396534633538312e30383438353834352e706e67, '2021-04-23 18:14:12');
 
@@ -133,6 +133,31 @@ INSERT INTO `job_portal` (`id`, `company_logo`, `work_status`, `job_status`, `av
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `author` varchar(255) NOT NULL,
+  `description` mediumtext NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `lastDateEdited` datetime NOT NULL,
+  `image` mediumblob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `user_id`, `title`, `author`, `description`, `created_at`, `lastDateEdited`, `image`) VALUES
+(1, 4, 'First Title', 'Daniel Pagayon', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt erat nisi, quis fermentum lacus faucibus pharetra. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce condimentum viverra purus, et luctus est cursus sit amet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer iaculis vulputate diam nec scelerisque. Morbi nibh purus, maximus sit amet orci vel, fringilla porttitor erat.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Mauris lacus metus, pretium in quam a, auctor hendrerit lectus. Duis mattis leo turpis, vel laoreet nibh convallis at. Aenean tempus tortor sit amet mauris vehicula, sit amet venenatis ipsum ullamcorper. Curabitur iaculis interdum tellus ut laoreet. Curabitur rutrum imperdiet ex, ac auctor est pretium ac. Sed sagittis nunc nec porttitor semper. Donec non fringilla massa. Ut dapibus posuere varius. Ut porta ipsum dolor, ut feugiat odio mollis in. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur condimentum pulvinar egestas. Phasellus et orci posuere, rutrum justo sed, consequat erat.</p>\r\n', '2021-05-12 21:39:52', '2021-05-12 22:48:52', 0x36303962646161383063343731342e32383534303636352e6a7067),
+(2, 4, 'Second Title', 'Daniel Pagayon', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer iaculis vulputate diam nec scelerisque. Morbi nibh purus, maximus sit amet orci vel, fringilla porttitor erat. Mauris lacus metus, pretium in quam a, auctor hendrerit lectus. Duis mattis leo turpis, vel laoreet nibh convallis at. Aenean tempus tortor sit amet mauris vehicula, sit amet venenatis ipsum ullamcorper. Curabitur iaculis interdum tellus ut laoreet. Curabitur rutrum imperdiet ex, ac auctor est pretium ac. Sed sagittis nunc nec porttitor semper. Donec non fringilla massa. Ut dapibus posuere varius. Ut porta ipsum dolor, ut feugiat odio mollis in. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur condimentum pulvinar egestas. Phasellus et orci posuere, rutrum justo sed, consequat erat.</p>\r\n', '2021-05-12 23:41:04', '0000-00-00 00:00:00', 0x36303962663731303630613039302e35323333353130362e706e67);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `survey_set`
 --
 
@@ -168,6 +193,14 @@ CREATE TABLE `users` (
   `user_type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_type`) VALUES
+(1, 'aniel', 'admin@test.com', '$2y$12$ksLBTzUnXMyyg3Fu6iLNdew60/Y23/n1PbHcPCoqqwBveZhxRc/VC', 1),
+(2, 'not user aniel', 'alumni@test.com', '$2y$12$YmOAqnZcKy0yGJCSR43dA.jIUngdQlvvBzHJ9YzAqIGJw9DYCngam', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -178,6 +211,15 @@ CREATE TABLE `user_type` (
   `id` int(11) NOT NULL,
   `user_control` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_type`
+--
+
+INSERT INTO `user_type` (`id`, `user_control`) VALUES
+(1, 'Admin'),
+(2, 'Alumni'),
+(3, 'Content Creator');
 
 --
 -- Indexes for dumped tables
@@ -213,6 +255,12 @@ ALTER TABLE `fusion`
 -- Indexes for table `job_portal`
 --
 ALTER TABLE `job_portal`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -269,6 +317,12 @@ ALTER TABLE `job_portal`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `survey_set`
 --
 ALTER TABLE `survey_set`
@@ -278,7 +332,7 @@ ALTER TABLE `survey_set`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_type`

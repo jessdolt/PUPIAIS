@@ -156,7 +156,12 @@
             $_SESSION['email'] = $newUser->email;
             $_SESSION['name'] = $newUser->name;
             $_SESSION['user_type'] = $newUser->user_control;
-            redirect('pages');
+
+            if ($_SESSION['user_type'] == "Admin" || $_SESSION['user_type'] == "Content Creator") {
+                redirect('admin/dashboard');
+            } else {
+                redirect('pages/home');
+            }
         }
 
         public function logout() {
@@ -164,6 +169,8 @@
             unset($_SESSION['email']);
             unset($_SESSION['name']);
             unset($_SESSION['user_type']);
+            unset($_SESSION['counter']);
+            session_destroy();
             header('location:' . URLROOT . '/users/login');
         }
 
