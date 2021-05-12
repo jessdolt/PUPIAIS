@@ -2,8 +2,19 @@
 
     class Admin extends Controller {
 
+        public function __contstruct() {
+            if (!isLoggedIn()) {
+                redirect('users/login');
+            }
+        }
+
         public function index(){
-            redirect('admin/dashboard');
+            if (isAdmin()) {
+                redirect('admin_d/dashboard');
+            } else {
+                redirect('pages/home');
+            }
+
         }
 
         public function dashboard(){
