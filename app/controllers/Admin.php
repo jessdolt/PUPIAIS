@@ -1,7 +1,8 @@
 <?php 
 
     class Admin extends Controller {
-
+        
+       
         public function __construct() {
 
             if (!isLoggedIn()) {
@@ -11,7 +12,7 @@
             if (!isAdmin()) {
                 redirect('pages/home');
             }
-
+            $this->alumniModel = $this->model('alumni_model');
         }
 
         public function index(){
@@ -24,7 +25,7 @@
         }
 
         public function users(){
-            $data=[];
+            $data = $this->alumniModel->showAlumni();
             $this->view('admin_d/users', $data);
         }
 
