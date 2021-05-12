@@ -124,7 +124,7 @@
         }
 
         public function deleteAlumni($id) {
-            $this->db->query('DELETE FROM alumni WHERE id = (:id)');
+            $this->db->query('DELETE FROM alumni WHERE alumniID = (:id)');
 
             $this->db->bind(':id', $id);
 

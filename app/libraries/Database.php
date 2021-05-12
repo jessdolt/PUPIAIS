@@ -49,7 +49,7 @@
                         $type = PDO::PARAM_BOOL;
                         break;
                     case is_null($value):
-                        $type = PDO::PARAM_null;
+                        $type = PDO::PARAM_NULL;
                         break;
                     default:
                         $type = PDO::PARAM_STR;

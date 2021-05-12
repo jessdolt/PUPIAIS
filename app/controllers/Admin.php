@@ -12,7 +12,7 @@
             if (!isAdmin()) {
                 redirect('pages/home');
             }
-            $this->alumniModel = $this->model('alumni_model');
+            
         }
 
         public function index(){
@@ -25,6 +25,7 @@
         }
 
         public function users(){
+            $this->alumniModel = $this->model('alumni_model');
             $data = $this->alumniModel->showAlumni();
             $this->view('admin_d/users', $data);
         }
