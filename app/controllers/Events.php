@@ -2,7 +2,7 @@
 
     class Events extends Controller{
         public function __construct(){
-            // $this->eventModel = $this->model('event');
+             $this->eventModel = $this->model('event');
         }
 
         public function index(){
