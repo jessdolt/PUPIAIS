@@ -169,7 +169,6 @@
             unset($_SESSION['email']);
             unset($_SESSION['name']);
             unset($_SESSION['user_type']);
-            unset($_SESSION['counter']);
             session_destroy();
             header('location:' . URLROOT . '/users/login');
         }

@@ -34,21 +34,19 @@
             $this->view('admin_d/events', $events);
         }
 
-<<<<<<< HEAD
-        public function job_portal(){
-            $this->jobModel = $this->model('job_portal');
-            $job_portal = $this->jobModel->showJobs();
-            $this->view('admin_d/job_portal',$job_portal);
-        }
-=======
         public function news() {
             $this->postModel = $this->model('post');
             $data = $this->postModel->showNews();
             $this->view('admin_d/news', $data);
         }
 
+        public function job_portal() {
+            $this->jobModel = $this->model('job_portal');
+            $data = $this->jobModel->showJobs();
+            $this->view('admin_d/job_portal', $data);
+        }
 
->>>>>>> news
+
         
 
 
