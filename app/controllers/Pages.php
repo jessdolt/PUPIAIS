@@ -14,8 +14,6 @@ class Pages extends Controller{
         
     }
 
-
-
     public function home() {
             $data = [
                 'title' => 'Homepage'
