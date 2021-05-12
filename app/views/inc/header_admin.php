@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="<?php echo URLROOT;?>/images/logo-32px.png" type="image/x-icon">
     <link rel="stylesheet" href="<?php echo URLROOT;?>/css/style.css">
     <script src="<?php echo URLROOT;?>/js/index.js" defer></script>
+    <script src="<?php echo URLROOT;?>/js/image_render.js" defer></script> 
 </head>
 <body id="admin">
     <div class="fullscreen">
@@ -47,7 +48,7 @@
                                 <a href="users.html">Accounts</a>
                             </div>
                         </li>
-                        <li class="mainCategory <?php echo ($_GET['url'] == 'admin/events' || $_GET['url'] == 'admin/news' || $_GET['url'] == 'admin/job_portal' ) ? 'open' : ' '?>"" tabindex="0">
+                        <li class="mainCategory <?php echo ($_GET['url'] == 'admin/events' || $_GET['url'] == 'admin/news' || $_GET['url'] == 'admin/job_portal' || $_GET['url'] == 'events/add' ) ? 'open' : ' '?>"" tabindex="0">
                             <div class="categoryContainer">
                                 <span>Contents</span>
                                 <span class="icon dropArrow">
@@ -86,3 +87,5 @@
                         Logout
                     </button>
                 </nav>
+
+         
