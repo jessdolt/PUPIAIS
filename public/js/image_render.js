@@ -10,7 +10,3 @@ fileUpload.addEventListener('change',function(event){
         img_box.alt = file.name; 
     })     
 }) 
-
-document.addEventListener('load',function(){
-    alert("working");
-})

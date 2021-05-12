@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?php echo URLROOT;?>/css/style.css">
     <script src="<?php echo URLROOT;?>/js/index.js" defer></script>
     <script src="<?php echo URLROOT;?>/js/image_render.js" defer></script> 
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 </head>
 <body id="admin">
     <div class="fullscreen">
@@ -23,7 +24,7 @@
             <span>Admin Page</span>
             <a href="#">Switch to homepage</a>
         </header>
-            <div class="main">
+            <div class="main users">
                 <nav class="adminNav">
                     <div class="accountNameContainer">
                         <div class="imageContainer">
@@ -37,18 +38,23 @@
                         </a>
                     </div>
                     <ul class="mainCategoryList">
-                        <?php echo $_GET['url'];?>
-                        <li class="mainCategory <?php echo ($_GET['url'] == 'admin/dashboard') ? 'open' : ' '?>" >
+
+                        <?php   $url= rtrim($_GET['url'],'/');
+                                $url= explode('/', $url);
+                        ?>
+
+                        <li class="mainCategory <?php echo ($url[1] == 'dashboard') ? 'open' : ' '?>" >
                             <div class="categoryContainer">
                                 <a href="<?php echo URLROOT;?>/admin/dashboard">Dashboard</a>
                             </div>
                         </li>
-                        <li class="mainCategory" tabindex="0">
+                        <li class="mainCategory <?php echo ($url[1] == 'users') ? 'open' : ' '?>" tabindex="0">
                             <div class="categoryContainer">
-                                <a href="users.html">Accounts</a>
+                                <a href="<?php echo URLROOT;?>/admin/users">Accounts</a>
                             </div>
                         </li>
-                        <li class="mainCategory <?php echo ($_GET['url'] == 'admin/events' || $_GET['url'] == 'admin/news' || $_GET['url'] == 'admin/job_portal' || $_GET['url'] == 'events/add' ) ? 'open' : ' '?>"" tabindex="0">
+                        <li class="mainCategory 
+                        <?php echo ($url[1] == 'events' || $url[1] == 'news' || $url[1] == 'job_portal' || $url[0] == 'events' || $url[0] == 'news' || $url[0] =='job_portal') ? 'open' : ' '?>" tabindex="0">
                             <div class="categoryContainer">
                                 <span>Contents</span>
                                 <span class="icon dropArrow">

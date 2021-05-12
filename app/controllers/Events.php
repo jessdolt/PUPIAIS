@@ -61,7 +61,7 @@
             
                 if(empty($data['title_err']) && empty($data['description_err']) && empty($data['file_err'])){
                      if($this->eventModel->addEvent($data)){
-                         redirect('events');
+                         redirect('admin/events');
                      }
                      else{
                          die("Something went wrong");
@@ -140,7 +140,7 @@
             
                 if(empty($data['title_err']) && empty($data['description_err']) && empty($data['file_err'])){
                     if($this->eventModel->editEvent($data,$isUploaded)){
-                        redirect('events');
+                        redirect('admin/events');
                     }
                     else{
                         die("Something went wrong");
