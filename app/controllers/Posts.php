@@ -3,6 +3,7 @@
     class Posts extends Controller{
         public function __construct(){
            $this->postModel = $this->model('post');
+           
         }
 
         public function index(){
@@ -25,7 +26,7 @@
                 $file = $_FILES['fileUpload'];
 
                 $data = [
-                    'user_id' => $_SESSION['user_id'],
+                    'user_id' => $_SESSION['id'],
                     'title' => $_POST['title'],
                     'author' => $_POST['author'],
                     'description' => $_POST['description'],
@@ -105,10 +106,10 @@
 
         public function edit($id){
             $post = $this->postModel->singleNews($id);
+            date_default_timezone_set('Asia/Manila');
 
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                date_default_timezone_set('Asia/Manila');
-                
+
                 $file = $_FILES['fileUpload'];
                 $isUploaded = $_POST['isUploaded'];
 
@@ -195,7 +196,8 @@
             
             $this->view('posts/edit', $data); 
         }
-        
+
+        // FOR CHECKBOX
         public function delete() {
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
@@ -213,5 +215,15 @@
             }
         }
         
-    
+        // FOR INLINE
+        public function inlineDelete($id) {
+
+            if ($this->postModel->deleteNews($id)){
+                redirect('admin/news');
+            }
+            else {
+                die("There's an error deleting this record");
+            }
+        }
+
     }

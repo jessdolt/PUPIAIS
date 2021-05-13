@@ -19,7 +19,7 @@
                 <span></span>
                 <span></span>
             </div>
-            <a href="#" class="logo"></a>
+            <a href="<?php echo URLROOT;?>/pages/home" class="logo"></a>
             <h1>PUP Institute of Technology</h1>
             <span>Admin Page</span>
             <a href="<?php echo URLROOT;?>/pages/home">Switch to homepage</a>
