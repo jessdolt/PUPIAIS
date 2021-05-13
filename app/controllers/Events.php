@@ -156,6 +156,7 @@
                     'title' => $event->title,
                     'description' => $event->description,
                     'file' => $event->image,
+                    'created_at' => $event->created_at,
                     'title_err' => '',
                     'description_err' => '',
                     'file_err' => ''

@@ -189,6 +189,7 @@
                     'job_title' => $job->job_title,
                     'job_description' => $job->description,
                     'others' => $job->others,
+                    'posted_on' => $job->posted_on,
                     'company_logo_err' => '',
                     'avail_pos_err' => '',
                     'company_name_err' => '',
