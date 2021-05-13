@@ -32,10 +32,10 @@
                         <div>
                             <label class="outsideLabel">Status:</label>
                             <fieldset class="radioBtnContainer">
-                                <input type="radio" class="status" name="job_status" id="open-status" value="Open" 
-                                <?php echo ($data['job_status'] == 'Open') ? 'checked' : '' ?>>
-                                <input type="radio" class="status" name="job_status" id="closed-status" value="Closed"
-                                <?php echo ($data['job_status'] == 'Closed') ? 'checked' : '' ?>>
+                                <input type="radio" class="status" name="job_status" id="open-status" value="Active" 
+                                <?php echo ($data['job_status'] == 'Active') ? 'checked' : '' ?>>
+                                <input type="radio" class="status" name="job_status" id="closed-status" value="Archived"
+                                <?php echo ($data['job_status'] == 'Archived') ? 'checked' : '' ?>>
                             </fieldset>
                         </div>
                         <div>
