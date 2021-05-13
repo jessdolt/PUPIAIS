@@ -371,6 +371,9 @@ table tbody {
   color: #A63F3F;
   text-align: center; }
 
+.form h4 {
+  font-size: 1.8rem; }
+
 .form .outsideLabel, .form label {
   font-size: 1.4rem; }
 
@@ -913,8 +916,11 @@ table tbody {
           width: 2.4rem;
           height: 2.4rem;
           fill: none; }
-      .admin .pageSpecificHeader > div:first-child h2 span {
-        font-size: inherit; }
+      .admin .pageSpecificHeader > div:first-child h2 {
+        display: flex;
+        align-items: center; }
+        .admin .pageSpecificHeader > div:first-child h2 span {
+          font-size: inherit; }
     .admin .pageSpecificHeader > div:last-child {
       align-self: flex-end;
       margin-left: auto; }
@@ -932,8 +938,6 @@ table tbody {
     border-radius: 1rem;
     margin: 2.4rem;
     flex: 1;
-    display: flex;
-    flex-flow: column;
     max-height: calc(100% - 16.4rem);
     box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); }
     @media (min-width: 1367px) {
@@ -942,6 +946,10 @@ table tbody {
     .admin .mainContent .data-table, .admin .mainContent .pagination {
       background-color: #FFFFFF;
       color: rgba(0, 0, 0, 0.87); }
+    .admin .mainContent .table-form {
+      height: 100%;
+      display: flex;
+      flex-flow: column; }
     .admin .mainContent .data-table {
       min-height: 15.9rem;
       max-height: calc(100% - 7.8rem);
@@ -1169,14 +1177,18 @@ table tbody {
   .mainContent.adminForm .form:first-child {
     padding: 2.4rem 7.2rem;
     background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87);
     border-radius: 1rem 0 0 1rem; }
     .mainContent.adminForm .form:first-child h2 {
+      display: flex;
+      align-items: center;
       color: #A63F3F; }
     .mainContent.adminForm .form:first-child h3 {
       margin-top: 3.2rem; }
-    .mainContent.adminForm .form:first-child input[type="text"] {
+    .mainContent.adminForm .form:first-child input[type="text"], .mainContent.adminForm .form:first-child input[type="date"] {
       border-radius: 0.5rem;
-      border-right: 1px solid rgba(0, 0, 0, 0.2) !important; }
+      border: 1px solid rgba(0, 0, 0, 0.2) !important;
+      min-width: 32.4rem; }
     .mainContent.adminForm .form:first-child .outsideLabel {
       display: block;
       margin-top: 1.6rem;
@@ -1184,10 +1196,9 @@ table tbody {
       white-space: nowrap; }
     .mainContent.adminForm .form:first-child .smallComponentsContainer {
       display: flex;
+      flex-flow: wrap;
+      justify-content: space-between;
       gap: 2rem; }
-      .mainContent.adminForm .form:first-child .smallComponentsContainer > div:nth-child(2),
-      .mainContent.adminForm .form:first-child .smallComponentsContainer > div:nth-child(3) {
-        margin-left: auto; }
       .mainContent.adminForm .form:first-child .smallComponentsContainer fieldset {
         border: none;
         display: flex;
@@ -1221,6 +1232,14 @@ table tbody {
           content: "Active"; }
         .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]#closed-status::before {
           content: "Archived"; }
+        .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]#male-id::before {
+          content: "Male"; }
+        .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]#female-id::before {
+          content: "Female"; }
+        .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]#employed-id::before {
+          content: "Employed"; }
+        .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]#unemployed-id::before {
+          content: "Unemployed"; }
       .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="number"] {
         padding: 0.8rem 0.4rem 0.8rem 1.6rem;
         max-width: 8rem;
@@ -1228,7 +1247,7 @@ table tbody {
         color: rgba(0, 0, 0, 0.6); }
     .mainContent.adminForm .form:first-child .richTfContainer {
       border-radius: 0.5rem;
-      border: 1px solid rgba(0, 0, 0, 0.2);
+      min-width: 32.4rem;
       min-height: 31.4rem; }
       .mainContent.adminForm .form:first-child .richTfContainer:last-child {
         margin-bottom: 4.8rem; }
@@ -1237,7 +1256,6 @@ table tbody {
     flex-flow: column;
     gap: 0.8rem; }
   .mainContent.adminForm .form:last-child {
-    flex: 1;
     position: relative;
     max-width: 31.6rem;
     align-items: center;
@@ -1253,19 +1271,23 @@ table tbody {
       right: 1.6rem;
       width: 3rem;
       height: 3rem; }
-    .mainContent.adminForm .form:last-child .imageInputContainer, .mainContent.adminForm .form:last-child .btnGroupContainer {
+    .mainContent.adminForm .form:last-child .btnGroupContainer, .mainContent.adminForm .form:last-child .dateInfo {
       min-width: 16rem;
       width: 16rem; }
       @media (min-width: 1367px) {
-        .mainContent.adminForm .form:last-child .imageInputContainer, .mainContent.adminForm .form:last-child .btnGroupContainer {
+        .mainContent.adminForm .form:last-child .btnGroupContainer, .mainContent.adminForm .form:last-child .dateInfo {
           min-width: 22rem;
           width: 22rem; } }
     .mainContent.adminForm .form:last-child .imageInputContainer {
-      min-height: 16rem;
+      min-width: 12rem;
+      width: 12rem;
+      min-height: 12rem;
       gap: 0; }
       @media (min-width: 1367px) {
         .mainContent.adminForm .form:last-child .imageInputContainer {
-          min-height: 22rem; } }
+          min-height: 22rem;
+          min-width: 22rem;
+          width: 22rem; } }
       .mainContent.adminForm .form:last-child .imageInputContainer.landscape {
         min-width: 21.6rem;
         width: 21.6rem;
@@ -1297,6 +1319,14 @@ table tbody {
         .mainContent.adminForm .form:last-child .imageInputContainer .fileUploadBtn svg {
           width: 1.8rem;
           height: 1.8rem; }
+    .mainContent.adminForm .form:last-child .dateInfo {
+      display: flex;
+      align-items: center;
+      flex-flow: column;
+      gap: 0.8rem; }
+      @media (min-width: 1367px) {
+        .mainContent.adminForm .form:last-child .dateInfo {
+          margin-top: 2.4rem; } }
     .mainContent.adminForm .form:last-child .btnGroupContainer {
       margin-top: auto; }
       .mainContent.adminForm .form:last-child .btnGroupContainer button {
@@ -1309,8 +1339,7 @@ table tbody {
           height: 1.8rem; }
       .mainContent.adminForm .form:last-child .btnGroupContainer .reset {
         background-color: #FFFFFF;
-        color: rgba(0, 0, 0, 0.87);
-        text-transform: lowercase; }
+        color: rgba(0, 0, 0, 0.87); }
         .mainContent.adminForm .form:last-child .btnGroupContainer .reset svg {
           fill: none; }
       .mainContent.adminForm .form:last-child .btnGroupContainer .save {
@@ -1364,7 +1393,7 @@ input[type="file"] {
   border-radius: 0.5rem;
   text-align: center; }
 
-input[type="radio"] {
+input[type="radio"], input[type="checkbox"] {
   cursor: pointer; }
 
 input:required:-moz-ui-invalid {
@@ -1484,6 +1513,13 @@ ul {
       .alertModalContainer .alertModal.deleteAlert.show svg {
         background-image: url("../images/alertDeleteIcon.svg"); }
       .alertModalContainer .alertModal.deleteAlert.show div a {
+        background-color: #B61734;
+        color: #FFFFFF; }
+    .alertModalContainer .alertModal.deleteAlertAll.show {
+      display: flex; }
+      .alertModalContainer .alertModal.deleteAlertAll.show svg {
+        background-image: url("../images/alertDeleteIcon.svg"); }
+      .alertModalContainer .alertModal.deleteAlertAll.show div button:last-child {
         background-color: #B61734;
         color: #FFFFFF; }
     .alertModalContainer .alertModal svg {
@@ -1620,7 +1656,7 @@ ul {
 .users .filterNav {
   max-width: 26rem;
   width: 26rem;
-  min-width: 18.1rem;
+  min-width: 20.8rem;
   padding: 5.6rem 2.4rem;
   background-color: #EEEEEE;
   box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
@@ -1658,12 +1694,16 @@ ul {
     gap: 0.8rem; }
     .users .filterNav .groupList .group .groupHeader {
       text-transform: uppercase;
-      justify-content: flex-start; }
+      justify-content: flex-start;
+      position: relative; }
       .users .filterNav .groupList .group .groupHeader.active ~ .subGroupList {
         visibility: visible;
         opacity: 1;
         max-height: initial; }
-      .users .filterNav .groupList .group .groupHeader > * {
+      .users .filterNav .groupList .group .groupHeader > span:first-child {
+        position: absolute;
+        left: 8rem; }
+      .users .filterNav .groupList .group .groupHeader > span:last-child {
         margin-left: auto; }
     .users .filterNav .groupList .subGroupList {
       transition: 200ms ease;
@@ -1674,6 +1714,9 @@ ul {
       margin-top: 0.8rem;
       flex-flow: column;
       gap: 0.8rem; }
+      .users .filterNav .groupList .subGroupList button:focus, .users .filterNav .groupList .subGroupList button:hover {
+        box-shadow: none;
+        text-decoration: underline; }
 
 .users .mainContent .data-table tr {
   padding: 2rem 1.6rem; }
@@ -1684,8 +1727,8 @@ ul {
 .users .mainContent .data-table th:nth-child(3), .users .mainContent .data-table th:nth-child(4), .users .mainContent .data-table td:nth-child(3), .users .mainContent .data-table td:nth-child(4) {
   flex: 1;
   max-width: 100%;
-  width: 12rem;
-  min-width: 12rem; }
+  width: 5rem;
+  min-width: 5rem; }
 
 .users .mainContent .data-table th:nth-child(5), .users .mainContent .data-table th:nth-child(6), .users .mainContent .data-table td:nth-child(5), .users .mainContent .data-table td:nth-child(6) {
   min-width: 5.8rem; }
@@ -1724,10 +1767,11 @@ ul {
   padding: 1.5rem 1.6rem; }
 
 .jobPortal .mainContent .data-table th:nth-child(2), .jobPortal .mainContent .data-table td:nth-child(2) {
-  min-width: 6.8rem; }
+  min-width: 8.4rem; }
 
 .jobPortal .mainContent .data-table th:nth-child(3), .jobPortal .mainContent .data-table td:nth-child(3) {
-  min-width: 9rem; }
+  min-width: 9rem;
+  flex: none; }
 
 .jobPortal .mainContent .data-table th:nth-child(4), .jobPortal .mainContent .data-table th:nth-child(5), .jobPortal .mainContent .data-table th:nth-child(6), .jobPortal .mainContent .data-table td:nth-child(4), .jobPortal .mainContent .data-table td:nth-child(5), .jobPortal .mainContent .data-table td:nth-child(6) {
   flex: 1;

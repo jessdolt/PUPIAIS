@@ -216,7 +216,7 @@
         }
         
         // FOR INLINE
-        public function inlineDelete($id) {
+        public function deleteRow($id) {
 
             if ($this->postModel->deleteNews($id)){
                 redirect('admin/news');
