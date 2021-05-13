@@ -186,6 +186,8 @@
                     'title' => $post->title,
                     'author' => $post->author,
                     'description' => $post->description,
+                    'created_at' => $post->created_at,
+                    'lastDateEdited' => $post->lastDateEdited,
                     'file' => $post->image,
                     'title_error' => '',
                     'author_error' => '',
