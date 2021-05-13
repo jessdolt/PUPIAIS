@@ -7,7 +7,17 @@
                 <form action="<?php echo URLROOT;?>/posts/edit/<?php echo $data['id'];?>" method="POST" enctype="multipart/form-data">
                     <div class="form">
                         <input type="hidden" name="isUploaded" id="hiddenBool">
-                        <h2>Content > News > Edit</h2>
+                        <h2>
+                                Content
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.47149 19.0139C9.23783 19.0143 9.0114 18.9329 8.83149 18.7839C8.73023 18.6999 8.64653 18.5968 8.58517 18.4805C8.52382 18.3641 8.48603 18.2368 8.47395 18.1058C8.46187 17.9749 8.47576 17.8428 8.5148 17.7172C8.55385 17.5916 8.61728 17.4749 8.70149 17.3739L13.1815 12.0139L8.86149 6.64386C8.77842 6.54157 8.71639 6.42387 8.67896 6.29753C8.64153 6.17119 8.62943 6.0387 8.64337 5.90767C8.65731 5.77665 8.69701 5.64966 8.76018 5.53403C8.82335 5.41839 8.90876 5.31638 9.01149 5.23386C9.11495 5.14282 9.23612 5.07415 9.36738 5.03216C9.49864 4.99017 9.63717 4.97577 9.77426 4.98986C9.91135 5.00394 10.0441 5.04621 10.164 5.11401C10.284 5.18181 10.3887 5.27368 10.4715 5.38386L15.3015 11.3839C15.4486 11.5628 15.529 11.7872 15.529 12.0189C15.529 12.2505 15.4486 12.4749 15.3015 12.6539L10.3015 18.6539C10.2012 18.7749 10.0737 18.8705 9.92953 18.9331C9.78532 18.9956 9.62839 19.0233 9.47149 19.0139Z" fill="#A63F3F"/>
+                                </svg>
+                                News 
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.47149 19.0139C9.23783 19.0143 9.0114 18.9329 8.83149 18.7839C8.73023 18.6999 8.64653 18.5968 8.58517 18.4805C8.52382 18.3641 8.48603 18.2368 8.47395 18.1058C8.46187 17.9749 8.47576 17.8428 8.5148 17.7172C8.55385 17.5916 8.61728 17.4749 8.70149 17.3739L13.1815 12.0139L8.86149 6.64386C8.77842 6.54157 8.71639 6.42387 8.67896 6.29753C8.64153 6.17119 8.62943 6.0387 8.64337 5.90767C8.65731 5.77665 8.69701 5.64966 8.76018 5.53403C8.82335 5.41839 8.90876 5.31638 9.01149 5.23386C9.11495 5.14282 9.23612 5.07415 9.36738 5.03216C9.49864 4.99017 9.63717 4.97577 9.77426 4.98986C9.91135 5.00394 10.0441 5.04621 10.164 5.11401C10.284 5.18181 10.3887 5.27368 10.4715 5.38386L15.3015 11.3839C15.4486 11.5628 15.529 11.7872 15.529 12.0189C15.529 12.2505 15.4486 12.4749 15.3015 12.6539L10.3015 18.6539C10.2012 18.7749 10.0737 18.8705 9.92953 18.9331C9.78532 18.9956 9.62839 19.0233 9.47149 19.0139Z" fill="#A63F3F"/>
+                                </svg>
+                                Edit
+                        </h2>
                         <h3>primary details:</h3>
                         <label for="news-title" class="outsideLabel">News Title:</label>
                         <div class="textFieldContainer">
@@ -21,7 +31,7 @@
                         </div>
                         <label for="description" class="outsideLabel">Description:</label>
                         <div class="richTfContainer">
-                            <textarea name="description" id="description" required> <?php echo $data['description']?> </textarea>
+                            <textarea name="description" id="description"> <?php echo $data['description']?> </textarea>
                         </div>
                     </div>
                     <div class="form">
@@ -31,7 +41,7 @@
                             </svg>
                                 
                         </a>
-                        <div class="imageInputContainer landscape">
+                        <div class="imageInputContainer">
                             <img src="<?php echo URLROOT;?>/uploads/<?php echo $data['file']?>" id="myImg">
                             <label for="fileUpload" class="fileUploadBtn">
                                 Edit
@@ -41,9 +51,19 @@
                                     <path d="M14.25 14.75H6.1185C6.099 14.75 6.07875 14.7575 6.05925 14.7575C6.0345 14.7575 6.00975 14.7507 5.98425 14.75H3.75V4.25H8.88525L10.3853 2.75H3.75C2.92275 2.75 2.25 3.422 2.25 4.25V14.75C2.25 15.578 2.92275 16.25 3.75 16.25H14.25C14.6478 16.25 15.0294 16.092 15.3107 15.8107C15.592 15.5294 15.75 15.1478 15.75 14.75V8.249L14.25 9.749V14.75Z" fill="white"/>
                                 </svg>
                             </label>
-                            <input type="file" name="fileUpload" id="fileUpload" accept=".jpg, .png">
+                            <input type="file" name="fileUpload" id="fileUpload" accept="image/*">
                         </div>
-                        <label>thumbnail:</label>
+                        <h4>Thumbnail</h4>
+                            <div class="dateInfo">
+                                <h4>Created on:</h4>
+                                <p class="created-date"><?php echo date('F j' .','. ' Y ', strtotime($data['created_at'])) ?></p>
+                                <h4>Last Updated on:</h4>
+                                <?php if($data['lastDateEdited'] != "0000-00-00 00:00:00") { ?>
+                                <p class="updated-date"><?php echo date('h:i A F j' .','. ' Y ', strtotime($data['lastDateEdited'])) ?></p>
+                                <?php }else { ?>
+                                <p class="updated-date">N/A</p>
+                                <?php } ?>
+                            </div>
                         <div class="btnGroupContainer">
                             <button class="reset" type="reset">
                                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,10 +87,7 @@
 
 <script>
         CKEDITOR.replace( 'description' );
-        editor.on( 'required', function( evt ) {
-            alert( 'Article content is required.' );
-            evt.cancel();
-        } );
+        CKEDITOR.config.height = '33vh';
         const fileUpload = document.getElementById('fileUpload');
         const img_box = document.getElementById('myImg');
         const reader = new FileReader();

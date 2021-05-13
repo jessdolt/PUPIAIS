@@ -11,7 +11,7 @@
     <script src="<?php echo URLROOT;?>/js/image_render.js" defer></script> 
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 </head>
-<body id="Admin">
+<body id="<?php echo $_SESSION['user_type']?>">
     <div class="fullscreen">
         <header class="adminHeader">
             <div class="hamburgerAdmin">
