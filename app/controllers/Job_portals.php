@@ -210,12 +210,33 @@
             $this->view('job_portal/single', $data);
         }
 
-        public function delete($id){
+
+        public function delete() {
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+                $todelete = $_POST['checkbox'];
+
+                foreach ($todelete as $id) {
+    
+                    if ($this->jobModel->deleteJob($id)){
+                        redirect('admin/job_portal');
+                    }
+                    else {
+                        die("There's an error deleting this record");
+                    }
+                }
+            }
+        }
+        
+
+        public function deleteRow($id){
             if($this->jobModel->deleteJob($id)){
-                redirect('job_portals');
+                redirect('admin/job_portal');
             }
             else{
                 die("There's an error deleting this record");
             }
         }   
+        
+        
     }

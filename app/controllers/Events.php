@@ -165,9 +165,27 @@
             $this->view('events/edit', $data); 
         }
         
-        public function delete($id){
+
+        public function delete() {
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+                $todelete = $_POST['checkbox'];
+
+                foreach ($todelete as $id) {
+    
+                    if ($this->eventModel->deleteEvent($id)){
+                        redirect('admin/events');
+                    }
+                    else {
+                        die("There's an error deleting this record");
+                    }
+                }
+            }
+        }
+
+        public function deleteRow($id){
             if($this->eventModel->deleteEvent($id)){
-                redirect('events');
+                redirect('admin/events');
             }
             else{
                 die("There's an error deleting this record");
