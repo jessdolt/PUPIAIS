@@ -22,6 +22,15 @@
             }
         }
 
+        public function showBatch(){
+            $this->db->query('SELECT * FROM `batch`');
+            $row = $this->db->resultSet();
+            if($row > 0) {
+                return $row;
+            }
+        }
+
+
         public function showYear(){
             $this->db->query('SELECT * FROM `department` inner join `fusion` on department.id = fusion.dept_id left join `batch` on fusion.batch_id = batch.id where department.id');
             $row = $this->db->resultSet();
@@ -50,19 +59,22 @@
     }
 
         public function addAlumni($data){
-            $this->db->query('INSERT INTO alumni (userType,studentID,userPassword,firstName,lastName,midName,gender,birthDate,address,contactNum,email,employment,departmentID,batchID
-            ) VALUES (:userType,:studentID,:userPassword,:firstName,:lastName,:midInitial,:gender,:birthDate,:address,:contactNum,:email,:employment,:department,:batch)');
+            $this->db->query('INSERT INTO alumni (student_no,user_pass,last_name,first_name,middle_name,gender,birth_date,address,city,region,postal,contact_no,email,employment,departmentID,batchID
+            ) VALUES (:student_no,:user_pass,:last_name,:first_name,:middle_name,:gender,:birth_date,:address,:city,:region,:postal,:contact_no,:email,:employment,:department,:batch)');
             
-            $this->db->bind(':userType', $data['userType']);
-            $this->db->bind(':studentID', $data['studentID']);
-            $this->db->bind(':userPassword', $data['userPassword']);
-            $this->db->bind(':firstName', $data['firstName']);
-            $this->db->bind(':lastName', $data['lastName']);
-            $this->db->bind(':midInitial', $data['midInitial']);
+            
+            $this->db->bind(':student_no', $data['student_no']);
+            $this->db->bind(':user_pass', $data['user_pass']);
+            $this->db->bind(':last_name', $data['last_name']);
+            $this->db->bind(':first_name', $data['first_name']);
+            $this->db->bind(':middle_name', $data['middle_name']);
             $this->db->bind(':gender', $data['gender']);
-            $this->db->bind(':birthDate', $data['birthDate']);
+            $this->db->bind(':birth_date', $data['birth_date']);
             $this->db->bind(':address', $data['address']);
-            $this->db->bind(':contactNum', $data['contactNum']);
+            $this->db->bind(':city', $data['city']);
+            $this->db->bind(':region', $data['region']);
+            $this->db->bind(':postal', $data['postal']);
+            $this->db->bind(':contact_no', $data['contact_no']);
             $this->db->bind(':email', $data['email']);
             $this->db->bind(':employment', $data['employment']);
             $this->db->bind(':department', $data['department']);

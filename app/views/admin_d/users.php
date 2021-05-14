@@ -103,8 +103,8 @@
                         <?php foreach($data as $alumni):?>
                             <tr>
                                 <td><input type="checkbox"></td>
-                                <td><p class="studentID"><?php echo $alumni->studentID?></p></td>
-                                <td><p class="studentName"><?php echo $alumni->lastName . ' ' . $alumni->lastName . ' ' . $alumni->midName?></p></td>
+                                <td><p class="studentID"><?php echo $alumni->student_no?></p></td>
+                                <td><p class="studentName"><?php echo $alumni->last_name . ' ' . $alumni->first_name . ' ' . $alumni->middle_name?></p></td>
                                 <td><p class="studentEmail"><?php echo $alumni->email ?></p></td>
                                 <td><p class="gender"><?php echo $alumni->gender ?></p></td>
                                 <td><p class="course"><?php echo $alumni->dept_code ?></p></td>

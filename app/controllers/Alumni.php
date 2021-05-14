@@ -56,79 +56,92 @@ class Alumni extends Controller{
         //Add Alumni
         public function add(){
                 $code = $this->alumniModel->showDepartment();
-                
+                $batch = $this->alumniModel->showBatch();
             if($_SERVER['REQUEST_METHOD']=='POST') {
                 $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
                 $pass = rand();
                 $pass = password_hash($pass, PASSWORD_DEFAULT);
                 $data = [
-                    'userType' => 'alumni',
-                    'studentID' => ($_POST['studentID']),
-                    'userPassword' => $pass,
-                    'firstName' => ($_POST['firstName']),
-                    'lastName' => ($_POST['lastName']),
-                    'midInitial' => ($_POST['midInitial']),
+                    'student_no' => ($_POST['student_no']),
+                    'user_pass' => $pass,
+                    'first_name' => ($_POST['first_name']),
+                    'last_name' => ($_POST['last_name']),
+                    'middle_name' => ($_POST['middle_name']),
                     'gender' => ($_POST['gender']),
-                    'birthDate' => ($_POST['birthDate']),
+                    'birth_date' => ($_POST['birth_date']),
                     'address' => ($_POST['address']),
-                    'contactNum' => ($_POST['contactNum']),
+                    'city' => ($_POST['city']),
+                    'region' => ($_POST['region']),
+                    'postal' => ($_POST['postal']),
+                    'contact_no' => ($_POST['contact_no']),
                     'email' => ($_POST['email']),
                     'employment' => ($_POST['employment']),
                     'department' => ($_POST['department']),
                     'batch' => ($_POST['batch']),
-                    'studentIDError' => '',
-                    'firstNameError' => '',
-                    'lastNameError' => '',
-                    'midInitialError' => '',
-                    'genderError' => '',
-                    'birthDateError' => '',
-                    'addressError' => '',
-                    'contactNumError' => '',
-                    'emailError' => '',
-                    'employmentError' => '',
-                    'departmentError' => '',
-                    'batchError' => '',
+                    'student_no_error' => '',
+                    'first_name_error' => '',
+                    'last_name_error' => '',
+                    'middle_name_error' => '',
+                    'gender_error' => '',
+                    'birth_date_error' => '',
+                    'address_error' => '',
+                    'city_error' => '',
+                    'region_error' => '',
+                    'postal_error' => '',
+                    'contact_no_error' => '',
+                    'email_error' => '',
+                    'employment_error' => '',
+                    'department_error' => '',
+                    'batch_error' => '',
                 ];
 
-                if (empty($data['studentID'])){
-                    $data['studentIDError'] = 'Please enter the student ID';
+                if (empty($data['student_no'])){
+                    $data['student_no_error'] = 'Please enter the student ID';
                 }
-                if (empty($data['firstName'])){
-                    $data['firstNameError'] = "Please enter the Alumni's First Name";
+                if (empty($data['first_name'])){
+                    $data['first_name_error'] = "Please enter the Alumni's First Name";
                 }
-                if (empty($data['lastName'])){
-                    $data['lastNameError'] = "Please enter the Alumni's Last Name";
+                if (empty($data['last_name'])){
+                    $data['last_name_error'] = "Please enter the Alumni's Last Name";
                 }
-                if (empty($data['midInitial'])){
-                    $data['midInitialError'] = "Please enter the Alumni's Middle Initial";
+                if (empty($data['middle_name'])){
+                    $data['middle_name_error'] = "Please enter the Alumni's Middle Initial";
                 }
-
-                if (empty($data['birthDate'])){
-                    $data['birthDateError'] = "Please input the Alumni's Birth Date";
+                if (empty($data['birth_date'])){
+                    $data['birth_date_error'] = "Please input the Alumni's Birth Date";
                 }
                 if (empty($data['address'])){
-                    $data['addressError'] = "Please input the Alumni's Address";
+                    $data['address_error'] = "Please input the Alumni's Address";
                 }
-                if (empty($data['contactNum'])){
-                    $data['contactNumError'] = "Please input the Alumni's Contact Number";
+                if (empty($data['city'])){
+                    $data['city_error'] = "Please input the Alumni's Address";
+                }
+                if (empty($data['region'])){
+                    $data['region_error'] = "Please input the Alumni's Address";
+                }
+                if (empty($data['postal'])){
+                    $data['postal_error'] = "Please input the Alumni's Address";
+                }
+                if (empty($data['contact_no'])){
+                    $data['contact_no_error'] = "Please input the Alumni's Contact Number";
                 }
                 if (empty($data['email'])){
-                    $data['emailError'] = "Please input the Alumni's Email Address";
+                    $data['email_error'] = "Please input the Alumni's Email Address";
                 }
                 if (empty($data['employment'])){
-                    $data['employmentError'] = "Please input the Alumni's employment status";
+                    $data['employment_error'] = "Please input the Alumni's employment status";
                 }
                 if (empty($data['department'])){
-                    $data['departmentError'] = "Please input the Alumni's Department";
+                    $data['department_error'] = "Please input the Alumni's Department";
                 }
                 if (empty($data['batch'])){
-                    $data['batchError'] = "Please input the Alumni's Batch";
+                    $data['batch_error'] = "Please input the Alumni's Batch";
                 }
 
                 print_r($data);
-                if (empty($data['studentIDError']) && empty($data['firstNameError']) && empty($data['lastNameError']) && empty($data['midInitialError'])  && empty($data['birthDateError']) && empty($data['addressError']) && empty($data['contactNumError']) && empty($data['emailError']) && empty($data['employmentError']) && empty($data['departmentError']) && empty($data['batchError'])){
+                if (empty($data['student_no_error']) && empty($data['first_name_error']) && empty($data['last_name_error']) && empty($data['middle_name_error']) && empty($data['birth_date_error']) && empty($data['address_error']) && empty($data['city_error']) && empty($data['region_error']) && empty($data['postal_error']) && empty($data['contact_no_error']) && empty($data['email_error']) && empty($data['employment_error']) && empty($data['departmentError']) && empty($data['batchError'])){
                         if($this->alumniModel->addAlumni($data)){
-                            redirect('alumni');
+                            redirect('admin/users');
                         }
                         else {
                             die("you wronk");
@@ -142,33 +155,38 @@ class Alumni extends Controller{
         else {
             
             $data = [
-                'userType' => '',
-                'studentID' => '',
-                'userPassword' => '',
-                'firstName' => '',
-                'lastName' => '',
-                'midInitial' => '',
+                'student_no' => '',
+                'user_pass' => '',
+                'first_name' => '',
+                'last_name' => '',
+                'middle_initial' => '',
                 'gender' => '',
-                'birthDate' => '',
+                'birth_date' => '',
                 'address' => '',
-                'contactNum' => '',
+                'city' => '',
+                'region' => '',
+                'postal' => '',
+                'contact_no' => '',
                 'email' => '',
                 'employment' => '',
                 'department' => '',
                 'departmentCode' => $code,
-                'batch' => '',
-                'studentIDError' => '',
-                'firstNameError' => '',
-                'lastNameError' => '',
-                'midInitialError' => '',
-                'genderError' => '',
-                'birthDateError' => '',
-                'addressError' => '',
-                'contactNumError' => '',
-                'emailError' => '',
-                'employmentError' => '',
-                'departmentError' => '',
-                'batchError' => '',
+                'batch' => $batch,
+                'student_no_error' => '',
+                'first_name_error' => '',
+                'last_name_error' => '',
+                'middle_name_error' => '',
+                'gender_error' => '',
+                'birth_date_error' => '',
+                'address_error' => '',
+                'city_error' => '',
+                'region_error' => '',
+                'postal_error' => '',
+                'contact_no_error' => '',
+                'email_error' => '',
+                'employment_error' => '',
+                'department_error' => '',
+                'batch_error' => '',
             ];
         }
             $this->view('alumni/add', $data);

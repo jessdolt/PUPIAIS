@@ -1,11 +1,11 @@
 
 <?php require APPROOT . '/views/inc/header_admin.php';?>
-<main class="admin userAdd dataInput">
+        <main class="admin userAdd dataInput">
                 <section class="pageSpecificHeader">
                     
                 </section>
                 <section class="mainContent adminForm">
-                    <form action="">
+                    <form action="?php echo URLROOT;?>/alumni/add" method="POST">
                         <div class="form">
                             <h2>
                                 Accounts
@@ -19,30 +19,30 @@
                                 <div class="infoSubCon">
                                     <div class="smallComponentsContainer">
                                         <div>
-                                            <label for="first-name" class="outsideLabel">FirstName:</label>
+                                            <label for="first-name" class="outsideLabel">First Name:</label>
                                             <div class="textFieldContainer">
-                                                <input type="text" name="firstName" id="first-name"required>
+                                                <input type="text" name="first_name" id="first-name"required>
                                                 <span class="error"></span>
                                             </div>
                                         </div>
                                         <div>
                                             <label for="last-name" class="outsideLabel">Last Name:</label>
                                             <div class="textFieldContainer">
-                                                <input type="text" name="lastName" id="last-name"required>
+                                                <input type="text" name="last_name" id="last-name"required>
                                                 <span class="error"></span>
                                             </div>
                                         </div>
                                         <div>
                                             <label for="middle-name" class="outsideLabel">Middle Name:</label>
                                             <div class="textFieldContainer">
-                                                <input type="text" name="middleName" id="middle-name"required>
+                                                <input type="text" name="middle_name" id="middle-name"required>
                                                 <span class="error"></span>
                                             </div>
                                         </div>
                                         <div>
                                             <label for="birth-date" class="outsideLabel">Birth Date:</label>
                                             <div class="textFieldContainer">
-                                                <input type="date" name="birthDate" id="birth-date"required>
+                                                <input type="date" name="birth_date" id="birth-date"required>
                                                 <span class="error"></span>
                                             </div>
                                         </div>
@@ -57,8 +57,8 @@
                                         <div>
                                             <label class="outsideLabel">Employment Status:</label>
                                             <fieldset class="radioBtnContainer">
-                                                <input type="radio" class="eStatus" name="eStatus" id="employed-id" value="Employed" checked>
-                                                <input type="radio" class="eStatus" name="eStatus" id="unemployed-id" value="Unemployed">
+                                                <input type="radio" class="eStatus" name="employment" id="employed-id" value="Employed" checked>
+                                                <input type="radio" class="eStatus" name="employment" id="unemployed-id" value="Unemployed">
                                             </fieldset>
                                         </div>
                                     </div>
@@ -71,7 +71,7 @@
                                         <div>
                                             <label for="address-line1" class="outsideLabel">Address Line 1:</label>
                                             <div class="textFieldContainer">
-                                                <input type="text" name="addressLine1" id="address-line1"required>
+                                                <input type="text" name="address" id="address-line1"required>
                                                 <span class="error"></span>
                                             </div>
                                         </div>
@@ -85,21 +85,21 @@
                                         <div>
                                             <label for="spr-id" class="outsideLabel">State | Province | Region:</label>
                                             <div class="textFieldContainer">
-                                                <input type="text" name="spr" id="spr-id"required>
+                                                <input type="text" name="region" id="spr-id"required>
                                                 <span class="error"></span>
                                             </div>
                                         </div>
                                         <div>
                                             <label for="zpc-id" class="outsideLabel">Zip | Postal Code:</label>
                                             <div class="textFieldContainer">
-                                                <input type="tel" name="zpc" id="zpc-id"required>
+                                                <input type="tel" name="postal" id="zpc-id"required>
                                                 <span class="error"></span>
                                             </div>
                                         </div>
                                         <div>
                                             <label for="contact-num-id" class="outsideLabel">Contact Number:</label>
                                             <div class="textFieldContainer">
-                                                <input type="tel" name="contactNum" id="contact-num-id"required>
+                                                <input type="tel" name="contact_no" id="contact-num-id"required>
                                                 <span class="error"></span>
                                             </div>
                                         </div>
@@ -120,7 +120,7 @@
                                         <div>
                                             <label for="student-id" class="outsideLabel">Student ID:</label>
                                             <div class="textFieldContainer">
-                                                <input type="text" name="studentId" id="student-id"required>
+                                                <input type="text" name="student_no" id="student-id"required>
                                                 <span class="error"></span>
                                             </div>
                                         </div>
@@ -128,9 +128,9 @@
                                             <label for="department-id" class="outsideLabel">Department:</label>
                                             <div class="textFieldContainer">
                                                 <select name="department" id="department-id" required>
-                                                    <option>--Department--</option>
-                                                    <option value="dict">DICT</option>
-                                                    <option value="decet">DECET</option>
+                                                <?php foreach($data['departmentCode'] as $code):?>
+                                                    <option value="<?php echo $code->id ?>"><?php echo $code->dept_code;?></option>
+                                                    <?php endforeach; ?>
                                                 </select>
                                                 <span class="error"></span>
                                             </div>
@@ -139,9 +139,9 @@
                                             <label for="batch-id" class="outsideLabel">Batch:</label>
                                             <div class="textFieldContainer">
                                                 <select name="batch" id="batch-id" required>
-                                                    <option>--Batch--</option>
-                                                    <option value="2021">Batch 2021</option>
-                                                    <option value="2020">Batch 2020</option>
+                                                    <?php foreach($data['batch'] as $batch):?>
+                                                        <option value="<?php echo $batch->id ?>"><?php  echo 'Batch ' . $batch->year;?></option>
+                                                    <?php endforeach; ?>
                                                 </select>
                                                 <span class="error"></span>
                                             </div>
@@ -157,18 +157,10 @@
                                 </svg>
                             </a>
                             <div class="imageInputContainer">
-                                <img src="">
-                                <label for="company-logo-input" class="fileUploadBtn">
-                                    Edit
-                                    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M14.2411 2.00903L16.4911 4.25903L14.7759 5.97503L12.5259 3.72503L14.2411 2.00903Z" fill="white"/>
-                                        <path d="M6 12.4999H8.25L13.7153 7.03467L11.4652 4.78467L6 10.2499V12.4999Z" fill="white"/>
-                                        <path d="M14.25 14.75H6.1185C6.099 14.75 6.07875 14.7575 6.05925 14.7575C6.0345 14.7575 6.00975 14.7507 5.98425 14.75H3.75V4.25H8.88525L10.3853 2.75H3.75C2.92275 2.75 2.25 3.422 2.25 4.25V14.75C2.25 15.578 2.92275 16.25 3.75 16.25H14.25C14.6478 16.25 15.0294 16.092 15.3107 15.8107C15.592 15.5294 15.75 15.1478 15.75 14.75V8.249L14.25 9.749V14.75Z" fill="white"/>
-                                    </svg>
-                                </label>
-                                <input type="file" name="companyLogoInput" id="company-logo-input" accept=".jpg, .png">
+                                <svg width="160" height="142" viewBox="0 0 160 142" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M146.667 8.875H13.3333C5.97222 8.875 0 14.8379 0 22.1875V26.625H160V22.1875C160 14.8379 154.028 8.875 146.667 8.875ZM0 119.812C0 127.162 5.97222 133.125 13.3333 133.125H146.667C154.028 133.125 160 127.162 160 119.812V35.5H0V119.812ZM97.7778 55.4688C97.7778 54.2484 98.7778 53.25 100 53.25H140C141.222 53.25 142.222 54.2484 142.222 55.4688V59.9062C142.222 61.1266 141.222 62.125 140 62.125H100C98.7778 62.125 97.7778 61.1266 97.7778 59.9062V55.4688ZM97.7778 73.2188C97.7778 71.9984 98.7778 71 100 71H140C141.222 71 142.222 71.9984 142.222 73.2188V77.6562C142.222 78.8766 141.222 79.875 140 79.875H100C98.7778 79.875 97.7778 78.8766 97.7778 77.6562V73.2188ZM97.7778 90.9688C97.7778 89.7484 98.7778 88.75 100 88.75H140C141.222 88.75 142.222 89.7484 142.222 90.9688V95.4062C142.222 96.6266 141.222 97.625 140 97.625H100C98.7778 97.625 97.7778 96.6266 97.7778 95.4062V90.9688ZM48.8889 53.25C58.6944 53.25 66.6667 61.2098 66.6667 71C66.6667 80.7902 58.6944 88.75 48.8889 88.75C39.0833 88.75 31.1111 80.7902 31.1111 71C31.1111 61.2098 39.0833 53.25 48.8889 53.25ZM18.6389 109.884C20.9722 102.756 27.6667 97.625 35.5556 97.625H37.8333C41.25 99.0395 44.9722 99.8438 48.8889 99.8438C52.8056 99.8438 56.5556 99.0395 59.9444 97.625H62.2222C70.1111 97.625 76.8056 102.756 79.1389 109.884C80.0278 112.629 77.6944 115.375 74.8056 115.375H22.9722C20.0833 115.375 17.75 112.602 18.6389 109.884Z" fill="#A63F3F"/>
+                                </svg>
                             </div>
-                            <label>Company Logo</label>
                             <div class="btnGroupContainer">
                                 <button class="reset">
                                     <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -187,7 +179,5 @@
                     </form>
                 </section>
             </main>
-        </div>
-    </div>
 
 <?php require APPROOT . '/views/inc/footer.php';?>
