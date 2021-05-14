@@ -14,9 +14,6 @@ class Alumni extends Controller{
         $data = $this->alumniModel->showAlumni();
         $this->view('alumni/index', $data);
     }
-
-
- 
     
 /*     public function csv() {
      
@@ -51,7 +48,6 @@ class Alumni extends Controller{
         redirect('alumni');
 
     } */
-
 
         //Add Alumni
         public function add(){
@@ -138,7 +134,7 @@ class Alumni extends Controller{
                     $data['batch_error'] = "Please input the Alumni's Batch";
                 }
 
-                print_r($data);
+                // print_r($data);
                 if (empty($data['student_no_error']) && empty($data['first_name_error']) && empty($data['last_name_error']) && empty($data['middle_name_error']) && empty($data['birth_date_error']) && empty($data['address_error']) && empty($data['city_error']) && empty($data['region_error']) && empty($data['postal_error']) && empty($data['contact_no_error']) && empty($data['email_error']) && empty($data['employment_error']) && empty($data['departmentError']) && empty($data['batchError'])){
                         if($this->alumniModel->addAlumni($data)){
                             redirect('admin/users');
