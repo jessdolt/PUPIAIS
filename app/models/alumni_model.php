@@ -14,14 +14,21 @@
             }
         }
 
-        public function selectDepartmentCode(){
-            $this->db->query('SELECT * FROM department');
+        public function showDepartment(){
+            $this->db->query('SELECT * FROM `department`');
             $row = $this->db->resultSet();
             if($row > 0){
                 return $row;
             }
         }
 
+        public function showYear(){
+            $this->db->query('SELECT * FROM `department` inner join `fusion` on department.id = fusion.dept_id left join `batch` on fusion.batch_id = batch.id where department.id');
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
 
         public function import($file) {
             $file = fopen($file, 'r');

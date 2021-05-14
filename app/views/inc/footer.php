@@ -14,7 +14,7 @@
             <p>This will delete all the data selected and cannot be undone!</p>
             <div>
                 <button>Cancel</button>
-                <a href="<?php echo URLROOT;?>/posts/delete/<?php echo $post->id?>">Delete</a>
+                <a href="<?php echo URLROOT;?>/alumni/delete/<?php echo $alumni->alumniID?>">Delete</a>
             </div>
         </div>
     </div>

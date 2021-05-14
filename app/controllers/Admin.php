@@ -27,7 +27,9 @@
         public function users(){
             $this->alumniModel = $this->model('alumni_model');
             $data = $this->alumniModel->showAlumni();
-            $this->view('admin_d/users', $data);
+            $dep  = $this->alumniModel->showDepartment(); 
+            $year = $this->alumniModel->showYear();
+            $this->view('admin_d/users', $data, $dep, $year);
         }
 
         public function events(){

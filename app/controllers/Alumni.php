@@ -55,7 +55,7 @@ class Alumni extends Controller{
 
         //Add Alumni
         public function add(){
-                $code = $this->alumniModel->selectDepartmentCode();
+                $code = $this->alumniModel->showDepartment();
                 
             if($_SERVER['REQUEST_METHOD']=='POST') {
                 $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
