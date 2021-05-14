@@ -114,14 +114,17 @@
 
 
         public function editAlumni($data){
-            $this->db->query('UPDATE alumni SET firstName = :firstName , lastName =:lastName, midName= :midInitial, birthDate = :birthDate, address = :address, contactNum = :contactNum, email = :email, employment = :employment WHERE id =:id');
+            $this->db->query('UPDATE alumni SET first_name = :first_name , last_name =:lastName, middle_name= :middle_name, birth_date = :birth_date, address = :address, city = :city, region = :region, postal = :postal,contact_no = :contactNum, email = :email, employment = :employment WHERE alumni_id =:id');
         
-        $this->db->bind(':firstName', $data['firstName']);
-        $this->db->bind(':lastName', $data['lastName']);
-        $this->db->bind(':midInitial', $data['midInitial']);
-        $this->db->bind(':birthDate', $data['birthDate']);
+        $this->db->bind(':first_name', $data['first_name']);
+        $this->db->bind(':last_name', $data['last_name']);
+        $this->db->bind(':middle_name', $data['middle_name']);
+        $this->db->bind(':birth_date', $data['birth_date']);
         $this->db->bind(':address', $data['address']);
-        $this->db->bind(':contactNum', $data['contactNum']);
+        $this->db->bind(':city', $data['city']);
+        $this->db->bind(':region', $data['region']);
+        $this->db->bind(':postal', $data['postal']);
+        $this->db->bind(':contact_no', $data['contact_no']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':employment', $data['employment']);
         $this->db->bind(':id',$data['id']);
@@ -169,7 +172,7 @@
         }
         
         public function getAlumniById($id){
-            $this->db->query('SELECT * FROM alumni WHERE id=:id');
+            $this->db->query('SELECT * FROM alumni WHERE alumni_id=:id');
             $this->db->bind(':id', $id);
             $row = $this->db->single();
             if($this->db->rowCount() > 0){

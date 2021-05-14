@@ -269,20 +269,29 @@ class Alumni extends Controller{
 
     public function edit($id){
         $alumni = $this->alumniModel->getAlumniById($id);
+        $batch = $this->alumniModel->showBatch();
+        $dep = $this->alumniModel->showDepartment();
 
         if($_SERVER['REQUEST_METHOD']=='POST') {
             $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
             $data = [
 
                 'id' => $id,
-                'firstName' => ($_POST['firstName']),
-                'lastName' => ($_POST['lastName']),
-                'midInitial' => ($_POST['midInitial']),
-                'birthDate' => ($_POST['birthDate']),
+                'student_no' => ($_POST['student_no']),
+                'first_name' => ($_POST['first_name']),
+                'last_name' => ($_POST['last_name']),
+                'middle_name' => ($_POST['middle_name']),
+                'gender' => ($_POST['gender']),
+                'birth_date' => ($_POST['birth_date']),
                 'address' => ($_POST['address']),
-                'contactNum' => ($_POST['contactNum']),
+                'city' => ($_POST['city']),
+                'region' => ($_POST['region']),
+                'postal' => ($_POST['postal']),
+                'contact_no' => ($_POST['contact_no']),
                 'email' => ($_POST['email']),
                 'employment' => ($_POST['employment']),
+                'department' => ($_POST['department']),
+                'batch' => ($_POST['batch']),
 
             ];
 
@@ -294,14 +303,21 @@ class Alumni extends Controller{
 
             $data = [
                 'id' => $id,
-                'firstName' => $alumni->firstName,
-                'lastName' => $alumni->lastName,
-                'midInitial' => $alumni->midInitial,
-                'birthDate' => $alumni->birthDate,
+                'student_no' => $alumni->student_no,
+                'first_name' => $alumni->first_name,
+                'last_name' => $alumni->last_name,
+                'middle_name' => $alumni->middle_name,
+                'birth_date' => $alumni->birth_date,
                 'address' => $alumni->address,
-                'contactNum' => $alumni->contactNum,
+                'city' => $alumni->city,
+                'region' => $alumni->region,
+                'postal' => $alumni->postal,
+                'contact_no' => $alumni->contact_no,
                 'email' => $alumni->email,
                 'employment' => $alumni->employment,
+                'batch' => $batch,
+                'department' => $alumni->departmentID,
+                'dept_code' => $dep
             ];
     
         }
