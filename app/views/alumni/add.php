@@ -1,6 +1,5 @@
 
 <?php require APPROOT . '/views/inc/header_admin.php';?>
-
 <main class="admin userAdd dataInput">
                 <section class="pageSpecificHeader">
                     
