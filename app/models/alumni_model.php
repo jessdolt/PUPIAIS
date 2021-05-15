@@ -114,12 +114,13 @@
 
 
         public function editAlumni($data){
-            $this->db->query('UPDATE alumni SET first_name = :first_name , last_name =:lastName, middle_name= :middle_name, birth_date = :birth_date, address = :address, city = :city, region = :region, postal = :postal,contact_no = :contactNum, email = :email, employment = :employment WHERE alumni_id =:id');
+            $this->db->query('UPDATE alumni SET first_name = :first_name , last_name =:last_name, middle_name= :middle_name, birth_date = :birth_date, gender = :gender, address = :address, city = :city, region = :region, postal = :postal,contact_no = :contact_no, email = :email, employment = :employment, departmentID = :department, batchID = :batch WHERE alumni_id =:id');
         
         $this->db->bind(':first_name', $data['first_name']);
         $this->db->bind(':last_name', $data['last_name']);
         $this->db->bind(':middle_name', $data['middle_name']);
         $this->db->bind(':birth_date', $data['birth_date']);
+        $this->db->bind(':gender', $data['gender']);
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':city', $data['city']);
         $this->db->bind(':region', $data['region']);
@@ -127,6 +128,8 @@
         $this->db->bind(':contact_no', $data['contact_no']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':employment', $data['employment']);
+        $this->db->bind(':department', $data['department']);
+        $this->db->bind(':batch', $data['batch']);
         $this->db->bind(':id',$data['id']);
 
         if($this->db->execute()) {

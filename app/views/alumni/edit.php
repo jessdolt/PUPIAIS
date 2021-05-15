@@ -1,4 +1,3 @@
-
 <?php require APPROOT . '/views/inc/header_admin.php';?>
         <main class="admin userAdd dataInput">
                 <section class="pageSpecificHeader">
@@ -49,16 +48,16 @@
                                     
                                         <div>
                                             <label class="outsideLabel">Gender:</label>
-                                            <fieldset class="radioBtnContainer" value="<?php echo($data['gender'])?>">
-                                                <input type="radio" class="male" name="gender" id="male-id" value="Male" checked>
-                                                <input type="radio" class="female" name="gender" id="female-id" value="Female">
+                                            <fieldset class="radioBtnContainer">
+                                                <input type="radio" class="male" name="gender" id="male-id" value="Male" <?php echo ($data['gender'] == 'Male') ? 'checked' : '' ?>>
+                                                <input type="radio" class="female" name="gender" id="female-id" value="Female" <?php echo ($data['gender'] == 'Female') ? 'checked' : '' ?>>
                                             </fieldset>
                                         </div>
                                         <div>
                                             <label class="outsideLabel">Employment Status:</label>
                                             <fieldset class="radioBtnContainer">
-                                                <input type="radio" class="eStatus" name="employment" id="employed-id" value="Employed" checked>
-                                                <input type="radio" class="eStatus" name="employment" id="unemployed-id" value="Unemployed">
+                                                <input type="radio" class="eStatus" name="employment" id="employed-id" value="Employed" <?php echo ($data['employment'] == 'Employed') ? 'checked' : '' ?>>
+                                                <input type="radio" class="eStatus" name="employment" id="unemployed-id" value="Unemployed" <?php echo ($data['employment'] == 'Unemployed') ? 'checked' : '' ?>>
                                             </fieldset>
                                         </div>
                                     </div>
@@ -127,9 +126,9 @@
                                         <div>
                                             <label for="department-id" class="outsideLabel">Department:</label>
                                             <div class="textFieldContainer">
-                                                <select name="department" id="department-id"?>" required>
+                                                <select name="department" id="department-id"? value="<?php echo($data['department'])?>">" required>
                                                 <?php foreach($data['dept_code'] as $code):?>
-                                                    <option value="<?php echo $code->id ?>"><?php echo $code->dept_code;?></option>
+                                                    <option value="<?php echo $code->id ?>" <?php if($data['department']==$code->id) echo 'selected="selected"'; ?> ><?php echo $code->dept_code;?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                                 <span class="error"></span>
@@ -138,8 +137,8 @@
                                         <div>
                                             <label for="batch-id" class="outsideLabel">Batch:</label>
                                             <div class="textFieldContainer">
-                                                <select name="batch" id="batch-id" required>
-                                                    <?php foreach($data['batch'] as $batch):?>
+                                                <select name="batch" id="batch-id" value="<?php echo($data['batch'])?>"required>
+                                                    <?php foreach($data['year'] as $batch):?>
                                                         <option value="<?php echo $batch->id ?>"><?php  echo 'Batch ' . $batch->year;?></option>
                                                     <?php endforeach; ?>
                                                 </select>
