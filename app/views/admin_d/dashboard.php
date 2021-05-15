@@ -8,7 +8,7 @@
                     </svg>
                 </div>
                 <div class="dateTimeContainer">
-                    <p class="currentTime">Current Time: <time datetime="10:00">10:00 AM</time></p>
+                    <p class="currentTime">Current Time:<time id="clock"></time></p>
                     <p class="lastUpdatedTime">Last updated: <time datetime="2021-04-07 07:30:00">April 7, 2021 07:30 AM</time></p>
                 </div>
             </section>

@@ -40,5 +40,3 @@
         </div>
         <h1>Polytechnic University <br> of the Philippines</h1>
     </nav>
-
-    <h1><?php echo $_SESSION['counter'] ?></h1>

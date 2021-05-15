@@ -14,3 +14,5 @@
     
     //Site Name
     define('SITENAME', 'PUPIAIS');
+
+    date_default_timezone_set('Asia/Manila');

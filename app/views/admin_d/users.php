@@ -51,7 +51,7 @@
                     </li>
                 </ul>
     </section>
-    <main class="admin">
+    <main class="Admin">
                 <section class="pageSpecificHeader">
                     <div>
                         <h2>
