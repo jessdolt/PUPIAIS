@@ -3,6 +3,7 @@
 } */
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -330,13 +331,13 @@ thead, tbody, tfoot, th {
   letter-spacing: 0.025rem;
   font-weight: 400; }
 
-button, .adminHeader a, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .addNewGroup, .users .filterNav .btnContainer a {
+button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .addNewGroup, .users .filterNav .btnContainer a {
   font-weight: 500;
   text-transform: uppercase; }
-  button span, button a, .adminHeader a span, .mainNav > a span, .adminNav .mainCategoryList .categoryContainer span, .admin .pageSpecificHeader > div:first-child button span, .admin .pageSpecificHeader > div:first-child a span, button span, .alertModalContainer .alertModal div a span, .users .filterNav .btnContainer .addNewGroup span, .users .filterNav .btnContainer a span, .adminHeader a a, .mainNav > a a, .adminNav .mainCategoryList .categoryContainer a, .admin .pageSpecificHeader > div:first-child button a, .admin .pageSpecificHeader > div:first-child a a, button a, .alertModalContainer .alertModal div a a, .users .filterNav .btnContainer .addNewGroup a, .users .filterNav .btnContainer a a {
+  button span, button a, .adminHeader a span, .mainNav button.active ~ .userContainer a:last-child span, .mainNav > a span, .adminNav .mainCategoryList .categoryContainer span, .admin .pageSpecificHeader > div:first-child button span, .admin .pageSpecificHeader > div:first-child a span, button span, .alertModalContainer .alertModal div a span, .users .filterNav .btnContainer .addNewGroup span, .users .filterNav .btnContainer a span, .adminHeader a a, .mainNav button.active ~ .userContainer a:last-child a, .mainNav > a a, .adminNav .mainCategoryList .categoryContainer a, .admin .pageSpecificHeader > div:first-child button a, .admin .pageSpecificHeader > div:first-child a a, button a, .alertModalContainer .alertModal div a a, .users .filterNav .btnContainer .addNewGroup a, .users .filterNav .btnContainer a a {
     font-weight: 500; }
 
-input, a, p, span, button, .adminHeader a, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .addNewGroup, .users .filterNav .btnContainer a {
+input, a, p, span, button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .addNewGroup, .users .filterNav .btnContainer a {
   font-size: 1.4rem;
   font-family: 'Roboto', sans-serif; }
 
@@ -447,7 +448,7 @@ table tbody {
   background-color: #5C1C1C;
   color: #FFFFFF;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-  z-index: 4;
+  z-index: 20;
   display: flex;
   align-items: center; }
   .mainHeader::before {
@@ -474,7 +475,7 @@ table tbody {
         display: none; } }
 
 .headerShadow {
-  z-index: 3; }
+  z-index: 19; }
   .headerShadow::before {
     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12); }
 
@@ -536,7 +537,7 @@ table tbody {
 #Alumni .mainNav .dashboardLink {
   display: none; }
 
-#Admin .mainNav .logout {
+#Admin .mainNav button {
   display: none; }
 
 .mainNav {
@@ -568,7 +569,7 @@ table tbody {
       width: 100%;
       height: 4.6rem;
       padding: 0 2.4rem;
-      z-index: 2;
+      z-index: 18;
       box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12); } }
   .mainNav.show {
     left: 0; }
@@ -615,10 +616,46 @@ table tbody {
         background-color: #FFFFFF;
         color: rgba(0, 0, 0, 0.87);
         display: flex;
-        display: none;
         padding: 0 1.6rem;
         margin-right: 10.4rem;
         min-height: 3rem; } }
+    .mainNav button.active {
+      background-color: #A63F3F;
+      color: #FFFFFF; }
+      .mainNav button.active ~ .userContainer {
+        display: flex; }
+        .mainNav button.active ~ .userContainer a:last-child {
+          background-color: #FFFFFF;
+          color: rgba(0, 0, 0, 0.87);
+          position: relative;
+          min-height: 3rem !important; }
+          .mainNav button.active ~ .userContainer a:last-child svg {
+            position: absolute;
+            left: 1.3rem; }
+  .mainNav .userContainer {
+    background-color: #EEEEEE;
+    color: rgba(0, 0, 0, 0.87);
+    position: absolute;
+    top: 4.2rem;
+    right: 12.8rem;
+    display: none;
+    flex-flow: column;
+    gap: 1.6rem;
+    border-radius: 1rem;
+    min-width: 20rem;
+    padding: 1.6rem 2.4rem;
+    z-index: 100; }
+    .mainNav .userContainer p {
+      text-align: center;
+      padding-bottom: 1.6rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+      color: rgba(0, 0, 0, 0.6); }
+    .mainNav .userContainer a {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-align: left;
+      color: rgba(0, 0, 0, 0.87); }
   .mainNav > a {
     background-color: #FFFFFF;
     color: rgba(0, 0, 0, 0.87);
@@ -1446,7 +1483,7 @@ a:active {
 ul {
   list-style: none; }
 
-.adminHeader a, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .addNewGroup, .users .filterNav .btnContainer a {
+.adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .addNewGroup, .users .filterNav .btnContainer a {
   min-height: 4.4rem;
   min-width: 6.4rem;
   display: flex;
@@ -1457,10 +1494,10 @@ ul {
   transition: 200ms ease;
   cursor: pointer;
   border-radius: 2.5rem; }
-  .adminHeader a:focus, .mainNav > a:focus, .adminNav .mainCategoryList .categoryContainer:focus, .admin .pageSpecificHeader > div:first-child button:focus, .admin .pageSpecificHeader > div:first-child a:focus, button:focus, .alertModalContainer .alertModal div a:focus, .users .filterNav .btnContainer .addNewGroup:focus, .users .filterNav .btnContainer a:focus, .adminHeader a:hover, .mainNav > a:hover, .adminNav .mainCategoryList .categoryContainer:hover, .admin .pageSpecificHeader > div:first-child button:hover, .admin .pageSpecificHeader > div:first-child a:hover, button:hover, .alertModalContainer .alertModal div a:hover, .users .filterNav .btnContainer .addNewGroup:hover, .users .filterNav .btnContainer a:hover {
+  .adminHeader a:focus, .mainNav button.active ~ .userContainer a:focus:last-child, .mainNav > a:focus, .adminNav .mainCategoryList .categoryContainer:focus, .admin .pageSpecificHeader > div:first-child button:focus, .admin .pageSpecificHeader > div:first-child a:focus, button:focus, .alertModalContainer .alertModal div a:focus, .users .filterNav .btnContainer .addNewGroup:focus, .users .filterNav .btnContainer a:focus, .adminHeader a:hover, .mainNav button.active ~ .userContainer a:hover:last-child, .mainNav > a:hover, .adminNav .mainCategoryList .categoryContainer:hover, .admin .pageSpecificHeader > div:first-child button:hover, .admin .pageSpecificHeader > div:first-child a:hover, button:hover, .alertModalContainer .alertModal div a:hover, .users .filterNav .btnContainer .addNewGroup:hover, .users .filterNav .btnContainer a:hover {
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
     outline: 0; }
-  .adminHeader a:active, .mainNav > a:active, .adminNav .mainCategoryList .categoryContainer:active, .admin .pageSpecificHeader > div:first-child button:active, .admin .pageSpecificHeader > div:first-child a:active, button:active, .alertModalContainer .alertModal div a:active, .users .filterNav .btnContainer .addNewGroup:active, .users .filterNav .btnContainer a:active {
+  .adminHeader a:active, .mainNav button.active ~ .userContainer a:active:last-child, .mainNav > a:active, .adminNav .mainCategoryList .categoryContainer:active, .admin .pageSpecificHeader > div:first-child button:active, .admin .pageSpecificHeader > div:first-child a:active, button:active, .alertModalContainer .alertModal div a:active, .users .filterNav .btnContainer .addNewGroup:active, .users .filterNav .btnContainer a:active {
     filter: opacity(0.88); }
 
 .adminNav .mainCategoryList .categoryContainer, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="number"], .jobPortal .mainContent .data-table .status.open {
@@ -1699,14 +1736,50 @@ ul {
         background-color: #EEEEEE;
         color: rgba(0, 0, 0, 0.87); }
 
+body {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF; }
+  body::-webkit-scrollbar {
+    width: 0.5rem; }
+  body::-webkit-scrollbar-track {
+    background-color: #FFFFFF; }
+  body::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.38);
+    border-radius: 5rem; }
+
 .home {
   position: relative;
   top: 10.6rem; }
   .home .heroBox {
-    height: 36rem; }
+    position: relative;
+    height: 36rem;
+    padding: 14rem 0 7rem;
+    background-image: url("../images/heroBoxBg.png");
+    background-size: cover;
+    background-repeat: no-repeat; }
+    .home .heroBox::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.3);
+      z-index: 1; }
     .home .heroBox .container {
       background-color: rgba(0, 0, 0, 0.5);
-      color: #FFFFFF; }
+      color: #FFFFFF;
+      position: absolute;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      padding: 1rem 34rem; }
+      .home .heroBox .container h1 {
+        padding-left: 1.6rem;
+        border-left: 0.6rem solid #C7B13F;
+        font-family: 'Roboto Slab', serif;
+        font-size: 5rem;
+        line-height: 1.3; }
 
 .loginMain {
   height: 100vh;
