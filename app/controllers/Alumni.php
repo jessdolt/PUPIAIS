@@ -228,7 +228,13 @@ class Alumni extends Controller{
             ];
 
             print_r($data);
-            $this->alumniModel->editAlumni($data);
+            if($this->alumniModel->editAlumni($data)){
+                redirect('admin/alumni');
+            }
+            else{
+                die('something went wrong');
+            }
+            
         }
         
         else   {
@@ -239,6 +245,7 @@ class Alumni extends Controller{
                 'first_name' => $alumni->first_name,
                 'last_name' => $alumni->last_name,
                 'middle_name' => $alumni->middle_name,
+                'gender' => $alumni->gender,
                 'birth_date' => $alumni->birth_date,
                 'address' => $alumni->address,
                 'city' => $alumni->city,
@@ -247,7 +254,8 @@ class Alumni extends Controller{
                 'contact_no' => $alumni->contact_no,
                 'email' => $alumni->email,
                 'employment' => $alumni->employment,
-                'batch' => $batch,
+                'batch' => $alumni->batchID,
+                'year'  => $batch,
                 'department' => $alumni->departmentID,
                 'dept_code' => $dep
             ];
