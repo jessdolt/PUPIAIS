@@ -106,7 +106,6 @@
 
         public function edit($id){
             $post = $this->postModel->singleNews($id);
-            date_default_timezone_set('Asia/Manila');
 
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
 

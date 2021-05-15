@@ -7,8 +7,9 @@
     <title>Admin Dashboard</title>
     <link rel="shortcut icon" href="<?php echo URLROOT;?>/images/logo-32px.png" type="image/x-icon">
     <link rel="stylesheet" href="<?php echo URLROOT;?>/css/style.css">
+    <script src="<?php echo URLROOT;?>/js/clock.js"></script>
     <script src="<?php echo URLROOT;?>/js/index.js" defer></script>
-    <script src="<?php echo URLROOT;?>/js/image_render.js" defer></script> 
+    <script src="<?php echo URLROOT;?>/js/image_render.js" defer></script>
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 </head>
 <body id="<?php echo $_SESSION['user_type']?>">
