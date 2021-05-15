@@ -1,8 +1,12 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
     
+<main class="home">
+        <section class="heroBox">
+            <div class="container">
+              <!--   <h1 class="heroBoxText">PUP Institute of Technology <br> Alumni Information System</h1> -->
+                <h1>Welcome, <?php echo $_SESSION['name'] ?></h1>
+            </div>
+        </section>
+    </main>
 
-    <h1><?php echo $data['title']?></h1>
-
-    
-    
 <?php require APPROOT . '/views/inc/footer.php'; ?>

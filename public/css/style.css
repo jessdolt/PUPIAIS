@@ -330,13 +330,13 @@ thead, tbody, tfoot, th {
   letter-spacing: 0.025rem;
   font-weight: 400; }
 
-button, .adminHeader a, .adminNav .mainCategoryList .categoryContainer, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .addNewGroup {
+button, .adminHeader a, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .addNewGroup, .users .filterNav .btnContainer a {
   font-weight: 500;
   text-transform: uppercase; }
-  button span, button a, .adminHeader a span, .adminNav .mainCategoryList .categoryContainer span, .admin .pageSpecificHeader > div:first-child button span, .admin .pageSpecificHeader > div:first-child a span, button span, .alertModalContainer .alertModal div a span, .users .filterNav .btnContainer .addNewGroup span, .adminHeader a a, .adminNav .mainCategoryList .categoryContainer a, .admin .pageSpecificHeader > div:first-child button a, .admin .pageSpecificHeader > div:first-child a a, button a, .alertModalContainer .alertModal div a a, .users .filterNav .btnContainer .addNewGroup a {
+  button span, button a, .adminHeader a span, .mainNav > a span, .adminNav .mainCategoryList .categoryContainer span, .admin .pageSpecificHeader > div:first-child button span, .admin .pageSpecificHeader > div:first-child a span, button span, .alertModalContainer .alertModal div a span, .users .filterNav .btnContainer .addNewGroup span, .users .filterNav .btnContainer a span, .adminHeader a a, .mainNav > a a, .adminNav .mainCategoryList .categoryContainer a, .admin .pageSpecificHeader > div:first-child button a, .admin .pageSpecificHeader > div:first-child a a, button a, .alertModalContainer .alertModal div a a, .users .filterNav .btnContainer .addNewGroup a, .users .filterNav .btnContainer a a {
     font-weight: 500; }
 
-input, a, p, span, button, .adminHeader a, .adminNav .mainCategoryList .categoryContainer, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .addNewGroup {
+input, a, p, span, button, .adminHeader a, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .addNewGroup, .users .filterNav .btnContainer a {
   font-size: 1.4rem;
   font-family: 'Roboto', sans-serif; }
 
@@ -533,6 +533,12 @@ table tbody {
     .adminHeader a:last-child {
       min-width: 16rem !important; }
 
+#Alumni .mainNav .dashboardLink {
+  display: none; }
+
+#Admin .mainNav .logout {
+  display: none; }
+
 .mainNav {
   position: fixed;
   left: -100%;
@@ -553,6 +559,7 @@ table tbody {
     .mainNav {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: .8rem;
       top: 6rem;
       left: 0;
@@ -608,10 +615,17 @@ table tbody {
         background-color: #FFFFFF;
         color: rgba(0, 0, 0, 0.87);
         display: flex;
+        display: none;
         padding: 0 1.6rem;
-        margin-left: auto;
         margin-right: 10.4rem;
         min-height: 3rem; } }
+  .mainNav > a {
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87);
+    margin-right: 10.4rem;
+    min-height: 3rem !important;
+    font-weight: 500;
+    text-transform: capitalize; }
   .mainNav h1 {
     text-align: center;
     align-self: flex-end; }
@@ -1432,7 +1446,7 @@ a:active {
 ul {
   list-style: none; }
 
-.adminHeader a, .adminNav .mainCategoryList .categoryContainer, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .addNewGroup {
+.adminHeader a, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .addNewGroup, .users .filterNav .btnContainer a {
   min-height: 4.4rem;
   min-width: 6.4rem;
   display: flex;
@@ -1443,10 +1457,10 @@ ul {
   transition: 200ms ease;
   cursor: pointer;
   border-radius: 2.5rem; }
-  .adminHeader a:focus, .adminNav .mainCategoryList .categoryContainer:focus, .admin .pageSpecificHeader > div:first-child button:focus, .admin .pageSpecificHeader > div:first-child a:focus, button:focus, .alertModalContainer .alertModal div a:focus, .users .filterNav .btnContainer .addNewGroup:focus, .adminHeader a:hover, .adminNav .mainCategoryList .categoryContainer:hover, .admin .pageSpecificHeader > div:first-child button:hover, .admin .pageSpecificHeader > div:first-child a:hover, button:hover, .alertModalContainer .alertModal div a:hover, .users .filterNav .btnContainer .addNewGroup:hover {
+  .adminHeader a:focus, .mainNav > a:focus, .adminNav .mainCategoryList .categoryContainer:focus, .admin .pageSpecificHeader > div:first-child button:focus, .admin .pageSpecificHeader > div:first-child a:focus, button:focus, .alertModalContainer .alertModal div a:focus, .users .filterNav .btnContainer .addNewGroup:focus, .users .filterNav .btnContainer a:focus, .adminHeader a:hover, .mainNav > a:hover, .adminNav .mainCategoryList .categoryContainer:hover, .admin .pageSpecificHeader > div:first-child button:hover, .admin .pageSpecificHeader > div:first-child a:hover, button:hover, .alertModalContainer .alertModal div a:hover, .users .filterNav .btnContainer .addNewGroup:hover, .users .filterNav .btnContainer a:hover {
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
     outline: 0; }
-  .adminHeader a:active, .adminNav .mainCategoryList .categoryContainer:active, .admin .pageSpecificHeader > div:first-child button:active, .admin .pageSpecificHeader > div:first-child a:active, button:active, .alertModalContainer .alertModal div a:active, .users .filterNav .btnContainer .addNewGroup:active {
+  .adminHeader a:active, .mainNav > a:active, .adminNav .mainCategoryList .categoryContainer:active, .admin .pageSpecificHeader > div:first-child button:active, .admin .pageSpecificHeader > div:first-child a:active, button:active, .alertModalContainer .alertModal div a:active, .users .filterNav .btnContainer .addNewGroup:active, .users .filterNav .btnContainer a:active {
     filter: opacity(0.88); }
 
 .adminNav .mainCategoryList .categoryContainer, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="number"], .jobPortal .mainContent .data-table .status.open {
@@ -1454,7 +1468,7 @@ ul {
   border-style: solid;
   border-radius: 0.5rem; }
 
-.mainNav button, .adminNav .mainCategoryList .open .categoryContainer, .adminNav button, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .data-table .option .optionModal button, .admin .mainContent .pagination button, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]:checked::before, .mainContent.adminForm .form:last-child .btnGroupContainer button, .modalContainer .modalPreview .pagination .btnContainer button, .alertModalContainer .alertModal div button, .loginMain form button, .users .filterNav button, .jobPortal .mainContent .data-table .status.closed, .jobPortal .mainContent .data-table .workType {
+.mainNav button, .mainNav > a, .adminNav .mainCategoryList .open .categoryContainer, .adminNav button, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .data-table .option .optionModal button, .admin .mainContent .pagination button, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]:checked::before, .mainContent.adminForm .form:last-child .btnGroupContainer button, .modalContainer .modalPreview .pagination .btnContainer button, .alertModalContainer .alertModal div button, .loginMain form button, .users .filterNav button, .users .filterNav a, .jobPortal .mainContent .data-table .status.closed, .jobPortal .mainContent .data-table .workType {
   border: 1px solid transparent; }
 
 .icon {
@@ -1808,10 +1822,10 @@ ul {
   background-color: #EEEEEE;
   box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
   z-index: 21; }
-  .users .filterNav button {
+  .users .filterNav button, .users .filterNav a {
     min-height: 3rem;
     width: 100%; }
-    .users .filterNav button svg {
+    .users .filterNav button svg, .users .filterNav a svg {
       width: 2.1rem;
       height: 2.1rem; }
   .users .filterNav .btnContainer {
@@ -1835,6 +1849,14 @@ ul {
         width: 2.4rem;
         height: 2.4rem;
         fill: none; }
+    .users .filterNav .btnContainer a {
+      background-color: #EEEEEE;
+      color: rgba(0, 0, 0, 0.87);
+      min-height: 3rem;
+      text-decoration: none; }
+      .users .filterNav .btnContainer a.active {
+        background-color: #FFFFFF;
+        color: rgba(0, 0, 0, 0.87); }
   .users .filterNav .groupList {
     display: flex;
     flex-flow: column;
@@ -1863,23 +1885,17 @@ ul {
       display: flex;
       margin-top: 0.8rem;
       flex-flow: column;
-      gap: 0.8rem;
-      /* bu0 0.6remtton{
-                    &:focus,&:hover{
-                        box-shadow: none;
-                        text-decoration: underline;
-                    }
-                } */ }
+      gap: 0.8rem; }
       .users .filterNav .groupList .subGroupList a {
         display: inline-block;
         width: 100%;
         color: rgba(0, 0, 0, 0.87);
         font-weight: 500; }
-    .users .filterNav .groupList .allUserCount, .users .filterNav .groupList .groupUserCount {
-      background-color: #A63F3F;
-      color: #FFFFFF;
-      padding: 0 0.6rem;
-      border-radius: 0.5rem; }
+  .users .filterNav .allUserCount, .users .filterNav .groupUserCount {
+    background-color: #A63F3F;
+    color: #FFFFFF;
+    padding: 0 0.6rem;
+    border-radius: 0.5rem; }
 
 .users .admin .input-file-hidden {
   position: absolute;
