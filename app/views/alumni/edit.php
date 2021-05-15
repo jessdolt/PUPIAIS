@@ -139,7 +139,7 @@
                                             <div class="textFieldContainer">
                                                 <select name="batch" id="batch-id" value="<?php echo($data['batch'])?>"required>
                                                     <?php foreach($data['year'] as $batch):?>
-                                                        <option value="<?php echo $batch->id ?>"><?php  echo 'Batch ' . $batch->year;?></option>
+                                                        <option value="<?php echo $batch->id ?>" <?php if($data['batch']==$batch->id) echo 'selected="selected"'; ?>><?php  echo 'Batch ' . $batch->year;?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                                 <span class="error"></span>

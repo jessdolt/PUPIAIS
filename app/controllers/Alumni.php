@@ -229,7 +229,7 @@ class Alumni extends Controller{
 
             print_r($data);
             if($this->alumniModel->editAlumni($data)){
-                redirect('admin/users');
+                redirect('admin/alumni');
             }
             else{
                 die('something went wrong');
