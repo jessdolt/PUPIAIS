@@ -44,7 +44,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                      
+                        
                         <?php foreach($data as $post): ?>
                             <tr>
                                 <td><input type="checkbox" name="checkbox[]" value="<?php echo $post->id; ?>"></td>
