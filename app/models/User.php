@@ -25,6 +25,8 @@ class User {
             return false;
         }
     }
+
+    
     // GET USER_CONTROL FROM TABLE USER_TYPE
     public function forSession($user) {
         $this->db->query('SELECT * FROM users LEFT JOIN user_type ON users.user_type = user_type.id WHERE email= :email ');
@@ -38,5 +40,19 @@ class User {
         }
     } 
 
+    public function register($data){
+        $this->db->query('INSERT INTO users(name,email,password,user_type) VALUES (:name,:email,:password,:user_type)');
+
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':user_type', $data['user_type']);
+        
+        if($this->db->execute()){
+            return true;
+        } else{
+            return false;
+        }
+    }
 
 }

@@ -35,7 +35,7 @@
                             <label class="outsideLabel">Work Type:</label>
                             <fieldset class="radioBtnContainer">
                                 <input type="radio" class="workType" name="work_status" id="full-time" value="Full-Time" 
-                                <?php echo ($data['work_status'] == 'Full-Time') ? 'checked' : '' ?>>
+                                <?php echo ($data['work_status'] == 'Full-Time') ? 'checked' : '' ?>   >
                                 <input type="radio" class="workType" name="work_status" id="part-time" value="Part-Time"
                                 <?php echo ($data['work_status'] == 'Part-Time') ? 'checked' : '' ?>>
                             </fieldset>

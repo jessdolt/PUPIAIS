@@ -48,9 +48,9 @@
                                 <a href="<?php echo URLROOT;?>/admin/dashboard">Dashboard</a>
                             </div>
                         </li>
-                        <li class="mainCategory <?php echo ($url[1] == 'users') ? 'open' : ' '?>" tabindex="0">
+                        <li class="mainCategory <?php echo ($url[1] == 'alumni' || $url[0] == 'alumni') ? 'open' : ' '?>" tabindex="0">
                             <div class="categoryContainer">
-                                <a href="<?php echo URLROOT;?>/admin/users">Accounts</a>
+                                <a href="<?php echo URLROOT;?>/admin/alumni">Alumni</a>
                             </div>
                         </li>
                         <li class="mainCategory 

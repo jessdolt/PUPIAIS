@@ -24,12 +24,26 @@
             $this->view('admin_d/dashboard', $data);
         }
 
-        public function users(){
+        public function alumni(){
             $this->alumniModel = $this->model('alumni_model');
-            $data = $this->alumniModel->showAlumni();
-            $dep  = $this->alumniModel->showDepartment(); 
-            $year = $this->alumniModel->showYear();
-            $this->view('admin_d/users', $data, $dep, $year);
+            $this->groupModel = $this->model('group_model');
+            $alumni = $this->alumniModel->showAlumni();
+            $department = $this->alumniModel->showDepartment();
+            $classification = $this->groupModel->showClassificaition();
+
+            $data = [
+                'alumni' => $alumni,
+                'department' =>  $department,
+                'classification' => $classification,
+                'isPreview' => 0,
+                'title' => 'All Alumni',
+                'batch' => '',
+                'alumniCount' => count($alumni)
+            ];
+            // $data = $this->alumniModel->showAlumni();
+            // $dep  = $this->alumniModel->showDepartment(); 
+            // $year = $this->alumniModel->showYear();
+            $this->view('admin_d/alumni', $data);
         }
 
         public function events(){

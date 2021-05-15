@@ -51,15 +51,17 @@ class Alumni extends Controller{
 
         //Add Alumni
         public function add(){
-                $code = $this->alumniModel->showDepartment();
+            $this->userModel = $this->model('user');    
+            $code = $this->alumniModel->showDepartment();
+
                 $batch = $this->alumniModel->showBatch();
             if($_SERVER['REQUEST_METHOD']=='POST') {
                 $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
-                $pass = rand();
-                $pass = password_hash($pass, PASSWORD_DEFAULT);
+                // $pass = rand();
+                // $pass = password_hash($pass, PASSWORD_DEFAULT);
                 $data = [
                     'student_no' => ($_POST['student_no']),
-                    'user_pass' => $pass,
+                    //'user_pass' => $pass,
                     'first_name' => ($_POST['first_name']),
                     'last_name' => ($_POST['last_name']),
                     'middle_name' => ($_POST['middle_name']),
@@ -137,10 +139,17 @@ class Alumni extends Controller{
                 // print_r($data);
                 if (empty($data['student_no_error']) && empty($data['first_name_error']) && empty($data['last_name_error']) && empty($data['middle_name_error']) && empty($data['birth_date_error']) && empty($data['address_error']) && empty($data['city_error']) && empty($data['region_error']) && empty($data['postal_error']) && empty($data['contact_no_error']) && empty($data['email_error']) && empty($data['employment_error']) && empty($data['departmentError']) && empty($data['batchError'])){
                         if($this->alumniModel->addAlumni($data)){
-                            redirect('admin/users');
-                        }
-                        else {
-                            die("you wronk");
+                            $pass = '12345';
+                            $pass = password_hash($pass, PASSWORD_DEFAULT);
+                            $newData = [
+                                'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
+                                'email' => $data['email'],
+                                'password' => $pass,
+                                'user_type' => 2
+                            ];
+                            if($this->userModel->register($newData)){
+                                redirect('admin/alumni');
+                            }
                         }
                     }
                 else{
@@ -188,80 +197,7 @@ class Alumni extends Controller{
             $this->view('alumni/add', $data);
     }
 
-    //add batch
-    public function batch(){
-
-        if($_SERVER['REQUEST_METHOD']=='POST'){
-
-            $data = [
-                'batch' => ($_POST['batch']),
-                'batchError' => '',
-            ];
-
-            if (empty($data['batch'])){
-                $data['batchError'] = "Please input the batch";
-            }
-            else {
-                $this->alumniModel->addBatch($data);
-            }
-        }
-
-        else{
-            $data = [
-                'batch' => '',
-                'batchError' => ''
-            ];
-        }
-
-
-        $this->view('alumni/batch', $data);
-    }
-
-    //Add Department
-    public function department(){
-
-        if($_SERVER['REQUEST_METHOD']=='POST'){
-            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
-            
-            $data = [
-
-                'department' => ($_POST['department']),
-                'departmentCode' => ($_POST['departmentCode']),
-                'departmentError' => '',
-                'departmentCodeError' => ''
-            ];
-
-            if (empty($data['department'])){
-                $data['departmentError'] = "Please input the name of the department";
-            }
-            
-            if (empty($data['departmentCode'])){
-                $data['departmentCodeError'] = "Please input the code of the department";
-            }
-
-            print_r($data);
-            if(empty($data['departmentError']) && empty($data['departmentCodeError'])){
-                if($this->alumniModel->addDepartment($data)){
-                    redirect('alumni');
-                }
-                else{
-                    die('something went wrong');
-                }
-            }
-        }
-        else{
-            $data = [
-                'department' => '',
-                'departmentCode' => '',
-                'departmentError' => '',
-                'departmentCodeError' => ''
-            ];
-        }
-
-
-        $this->view('alumni/department', $data);
-    }
-
+    
 
     public function edit($id){
         $alumni = $this->alumniModel->getAlumniById($id);
@@ -321,12 +257,6 @@ class Alumni extends Controller{
     $this->view('alumni/edit', $data);
     }
 
-    public function delete($id) {
-        if($this->alumniModel->deleteAlumni($id)){
-            redirect('admin/users');
-        }
-    }
-    
     public function tables($id){
         $alumni = $this->alumniModel->getAlumniById($id);
  
@@ -336,6 +266,196 @@ class Alumni extends Controller{
 
         $this->view('alumni/tables', $data);
     }
+
+    public function delete($id) {
+        if($this->alumniModel->deleteAlumni($id)){
+            redirect('admin/users');
+        }
+    }
+
+
     
+    public function show($dept_id,$batch_id){
+        $this->groupModel = $this->model('group_model');
+
+
+        $department = $this->alumniModel->showDepartment();
+        $classification = $this->groupModel->showClassificaition();
+        $alumni = $this->alumniModel->getAlumniByClass($dept_id,$batch_id);
+        
+        $dept_name = $this->alumniModel->getDepartmentById($dept_id);
+        $batch_name = $this->alumniModel->getBatchById($batch_id);
+
+        $data = [
+            'alumni' => $alumni,
+            'department' => $department,
+            'classification' => $classification,
+            'isPreview' => 0,
+            'title' => $dept_name->dept_code,
+            'batch' => $batch_name->year
+        ];
+
+        $this->view('admin_d/alumni', $data);
+    }
+    
+
+    public function preview(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $this->groupModel = $this->model('group_model');
+            $department = $this->alumniModel->showDepartment();
+            $classification = $this->groupModel->showClassificaition();
+ 
+           $file = $_FILES['csv_file'];
+           $fileRealName = $file['name'];
+           $fileName = $file['tmp_name'];
+           $fileSize = $file['size'];
+           $alumniList = array();
+
+           if ($fileSize > 0){
+               $openFile = fopen($fileName, "r");
+               $column_header = true;
+               while(($column = fgetcsv($openFile, 10000, ",")) !== FALSE){
+                   if($column_header){
+                       $column_header = false;
+                   }
+                   else{
+                       array_push($alumniList, $column);
+                   }
+               }
+               fclose($openFile);
+           }
+
+        //    foreach($alumniList as $alumni){
+        //        echo '<br>';
+        //        echo $alumni[0];
+        //        echo '<br>';
+        //        echo $alumni[1];
+        //    }
+            
+            $data= [
+                'alumni' => [],
+                'department' => $department,
+                'classification' => $classification,
+                'alumniList' => $alumniList,
+                'isPreview' => 1,
+                'fileName' => $fileRealName,
+                'title' => 'All Alumni',
+                'batch' => '',                
+            ];
+
+          $this->view('admin_d/alumni', $data);
+        }        
+    }
+
+    public function previeww($dept_id,$batch_id){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $this->groupModel = $this->model('group_model');
+            $department = $this->alumniModel->showDepartment();
+            $classification = $this->groupModel->showClassificaition();
+            
+           $dept_name = $this->alumniModel->getDepartmentById($dept_id);
+           $batch_name = $this->alumniModel->getBatchById($batch_id);
+
+ 
+           $file = $_FILES['csv_file'];
+           $fileRealName = $file['name'];
+           $fileName = $file['tmp_name'];
+           $fileSize = $file['size'];
+           $alumniList = array();
+
+           if ($fileSize > 0){
+               $openFile = fopen($fileName, "r");
+               $column_header = true;
+               while(($column = fgetcsv($openFile, 10000, ",")) !== FALSE){
+                   if($column_header){
+                       $column_header = false;
+                   }
+                   else{
+                       array_push($alumniList, $column);
+                   }
+               }
+               fclose($openFile);
+           }
+
+        //    foreach($alumniList as $alumni){
+        //        echo '<br>';
+        //        echo $alumni[0];
+        //        echo '<br>';
+        //        echo $alumni[1];
+        //    }
+            
+            $data= [
+                'alumni' => [],
+                'department' => $department,
+                'classification' => $classification,
+                'alumniList' => $alumniList,
+                'isPreview' => 1,
+                'fileName' => $fileRealName,
+                'title' => $dept_name->dept_code,
+                'batch' => $batch_name->year
+            ];
+
+          $this->view('admin_d/alumni', $data);
+        }        
+        
+    }
+
+    public function addBulk(){
+        $this->userModel = $this->model('user');
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //array_print($_POST['alumni']);
+            
+            $alumni = $_POST['alumni'];
+            // array_print($alumni[0]);
+            
+            // $alumni[0]['department'] = checkDept($alumni[0]['department']);
+            // $alumni[0]['batch'] = checkBatch($alumni[0]['batch']);
+            // array_print($alumni[0]);
+
+            $duplication = array();
+
+            foreach($alumni as $data){
+                $data['department'] = $this->checkDept($data['department']);
+                $data['batch'] = $this->checkBatch($data['batch']);
+                //array_print($data);
+                
+              
+                if($this->alumniModel->checkAlumni($data['student_no'])){
+                    array_push($duplication, $data);
+                }
+
+                else{
+                    $this->alumniModel->addBulkAlumni($data);
+                    $pass = '12345';
+                    $pass = password_hash($pass, PASSWORD_DEFAULT);
+                    $newData = [
+                        'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
+                        'email' => $data['email'],
+                        'password' => $pass,
+                        'user_type' => 2
+                    ];
+                    $this->userModel->register($newData);
+                }
+            }
+
+            if(!empty($duplication)){
+                $this->view('alumni/duplication', $duplication);
+            }
+            else{
+                redirect('admin/alumni');
+            }
+            
+        }
+    }
+
+    public function checkDept($dept){
+        $dept_code = $this->alumniModel->getDepartmentByCode($dept);
+        return $dept_code->id;
+    }
+
+    public function checkBatch($batch){
+        $batch_year = $this->alumniModel->getBatchByYear($batch);
+        return $batch_year->id;
+    }
 
 }

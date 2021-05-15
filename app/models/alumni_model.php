@@ -1,6 +1,6 @@
 <?php
 
-    class alumni_model {
+    class Alumni_model {
         private $db;
         public function __construct() {
             $this->db = new Database;
@@ -32,7 +32,7 @@
 
 
         public function showYear(){
-            $this->db->query('SELECT * FROM `department` inner join `fusion` on department.id = fusion.dept_id left join `batch` on fusion.batch_id = batch.id where department.id');
+            $this->db->query('SELECT * FROM `department` inner join `classification` on department.id = classification.dept_id left join `batch` on classification.batch_id = batch.id where department.id');
             $row = $this->db->resultSet();
             if($row > 0){
                 return $row;
@@ -59,12 +59,11 @@
     }
 
         public function addAlumni($data){
-            $this->db->query('INSERT INTO alumni (student_no,user_pass,last_name,first_name,middle_name,gender,birth_date,address,city,region,postal,contact_no,email,employment,departmentID,batchID
-            ) VALUES (:student_no,:user_pass,:last_name,:first_name,:middle_name,:gender,:birth_date,:address,:city,:region,:postal,:contact_no,:email,:employment,:department,:batch)');
+            $this->db->query('INSERT INTO alumni (student_no,last_name,first_name,middle_name,gender,birth_date,address,city,region,postal,contact_no,email,employment,departmentID,batchID
+            ) VALUES (:student_no,:last_name,:first_name,:middle_name,:gender,:birth_date,:address,:city,:region,:postal,:contact_no,:email,:employment,:department,:batch)');
             
             
             $this->db->bind(':student_no', $data['student_no']);
-            $this->db->bind(':user_pass', $data['user_pass']);
             $this->db->bind(':last_name', $data['last_name']);
             $this->db->bind(':first_name', $data['first_name']);
             $this->db->bind(':middle_name', $data['middle_name']);
@@ -80,6 +79,33 @@
             $this->db->bind(':department', $data['department']);
             $this->db->bind(':batch', $data['batch']);
 
+            try{
+                if($this->db->execute()){
+                    return true;
+                }
+            }
+            catch (PDOException $e){
+                // $msgData = [
+                //     'errorMsg' => 'Batch '. $data['batch'] . ' is already in Database'
+                // ];
+                    redirect('group/duplicateError');
+            }
+        }
+
+        public function addBulkAlumni($data){
+            $this->db->query('INSERT INTO alumni(student_no, last_name, first_name, middle_name, gender, email, contact_no, employment, departmentID, batchID) VALUES (:student_no, :last_name, :first_name, :middle_name, :gender, :email, :contact_no, :employment, :department, :batch)');
+
+            $this->db->bind(':student_no', $data['student_no']);
+            $this->db->bind(':last_name', $data['last_name']);
+            $this->db->bind(':first_name', $data['first_name']);
+            $this->db->bind(':middle_name', $data['middle_name']);
+            $this->db->bind(':gender', $data['gender']);
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':contact_no', $data['contact_no']);
+            $this->db->bind(':employment', $data['employment']);
+            $this->db->bind(':department', $data['department']);
+            $this->db->bind(':batch', $data['batch']);
+            
             if($this->db->execute()){
                 return true;
             } else{
@@ -187,6 +213,77 @@
             $this->db->query('SELECT * FROM department WHERE id=:id');
             $this->db->bind(':id', $id);
             $row = $this->db->single();
+            if($this->db->rowCount() > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function getDepartmentByCode($dept_code){
+            $this->db->query('SELECT * FROM department WHERE dept_code=:dept_code');
+            $this->db->bind(':dept_code', $dept_code);
+            $row = $this->db->single();
+            if($this->db->rowCount() > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function getBatchById($id){
+            $this->db->query('SELECT * FROM batch WHERE id=:id');
+            $this->db->bind(':id', $id);
+            $row = $this->db->single();
+            if($this->db->rowCount() > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function getBatchByYear($year){
+            $this->db->query('SELECT * FROM batch WHERE year=:year');
+            $this->db->bind(':year', $year);
+            $row = $this->db->single();
+            if($this->db->rowCount() > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function getAlumniByClass($dept_id,$batch_id){
+            $this->db->query('SELECT * 
+                            FROM alumni
+                            INNER JOIN department 
+                            ON alumni.departmentID = department.id
+                            INNER JOIN batch
+                            ON alumni.batchID = batch.id
+                            WHERE departmentID=:dept_id AND batchID=:batch_id 
+                            ');
+            $this->db->bind('dept_id', $dept_id);
+            $this->db->bind('batch_id', $batch_id);
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
+
+        public function checkAlumni($student_no){
+            $this->db->query('SELECT * from alumni WHERE student_no = :student_no' );
+
+            $this->db->bind(':student_no', $student_no);
+            $row = $this->db->single();
+            
             if($this->db->rowCount() > 0){
                 return $row;
             }
