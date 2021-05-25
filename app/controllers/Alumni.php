@@ -26,7 +26,7 @@ class Alumni extends Controller{
     } */
 
     //Email specific alumni
-/*     public function email($id){
+    public function email($id){
         $alumni = $this->alumniModel->getAlumniById($id);
         
         $mail = new PHPMailer();
@@ -37,8 +37,8 @@ class Alumni extends Controller{
         $mail->Host = 'smtp.gmail.com';
         $mail->Port = '465';
         $mail->isHTML();
-        $mail->Username = 'tueres.gilmer@gmail.com';
-        $mail->Password = 'Echonek0';
+        $mail->Username = '';
+        $mail->Password = '';
         $mail->setFrom('meepmeerpp@idk.com');
         $mail->Subject = 'LMAOLMAO?'  ;
         $mail->Body = 'ello bubu this yo password '.$alumni->userPassword;
@@ -47,7 +47,7 @@ class Alumni extends Controller{
 
         redirect('alumni');
 
-    } */
+    }
 
         //Add Alumni
         public function add(){
