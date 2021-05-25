@@ -22,7 +22,7 @@
             }
         }
 
-
+        
 
         public function addDepartment($data){
             $this->db->query('INSERT INTO department(dept_name,dept_code) VALUES (:dept_name,:dept_code)');
