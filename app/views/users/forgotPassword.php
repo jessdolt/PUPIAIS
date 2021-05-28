@@ -127,15 +127,15 @@
             <header>
                 <h1>PUP-Itech AIS</h1>
                 <div></div>
+                <span class="changePassHeader">Password Reset</span>
                 <span>
-                    Sign in to 
-                    <b>PUP Institute of Technology</b>
-                    <br>
-                    Alumni Information Sytem
+                    Please enter your email address to
+                    <br> 
+                    find your account
                 </span>
             </header>
 
-            <form action="<?php echo URLROOT; ?>/users/login" method ="POST">
+            <form action="<?php echo URLROOT; ?>/users/forgotPassword" method="POST">
                 <div class="textFieldContainer">
                     <input type="email" name="email" id="user-email" placeholder="Email" required>
                     <label class="icon" for="user-email">
@@ -145,20 +145,9 @@
                     </label>
                     <span class="error"><?php echo $data['emailError']; ?></span>
                 </div>
-                
-                <div class="textFieldContainer">
-                    <input type="password" name="password" id="user-Password" placeholder="Password" required>
-                    <label class="icon" for="user-Password">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19 12.2266C19 11.2339 18.2151 10.4266 17.25 10.4266H16.375V7.72656C16.375 5.24526 14.4124 3.22656 12 3.22656C9.58763 3.22656 7.625 5.24526 7.625 7.72656V10.4266H6.75C5.78487 10.4266 5 11.2339 5 12.2266V19.4266C5 20.4193 5.78487 21.2266 6.75 21.2266H17.25C18.2151 21.2266 19 20.4193 19 19.4266V12.2266ZM9.375 7.72656C9.375 6.23796 10.5528 5.02656 12 5.02656C13.4473 5.02656 14.625 6.23796 14.625 7.72656V10.4266H9.375V7.72656Z"/>
-                        </svg>
-                    </label>
-                    <span class="error"><?php echo $data['passwordError']; ?></span>
-                </div>
-                <button type="submit" value="submit">Sign in</button>
+                <Button>Submit</Button>
             </form>
 
-            <a href="<?php echo URLROOT; ?>/users/forgotPassword"><span>forgot password</span></a>
         </div>
     </main>
 

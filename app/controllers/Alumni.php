@@ -205,7 +205,7 @@ class Alumni extends Controller{
         $dep = $this->alumniModel->showDepartment();
 
         if($_SERVER['REQUEST_METHOD']=='POST') {
-            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+                
             $data = [
 
                 'id' => $id,

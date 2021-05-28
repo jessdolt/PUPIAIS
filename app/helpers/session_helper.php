@@ -2,7 +2,7 @@
     session_start();
 
     function isLoggedIn() {
-        if (isset($_SESSION['id'])) {
+        if (isset($_SESSION['user_id'])) {
             return true;
         } else {
             return false;
@@ -20,10 +20,10 @@
 
     }
 
-        function isAdmin() {
-            if ($_SESSION['user_type'] == "Admin" || $_SESSION['user_type'] == "Content Creator") {
-                return true;
-            } else {
-                return false;
-            }
+    function isAdmin() {
+        if ($_SESSION['user_type'] == "Admin" || $_SESSION['user_type'] == "Content Creator") {
+            return true;
+        } else {
+            return false;
+        }
     }
