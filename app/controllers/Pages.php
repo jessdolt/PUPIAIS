@@ -2,10 +2,7 @@
 
 class Pages extends Controller{
     public function __construct(){
-<<<<<<< HEAD
 
-=======
->>>>>>> survey
         if (!isLoggedIn()) {
             redirect('users/login');
         }
@@ -47,10 +44,6 @@ class Pages extends Controller{
         $this->view('pages/home', $data);
     }
 
-<<<<<<< HEAD
-=======
-    
->>>>>>> survey
     public function login(){
         $data = [];
         $this->view('users/login', $data);
