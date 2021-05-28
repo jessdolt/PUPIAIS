@@ -116,20 +116,14 @@
                             <section class="infoCon">
                                 <h3>Alumni Information</h3>
                                 <div class="infoSubCon">
-                                    <div class="smallComponentsContainer">
-                                        <div>
-                                            <label for="student-id" class="outsideLabel">Student ID:</label>
-                                            <div class="textFieldContainer">
-                                                <input type="text" name="student_no" id="student-id"required>
-                                                <span class="error"></span>
-                                            </div>
-                                        </div>
+                                     <div class="smallComponentsContainer">
                                         <div>
                                             <label for="department-id" class="outsideLabel">Department:</label>
                                             <div class="textFieldContainer">
                                                 <select name="department" id="department-id" required>
-                                                <?php foreach($data['departmentCode'] as $code):?>
-                                                    <option value="<?php echo $code->id ?>"><?php echo $code->dept_code;?></option>
+                                                    <option>--Department--</option>
+                                                    <?php foreach($data['departmentCode'] as $code):?>
+                                                        <option value="<?php echo $code->id ?>"><?php echo $code->dept_code;?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                                 <span class="error"></span>
@@ -139,14 +133,24 @@
                                             <label for="batch-id" class="outsideLabel">Batch:</label>
                                             <div class="textFieldContainer">
                                                 <select name="batch" id="batch-id" required>
+                                                    <option>--Batch--</option>
                                                     <?php foreach($data['batch'] as $batch):?>
-                                                        <option value="<?php echo $batch->id ?>"><?php  echo 'Batch ' . $batch->year;?></option>
+                                                        <option value="<?php echo $batch->id?>" data-batch="<?php echo $batch->year?>"><?php  echo 'Batch ' . $batch->year;?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                                 <span class="error"></span>
                                             </div>
                                         </div>
+                                        <div>
+                                            <label for="student-id" class="outsideLabel">Student ID:</label>
+                                            <div class="textFieldContainer">
+                                                <input type="text" name="studentId" id="student-id"required>
+                                                <span class="error"></span>
+                                            </div>
+                                        </div>
                                     </div>
+
+                    
                                 </div>
                             </section>
                         </div>
@@ -157,7 +161,7 @@
                                 </svg>
                             </a>
                             <div class="imageInputContainer">
-                                <svg width="160" height="142" viewBox="0 0 160 142" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg width="160" height="142" viewBox="0 0 160 142" fill="none" xmlns="http://www.w3.org/2000/svg" class="userformIcon">
                                     <path d="M146.667 8.875H13.3333C5.97222 8.875 0 14.8379 0 22.1875V26.625H160V22.1875C160 14.8379 154.028 8.875 146.667 8.875ZM0 119.812C0 127.162 5.97222 133.125 13.3333 133.125H146.667C154.028 133.125 160 127.162 160 119.812V35.5H0V119.812ZM97.7778 55.4688C97.7778 54.2484 98.7778 53.25 100 53.25H140C141.222 53.25 142.222 54.2484 142.222 55.4688V59.9062C142.222 61.1266 141.222 62.125 140 62.125H100C98.7778 62.125 97.7778 61.1266 97.7778 59.9062V55.4688ZM97.7778 73.2188C97.7778 71.9984 98.7778 71 100 71H140C141.222 71 142.222 71.9984 142.222 73.2188V77.6562C142.222 78.8766 141.222 79.875 140 79.875H100C98.7778 79.875 97.7778 78.8766 97.7778 77.6562V73.2188ZM97.7778 90.9688C97.7778 89.7484 98.7778 88.75 100 88.75H140C141.222 88.75 142.222 89.7484 142.222 90.9688V95.4062C142.222 96.6266 141.222 97.625 140 97.625H100C98.7778 97.625 97.7778 96.6266 97.7778 95.4062V90.9688ZM48.8889 53.25C58.6944 53.25 66.6667 61.2098 66.6667 71C66.6667 80.7902 58.6944 88.75 48.8889 88.75C39.0833 88.75 31.1111 80.7902 31.1111 71C31.1111 61.2098 39.0833 53.25 48.8889 53.25ZM18.6389 109.884C20.9722 102.756 27.6667 97.625 35.5556 97.625H37.8333C41.25 99.0395 44.9722 99.8438 48.8889 99.8438C52.8056 99.8438 56.5556 99.0395 59.9444 97.625H62.2222C70.1111 97.625 76.8056 102.756 79.1389 109.884C80.0278 112.629 77.6944 115.375 74.8056 115.375H22.9722C20.0833 115.375 17.75 112.602 18.6389 109.884Z" fill="#A63F3F"/>
                                 </svg>
                             </div>
@@ -180,4 +184,9 @@
                 </section>
             </main>
 
+<script>
+    $(.document).ready(function{
+        $()
+    })
+</script>
 <?php require APPROOT . '/views/inc/footer.php';?>
