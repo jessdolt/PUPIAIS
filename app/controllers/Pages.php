@@ -3,7 +3,6 @@
 class Pages extends Controller{
     public function __construct(){
 
-
         if (!isLoggedIn()) {
             redirect('users/login');
         }
@@ -15,16 +14,13 @@ class Pages extends Controller{
     }
 
     public function home() {
-            $data = []; 
-            $this->view('pages/home' ,$data);
+        $data = []; 
+        $this->view('pages/home', $data);
     }
 
-
     public function login(){
-        $data = [
-            'title' => 'Login'
-        ];
-        $this->view('users/login',$data);
+        $data = [];
+        $this->view('users/login', $data);
     }
 
 }
