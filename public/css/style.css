@@ -1,9 +1,10 @@
 /* @at-root (without: media) {
     @extend %foo;
 } */
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;1,800&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -331,13 +332,13 @@ thead, tbody, tfoot, th {
   letter-spacing: 0.025rem;
   font-weight: 400; }
 
-button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .addNewGroup, .users .filterNav .btnContainer a {
+button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .btnContainer a {
   font-weight: 500;
   text-transform: uppercase; }
-  button span, button a, .adminHeader a span, .mainNav button.active ~ .userContainer a:last-child span, .mainNav > a span, .adminNav .mainCategoryList .categoryContainer span, .admin .pageSpecificHeader > div:first-child button span, .admin .pageSpecificHeader > div:first-child a span, button span, .alertModalContainer .alertModal div a span, .users .filterNav .btnContainer .addNewGroup span, .users .filterNav .btnContainer a span, .adminHeader a a, .mainNav button.active ~ .userContainer a:last-child a, .mainNav > a a, .adminNav .mainCategoryList .categoryContainer a, .admin .pageSpecificHeader > div:first-child button a, .admin .pageSpecificHeader > div:first-child a a, button a, .alertModalContainer .alertModal div a a, .users .filterNav .btnContainer .addNewGroup a, .users .filterNav .btnContainer a a {
+  button span, button a, .adminHeader a span, .mainNav button.active ~ .userContainer a:last-child span, .mainNav > a span, .adminNav .mainCategoryList .categoryContainer span, .userSurvey ~ .alumni .mainContent .container .form a span, .admin .pageSpecificHeader > div:first-child button span, .admin .pageSpecificHeader > div:first-child a span, button span, .alertModalContainer .alertModal div a span, .users .filterNav .btnContainer .manageUsers span, .users .filterNav .btnContainer a span, .adminHeader a a, .mainNav button.active ~ .userContainer a:last-child a, .mainNav > a a, .adminNav .mainCategoryList .categoryContainer a, .userSurvey ~ .alumni .mainContent .container .form a a, .admin .pageSpecificHeader > div:first-child button a, .admin .pageSpecificHeader > div:first-child a a, button a, .alertModalContainer .alertModal div a a, .users .filterNav .btnContainer .manageUsers a, .users .filterNav .btnContainer a a {
     font-weight: 500; }
 
-input, a, p, span, button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .addNewGroup, .users .filterNav .btnContainer a {
+input, a, p, span, button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .btnContainer a, textarea, select, option {
   font-size: 1.4rem;
   font-family: 'Roboto', sans-serif; }
 
@@ -351,6 +352,12 @@ h2 {
     h2 {
       font-size: 3rem; } }
 
+h3 {
+  font-size: 1.8rem; }
+  @media (min-width: 1367px) {
+    h3 {
+      font-size: 2.4rem; } }
+
 b {
   font-weight: 500; }
 
@@ -363,36 +370,78 @@ table tbody {
 .mainNav h1 {
   font-size: 1.4rem; }
 
+.mainContent .container h1 {
+  font-size: 3.6rem;
+  font-weight: 500; }
+
+.mainContent .container .surveyCard h3 {
+  font-size: 2.4rem;
+  text-transform: capitalize; }
+
 .adminNav h3 {
   font-size: 1.4rem; }
 
 .form h3 {
   font-size: 1.8rem;
-  text-transform: capitalize;
-  color: #A63F3F;
-  text-align: center; }
+  text-transform: capitalize; }
+  .form h3 span {
+    font-size: inherit; }
 
 .form h4 {
   font-size: 1.8rem; }
 
-.form .outsideLabel, .form label {
+.outsideLabel, label {
   font-size: 1.4rem; }
 
-.loginMain h1 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 3.6rem; }
+.optionSpan {
+  font-size: 2.7rem; }
 
-.loginMain span {
+.answerCon li {
+  font-size: 1.4rem;
+  font-weight: 500; }
+
+.loginMain h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 3.6rem;
+  font-weight: 500; }
+
+.loginMain header .changePassHeader {
+  color: #A63F3F;
+  font-size: 2.4rem;
+  font-weight: 500;
+  text-transform: capitalize; }
+
+.loginMain header span {
   color: rgba(0, 0, 0, 0.6); }
   @media (min-width: 1367px) {
-    .loginMain span {
+    .loginMain header span {
       font-size: 1.8rem;
       letter-spacing: 0.015rem; } }
+
+.textFieldContainer #verification-code {
+  letter-spacing: 4.2rem; }
 
 .textFieldContainer .error {
   font-size: 1rem;
   letter-spacing: 0.15rem;
   color: #B00020; }
+
+.mainFooter h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.4rem;
+  font-weight: 700; }
+  .mainFooter h1 span {
+    font-size: 1.8rem;
+    font-family: inherit;
+    font-weight: inherit;
+    color: #A63F3F; }
+
+.mainFooter .tagline {
+  font-family: 'Poppins',sans-serif;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 1.8rem; }
 
 .fullscreen {
   width: 100%;
@@ -722,7 +771,7 @@ table tbody {
         right: 0;
         bottom: 0;
         content: '';
-        background-color: #43B581;
+        background-color: #15CC8A;
         width: 1.5rem;
         height: 1.5rem;
         border: 3px #FFFFFF solid;
@@ -894,12 +943,121 @@ table tbody {
 .users .adminNav {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); }
 
+.alumni {
+  position: relative;
+  top: 10.6rem; }
+  .alumni > section {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2.4rem; }
+    .alumni > section .container {
+      grid-column: 3/11; }
+    .alumni > section .tint {
+      display: grid;
+      grid-column: 1/13;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 2.4rem; }
+      .alumni > section .tint .container {
+        grid-column: 3/11; }
+  .alumni .heroBox {
+    position: relative;
+    padding: 11.4rem 0 0;
+    background-image: url("../images/heroBoxBg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; }
+    .alumni .heroBox::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.3);
+      z-index: 1; }
+    .alumni .heroBox .tint {
+      z-index: 2;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #FFFFFF; }
+    .alumni .heroBox .container {
+      padding: 0.8rem 0; }
+      .alumni .heroBox .container h1 {
+        padding-left: 1.6rem;
+        border-left: 0.6rem solid #C7B13F;
+        font-family: 'Roboto Slab', serif;
+        font-size: 3.6rem;
+        line-height: 1.3;
+        flex: 1; }
+
+.userSurvey ~ .mainNav > * {
+  display: none; }
+
+.userSurvey ~ .mainNav > button {
+  display: flex;
+  margin-left: auto; }
+  .userSurvey ~ .mainNav > button ~ .userContainer > a {
+    display: none; }
+  .userSurvey ~ .mainNav > button ~ .userContainer > a:last-of-type {
+    display: block; }
+
+.userSurvey .hamburgerIcon {
+  display: none; }
+
+.userSurvey ~ .alumni .heroBox {
+  height: 36rem;
+  width: 100%;
+  position: absolute;
+  z-index: -1; }
+
+.userSurvey ~ .alumni .mainContent {
+  width: 100%;
+  z-index: 24; }
+  .userSurvey ~ .alumni .mainContent .container {
+    margin-top: 4.8rem;
+    margin-bottom: 4.8rem;
+    box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+    border-radius: 1rem;
+    padding: 0 4.2rem 8rem;
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87); }
+    .userSurvey ~ .alumni .mainContent .container .form {
+      gap: 2.4rem; }
+      .userSurvey ~ .alumni .mainContent .container .form h1, .userSurvey ~ .alumni .mainContent .container .form h2 {
+        padding: 2.4rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.38); }
+      .userSurvey ~ .alumni .mainContent .container .form h1 {
+        text-align: center; }
+      .userSurvey ~ .alumni .mainContent .container .form > p {
+        margin-bottom: 1.2rem;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.6); }
+      .userSurvey ~ .alumni .mainContent .container .form .surveyCard {
+        max-width: 65.6rem;
+        width: 100%;
+        margin: 0 auto;
+        padding: 2.4rem 4.8rem; }
+        .userSurvey ~ .alumni .mainContent .container .form .surveyCard p {
+          color: rgba(0, 0, 0, 0.6);
+          margin-top: 0.8rem;
+          margin-bottom: 1.6rem; }
+      .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a {
+        background-color: #15CC8A;
+        color: #FFFFFF;
+        align-self: center;
+        width: 16rem; }
+      .userSurvey ~ .alumni .mainContent .container .form button {
+        align-self: flex-end;
+        width: 18rem; }
+
 .admin {
   position: relative;
   background-color: #EEEEEE;
   display: flex;
   flex-flow: column;
-  max-height: calc(100vh - 6rem); }
+  max-height: calc(100vh - 6rem);
+  background-image: url("../images/PUP-Pylon.svg");
+  background-repeat: no-repeat;
+  background-position: bottom 0 right 9.5rem; }
   .admin .pageSpecificHeader {
     background-image: url("../images/stonksGraph.svg"), url("../images/pageSpecificHeaderBg.png");
     background-repeat: no-repeat;
@@ -1178,6 +1336,31 @@ table tbody {
   z-index: 1;
   width: 100%; }
 
+.mainContent input[type="checkbox"] {
+  position: relative;
+  border-color: rgba(0, 0, 0, 0.38);
+  border-width: 0.25rem;
+  border-style: solid;
+  border-radius: 0.5rem;
+  min-width: 1.7rem;
+  height: 1.7rem;
+  transition: 400ms ease; }
+  .mainContent input[type="checkbox"]:focus, .mainContent input[type="checkbox"]:hover {
+    border-color: #A63F3F; }
+  .mainContent input[type="checkbox"]:checked {
+    border-color: transparent;
+    width: 2rem;
+    height: 2rem; }
+    .mainContent input[type="checkbox"]:checked::before {
+      background-image: url("../images/checked.svg"); }
+  .mainContent input[type="checkbox"]::before {
+    content: '';
+    display: inline-flex;
+    background-size: 100%;
+    background-position: center;
+    width: 100%;
+    height: 100%; }
+
 .mainContent.adminForm {
   z-index: 5;
   max-height: calc(100% - 4.8rem); }
@@ -1213,12 +1396,15 @@ table tbody {
       padding-bottom: 2rem;
       border-bottom: 1px solid rgba(0, 0, 0, 0.38); }
     .mainContent.adminForm .form:first-child h3 {
-      margin-top: 3.2rem; }
-    .mainContent.adminForm .form:first-child input[type="text"], .mainContent.adminForm .form:first-child input[type="date"], .mainContent.adminForm .form:first-child input[type="tel"], .mainContent.adminForm .form:first-child input[type="email"], .mainContent.adminForm .form:first-child select {
+      margin-top: 3.2rem;
+      text-align: center;
+      color: #A63F3F; }
+    .mainContent.adminForm .form:first-child input[type="text"], .mainContent.adminForm .form:first-child input[type="date"], .mainContent.adminForm .form:first-child input[type="tel"], .mainContent.adminForm .form:first-child input[type="email"], .mainContent.adminForm .form:first-child select, .mainContent.adminForm .form:first-child textarea {
       border-radius: 0.5rem;
       border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
-      min-width: 32.4rem; }
-      .mainContent.adminForm .form:first-child input[type="text"]:focus, .mainContent.adminForm .form:first-child input[type="date"]:focus, .mainContent.adminForm .form:first-child input[type="tel"]:focus, .mainContent.adminForm .form:first-child input[type="email"]:focus, .mainContent.adminForm .form:first-child select:focus {
+      min-width: 32.4rem;
+      padding-right: 1.6rem; }
+      .mainContent.adminForm .form:first-child input[type="text"]:focus, .mainContent.adminForm .form:first-child input[type="date"]:focus, .mainContent.adminForm .form:first-child input[type="tel"]:focus, .mainContent.adminForm .form:first-child input[type="email"]:focus, .mainContent.adminForm .form:first-child select:focus, .mainContent.adminForm .form:first-child textarea:focus {
         border-right: 1px rgba(0, 0, 0, 0.6) solid !important; }
     .mainContent.adminForm .form:first-child .outsideLabel {
       display: block;
@@ -1237,12 +1423,16 @@ table tbody {
         padding: 0; }
       .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"] {
         width: 15rem;
-        height: 4rem; }
+        height: 4rem;
+        border: none; }
         .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]::before {
+          position: static;
+          transform: translate(0);
           display: flex;
           align-items: center;
           justify-content: center;
           height: 100%;
+          width: 100%;
           color: #A63F3F;
           border-color: currentColor;
           border: 1px solid;
@@ -1282,6 +1472,33 @@ table tbody {
       min-height: 31.4rem; }
       .mainContent.adminForm .form:first-child .richTfContainer:last-child {
         margin-bottom: 4.8rem; }
+    .mainContent.adminForm .form:first-child .infoCon {
+      display: flex;
+      justify-content: space-between;
+      gap: 2.4rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+      padding-bottom: 4.8rem;
+      max-width: 100%; }
+      .mainContent.adminForm .form:first-child .infoCon:last-child {
+        border: none; }
+      .mainContent.adminForm .form:first-child .infoCon h3 {
+        margin-top: 1.6rem;
+        overflow: hidden;
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis; }
+      .mainContent.adminForm .form:first-child .infoCon textarea {
+        resize: none; }
+      .mainContent.adminForm .form:first-child .infoCon .infoSubCon {
+        margin-top: 0.6rem;
+        max-width: 74.5rem;
+        flex: 1; }
+        .mainContent.adminForm .form:first-child .infoCon .infoSubCon .smallComponentsContainer > div {
+          flex: 1; }
+          .mainContent.adminForm .form:first-child .infoCon .infoSubCon .smallComponentsContainer > div .textFieldContainer {
+            min-width: 0; }
+            .mainContent.adminForm .form:first-child .infoCon .infoSubCon .smallComponentsContainer > div .textFieldContainer input, .mainContent.adminForm .form:first-child .infoCon .infoSubCon .smallComponentsContainer > div .textFieldContainer select, .mainContent.adminForm .form:first-child .infoCon .infoSubCon .smallComponentsContainer > div .textFieldContainer textarea {
+              min-width: 0; }
   .mainContent.adminForm .form:last-child, .mainContent.adminForm .imageInputContainer, .mainContent.adminForm .btnGroupContainer {
     display: flex;
     flex-flow: column;
@@ -1297,6 +1514,8 @@ table tbody {
     @media (min-width: 1367px) {
       .mainContent.adminForm .form:last-child {
         padding: 7.2rem 0rem 4.8rem; } }
+    .mainContent.adminForm .form:last-child h4 {
+      color: rgba(0, 0, 0, 0.6); }
     .mainContent.adminForm .form:last-child .closeIcon {
       position: absolute;
       top: 1.6rem;
@@ -1388,11 +1607,60 @@ table tbody {
         background-color: #A63F3F;
         color: #FFFFFF; }
 
-input {
+.mainFooter {
+  background-color: #42464F;
+  color: #FFFFFF;
+  position: relative;
+  top: 10.6rem;
+  height: 40rem;
+  padding: 6rem 0;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  background-image: url("../images/PUP-Pylon-footer.png");
+  background-repeat: no-repeat;
+  background-position: center; }
+  .mainFooter > * {
+    z-index: 2; }
+  .mainFooter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 1; }
+  .mainFooter h1 {
+    margin-top: 5.6rem;
+    position: relative; }
+    .mainFooter h1::before {
+      content: '';
+      width: 5rem;
+      height: 5rem;
+      display: inline-block;
+      background-image: url("../images/PUPlogo.png");
+      background-repeat: no-repeat;
+      background-size: 5rem;
+      position: absolute;
+      top: -5.6rem;
+      left: 50%;
+      transform: translateX(-50%); }
+  .mainFooter hr {
+    color: currentColor;
+    margin-bottom: 1.6rem;
+    width: 100%;
+    max-width: 40rem; }
+  .mainFooter .tagline {
+    margin-bottom: auto; }
+
+input, textarea {
   -webkit-appearance: none;
   appearance: none;
   background-color: #FFFFFF;
-  color: rgba(0, 0, 0, 0.87); }
+  color: rgba(0, 0, 0, 0.87);
+  transition: 200ms ease; }
 
 .textFieldContainer {
   position: relative;
@@ -1405,16 +1673,16 @@ input {
   @media (min-width: 1367px) {
     .textFieldContainer {
       max-width: 100%; } }
-  .textFieldContainer .icon, .textFieldContainer input, .textFieldContainer select {
+  .textFieldContainer .icon, .textFieldContainer input, .textFieldContainer select, .textFieldContainer textarea {
     border: 1px rgba(0, 0, 0, 0.2) solid; }
-    .textFieldContainer .icon:focus ~ .icon, .textFieldContainer .icon:focus, .textFieldContainer input:focus ~ .icon, .textFieldContainer input:focus, .textFieldContainer select:focus ~ .icon, .textFieldContainer select:focus {
+    .textFieldContainer .icon:focus ~ .icon, .textFieldContainer .icon:focus, .textFieldContainer input:focus ~ .icon, .textFieldContainer input:focus, .textFieldContainer select:focus ~ .icon, .textFieldContainer select:focus, .textFieldContainer textarea:focus ~ .icon, .textFieldContainer textarea:focus {
       border: 1px rgba(0, 0, 0, 0.6) solid; }
   .textFieldContainer .icon {
     border-left: none !important;
     padding: 0 .8rem;
     border-top-right-radius: .5rem;
     border-bottom-right-radius: .5rem; }
-  .textFieldContainer input {
+  .textFieldContainer input, .textFieldContainer textarea {
     border-right: none !important;
     padding: .85rem 0 .85rem 1.6rem;
     border-top-left-radius: .5rem;
@@ -1442,13 +1710,60 @@ input[type="file"] {
 input[type="radio"], input[type="checkbox"] {
   cursor: pointer; }
 
+input[type="radio"] {
+  position: relative;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 5rem;
+  border: 1px solid #A63F3F;
+  background-color: inherit; }
+  input[type="radio"]::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 5rem;
+    transition: 200ms ease; }
+  input[type="radio"]:checked::before {
+    background-color: #A63F3F;
+    transform: translate(-50%, -50%) scale(1); }
+
+textarea {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF;
+  border: 1px rgba(0, 0, 0, 0.2) solid; }
+  textarea::-webkit-scrollbar {
+    width: 0.5rem; }
+  textarea::-webkit-scrollbar-track {
+    background-color: #FFFFFF; }
+  textarea::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.38);
+    border-radius: 5rem; }
+
+.loginMain input[type=number] {
+  -moz-appearance: textfield;
+  border: none;
+  background-image: url("../images/verificationBg.svg");
+  background-repeat: no-repeat; }
+  .loginMain input[type=number]:required:-moz-ui-invalid {
+    background-image: url("../images/verificationBgError.svg");
+    border: none; }
+
+.loginMain input[type=number]::-webkit-inner-spin-button,
+.loginMain input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0; }
+
 input:required:-moz-ui-invalid {
   border: 1px solid #B00020;
-  border-right: none;
   box-shadow: none; }
   input:required:-moz-ui-invalid ~ .icon {
     border: 1px solid #B00020;
-    border-left: none;
     box-shadow: none; }
 
 input[type="search"]::-webkit-search-cancel-button {
@@ -1483,7 +1798,7 @@ a:active {
 ul {
   list-style: none; }
 
-.adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .addNewGroup, .users .filterNav .btnContainer a {
+.adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .btnContainer a {
   min-height: 4.4rem;
   min-width: 6.4rem;
   display: flex;
@@ -1494,10 +1809,10 @@ ul {
   transition: 200ms ease;
   cursor: pointer;
   border-radius: 2.5rem; }
-  .adminHeader a:focus, .mainNav button.active ~ .userContainer a:focus:last-child, .mainNav > a:focus, .adminNav .mainCategoryList .categoryContainer:focus, .admin .pageSpecificHeader > div:first-child button:focus, .admin .pageSpecificHeader > div:first-child a:focus, button:focus, .alertModalContainer .alertModal div a:focus, .users .filterNav .btnContainer .addNewGroup:focus, .users .filterNav .btnContainer a:focus, .adminHeader a:hover, .mainNav button.active ~ .userContainer a:hover:last-child, .mainNav > a:hover, .adminNav .mainCategoryList .categoryContainer:hover, .admin .pageSpecificHeader > div:first-child button:hover, .admin .pageSpecificHeader > div:first-child a:hover, button:hover, .alertModalContainer .alertModal div a:hover, .users .filterNav .btnContainer .addNewGroup:hover, .users .filterNav .btnContainer a:hover {
+  .adminHeader a:focus, .mainNav button.active ~ .userContainer a:focus:last-child, .mainNav > a:focus, .adminNav .mainCategoryList .categoryContainer:focus, .userSurvey ~ .alumni .mainContent .container .form a:focus, .admin .pageSpecificHeader > div:first-child button:focus, .admin .pageSpecificHeader > div:first-child a:focus, button:focus, .alertModalContainer .alertModal div a:focus, .users .filterNav .btnContainer .manageUsers:focus, .users .filterNav .btnContainer a:focus, .adminHeader a:hover, .mainNav button.active ~ .userContainer a:hover:last-child, .mainNav > a:hover, .adminNav .mainCategoryList .categoryContainer:hover, .userSurvey ~ .alumni .mainContent .container .form a:hover, .admin .pageSpecificHeader > div:first-child button:hover, .admin .pageSpecificHeader > div:first-child a:hover, button:hover, .alertModalContainer .alertModal div a:hover, .users .filterNav .btnContainer .manageUsers:hover, .users .filterNav .btnContainer a:hover {
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
     outline: 0; }
-  .adminHeader a:active, .mainNav button.active ~ .userContainer a:active:last-child, .mainNav > a:active, .adminNav .mainCategoryList .categoryContainer:active, .admin .pageSpecificHeader > div:first-child button:active, .admin .pageSpecificHeader > div:first-child a:active, button:active, .alertModalContainer .alertModal div a:active, .users .filterNav .btnContainer .addNewGroup:active, .users .filterNav .btnContainer a:active {
+  .adminHeader a:active, .mainNav button.active ~ .userContainer a:active:last-child, .mainNav > a:active, .adminNav .mainCategoryList .categoryContainer:active, .userSurvey ~ .alumni .mainContent .container .form a:active, .admin .pageSpecificHeader > div:first-child button:active, .admin .pageSpecificHeader > div:first-child a:active, button:active, .alertModalContainer .alertModal div a:active, .users .filterNav .btnContainer .manageUsers:active, .users .filterNav .btnContainer a:active {
     filter: opacity(0.88); }
 
 .adminNav .mainCategoryList .categoryContainer, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="number"], .jobPortal .mainContent .data-table .status.open {
@@ -1505,7 +1820,7 @@ ul {
   border-style: solid;
   border-radius: 0.5rem; }
 
-.mainNav button, .mainNav > a, .adminNav .mainCategoryList .open .categoryContainer, .adminNav button, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .data-table .option .optionModal button, .admin .mainContent .pagination button, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]:checked::before, .mainContent.adminForm .form:last-child .btnGroupContainer button, .modalContainer .modalPreview .pagination .btnContainer button, .alertModalContainer .alertModal div button, .loginMain form button, .users .filterNav button, .users .filterNav a, .jobPortal .mainContent .data-table .status.closed, .jobPortal .mainContent .data-table .workType {
+.mainNav button, .mainNav > a, .adminNav .mainCategoryList .open .categoryContainer, .adminNav button, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .data-table .option .optionModal button, .admin .mainContent .pagination button, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]:checked::before, .mainContent.adminForm .form:last-child .btnGroupContainer button, .option .optionModal button, .modalContainer .modalPreview .pagination .btnContainer button, .alertModalContainer .alertModal div button, .addModalContainer .addModal .btn-opt-delete button, .addModalContainer .addModal .btnContainer button, .loginMain form button, .users .filterNav button, .users .filterNav a, .jobPortal .mainContent .data-table .status.closed, .jobPortal .mainContent .data-table .workType, .mainContent.questionnaire .form:first-child h2 > button {
   border: 1px solid transparent; }
 
 .icon {
@@ -1520,7 +1835,63 @@ ul {
   .icon:focus, .icon:hover {
     filter: opacity(0.88); }
 
-.modalContainer {
+.option {
+  width: 3rem;
+  height: 3rem;
+  position: relative; }
+  .option .optionSpan {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%; }
+    .option .optionSpan:focus, .option .optionSpan:hover {
+      background-color: #EEEEEE;
+      filter: opacity(1); }
+    .option .optionSpan.active ~ .optionModal {
+      visibility: visible;
+      opacity: 1;
+      z-index: 24; }
+  .option .optionModal {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 4rem;
+    left: -4.6rem;
+    border-radius: 0.5rem;
+    padding: 0 0.8rem;
+    height: 4.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 3px 3px -2px rgba(0, 0, 0, 0.12);
+    transition: all 200ms ease;
+    background-color: #EEEEEE;
+    color: rgba(0, 0, 0, 0.87); }
+    .option .optionModal .btnEditInline {
+      background-color: #FFFFFF;
+      color: rgba(0, 0, 0, 0.87); }
+    .option .optionModal .btnDeleteInline {
+      background-color: #B61734;
+      color: #FFFFFF; }
+    .option .optionModal > * {
+      min-width: 3rem;
+      min-height: 3rem;
+      padding: 0;
+      border-radius: 5rem; }
+      .option .optionModal > *:nth-child(1) svg {
+        width: 2rem;
+        height: 2rem; }
+      .option .optionModal > *:nth-child(2) svg {
+        width: 1.8rem;
+        height: 2rem; }
+
+.modalContainer, .addModalContainer {
   display: none;
   position: absolute;
   top: 50%;
@@ -1532,136 +1903,138 @@ ul {
   z-index: 25;
   align-items: center;
   justify-content: center; }
-  .modalContainer.show {
+  .modalContainer.show, .addModalContainer.show {
     display: flex; }
-  .modalContainer .hidden-form {
-    visibility: hidden; }
-  .modalContainer .modalPreview {
-    border-radius: 1rem;
-    max-height: calc(100vh - 4.8rem);
+
+.modalContainer .hidden-form {
+  visibility: hidden; }
+
+.modalContainer .modalPreview {
+  border-radius: 1rem;
+  max-height: calc(100vh - 4.8rem);
+  display: flex;
+  flex-flow: column;
+  flex: 1;
+  max-width: 107.7rem;
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); }
+  .modalContainer .modalPreview .data-table, .modalContainer .modalPreview .pagination {
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87); }
+  .modalContainer .modalPreview .data-table {
+    min-height: 15.9rem;
+    max-height: calc(100% - 7.2rem);
     display: flex;
     flex-flow: column;
     flex: 1;
-    max-width: 107.7rem;
-    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); }
-    .modalContainer .modalPreview .data-table, .modalContainer .modalPreview .pagination {
-      background-color: #FFFFFF;
-      color: rgba(0, 0, 0, 0.87); }
-    .modalContainer .modalPreview .data-table {
-      min-height: 15.9rem;
-      max-height: calc(100% - 7.2rem);
-      display: flex;
-      flex-flow: column;
-      flex: 1;
+    width: 100%;
+    border-collapse: collapse;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem; }
+    .modalContainer .modalPreview .data-table thead, .modalContainer .modalPreview .data-table tbody {
       width: 100%;
-      border-collapse: collapse;
-      border-top-left-radius: 1rem;
+      padding: 0 2.4rem;
+      display: flex; }
+    .modalContainer .modalPreview .data-table th:first-child, .modalContainer .modalPreview .data-table td:first-child {
+      border-top-left-radius: 1rem; }
+    .modalContainer .modalPreview .data-table th:last-child, .modalContainer .modalPreview .data-table td:last-child {
       border-top-right-radius: 1rem; }
-      .modalContainer .modalPreview .data-table thead, .modalContainer .modalPreview .data-table tbody {
-        width: 100%;
-        padding: 0 2.4rem;
-        display: flex; }
-      .modalContainer .modalPreview .data-table th:first-child, .modalContainer .modalPreview .data-table td:first-child {
-        border-top-left-radius: 1rem; }
-      .modalContainer .modalPreview .data-table th:last-child, .modalContainer .modalPreview .data-table td:last-child {
-        border-top-right-radius: 1rem; }
-      .modalContainer .modalPreview .data-table tr {
+    .modalContainer .modalPreview .data-table tr {
+      display: flex;
+      gap: 3.2rem;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1.6rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+    .modalContainer .modalPreview .data-table thead {
+      height: 4.3rem;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+      background-color: #A63F3F;
+      color: #FFFFFF; }
+      .modalContainer .modalPreview .data-table thead tr {
+        width: 100%; }
+    .modalContainer .modalPreview .data-table tbody {
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF;
+      padding-top: 0.8rem;
+      flex-flow: column;
+      flex: 1; }
+      .modalContainer .modalPreview .data-table tbody::-webkit-scrollbar {
+        width: 0.5rem; }
+      .modalContainer .modalPreview .data-table tbody::-webkit-scrollbar-track {
+        background-color: #FFFFFF; }
+      .modalContainer .modalPreview .data-table tbody::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.38);
+        border-radius: 5rem; }
+      .modalContainer .modalPreview .data-table tbody td {
         display: flex;
-        gap: 3.2rem;
-        align-items: center;
-        justify-content: center;
-        padding: 0.8rem 1.6rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
-      .modalContainer .modalPreview .data-table thead {
-        height: 4.3rem;
-        border-top-left-radius: 1rem;
-        border-top-right-radius: 1rem;
+        justify-content: center; }
+    .modalContainer .modalPreview .data-table p {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      width: 100%;
+      text-align: center; }
+    .modalContainer .modalPreview .data-table .studentName, .modalContainer .modalPreview .data-table .studentEmail, .modalContainer .modalPreview .data-table .jobTitle, .modalContainer .modalPreview .data-table .company {
+      display: block;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+    .modalContainer .modalPreview .data-table .Description, .modalContainer .modalPreview .data-table .description {
+      text-align: left; }
+  .modalContainer .modalPreview .pagination {
+    background-color: #EEEEEE;
+    color: rgba(0, 0, 0, 0.87);
+    height: 7.2rem;
+    display: flex;
+    align-items: center;
+    gap: 4.8rem;
+    padding: 1.35rem 3.2rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem; }
+    .modalContainer .modalPreview .pagination h3 {
+      font-size: 2.4rem;
+      font-weight: 500; }
+    .modalContainer .modalPreview .pagination .fileNameCon span {
+      font-size: 1.8rem; }
+    .modalContainer .modalPreview .pagination .fileNameCon .filename {
+      color: #A63F3F; }
+    .modalContainer .modalPreview .pagination .btnContainer {
+      display: flex;
+      gap: 2.4rem;
+      width: 38.4rem;
+      margin-left: auto; }
+      .modalContainer .modalPreview .pagination .btnContainer button {
+        background-color: #FFFFFF;
+        color: rgba(0, 0, 0, 0.87);
+        flex: 1;
+        font-weight: 400;
+        max-width: 18rem;
+        min-height: 4rem;
+        text-transform: capitalize;
+        position: relative; }
+        .modalContainer .modalPreview .pagination .btnContainer button svg {
+          position: absolute;
+          top: 50%;
+          left: 1.1rem;
+          transform: translateY(-50%);
+          width: 2.4rem;
+          height: 2.4rem; }
+      .modalContainer .modalPreview .pagination .btnContainer .upload {
         background-color: #A63F3F;
         color: #FFFFFF; }
-        .modalContainer .modalPreview .data-table thead tr {
-          width: 100%; }
-      .modalContainer .modalPreview .data-table tbody {
-        overflow-y: auto;
-        scrollbar-width: thin;
-        scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF;
-        padding-top: 0.8rem;
-        flex-flow: column;
-        flex: 1; }
-        .modalContainer .modalPreview .data-table tbody::-webkit-scrollbar {
-          width: 0.5rem; }
-        .modalContainer .modalPreview .data-table tbody::-webkit-scrollbar-track {
-          background-color: #FFFFFF; }
-        .modalContainer .modalPreview .data-table tbody::-webkit-scrollbar-thumb {
-          background-color: rgba(0, 0, 0, 0.38);
-          border-radius: 5rem; }
-        .modalContainer .modalPreview .data-table tbody td {
-          display: flex;
-          justify-content: center; }
-      .modalContainer .modalPreview .data-table p {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
-        overflow: hidden;
-        width: 100%;
-        text-align: center; }
-      .modalContainer .modalPreview .data-table .studentName, .modalContainer .modalPreview .data-table .studentEmail, .modalContainer .modalPreview .data-table .jobTitle, .modalContainer .modalPreview .data-table .company {
-        display: block;
-        white-space: nowrap;
-        text-overflow: ellipsis; }
-      .modalContainer .modalPreview .data-table .Description, .modalContainer .modalPreview .data-table .description {
-        text-align: left; }
-    .modalContainer .modalPreview .pagination {
-      background-color: #EEEEEE;
-      color: rgba(0, 0, 0, 0.87);
-      height: 7.2rem;
-      display: flex;
-      align-items: center;
-      gap: 4.8rem;
-      padding: 1.35rem 3.2rem;
-      border-bottom-left-radius: 1rem;
-      border-bottom-right-radius: 1rem; }
-      .modalContainer .modalPreview .pagination h3 {
-        font-size: 2.4rem;
-        font-weight: 500; }
-      .modalContainer .modalPreview .pagination .fileNameCon span {
-        font-size: 1.8rem; }
-      .modalContainer .modalPreview .pagination .fileNameCon .filename {
-        color: #A63F3F; }
-      .modalContainer .modalPreview .pagination .btnContainer {
-        display: flex;
-        gap: 2.4rem;
-        width: 38.4rem;
-        margin-left: auto; }
-        .modalContainer .modalPreview .pagination .btnContainer button {
-          background-color: #FFFFFF;
-          color: rgba(0, 0, 0, 0.87);
-          flex: 1;
-          font-weight: 400;
-          max-width: 18rem;
-          min-height: 4rem;
-          text-transform: capitalize;
-          position: relative; }
-          .modalContainer .modalPreview .pagination .btnContainer button svg {
-            position: absolute;
-            top: 50%;
-            left: 1.1rem;
-            transform: translateY(-50%);
-            width: 2.4rem;
-            height: 2.4rem; }
-        .modalContainer .modalPreview .pagination .btnContainer .upload {
-          background-color: #A63F3F;
-          color: #FFFFFF; }
-    .modalContainer .modalPreview .data-table tr {
-      padding: 2rem 1.6rem; }
-    .modalContainer .modalPreview .data-table th:nth-child(1), .modalContainer .modalPreview .data-table td:nth-child(1) {
-      min-width: 11.8rem; }
-    .modalContainer .modalPreview .data-table th:nth-child(2), .modalContainer .modalPreview .data-table th:nth-child(3), .modalContainer .modalPreview .data-table td:nth-child(2), .modalContainer .modalPreview .data-table td:nth-child(3) {
-      flex: 1;
-      max-width: 100%;
-      width: 5rem;
-      min-width: 5rem; }
-    .modalContainer .modalPreview .data-table th:nth-child(4), .modalContainer .modalPreview .data-table th:nth-child(5), .modalContainer .modalPreview .data-table th:nth-child(6), .modalContainer .modalPreview .data-table td:nth-child(4), .modalContainer .modalPreview .data-table td:nth-child(5), .modalContainer .modalPreview .data-table td:nth-child(6) {
-      min-width: 5.8rem; }
+  .modalContainer .modalPreview .data-table tr {
+    padding: 2rem 1.6rem; }
+  .modalContainer .modalPreview .data-table th:nth-child(1), .modalContainer .modalPreview .data-table td:nth-child(1) {
+    min-width: 11.8rem; }
+  .modalContainer .modalPreview .data-table th:nth-child(2), .modalContainer .modalPreview .data-table th:nth-child(3), .modalContainer .modalPreview .data-table td:nth-child(2), .modalContainer .modalPreview .data-table td:nth-child(3) {
+    flex: 1;
+    max-width: 100%;
+    width: 5rem;
+    min-width: 5rem; }
+  .modalContainer .modalPreview .data-table th:nth-child(4), .modalContainer .modalPreview .data-table th:nth-child(5), .modalContainer .modalPreview .data-table th:nth-child(6), .modalContainer .modalPreview .data-table td:nth-child(4), .modalContainer .modalPreview .data-table td:nth-child(5), .modalContainer .modalPreview .data-table td:nth-child(6) {
+    min-width: 5.8rem; }
 
 .alertModalContainer {
   display: none;
@@ -1736,6 +2109,146 @@ ul {
         background-color: #EEEEEE;
         color: rgba(0, 0, 0, 0.87); }
 
+.addModalContainer .addModal {
+  display: flex;
+  flex-flow: column;
+  padding: 2.4rem 4rem;
+  margin: 2.4rem;
+  background-color: #FFFFFF;
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 1rem;
+  width: 100rem;
+  min-width: 0; }
+  .addModalContainer .addModal form {
+    display: flex;
+    flex-flow: column;
+    gap: 2.4rem; }
+  .addModalContainer .addModal .formContainer {
+    display: flex;
+    flex-flow: wrap;
+    gap: 1.8rem; }
+    .addModalContainer .addModal .formContainer > div {
+      flex: 1; }
+      .addModalContainer .addModal .formContainer > div:first-child {
+        flex: 3; }
+      .addModalContainer .addModal .formContainer > div:last-child {
+        min-width: 100%; }
+        .addModalContainer .addModal .formContainer > div:last-child input[type="text"] {
+          border: none !important;
+          background-color: transparent; }
+          .addModalContainer .addModal .formContainer > div:last-child input[type="text"]:focus, .addModalContainer .addModal .formContainer > div:last-child input[type="text"]:hover {
+            border: 1px solid rgba(0, 0, 0, 0.2) !important; }
+  .addModalContainer .addModal .callout {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 1.6rem 2.4rem;
+    border-radius: 0.5rem;
+    max-height: 20.5rem; }
+    .addModalContainer .addModal .callout::-webkit-scrollbar {
+      width: 0.5rem; }
+    .addModalContainer .addModal .callout::-webkit-scrollbar-track {
+      background-color: #FFFFFF; }
+    .addModalContainer .addModal .callout::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.38);
+      border-radius: 5rem; }
+  .addModalContainer .addModal table {
+    border-collapse: collapse;
+    width: 100%; }
+  .addModalContainer .addModal tbody {
+    display: flex;
+    flex-flow: column;
+    gap: 0.8rem; }
+  .addModalContainer .addModal tr {
+    display: flex;
+    align-items: center;
+    gap: 1.7rem;
+    background-color: #EEEEEE;
+    color: rgba(0, 0, 0, 0.87);
+    padding: 0.8rem 1.3rem;
+    border-radius: 0.5rem; }
+    .addModalContainer .addModal tr td:nth-child(1) {
+      min-width: 1.8rem; }
+      .addModalContainer .addModal tr td:nth-child(1) > div {
+        position: relative; }
+        .addModalContainer .addModal tr td:nth-child(1) > div input {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%); }
+    .addModalContainer .addModal tr td:nth-child(2) {
+      flex: 1; }
+  .addModalContainer .addModal .btn-opt-delete {
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem; }
+    .addModalContainer .addModal .btn-opt-delete button {
+      background-color: transparent;
+      color: #FFFFFF;
+      min-width: 3rem;
+      min-height: 3rem;
+      padding: 0; }
+  .addModalContainer .addModal .btn-add-opt {
+    margin-top: 1.6rem; }
+    .addModalContainer .addModal .btn-add-opt button {
+      margin: 0 auto;
+      border: none;
+      background-color: transparent; }
+      .addModalContainer .addModal .btn-add-opt button:focus, .addModalContainer .addModal .btn-add-opt button:hover {
+        background-color: #EEEEEE; }
+    .addModalContainer .addModal .btn-add-opt svg {
+      margin-left: 0.4rem; }
+  .addModalContainer .addModal .btnContainer {
+    margin-top: 1.6rem;
+    display: flex;
+    gap: 2.4rem;
+    align-self: flex-end; }
+    .addModalContainer .addModal .btnContainer button {
+      flex: 1;
+      width: 16rem; }
+    .addModalContainer .addModal .btnContainer .cancel {
+      background-color: #EEEEEE;
+      color: rgba(0, 0, 0, 0.87); }
+    .addModalContainer .addModal .btnContainer .add {
+      background-color: #A63F3F;
+      color: #FFFFFF; }
+  .addModalContainer .addModal input[type="text"], .addModalContainer .addModal input[type="date"], .addModalContainer .addModal input[type="tel"], .addModalContainer .addModal input[type="email"], .addModalContainer .addModal select, .addModalContainer .addModal textarea {
+    border-radius: 0.5rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
+    min-width: 32.4rem;
+    padding-right: 1.6rem;
+    padding-left: 1.6rem; }
+    .addModalContainer .addModal input[type="text"]:focus, .addModalContainer .addModal input[type="date"]:focus, .addModalContainer .addModal input[type="tel"]:focus, .addModalContainer .addModal input[type="email"]:focus, .addModalContainer .addModal select:focus, .addModalContainer .addModal textarea:focus {
+      border-right: 1px rgba(0, 0, 0, 0.6) solid !important; }
+  .addModalContainer .addModal textarea {
+    resize: none;
+    width: 100%; }
+  .addModalContainer .addModal input[type="checkbox"] {
+    position: relative;
+    border-color: rgba(0, 0, 0, 0.38);
+    border-width: 0.25rem;
+    border-style: solid;
+    border-radius: 0.5rem;
+    min-width: 1.7rem;
+    height: 1.7rem;
+    transition: 400ms ease; }
+    .addModalContainer .addModal input[type="checkbox"]:focus, .addModalContainer .addModal input[type="checkbox"]:hover {
+      border-color: #A63F3F; }
+    .addModalContainer .addModal input[type="checkbox"]:checked {
+      border-color: transparent;
+      width: 2rem;
+      height: 2rem; }
+      .addModalContainer .addModal input[type="checkbox"]:checked::before {
+        background-image: url("../images/checked.svg"); }
+    .addModalContainer .addModal input[type="checkbox"]::before {
+      content: '';
+      display: inline-flex;
+      background-size: 100%;
+      background-position: center;
+      width: 100%;
+      height: 100%; }
+
 body {
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF; }
@@ -1747,39 +2260,33 @@ body {
     background-color: rgba(0, 0, 0, 0.38);
     border-radius: 5rem; }
 
-.home {
-  position: relative;
-  top: 10.6rem; }
-  .home .heroBox {
-    position: relative;
-    height: 36rem;
-    padding: 14rem 0 7rem;
-    background-image: url("../images/heroBoxBg.png");
-    background-size: cover;
-    background-repeat: no-repeat; }
-    .home .heroBox::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(255, 255, 255, 0.3);
-      z-index: 1; }
-    .home .heroBox .container {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: #FFFFFF;
-      position: absolute;
-      left: 0;
-      right: 0;
-      z-index: 2;
-      padding: 1rem 34rem; }
-      .home .heroBox .container h1 {
-        padding-left: 1.6rem;
-        border-left: 0.6rem solid #C7B13F;
-        font-family: 'Roboto Slab', serif;
-        font-size: 5rem;
-        line-height: 1.3; }
+.home > section.welcomeBox .container {
+  display: flex;
+  align-items: center;
+  gap: 4rem; }
+
+.home .heroBox {
+  padding: 14rem 0 7rem;
+  background-image: url("../images/heroBoxBg.png"); }
+  .home .heroBox .container {
+    padding-top: 1rem;
+    padding-bottom: 1rem; }
+    .home .heroBox .container h1 {
+      font-size: 5rem;
+      line-height: 1.31; }
+
+.home .welcomeBox {
+  background-color: #EEEEEE;
+  color: rgba(0, 0, 0, 0.87);
+  padding: 3.2rem 0; }
+  .home .welcomeBox .container > *:nth-child(1) {
+    margin-left: 1.6rem;
+    min-width: 14.5rem; }
+  .home .welcomeBox .welcomeMessage > *:nth-child(1) {
+    padding-bottom: 0.8rem; }
+  .home .welcomeBox .welcomeMessage p {
+    border-top: 0.5px solid rgba(0, 0, 0, 0.38);
+    padding-top: 0.8rem; }
 
 .loginMain {
   height: 100vh;
@@ -1820,7 +2327,9 @@ body {
       border-radius: 5rem;
       box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12); }
   .loginMain header {
-    text-align: center; }
+    text-align: center;
+    display: flex;
+    flex-flow: column; }
     .loginMain header div {
       min-width: 27rem;
       height: .05rem;
@@ -1830,9 +2339,12 @@ body {
     display: flex;
     flex-flow: column;
     align-items: center;
-    gap: 1.6rem; }
+    gap: 1.6rem;
+    max-width: 30rem; }
     .loginMain form .textFieldContainer .icon path {
       fill: rgba(0, 0, 0, 0.6); }
+    .loginMain form .textFieldContainer #verification-code {
+      max-width: 100%; }
     .loginMain form button {
       background-color: #A63F3F;
       color: #FFFFFF;
@@ -1863,7 +2375,8 @@ body {
         position: initial;
         visibility: hidden; }
     .loginMain header {
-      position: relative; }
+      position: relative;
+      gap: 0.8rem; }
       .loginMain header::before {
         position: absolute;
         top: -2.4rem;
@@ -1879,7 +2392,6 @@ body {
         border-radius: 5rem;
         box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12); }
       .loginMain header div {
-        margin: .8rem 0;
         box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25); }
     .loginMain form {
       gap: 2.4rem;
@@ -1890,7 +2402,7 @@ body {
 .users .filterNav {
   max-width: 26rem;
   width: 26rem;
-  min-width: 20.8rem;
+  min-width: 22.8rem;
   padding: 5.6rem 2.4rem;
   background-color: #EEEEEE;
   box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
@@ -1913,15 +2425,14 @@ body {
       justify-content: flex-start; }
       .users .filterNav .btnContainer > * > * {
         margin-left: auto; }
-    .users .filterNav .btnContainer .addNewGroup {
+    .users .filterNav .btnContainer .manageUsers {
       background-color: #FFFFFF;
       color: rgba(0, 0, 0, 0.87);
       box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
       text-decoration: none; }
-      .users .filterNav .btnContainer .addNewGroup svg {
+      .users .filterNav .btnContainer .manageUsers svg {
         width: 2.4rem;
-        height: 2.4rem;
-        fill: none; }
+        height: 2.4rem; }
     .users .filterNav .btnContainer a {
       background-color: #EEEEEE;
       color: rgba(0, 0, 0, 0.87);
@@ -2074,6 +2585,16 @@ body {
     background-color: #C7B13F;
     color: #FFFFFF; }
 
+.survey .mainContent .data-table th:nth-child(2), .survey .mainContent .data-table td:nth-child(2) {
+  min-width: 13.6rem;
+  flex: 1; }
+
+.survey .mainContent .data-table th:nth-child(3), .survey .mainContent .data-table td:nth-child(3) {
+  flex: 2; }
+
+.survey .mainContent .data-table th:nth-child(4), .survey .mainContent .data-table th:nth-child(5), .survey .mainContent .data-table td:nth-child(4), .survey .mainContent .data-table td:nth-child(5) {
+  min-width: 12.6rem; }
+
 .dashboard .pageSpecificHeader > div svg {
   width: 14.6rem;
   height: 6.3rem; }
@@ -2081,40 +2602,200 @@ body {
 .dashboard .pageSpecificHeader .dateTimeContainer .currentTime {
   font-size: 3rem; }
 
-.userAdd .mainContent.adminForm .form .infoCon {
+.userAdd .mainContent.adminForm .form .infoCon:nth-of-type(1) .smallComponentsContainer > div:nth-child(1) {
+  flex: 2; }
+
+.userAdd .mainContent.adminForm .form .infoCon:nth-of-type(1) .smallComponentsContainer > div:nth-child(4) {
+  max-width: 31.9rem; }
+
+.userAdd .mainContent.adminForm .form .infoCon:nth-of-type(2) .smallComponentsContainer > div:nth-child(1) {
+  min-width: 100%; }
+
+.userAdd .mainContent.adminForm .form .infoCon:nth-of-type(2) .smallComponentsContainer > div:nth-child(2) {
+  flex: 2; }
+
+.userAdd .mainContent.adminForm .form .infoCon:nth-of-type(2) .smallComponentsContainer > div:nth-child(5) {
+  max-width: 31.9rem; }
+
+.userAdd .mainContent.adminForm .form .infoCon:nth-of-type(3) .smallComponentsContainer > div:last-child {
+  flex: 2; }
+
+.surveyAdd .mainContent.adminForm .form .infoCon:nth-of-type(1) .smallComponentsContainer > div:nth-child(1) {
+  min-width: 100%; }
+
+.surveyAdd .mainContent.adminForm .form .infoCon:nth-of-type(1) .smallComponentsContainer > div textarea {
+  height: 12rem; }
+
+.surveyAdd .mainContent.adminForm .form .infoCon:nth-of-type(2) .smallComponentsContainer > div {
+  flex: 1; }
+
+.mainContent.questionnaire .form:first-child {
   display: flex;
-  justify-content: space-between;
-  gap: 2.4rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.38);
-  padding-bottom: 4.8rem;
-  max-width: 100%; }
-  .userAdd .mainContent.adminForm .form .infoCon:last-child {
-    border: none; }
-  .userAdd .mainContent.adminForm .form .infoCon h3 {
-    margin-top: 1.6rem;
-    overflow: hidden;
-    display: block;
-    white-space: nowrap;
-    text-overflow: ellipsis; }
-  .userAdd .mainContent.adminForm .form .infoCon .infoSubCon {
-    margin-top: 0.6rem;
-    max-width: 74.5rem;
-    flex: 1; }
-    .userAdd .mainContent.adminForm .form .infoCon .infoSubCon .smallComponentsContainer > div {
-      flex: 1; }
-      .userAdd .mainContent.adminForm .form .infoCon .infoSubCon .smallComponentsContainer > div .textFieldContainer {
-        min-width: 0; }
-        .userAdd .mainContent.adminForm .form .infoCon .infoSubCon .smallComponentsContainer > div .textFieldContainer input, .userAdd .mainContent.adminForm .form .infoCon .infoSubCon .smallComponentsContainer > div .textFieldContainer select {
-          min-width: 0; }
-  .userAdd .mainContent.adminForm .form .infoCon:nth-of-type(1) .smallComponentsContainer > div:nth-child(1) {
-    flex: 2; }
-  .userAdd .mainContent.adminForm .form .infoCon:nth-of-type(1) .smallComponentsContainer > div:nth-child(4) {
-    max-width: 35.1rem; }
-  .userAdd .mainContent.adminForm .form .infoCon:nth-of-type(2) .smallComponentsContainer > div:nth-child(1) {
-    min-width: 100%; }
-  .userAdd .mainContent.adminForm .form .infoCon:nth-of-type(2) .smallComponentsContainer > div:nth-child(2) {
-    flex: 2; }
-  .userAdd .mainContent.adminForm .form .infoCon:nth-of-type(2) .smallComponentsContainer > div:nth-child(5) {
-    max-width: 35.1rem; }
-  .userAdd .mainContent.adminForm .form .infoCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(1) {
-    flex: 2; }
+  flex-flow: column;
+  gap: 3.2rem; }
+  .mainContent.questionnaire .form:first-child h2 > button {
+    background-color: #A63F3F;
+    color: #FFFFFF;
+    margin-left: auto; }
+  .mainContent.questionnaire .form:first-child .questionCon {
+    display: flex;
+    flex-flow: column;
+    gap: 1.6rem;
+    border-left: 4px solid #A63F3F;
+    border-radius: 0.5rem;
+    padding: 1.6rem 3.2rem;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12); }
+  .mainContent.questionnaire .form:first-child .questionHeader {
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+    .mainContent.questionnaire .form:first-child .questionHeader > svg {
+      margin: 0.45rem; }
+  .mainContent.questionnaire .form:first-child .questionType {
+    margin-left: auto;
+    margin-right: 0.8rem;
+    padding: 0.45rem 1rem;
+    border: 1px solid currentColor;
+    border-radius: 0.5rem;
+    background-color: #EEEEEE;
+    color: rgba(0, 0, 0, 0.6); }
+  .mainContent.questionnaire .form:first-child .answerCon {
+    display: flex;
+    flex-flow: column;
+    gap: 0.8rem; }
+    .mainContent.questionnaire .form:first-child .answerCon div, .mainContent.questionnaire .form:first-child .answerCon ul {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem; }
+    .mainContent.questionnaire .form:first-child .answerCon ul {
+      list-style: disc;
+      flex-flow: column; }
+  .mainContent.questionnaire .form:first-child h3 {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.87); }
+  .mainContent.questionnaire .form:first-child input[type="radio"] {
+    margin: 0.175rem; }
+  .mainContent.questionnaire .form:first-child textarea {
+    padding: .85rem 1.6rem .85rem 1.6rem;
+    border: 1px rgba(0, 0, 0, 0.2) solid;
+    height: 8rem;
+    resize: none;
+    min-width: 0; }
+    .mainContent.questionnaire .form:first-child textarea:focus {
+      border: 1px rgba(0, 0, 0, 0.6) solid; }
+  .mainContent.questionnaire .form:first-child .optionSpan {
+    border-radius: 10rem; }
+
+.mainContent.questionnaire.adminForm .form:last-child {
+  gap: 4rem;
+  padding-left: 4.8rem;
+  padding-right: 4.8rem; }
+  .mainContent.questionnaire.adminForm .form:last-child .surveyInfoCon {
+    display: flex;
+    flex-flow: column;
+    gap: 0.8rem;
+    padding-bottom: 2.4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.38); }
+  .mainContent.questionnaire.adminForm .form:last-child .dateInfo {
+    margin-top: 0; }
+
+.report .mainContent {
+  margin: 0;
+  padding: 2.4rem 7.2rem;
+  display: flex;
+  flex-flow: column;
+  gap: 4.8rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF;
+  flex-flow: column;
+  flex: 1;
+  box-shadow: none;
+  overflow: auto;
+  max-height: none; }
+  .report .mainContent::-webkit-scrollbar {
+    width: 0.5rem; }
+  .report .mainContent::-webkit-scrollbar-track {
+    background-color: #FFFFFF; }
+  .report .mainContent::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.38);
+    border-radius: 5rem; }
+  .report .mainContent h2, .report .mainContent h3 {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.38); }
+  .report .mainContent h3 {
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    padding-top: 1.6rem;
+    padding-bottom: 0.8rem;
+    height: 13.2rem;
+    overflow: hidden; }
+  .report .mainContent .card-list {
+    display: flex;
+    flex-flow: wrap;
+    column-gap: 2.4rem;
+    row-gap: 4.8rem; }
+  .report .mainContent .survey-card {
+    transition: 200ms ease;
+    position: relative;
+    flex: 1 34.2rem;
+    max-width: 34.7rem;
+    max-height: 31.3rem;
+    min-height: 31.3rem;
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 1rem;
+    background-color: #FFFFFF;
+    background-image: url("../images/reportCardBg.png");
+    z-index: 24;
+    display: flex;
+    flex-flow: column;
+    gap: 1.6rem; }
+    .report .mainContent .survey-card > * {
+      margin: 0 3.2rem 0 3.2rem; }
+    .report .mainContent .survey-card:focus .card-link, .report .mainContent .survey-card:hover .card-link {
+      height: 100%;
+      visibility: visible; }
+    .report .mainContent .survey-card > .card-link {
+      content: 'VIEW';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 0;
+      visibility: hidden;
+      transition: all 600ms ease, visibility 100ms ease 100ms;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: #FFFFFF;
+      font-size: 3.6rem;
+      font-weight: 500;
+      margin: 0;
+      border: 0;
+      z-index: 24;
+      text-decoration: none; }
+    .report .mainContent .survey-card > p {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+  .report .mainContent .card-svg {
+    border-radius: 1rem;
+    position: absolute;
+    z-index: -1;
+    min-width: 100%;
+    min-height: 100%;
+    margin: 0;
+    opacity: 0.5; }
+  .report .mainContent .survey-footer {
+    background-color: #A63F3F;
+    color: #FFFFFF;
+    border-radius: 0 0 1rem 1rem;
+    filter: opacity(0.9);
+    margin: 0;
+    margin-top: auto;
+    display: flex;
+    gap: 0.4rem;
+    padding: 1.2rem 3.2rem; }

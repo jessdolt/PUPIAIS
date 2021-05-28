@@ -152,7 +152,7 @@
 
         public function createUserSession($user) {
             $newUser = $this->userModel->forSession($user);
-            $_SESSION['id'] = $newUser->id;
+            $_SESSION['id'] = $newUser->user_id;
             $_SESSION['email'] = $newUser->email;
             $_SESSION['name'] = $newUser->name;
             $_SESSION['user_type'] = $newUser->user_control;
@@ -160,7 +160,7 @@
             if ($_SESSION['user_type'] == "Admin" || $_SESSION['user_type'] == "Content Creator") {
                 redirect('admin/dashboard');
             } else {
-                redirect('pages/home');
+                redirect('pages');
             }
         }
 

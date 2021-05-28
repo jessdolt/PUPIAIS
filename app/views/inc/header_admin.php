@@ -10,7 +10,16 @@
     <script src="<?php echo URLROOT;?>/js/clock.js"></script>
     <script src="<?php echo URLROOT;?>/js/index.js" defer></script>
     <script src="<?php echo URLROOT;?>/js/image_render.js" defer></script>
+    <script src="<?php echo URLROOT;?>/js/survey.js" defer></script>
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    <script
+     src="https://code.jquery.com/jquery-3.6.0.min.js"
+     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+     crossorigin="anonymous"></script>
+     <script
+    src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+    crossorigin="anonymous"></script>
 </head>
 <body id="<?php echo $_SESSION['user_type']?>">
     <div class="fullscreen">
@@ -70,7 +79,7 @@
                                 <li><a href="<?php echo URLROOT;?>/admin/job_portal">Job Portal</a></li>
                             </ul>
                         </li>
-                        <li class="mainCategory" tabindex="0">
+                        <li class="mainCategory <?php echo ($url[1] == 'survey_list' || $url[1] == 'survey_report' || $url[0] == 'surveys' ) ? 'open' : ' '?>" tabindex="0">
                             <div class="categoryContainer">
                                 <span>Survey</span>
                                 <span class="icon dropArrow">
@@ -79,9 +88,9 @@
                                     </svg>
                                 </span>
                             </div>
-                            <ul class="subCategoryList">
-                                <li><a href="surveyList.html">Survey List</a></li>
-                                <li><a href="surveyReport.html">Survey Report</a></li>
+                            <ul class="subCategoryList ">
+                                <li><a href="<?php echo URLROOT;?>/admin/survey_list">Survey List</a></li>
+                                <li><a href="<?php echo URLROOT;?>/admin/survey_report">Survey Report</a></li>
                             </ul>
                         </li>
                     </ul>
