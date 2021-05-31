@@ -14,8 +14,10 @@ class Pages extends Controller{
         // }   
     }
     
-    public function index(){
-        $this->checkSurvey();
+    public function index(){ 
+        if (isLoggedIn()){
+            $this->checkSurvey();
+        }
     }
     
     function checkSurvey(){
