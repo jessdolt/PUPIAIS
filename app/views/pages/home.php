@@ -59,7 +59,7 @@
                     </svg>
                     University News
                 </h3>
-                <?php foreach($news as $post) : ?>
+                <?php foreach($data['news'] as $post) : ?>
                 <article class="card news">
                     <img class="card-img" src="<?php echo URLROOT; ?>/uploads/<?php echo($post->image); ?>" alt="">
                     <div class="card-body">
@@ -112,7 +112,7 @@
                     Events
                 </h3>
 
-                <?php foreach($events as $events): ?>
+                <?php foreach($data['events'] as $events): ?>
                 <article class="card events">
                     <img class="card-img" src="<?php echo URLROOT; ?>/uploads/<?php echo($events->image); ?>" alt="">
                     <div class="card-body">
@@ -147,7 +147,7 @@
                     </svg>
                     Active Job Post
                 </h3>
-                <?php foreach($job_portal as $job) : ?>
+                <?php foreach($data['job_portals'] as $job) : ?>
                 <a href="#" class="card jobs">
                     <div class="card-body">
                         <div class="card-title">

@@ -62,7 +62,7 @@
             $limit = 10;
             $start = ($page - 1) * $limit;
 
-            $data = $this->eventModel->showEventsIndex($start, $limit);
+            $events = $this->eventModel->showEventsIndex($start, $limit);
 
             $pagination = $this->eventModel->NoOfResults();
 
@@ -92,7 +92,8 @@
 
             }
 
-            $navigate = [
+            $data = [
+                'event' => $events,
                 'start' => $startFormula,
                 'limit' => $limitFormula,
                 'total' => $total,
@@ -102,7 +103,7 @@
                 'last' => '?page=' . $pages
             ];
         
-            $this->viewIndex('admin_d/events', $data, $pagination, $navigate);
+            $this->view('admin_d/events', $data);
 
         }
 
@@ -122,7 +123,7 @@
             $limit = 10;
             $start = ($page - 1) * $limit;
 
-            $data = $this->postModel->showNewsIndex($start, $limit);
+            $posts = $this->postModel->showNewsIndex($start, $limit);
 
             $pagination = $this->postModel->NoOfResults();
 
@@ -152,7 +153,8 @@
 
             }
 
-            $navigate = [
+            $data = [
+                'news' => $posts,
                 'start' => $startFormula,
                 'limit' => $limitFormula,
                 'total' => $total,
@@ -162,7 +164,7 @@
                 'last' => '?page=' . $pages
             ];
         
-            $this->viewIndex('admin_d/news', $data, $pagination, $navigate);
+            $this->view('admin_d/news', $data);
         }
 
         public function job_portal() {
@@ -181,7 +183,7 @@
             $limit = 20;
             $start = ($page - 1) * $limit;
 
-            $data = $this->jobModel->showJobsIndex($start, $limit);
+            $jobs = $this->jobModel->showJobsIndex($start, $limit);
 
             $pagination = $this->jobModel->NoOfResults();
 
@@ -210,7 +212,8 @@
                 $limitFormula = 0;
             }
 
-            $navigate = [
+            $data = [
+                'jobs' => $jobs,
                 'start' => $startFormula,
                 'limit' => $limitFormula,
                 'total' => $total,
@@ -220,7 +223,7 @@
                 'last' => '?page=' . $pages
             ];
         
-            $this->viewIndex('admin_d/job_portal', $data, $pagination, $navigate);
+            $this->view('admin_d/job_portal', $data);
 
         }
 
@@ -240,7 +243,7 @@
             $limit = 10;
             $start = ($page - 1) * $limit;
 
-            $data = $this->surveyModel->showSurveyIndex($start, $limit);
+            $survey = $this->surveyModel->showSurveyIndex($start, $limit);
 
             $pagination = $this->surveyModel->NoOfResults();
 
@@ -270,7 +273,8 @@
 
             }
 
-            $navigate = [
+            $data = [
+                'survey' => $survey,
                 'start' => $startFormula,
                 'limit' => $limitFormula,
                 'total' => $total,
@@ -280,7 +284,7 @@
                 'last' => '?page=' . $pages
             ];
         
-            $this->viewIndex('admin_d/survey', $data, $pagination, $navigate);
+            $this->view('admin_d/survey', $data);
         }
     
 

@@ -50,7 +50,14 @@ class Pages extends Controller{
         $events = $this->eventModel->showEventHome();
         $job_portal = $this->jobModel->showJobsHome();
 
-        $this->viewHome('pages/home', $news, $events, $job_portal);
+        $data = [
+            'news' => $news,
+            'events' => $events,
+            'job_portals' => $job_portal
+        ];
+
+
+        $this->view('pages/home', $data);
     }
 
     public function login(){
