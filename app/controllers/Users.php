@@ -399,7 +399,7 @@
             } else {
                 redirect('pages');
             }
-            
+
         }
 
         public function logout() {

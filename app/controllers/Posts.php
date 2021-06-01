@@ -6,10 +6,6 @@
            
         }
 
-        public function index(){
-
-        }
-
         public function single($id){
             $post = $this->postModel->singleNews($id);
 

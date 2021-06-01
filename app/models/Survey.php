@@ -7,6 +7,26 @@
             $this->db = new Database;
         }
 
+        public function showSurveyIndex($page, $rowsperpage){
+            $this->db->query('SELECT * FROM survey_set ORDER BY date_created DESC LIMIT :page, :rowsperpage');
+            $this->db->bind(':page', $page);
+            $this->db->bind(':rowsperpage', $rowsperpage);
+            
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+
+        public function NoOfResults() {
+            $this->db->query('SELECT ALL id FROM survey_set'); 
+
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+
         public function addSurvey($data){
             $this->db->query('INSERT INTO survey_set(title,description,user_id,start_date,end_date) VALUES (:title,:description,:user_id,:start_date,:end_date)');
 

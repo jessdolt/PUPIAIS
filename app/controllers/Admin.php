@@ -48,26 +48,239 @@
 
         public function events(){
             $this->eventModel = $this->model('Event');
-            $events = $this->eventModel->showEvent();
-            $this->view('admin_d/events', $events);
+
+            // Get Page # in URL
+            if (!isset($_GET['page'])) {
+                $page = 1;
+            } elseif($_GET['page'] == 0) {
+                $page = 1;
+            } else {
+                $page = $_GET['page'];
+            }
+                
+            // Limit row displayed
+            $limit = 10;
+            $start = ($page - 1) * $limit;
+
+            $data = $this->eventModel->showEventsIndex($start, $limit);
+
+            $pagination = $this->eventModel->NoOfResults();
+
+            $total = count($pagination);
+            $pages = ceil($total/$limit);
+
+            // No URL bypass
+            if($pages == 0) {
+                $pages = 1;
+            }
+            if($page > $pages) {
+                redirect('admin/events?page='.$pages);
+            }
+
+            $startFormula = $start + 1;
+            $limitFormula = $startFormula - 1 + $limit;
+
+            if($page == $pages) {
+                if ($limitFormula >= $total) {
+                    $limitFormula = $total;
+                }
+            }
+
+            if($total == 0) {
+                $startFormula = 0;
+                $limitFormula = 0;
+
+            }
+
+            $navigate = [
+                'start' => $startFormula,
+                'limit' => $limitFormula,
+                'total' => $total,
+                'first' => '?page=1',
+                'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+                'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+                'last' => '?page=' . $pages
+            ];
+        
+            $this->viewIndex('admin_d/events', $data, $pagination, $navigate);
+
         }
 
         public function news() {
             $this->postModel = $this->model('post');
-            $data = $this->postModel->showNews();
-            $this->view('admin_d/news', $data);
+
+            // Get Page # in URL
+            if (!isset($_GET['page'])) {
+                $page = 1;
+            } elseif($_GET['page'] == 0) {
+                $page = 1;
+            } else {
+                $page = $_GET['page'];
+            }
+                
+            // Limit row displayed
+            $limit = 10;
+            $start = ($page - 1) * $limit;
+
+            $data = $this->postModel->showNewsIndex($start, $limit);
+
+            $pagination = $this->postModel->NoOfResults();
+
+            $total = count($pagination);
+            $pages = ceil($total/$limit);
+
+            // No URL bypass
+            if($pages == 0) {
+                $pages = 1;
+            }
+            if($page > $pages) {
+                redirect('admin/news?page='.$pages);
+            }
+
+            $startFormula = $start + 1;
+            $limitFormula = $startFormula - 1 + $limit;
+
+            if($page == $pages) {
+                if ($limitFormula >= $total) {
+                    $limitFormula = $total;
+                }
+            }
+
+            if($total == 0) {
+                $startFormula = 0;
+                $limitFormula = 0;
+
+            }
+
+            $navigate = [
+                'start' => $startFormula,
+                'limit' => $limitFormula,
+                'total' => $total,
+                'first' => '?page=1',
+                'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+                'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+                'last' => '?page=' . $pages
+            ];
+        
+            $this->viewIndex('admin_d/news', $data, $pagination, $navigate);
         }
 
         public function job_portal() {
             $this->jobModel = $this->model('job_portal');
-            $data = $this->jobModel->showJobs();
-            $this->view('admin_d/job_portal', $data);
+
+            // Get Page # in URL
+            if (!isset($_GET['page'])) {
+                $page = 1;
+            } elseif($_GET['page'] == 0) {
+                $page = 1;
+            } else {
+                $page = $_GET['page'];
+            }
+                
+            // Limit row displayed
+            $limit = 20;
+            $start = ($page - 1) * $limit;
+
+            $data = $this->jobModel->showJobsIndex($start, $limit);
+
+            $pagination = $this->jobModel->NoOfResults();
+
+            $total = count($pagination);
+            $pages = ceil($total/$limit);
+
+            // No URL bypass
+            if($pages == 0) {
+                $pages = 1;
+            }
+            if($page > $pages) {
+                redirect('admin/job_portal?page='.$pages);
+            }
+
+            $startFormula = $start + 1;
+            $limitFormula = $startFormula - 1 + $limit;
+
+            if($page == $pages) {
+                if ($limitFormula >= $total) {
+                    $limitFormula = $total;
+                }
+            }
+
+            if($total == 0) {
+                $startFormula = 0;
+                $limitFormula = 0;
+            }
+
+            $navigate = [
+                'start' => $startFormula,
+                'limit' => $limitFormula,
+                'total' => $total,
+                'first' => '?page=1',
+                'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+                'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+                'last' => '?page=' . $pages
+            ];
+        
+            $this->viewIndex('admin_d/job_portal', $data, $pagination, $navigate);
+
         }
 
         public function survey_list() {
             $this->surveyModel = $this->model('survey');
-            $data = $this->surveyModel->showSurvey();
-            $this->view('admin_d/survey', $data);
+
+            // Get Page # in URL
+            if (!isset($_GET['page'])) {
+                $page = 1;
+            } elseif($_GET['page'] == 0) {
+                $page = 1;
+            } else {
+                $page = $_GET['page'];
+            }
+                
+            // Limit row displayed
+            $limit = 10;
+            $start = ($page - 1) * $limit;
+
+            $data = $this->surveyModel->showSurveyIndex($start, $limit);
+
+            $pagination = $this->surveyModel->NoOfResults();
+
+            $total = count($pagination);
+            $pages = ceil($total/$limit);
+
+            // No URL bypass
+            if($pages == 0) {
+                $pages = 1;
+            }
+            if($page > $pages) {
+                redirect('admin/survey_list?page='.$pages);
+            }
+
+            $startFormula = $start + 1;
+            $limitFormula = $startFormula - 1 + $limit;
+
+            if($page == $pages) {
+                if ($limitFormula >= $total) {
+                    $limitFormula = $total;
+                }
+            }
+
+            if($total == 0) {
+                $startFormula = 0;
+                $limitFormula = 0;
+
+            }
+
+            $navigate = [
+                'start' => $startFormula,
+                'limit' => $limitFormula,
+                'total' => $total,
+                'first' => '?page=1',
+                'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+                'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+                'last' => '?page=' . $pages
+            ];
+        
+            $this->viewIndex('admin_d/survey', $data, $pagination, $navigate);
         }
     
 

@@ -6,8 +6,38 @@
             $this->db = new Database;
         }
 
-        public function showNews(){
-        $this->db->query('SELECT * FROM posts ORDER BY created_at ASC;');
+        /*      
+        public function showNews() {
+            $this->db->query('SELECT * FROM posts ORDER BY created_at ASC;');
+                $row = $this->db->resultSet();
+                if($row > 0){
+                    return $row;
+                }
+        } 
+        */
+        
+        public function showNewsHome(){
+            $this->db->query('SELECT * FROM posts ORDER BY created_at DESC LIMIT 3;');
+                $row = $this->db->resultSet();
+                if($row > 0){
+                    return $row;
+            }
+        }
+
+        public function showNewsIndex($page, $rowsperpage){
+            $this->db->query('SELECT * FROM posts ORDER BY created_at DESC LIMIT :page, :rowsperpage');
+            $this->db->bind(':page', $page);
+            $this->db->bind(':rowsperpage', $rowsperpage);
+            
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+
+        public function NoOfResults() {
+            $this->db->query('SELECT ALL id FROM posts'); 
+
             $row = $this->db->resultSet();
             if($row > 0){
                 return $row;

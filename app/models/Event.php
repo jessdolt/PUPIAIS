@@ -6,6 +6,44 @@
             $this->db = new Database;
         }
 
+        /*        
+        public function showEvent(){
+            $this->db->query('SELECT * from events');
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        } 
+        */
+
+        public function showEventHome(){
+            $this->db->query('SELECT * FROM events ORDER BY created_at DESC LIMIT 3;');
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+
+        public function showEventsIndex($page, $rowsperpage){
+            $this->db->query('SELECT * FROM events ORDER BY created_at DESC LIMIT :page, :rowsperpage');
+            $this->db->bind(':page', $page);
+            $this->db->bind(':rowsperpage', $rowsperpage);
+            
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+
+        public function NoOfResults() {
+            $this->db->query('SELECT ALL id FROM events'); 
+
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+
         public function addEvent($data){
             $this->db->query('INSERT INTO events(title,description,image) VALUES (:title,:description,:image)');
 
@@ -17,14 +55,6 @@
                 return true;
             } else{
                 return false;
-            }
-        }
-
-        public function showEvent(){
-            $this->db->query('SELECT * from events');
-            $row = $this->db->resultSet();
-            if($row > 0){
-                return $row;
             }
         }
 

@@ -6,6 +6,44 @@
             $this->db = new Database;
         }
 
+        /*         
+        public function showJobs(){
+            $this->db->query('SELECT * from job_portal');
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        } 
+        */
+
+        public function showJobsHome(){
+            $this->db->query('SELECT * FROM job_portal ORDER BY posted_on DESC LIMIT 3;');
+                $row = $this->db->resultSet();
+                if($row > 0){
+                    return $row;
+            }
+        }
+
+        public function showJobsIndex($page, $rowsperpage){
+            $this->db->query('SELECT * FROM job_portal ORDER BY posted_on DESC LIMIT :page, :rowsperpage');
+            $this->db->bind(':page', $page);
+            $this->db->bind(':rowsperpage', $rowsperpage);
+            
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+
+        public function NoOfResults() {
+            $this->db->query('SELECT ALL id FROM job_portal'); 
+
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+
         public function addJob($data){
             $this->db->query('INSERT INTO job_portal (company_logo, work_status, job_status, avail_pos, company_name, job_title, description, others) VALUES (:company_logo, :work_status, :job_status, :avail_pos, :company_name, :job_title, :job_description, :others)');
 
@@ -22,14 +60,6 @@
                 return true;
             } else{
                 return false;
-            }
-        }
-
-        public function showJobs(){
-            $this->db->query('SELECT * from job_portal');
-            $row = $this->db->resultSet();
-            if($row > 0){
-                return $row;
             }
         }
 

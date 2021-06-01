@@ -6,9 +6,9 @@
         }
 
         public function index(){
-            $data = $this->surveyModel->showSurvey();
+/*             $data = $this->surveyModel->showSurvey();
 
-            $this->view('survey/index', $data);
+            $this->view('survey/index', $data); */
         }
 
         public function add_survey(){

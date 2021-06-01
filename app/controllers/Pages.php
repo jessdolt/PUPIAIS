@@ -42,8 +42,15 @@ class Pages extends Controller{
     }
 
     public function home() {
-        $data = []; 
-        $this->view('pages/home', $data);
+        $this->postModel = $this->model('post');
+        $this->eventModel = $this->model('event');
+        $this->jobModel = $this->model('job_portal');
+
+        $news = $this->postModel->showNewsHome();
+        $events = $this->eventModel->showEventHome();
+        $job_portal = $this->jobModel->showJobsHome();
+
+        $this->viewHome('pages/home', $news, $events, $job_portal);
     }
 
     public function login(){
