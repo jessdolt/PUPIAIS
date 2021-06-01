@@ -50,13 +50,7 @@
             $this->eventModel = $this->model('Event');
 
             // Get Page # in URL
-            if (!isset($_GET['page'])) {
-                $page = 1;
-            } elseif($_GET['page'] == 0) {
-                $page = 1;
-            } else {
-                $page = $_GET['page'];
-            }
+            $page = $this->getPage();
                 
             // Limit row displayed
             $limit = 10;
@@ -109,15 +103,9 @@
 
         public function news() {
             $this->postModel = $this->model('post');
-
+           
             // Get Page # in URL
-            if (!isset($_GET['page'])) {
-                $page = 1;
-            } elseif($_GET['page'] == 0) {
-                $page = 1;
-            } else {
-                $page = $_GET['page'];
-            }
+            $page = $this->getPage();
                 
             // Limit row displayed
             $limit = 10;
@@ -231,13 +219,7 @@
             $this->surveyModel = $this->model('survey');
 
             // Get Page # in URL
-            if (!isset($_GET['page'])) {
-                $page = 1;
-            } elseif($_GET['page'] == 0) {
-                $page = 1;
-            } else {
-                $page = $_GET['page'];
-            }
+            $page = $this->getPage();
                 
             // Limit row displayed
             $limit = 10;
@@ -315,5 +297,20 @@
             ];
 
             $this->view('admin_d/survey_report', $data);
+    }
+
+    public function getPage() {
+
+        // Get Page # in URL
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        } elseif($_GET['page'] == 0) {
+            $page = 1;
+        } else {
+            $page = $_GET['page'];
+        }
+
+        return $page;
+
     }
 }
