@@ -36,10 +36,11 @@
             <path d="M32.6007 15.413C32.0683 14.8805 31.2082 14.8805 30.6758 15.413L24 22.0751L17.3242 15.3993C16.7918 14.8669 15.9317 14.8669 15.3993 15.3993C14.8669 15.9317 14.8669 16.7918 15.3993 17.3242L22.0751 24L15.3993 30.6758C14.8669 31.2082 14.8669 32.0683 15.3993 32.6007C15.9317 33.1331 16.7918 33.1331 17.3242 32.6007L24 25.9249L30.6758 32.6007C31.2082 33.1331 32.0683 33.1331 32.6007 32.6007C33.1331 32.0683 33.1331 31.2082 32.6007 30.6758L25.9249 24L32.6007 17.3242C33.1195 16.8055 33.1195 15.9317 32.6007 15.413V15.413Z"/>
         </svg>
         <ul>
-            <li><a href="<?php URLROOT; ?>/pages/home" class="active">Home</a></li>
-            <li><a href="#">News</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Jobs</a></li>
+            <li><a href="<?php echo URLROOT; ?>/pages/home" <?php if($url['1'] == "home") { echo 'class="active"'; }?>>Home</a></li>
+            <li><a href="<?php echo URLROOT; ?>/pages/news" <?php if($url['1'] == "news") { echo 'class="active"'; }?>>News</a></li>
+            <li><a href="<?php echo URLROOT; ?>/pages/events" <?php if($url['1'] == "events") { echo 'class="active"'; }?>>Events</a></li>
+            <li><a href="<?php echo URLROOT; ?>/pages/jobs" <?php if($url['1'] == "jobs") { echo 'class="active"'; }?>>Jobs</a></li>
+
         </ul>
         <button type="button"><?php echo $_SESSION['name'] ?></button>
         <div class="userContainer">

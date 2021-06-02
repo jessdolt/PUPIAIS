@@ -24,6 +24,14 @@
             }
         }
 
+        public function showEventsList(){
+            $this->db->query('SELECT * FROM events ORDER BY created_at DESC LIMIT 10;');
+                $row = $this->db->resultSet();
+                if($row > 0){
+                    return $row;
+            }
+        }
+
         public function showEventsIndex($page, $rowsperpage){
             $this->db->query('SELECT * FROM events ORDER BY created_at DESC LIMIT :page, :rowsperpage');
             $this->db->bind(':page', $page);
@@ -37,6 +45,15 @@
 
         public function NoOfResults() {
             $this->db->query('SELECT ALL id FROM events'); 
+
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+
+        public function NoOfResultsOld() {
+            $this->db->query('SELECT ALL id FROM events ORDER BY created_at DESC LIMIT 18446744073709551610 OFFSET 10'); 
 
             $row = $this->db->resultSet();
             if($row > 0){
