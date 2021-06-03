@@ -52,6 +52,60 @@
             $this->view('admin_d/alumni', $data);
         }
 
+        public function news() {
+            $this->postModel = $this->model('post');
+           
+            // Get Page # in URL
+            $page = $this->getPage();
+                
+            // Limit row displayed
+            $limit = 10;
+            $start = ($page - 1) * $limit;
+
+            $posts = $this->postModel->showNewsIndex($start, $limit);
+
+            $pagination = $this->postModel->NoOfResults();
+
+            $total = count($pagination);
+            $pages = ceil($total/$limit);
+
+            // No URL bypass
+            if($pages == 0) {
+                $pages = 1;
+            }
+            if($page > $pages) {
+                redirect('admin/news?page='.$pages);
+            }
+
+            $startFormula = $start + 1;
+            $limitFormula = $startFormula - 1 + $limit;
+
+            if($page == $pages) {
+                if ($limitFormula >= $total) {
+                    $limitFormula = $total;
+                }
+            }
+
+            if($total == 0) {
+                $startFormula = 0;
+                $limitFormula = 0;
+
+            }
+
+            $data = [
+                'news' => $posts,
+                'start' => $startFormula,
+                'limit' => $limitFormula,
+                'total' => $total,
+                'first' => '?page=1',
+                'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+                'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+                'last' => '?page=' . $pages
+            ];
+        
+            $this->view('admin_d/news', $data);
+        }
+
         public function events(){
             $this->eventModel = $this->model('Event');
 
@@ -107,59 +161,7 @@
 
         }
 
-        public function news() {
-            $this->postModel = $this->model('post');
-           
-            // Get Page # in URL
-            $page = $this->getPage();
-                
-            // Limit row displayed
-            $limit = 10;
-            $start = ($page - 1) * $limit;
 
-            $posts = $this->postModel->showNewsIndex($start, $limit);
-
-            $pagination = $this->postModel->NoOfResults();
-
-            $total = count($pagination);
-            $pages = ceil($total/$limit);
-
-            // No URL bypass
-            if($pages == 0) {
-                $pages = 1;
-            }
-            if($page > $pages) {
-                redirect('admin/news?page='.$pages);
-            }
-
-            $startFormula = $start + 1;
-            $limitFormula = $startFormula - 1 + $limit;
-
-            if($page == $pages) {
-                if ($limitFormula >= $total) {
-                    $limitFormula = $total;
-                }
-            }
-
-            if($total == 0) {
-                $startFormula = 0;
-                $limitFormula = 0;
-
-            }
-
-            $data = [
-                'news' => $posts,
-                'start' => $startFormula,
-                'limit' => $limitFormula,
-                'total' => $total,
-                'first' => '?page=1',
-                'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
-                'next' => '?page='. ($page == $pages ? $pages : $page + 1),
-                'last' => '?page=' . $pages
-            ];
-        
-            $this->view('admin_d/news', $data);
-        }
 
         public function job_portal() {
             $this->jobModel = $this->model('job_portal');
