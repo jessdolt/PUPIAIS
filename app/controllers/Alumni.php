@@ -52,9 +52,9 @@ class Alumni extends Controller{
         //Add Alumni
         public function add(){
             $this->userModel = $this->model('user');    
-            $code = $this->alumniModel->showDepartment();
+            $courses = $this->alumniModel->showCourses();
 
-                $batch = $this->alumniModel->showBatch();
+            $batch = $this->alumniModel->showBatch();
             if($_SERVER['REQUEST_METHOD']=='POST') {
                 $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
                 // $pass = rand();
@@ -73,8 +73,7 @@ class Alumni extends Controller{
                     'postal' => ($_POST['postal']),
                     'contact_no' => ($_POST['contact_no']),
                     'email' => ($_POST['email']),
-                    'employment' => ($_POST['employment']),
-                    'department' => ($_POST['department']),
+                    'course' => ($_POST['course']),
                     'batch' => ($_POST['batch']),
                     'student_no_error' => '',
                     'first_name_error' => '',
@@ -88,9 +87,8 @@ class Alumni extends Controller{
                     'postal_error' => '',
                     'contact_no_error' => '',
                     'email_error' => '',
-                    'employment_error' => '',
-                    'department_error' => '',
-                    'batch_error' => '',
+                    'course_error' => '',
+                    'batch_error' => ''
                 ];
 
                 if (empty($data['student_no'])){
@@ -126,18 +124,15 @@ class Alumni extends Controller{
                 if (empty($data['email'])){
                     $data['email_error'] = "Please input the Alumni's Email Address";
                 }
-                if (empty($data['employment'])){
-                    $data['employment_error'] = "Please input the Alumni's employment status";
-                }
-                if (empty($data['department'])){
-                    $data['department_error'] = "Please input the Alumni's Department";
+                if (empty($data['course'])){
+                    $data['course_error'] = "Please input the Alumni's Department";
                 }
                 if (empty($data['batch'])){
                     $data['batch_error'] = "Please input the Alumni's Batch";
                 }
 
                 // print_r($data);
-                if (empty($data['student_no_error']) && empty($data['first_name_error']) && empty($data['last_name_error']) && empty($data['middle_name_error']) && empty($data['birth_date_error']) && empty($data['address_error']) && empty($data['city_error']) && empty($data['region_error']) && empty($data['postal_error']) && empty($data['contact_no_error']) && empty($data['email_error']) && empty($data['employment_error']) && empty($data['departmentError']) && empty($data['batchError'])){
+                if (empty($data['student_no_error']) && empty($data['first_name_error']) && empty($data['last_name_error']) && empty($data['middle_name_error']) && empty($data['birth_date_error']) && empty($data['address_error']) && empty($data['city_error']) && empty($data['region_error']) && empty($data['postal_error']) && empty($data['contact_no_error']) && empty($data['email_error']) && empty($data['departmentError']) && empty($data['batchError'])){
                         if($this->alumniModel->addAlumni($data)){
                             $pass = '12345';
                             $pass = password_hash($pass, PASSWORD_DEFAULT);
@@ -173,9 +168,9 @@ class Alumni extends Controller{
                 'postal' => '',
                 'contact_no' => '',
                 'email' => '',
-                'employment' => '',
+            
                 'department' => '',
-                'departmentCode' => $code,
+                'courseCode' => $courses,
                 'batch' => $batch,
                 'student_no_error' => '',
                 'first_name_error' => '',
@@ -189,7 +184,7 @@ class Alumni extends Controller{
                 'postal_error' => '',
                 'contact_no_error' => '',
                 'email_error' => '',
-                'employment_error' => '',
+            
                 'department_error' => '',
                 'batch_error' => '',
             ];
@@ -202,7 +197,8 @@ class Alumni extends Controller{
     public function edit($id){
         $alumni = $this->alumniModel->getAlumniById($id);
         $batch = $this->alumniModel->showBatch();
-        $dep = $this->alumniModel->showDepartment();
+        $courses = $this->alumniModel->showCourses();
+
 
         if($_SERVER['REQUEST_METHOD']=='POST') {
                 
@@ -221,8 +217,8 @@ class Alumni extends Controller{
                 'postal' => ($_POST['postal']),
                 'contact_no' => ($_POST['contact_no']),
                 'email' => ($_POST['email']),
-                'employment' => ($_POST['employment']),
-                'department' => ($_POST['department']),
+            
+                'course' => ($_POST['course']),
                 'batch' => ($_POST['batch']),
 
             ];
@@ -253,11 +249,11 @@ class Alumni extends Controller{
                 'postal' => $alumni->postal,
                 'contact_no' => $alumni->contact_no,
                 'email' => $alumni->email,
-                'employment' => $alumni->employment,
+            
                 'batch' => $alumni->batchID,
                 'year'  => $batch,
-                'department' => $alumni->departmentID,
-                'dept_code' => $dep
+                'courseID' => $alumni->courseID,
+                'course' => $courses
             ];
     
         }
@@ -275,32 +271,73 @@ class Alumni extends Controller{
         $this->view('alumni/tables', $data);
     }
 
-    public function delete($id) {
-        if($this->alumniModel->deleteAlumni($id)){
-            redirect('admin/users');
+    public function delete() {
+        $this->userModel = $this->model('user');
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+            $todelete = $_POST['checkbox'];
+            array_print($_POST);
+
+            foreach($todelete as $alumni){
+                foreach($alumni as $student_no => $id){
+                    if($this->alumniModel->deleteAlumni($id)){
+                        if($this->userModel->deleteUserByStudNo($student_no)){
+                            redirect('admin/alumni');
+                        }
+                        else{
+                            die("Something went wrong!");
+                        }
+                    }
+                }
+            }
+            // foreach ($todelete as $id) {
+
+            //     if ($this->alumniModel->deleteAlumni($id)){
+            //         redirect('admin/alumni');
+            //     }
+            //     else {
+            //         die("There's an error deleting this record");
+            //     }
+            // }
         }
     }
 
+    public function deleteRow($id,$studNo) {
+        $this->userModel = $this->model('user');
 
+        if($this->alumniModel->deleteAlumni($id)){
+            if($this->userModel->deleteUserbyStudNo($studNo)){
+                redirect('admin/alumni');   
+            }
+        }
+    }
     
-    public function show($dept_id,$batch_id){
+    public function show($course_id,$batch_id){
         $this->groupModel = $this->model('group_model');
 
-
         $department = $this->alumniModel->showDepartment();
-        $classification = $this->groupModel->showClassificaition();
-        $alumni = $this->alumniModel->getAlumniByClass($dept_id,$batch_id);
-        
-        $dept_name = $this->alumniModel->getDepartmentById($dept_id);
+        $courses = $this->alumniModel->showCourses();
+        $classification = $this->groupModel->showClassification();
+
+        $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
+        $alumniCount = $this->alumniModel->showAlumni();
+
+    
+
+        $alumni = $this->alumniModel->getAlumniByClass($course_id,$batch_id);
+        $course_name = $this->alumniModel->getCourseById($course_id);
         $batch_name = $this->alumniModel->getBatchById($batch_id);
 
         $data = [
             'alumni' => $alumni,
             'department' => $department,
+            'courses' => $courses,
             'classification' => $classification,
             'isPreview' => 0,
-            'title' => $dept_name->dept_code,
-            'batch' => $batch_name->year
+            'title' => $course_name->course_code,
+            'batch' => $batch_name->year,
+            'alumniCount' => count($alumniCount),
+            'alumniPerCourse' => $alumniCountPerCourse
         ];
 
         $this->view('admin_d/alumni', $data);
@@ -310,9 +347,12 @@ class Alumni extends Controller{
     public function preview(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $this->groupModel = $this->model('group_model');
+            $alumniCount = $this->alumniModel->showAlumni();
+            $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
             $department = $this->alumniModel->showDepartment();
-            $classification = $this->groupModel->showClassificaition();
- 
+            $courses = $this->alumniModel->showCourses();
+            $classification = $this->groupModel->showClassification();
+            
            $file = $_FILES['csv_file'];
            $fileRealName = $file['name'];
            $fileName = $file['tmp_name'];
@@ -332,36 +372,36 @@ class Alumni extends Controller{
                }
                fclose($openFile);
            }
-
-        //    foreach($alumniList as $alumni){
-        //        echo '<br>';
-        //        echo $alumni[0];
-        //        echo '<br>';
-        //        echo $alumni[1];
-        //    }
             
             $data= [
                 'alumni' => [],
+                'courses' => $courses,
                 'department' => $department,
                 'classification' => $classification,
                 'alumniList' => $alumniList,
                 'isPreview' => 1,
                 'fileName' => $fileRealName,
                 'title' => 'All Alumni',
-                'batch' => '',                
+                'batch' => '',
+                'alumniCount' => count($alumniCount),
+                'alumniPerCourse' => $alumniCountPerCourse
             ];
 
           $this->view('admin_d/alumni', $data);
         }        
     }
 
-    public function previeww($dept_id,$batch_id){
+
+    public function previeww($course_id,$batch_id){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $this->groupModel = $this->model('group_model');
+
+            $alumniCount = $this->alumniModel->showAlumni();
+            $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
             $department = $this->alumniModel->showDepartment();
-            $classification = $this->groupModel->showClassificaition();
-            
-           $dept_name = $this->alumniModel->getDepartmentById($dept_id);
+            $classification = $this->groupModel->showClassification();
+            $courses = $this->alumniModel->showCourses();
+           $course_name = $this->alumniModel->getCourseById($course_id);
            $batch_name = $this->alumniModel->getBatchById($batch_id);
 
  
@@ -384,23 +424,19 @@ class Alumni extends Controller{
                }
                fclose($openFile);
            }
-
-        //    foreach($alumniList as $alumni){
-        //        echo '<br>';
-        //        echo $alumni[0];
-        //        echo '<br>';
-        //        echo $alumni[1];
-        //    }
             
             $data= [
                 'alumni' => [],
                 'department' => $department,
+                'courses' => $courses,
                 'classification' => $classification,
                 'alumniList' => $alumniList,
                 'isPreview' => 1,
                 'fileName' => $fileRealName,
-                'title' => $dept_name->dept_code,
-                'batch' => $batch_name->year
+                'title' => $course_name->course_code,
+                'batch' => $batch_name->year,
+                'alumniCount' => count($alumniCount),
+                'alumniPerCourse' => $alumniCountPerCourse   
             ];
 
           $this->view('admin_d/alumni', $data);
@@ -423,7 +459,7 @@ class Alumni extends Controller{
             $duplication = array();
 
             foreach($alumni as $data){
-                $data['department'] = $this->checkDept($data['department']);
+                $data['course'] = $this->checkCourse($data['course']);
                 $data['batch'] = $this->checkBatch($data['batch']);
                 //array_print($data);
                 
@@ -439,6 +475,7 @@ class Alumni extends Controller{
                     $newData = [
                         'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
                         'email' => $data['email'],
+                        'student_no' => $data['student_no'],
                         'password' => $pass,
                         'user_type' => 2
                     ];
@@ -456,9 +493,9 @@ class Alumni extends Controller{
         }
     }
 
-    public function checkDept($dept){
-        $dept_code = $this->alumniModel->getDepartmentByCode($dept);
-        return $dept_code->id;
+    public function checkCourse($code){
+        $course_code = $this->alumniModel->getCourseByCode($code);
+        return $course_code->id;
     }
 
     public function checkBatch($batch){

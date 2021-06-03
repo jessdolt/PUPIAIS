@@ -11,7 +11,7 @@
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M9.47149 19.0139C9.23783 19.0143 9.0114 18.9329 8.83149 18.7839C8.73023 18.6999 8.64653 18.5968 8.58517 18.4805C8.52382 18.3641 8.48603 18.2368 8.47395 18.1058C8.46187 17.9749 8.47576 17.8428 8.5148 17.7172C8.55385 17.5916 8.61728 17.4749 8.70149 17.3739L13.1815 12.0139L8.86149 6.64386C8.77842 6.54157 8.71639 6.42387 8.67896 6.29753C8.64153 6.17119 8.62943 6.0387 8.64337 5.90767C8.65731 5.77665 8.69701 5.64966 8.76018 5.53403C8.82335 5.41839 8.90876 5.31638 9.01149 5.23386C9.11495 5.14282 9.23612 5.07415 9.36738 5.03216C9.49864 4.99017 9.63717 4.97577 9.77426 4.98986C9.91135 5.00394 10.0441 5.04621 10.164 5.11401C10.284 5.18181 10.3887 5.27368 10.4715 5.38386L15.3015 11.3839C15.4486 11.5628 15.529 11.7872 15.529 12.0189C15.529 12.2505 15.4486 12.4749 15.3015 12.6539L10.3015 18.6539C10.2012 18.7749 10.0737 18.8705 9.92953 18.9331C9.78532 18.9956 9.62839 19.0233 9.47149 19.0139Z" fill="#A63F3F"/>
                                 </svg>
-                                Add New
+                                Edit Alumni
                             </h2>
                             <section class="infoCon">
                                 <h3>personal information</h3>
@@ -20,28 +20,28 @@
                                         <div>
                                             <label for="first-name" class="outsideLabel">First Name:</label>
                                             <div class="textFieldContainer">
-                                                <input type="text" name="first_name" value="<?php echo($data['first_name'])?>"id="first-name"required>
+                                                <input type="text" name="first_name" value="<?php echo($data['first_name'])?>"id="first-name">
                                                 <span class="error")></span>
                                             </div>
                                         </div>
                                         <div>
                                             <label for="last-name" class="outsideLabel">Last Name:</label>
                                             <div class="textFieldContainer">
-                                                <input type="text" name="last_name" value="<?php echo($data['last_name'])?>" id="last-name"required>
+                                                <input type="text" name="last_name" value="<?php echo($data['last_name'])?>" id="last-name">
                                                 <span class="error"></span>
                                             </div>
                                         </div>
                                         <div>
                                             <label for="middle-name" class="outsideLabel">Middle Name:</label>
                                             <div class="textFieldContainer">
-                                                <input type="text" name="middle_name" value="<?php echo($data['middle_name'])?>" id="middle-name"required>
+                                                <input type="text" name="middle_name" value="<?php echo($data['middle_name'])?>" id="middle-name">
                                                 <span class="error"></span>
                                             </div>
                                         </div>
                                         <div>
                                             <label for="birth-date" class="outsideLabel">Birth Date:</label>
                                             <div class="textFieldContainer">
-                                                <input type="date" name="birth_date" value="<?php echo($data['birth_date'])?>" id="birth-date"required>
+                                                <input type="date" name="birth_date" value="<?php echo($data['birth_date'])?>" id="birth-date">
                                                 <span class="error"></span>
                                             </div>
                                         </div>
@@ -53,13 +53,7 @@
                                                 <input type="radio" class="female" name="gender" id="female-id" value="Female" <?php echo ($data['gender'] == 'Female') ? 'checked' : '' ?>>
                                             </fieldset>
                                         </div>
-                                        <div>
-                                            <label class="outsideLabel">Employment Status:</label>
-                                            <fieldset class="radioBtnContainer">
-                                                <input type="radio" class="eStatus" name="employment" id="employed-id" value="Employed" <?php echo ($data['employment'] == 'Employed') ? 'checked' : '' ?>>
-                                                <input type="radio" class="eStatus" name="employment" id="unemployed-id" value="Unemployed" <?php echo ($data['employment'] == 'Unemployed') ? 'checked' : '' ?>>
-                                            </fieldset>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </section>
@@ -70,42 +64,42 @@
                                         <div>
                                             <label for="address-line1" class="outsideLabel">Address Line 1:</label>
                                             <div class="textFieldContainer">
-                                                <input type="text" name="address" value="<?php echo($data['address'])?>"id="address-line1"required>
+                                                <input type="text" name="address" value="<?php echo($data['address'])?>"id="address-line1">
                                                 <span class="error"></span>
                                             </div>
                                         </div>
                                         <div>
                                             <label for="city-id" class="outsideLabel">City:</label>
                                             <div class="textFieldContainer">
-                                                <input type="text" name="city" value="<?php echo($data['city'])?>" id="city-id"required>
+                                                <input type="text" name="city" value="<?php echo($data['city'])?>" id="city-id">
                                                 <span class="error"></span>
                                             </div>
                                         </div>
                                         <div>
                                             <label for="spr-id" class="outsideLabel">State | Province | Region:</label>
                                             <div class="textFieldContainer">
-                                                <input type="text" name="region" value="<?php echo($data['region'])?>"id="spr-id"required>
+                                                <input type="text" name="region" value="<?php echo($data['region'])?>"id="spr-id">
                                                 <span class="error"></span>
                                             </div>
                                         </div>
                                         <div>
                                             <label for="zpc-id" class="outsideLabel">Zip | Postal Code:</label>
                                             <div class="textFieldContainer">
-                                                <input type="tel" name="postal" value="<?php echo($data['postal'])?> "id="zpc-id"required>
+                                                <input type="tel" name="postal" value="<?php echo($data['postal'])?> "id="zpc-id">
                                                 <span class="error"></span>
                                             </div>
                                         </div>
                                         <div>
                                             <label for="contact-num-id" class="outsideLabel">Contact Number:</label>
                                             <div class="textFieldContainer">
-                                                <input type="tel" name="contact_no" value="<?php echo($data['contact_no'])?>" id="contact-num-id"required>
+                                                <input type="tel" name="contact_no" value="<?php echo($data['contact_no'])?>" id="contact-num-id">
                                                 <span class="error"></span>
                                             </div>
                                         </div>
                                         <div>
                                             <label for="email-id" class="outsideLabel">Email:</label>
                                             <div class="textFieldContainer">
-                                                <input type="email" name="email" value="<?php echo($data['email'])?>"id="email-id"required>
+                                                <input type="email" name="email" value="<?php echo($data['email'])?>"id="email-id">
                                                 <span class="error"></span>
                                             </div>
                                         </div>
@@ -117,18 +111,11 @@
                                 <div class="infoSubCon">
                                     <div class="smallComponentsContainer">
                                         <div>
-                                            <label for="student-id" class="outsideLabel">Student ID:</label>
+                                            <label for="course-id" class="outsideLabel">Course:</label>
                                             <div class="textFieldContainer">
-                                                <input type="text" name="student_no" value="<?php echo($data['student_no'])?>" id="student-id"required>
-                                                <span class="error"></span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <label for="department-id" class="outsideLabel">Department:</label>
-                                            <div class="textFieldContainer">
-                                                <select name="department" id="department-id"? value="<?php echo($data['department'])?>">" required>
-                                                <?php foreach($data['dept_code'] as $code):?>
-                                                    <option value="<?php echo $code->id ?>" <?php if($data['department']==$code->id) echo 'selected="selected"'; ?> ><?php echo $code->dept_code;?></option>
+                                                <select name="course" id="course-id" value="<?php echo($data['course'])?>" >
+                                                <?php foreach($data['course'] as $code):?>
+                                                    <option value="<?php echo $code->id ?>" <?php if($data['courseID']==$code->id) echo 'selected="selected"'; ?> ><?php echo $code->course_code;?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                                 <span class="error"></span>
@@ -137,20 +124,31 @@
                                         <div>
                                             <label for="batch-id" class="outsideLabel">Batch:</label>
                                             <div class="textFieldContainer">
-                                                <select name="batch" id="batch-id" value="<?php echo($data['batch'])?>"required>
+                                                <select name="batch" id="batch-id" >
                                                     <?php foreach($data['year'] as $batch):?>
-                                                        <option value="<?php echo $batch->id ?>" <?php if($data['batch']==$batch->id) echo 'selected="selected"'; ?>><?php  echo 'Batch ' . $batch->year;?></option>
+                                                        <option value="<?php echo $batch->id?>" data-batch="<?php echo $batch->year?> <?php echo($data['batch']==$batch->id) ? 'selected="selected"' : '' ?> ">
+                                                        Batch <?php echo $batch->year;?>
+                                                        </option>
                                                     <?php endforeach; ?>
                                                 </select>
                                                 <span class="error"></span>
                                             </div>
                                         </div>
+                                        <div>
+                                            <label for="student-id" class="outsideLabel">Student ID:</label>
+                                            <div class="textFieldContainer">
+                                                <input type="text" name="student_no" value="<?php echo($data['student_no'])?>" id="student-id">
+                                                <span class="error"></span>
+                                            </div>
+                                        </div>
+                                       
+                                        
                                     </div>
                                 </div>
                             </section>
                         </div>
                         <div class="form">
-                            <a href="users.html" class="closeIcon">
+                            <a href="<?php echo URLROOT;?>/admin/alumni" class="closeIcon">
                                 <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M16.7624 15L22.1374 9.63749C22.3728 9.40211 22.505 9.08287 22.505 8.74999C22.505 8.41711 22.3728 8.09787 22.1374 7.86249C21.902 7.62711 21.5828 7.49487 21.2499 7.49487C20.917 7.49487 20.5978 7.62711 20.3624 7.86249L14.9999 13.2375L9.63742 7.86249C9.40204 7.62711 9.0828 7.49487 8.74992 7.49487C8.41705 7.49487 8.0978 7.62711 7.86242 7.86249C7.62704 8.09787 7.49481 8.41711 7.49481 8.74999C7.49481 9.08287 7.62704 9.40211 7.86242 9.63749L13.2374 15L7.86242 20.3625C7.74526 20.4787 7.65227 20.6169 7.58881 20.7693C7.52535 20.9216 7.49268 21.085 7.49268 21.25C7.49268 21.415 7.52535 21.5784 7.58881 21.7307C7.65227 21.883 7.74526 22.0213 7.86242 22.1375C7.97863 22.2547 8.11688 22.3476 8.2692 22.4111C8.42153 22.4746 8.58491 22.5072 8.74992 22.5072C8.91494 22.5072 9.07832 22.4746 9.23064 22.4111C9.38297 22.3476 9.52122 22.2547 9.63742 22.1375L14.9999 16.7625L20.3624 22.1375C20.4786 22.2547 20.6169 22.3476 20.7692 22.4111C20.9215 22.4746 21.0849 22.5072 21.2499 22.5072C21.4149 22.5072 21.5783 22.4746 21.7306 22.4111C21.883 22.3476 22.0212 22.2547 22.1374 22.1375C22.2546 22.0213 22.3476 21.883 22.411 21.7307C22.4745 21.5784 22.5072 21.415 22.5072 21.25C22.5072 21.085 22.4745 20.9216 22.411 20.7693C22.3476 20.6169 22.2546 20.4787 22.1374 20.3625L16.7624 15Z" fill="black" fill-opacity="0.87"/>
                                 </svg>

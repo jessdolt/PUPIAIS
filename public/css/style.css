@@ -332,13 +332,13 @@ thead, tbody, tfoot, th {
   letter-spacing: 0.025rem;
   font-weight: 400; }
 
-button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .btnContainer a {
+button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .pagination a, button, .alertModalContainer .alertModal div a, .home .mainContent .newsCon > a, .home .mainContent .eventsCon > a, .home .mainContent .jobCon > a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .allUser {
   font-weight: 500;
   text-transform: uppercase; }
-  button span, button a, .adminHeader a span, .mainNav button.active ~ .userContainer a:last-child span, .mainNav > a span, .adminNav .mainCategoryList .categoryContainer span, .userSurvey ~ .alumni .mainContent .container .form a span, .admin .pageSpecificHeader > div:first-child button span, .admin .pageSpecificHeader > div:first-child a span, button span, .alertModalContainer .alertModal div a span, .users .filterNav .btnContainer .manageUsers span, .users .filterNav .btnContainer a span, .adminHeader a a, .mainNav button.active ~ .userContainer a:last-child a, .mainNav > a a, .adminNav .mainCategoryList .categoryContainer a, .userSurvey ~ .alumni .mainContent .container .form a a, .admin .pageSpecificHeader > div:first-child button a, .admin .pageSpecificHeader > div:first-child a a, button a, .alertModalContainer .alertModal div a a, .users .filterNav .btnContainer .manageUsers a, .users .filterNav .btnContainer a a {
+  button span, button a, .adminHeader a span, .mainNav button.active ~ .userContainer a:last-child span, .mainNav > a span, .adminNav .mainCategoryList .categoryContainer span, .userSurvey ~ .alumni .mainContent .container .form button span, .userSurvey ~ .alumni .mainContent .container .form a span, .admin .pageSpecificHeader > div:first-child button span, .admin .pageSpecificHeader > div:first-child a span, .admin .mainContent .pagination a span, button span, .alertModalContainer .alertModal div a span, .home .mainContent .newsCon > a span, .home .mainContent .eventsCon > a span, .home .mainContent .jobCon > a span, .users .filterNav .btnContainer .manageUsers span, .users .filterNav .allUser span, .adminHeader a a, .mainNav button.active ~ .userContainer a:last-child a, .mainNav > a a, .adminNav .mainCategoryList .categoryContainer a, .userSurvey ~ .alumni .mainContent .container .form button a, .userSurvey ~ .alumni .mainContent .container .form a a, .admin .pageSpecificHeader > div:first-child button a, .admin .pageSpecificHeader > div:first-child a a, .admin .mainContent .pagination a a, button a, .alertModalContainer .alertModal div a a, .home .mainContent .newsCon > a a, .home .mainContent .eventsCon > a a, .home .mainContent .jobCon > a a, .users .filterNav .btnContainer .manageUsers a, .users .filterNav .allUser a {
     font-weight: 500; }
 
-input, a, p, span, button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .btnContainer a, textarea, select, option {
+input, a, p, span, button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .pagination a, button, .alertModalContainer .alertModal div a, .home .mainContent .newsCon > a, .home .mainContent .eventsCon > a, .home .mainContent .jobCon > a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .allUser, textarea, select, option {
   font-size: 1.4rem;
   font-family: 'Roboto', sans-serif; }
 
@@ -347,7 +347,10 @@ header h1 {
   font-size: 2.8rem; }
 
 h2 {
-  font-size: 2.4rem; }
+  font-size: 1.8rem; }
+  @media (min-width: 800px) {
+    h2 {
+      font-size: 2.4rem; } }
   @media (min-width: 1367px) {
     h2 {
       font-size: 3rem; } }
@@ -370,9 +373,39 @@ table tbody {
 .mainNav h1 {
   font-size: 1.4rem; }
 
-.mainContent .container h1 {
-  font-size: 3.6rem;
+.welcomeBox h2 {
+  font-size: 1.8rem; }
+  @media (min-width: 800px) {
+    .welcomeBox h2 {
+      font-size: 2.4rem; } }
+
+.card h3 {
+  font-size: 1.4rem;
   font-weight: 500; }
+  @media (min-width: 800px) {
+    .card h3 {
+      font-size: 2.4rem;
+      font-weight: 400; } }
+
+@media (min-width: 800px) {
+  .card.jobs h3 {
+    font-size: 1.4rem;
+    font-weight: 500; } }
+
+.card .date-posted {
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.6); }
+
+.card a {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 500; }
+
+.mainContent .container h1 {
+  font-size: 1.8rem;
+  font-weight: 500; }
+  @media (min-width: 800px) {
+    .mainContent .container h1 {
+      font-size: 3.6rem; } }
 
 .mainContent .container .surveyCard h3 {
   font-size: 2.4rem;
@@ -428,20 +461,31 @@ table tbody {
 
 .mainFooter h1 {
   font-family: 'Cinzel', serif;
+  font-weight: 700;
   font-size: 2.4rem;
-  font-weight: 700; }
+  font-size: 1.8rem; }
+  @media (min-width: 800px) {
+    .mainFooter h1 {
+      font-size: 2.4rem; } }
   .mainFooter h1 span {
-    font-size: 1.8rem;
     font-family: inherit;
     font-weight: inherit;
-    color: #A63F3F; }
+    color: #A63F3F;
+    letter-spacing: 0.15rem;
+    font-size: 1.4rem; }
+    @media (min-width: 800px) {
+      .mainFooter h1 span {
+        font-size: 1.8rem; } }
 
 .mainFooter .tagline {
   font-family: 'Poppins',sans-serif;
   text-transform: uppercase;
   font-style: italic;
   font-weight: 800;
-  font-size: 1.8rem; }
+  font-size: 1.6rem; }
+  @media (min-width: 800px) {
+    .mainFooter .tagline {
+      font-size: 1.8rem; } }
 
 .fullscreen {
   width: 100%;
@@ -466,9 +510,9 @@ table tbody {
     has 12px own padding*/
   padding: .4rem;
   width: 100%;
-  height: 5.6rem;
+  height: 6rem;
   position: fixed; }
-  @media (min-width: 1367px) {
+  @media (min-width: 800px) {
     .mainHeader, .headerShadow {
       height: 6rem;
       padding: 0 2.4rem; } }
@@ -483,7 +527,7 @@ table tbody {
     top: 57%;
     left: 50%;
     transform: translate(-50%, -43%); }
-    @media (min-width: 1367px) {
+    @media (min-width: 800px) {
       .mainHeader::before, .headerShadow::before {
         background-size: 9rem 9rem;
         height: 12rem;
@@ -507,19 +551,19 @@ table tbody {
     background-size: 6rem 6rem;
     background-color: #5C1C1C;
     color: #FFFFFF; }
-    @media (min-width: 1367px) {
+    @media (min-width: 800px) {
       .mainHeader::before {
         background-size: 9rem 9rem; } }
   .mainHeader h1 {
     display: none; }
-    @media (min-width: 1367px) {
+    @media (min-width: 800px) {
       .mainHeader h1 {
         /*unhide*/
         display: block; } }
   .mainHeader .hamburgerIcon, .mainHeader .notificationIcon {
     width: 4.8rem;
     height: 4.8rem; }
-    @media (min-width: 1367px) {
+    @media (min-width: 800px) {
       .mainHeader .hamburgerIcon, .mainHeader .notificationIcon {
         display: none; } }
 
@@ -605,7 +649,7 @@ table tbody {
   background-color: #5C1C1C;
   background-size: 4rem 4rem;
   background-position: center bottom 5rem; }
-  @media (min-width: 1367px) {
+  @media (min-width: 800px) {
     .mainNav {
       display: flex;
       align-items: center;
@@ -626,7 +670,7 @@ table tbody {
     width: 4.8rem;
     height: 4.8rem;
     align-self: center; }
-    @media (min-width: 1367px) {
+    @media (min-width: 800px) {
       .mainNav .closeIcon {
         display: none; } }
   .mainNav ul {
@@ -634,7 +678,7 @@ table tbody {
     display: flex;
     gap: .8rem;
     flex-flow: column; }
-    @media (min-width: 1367px) {
+    @media (min-width: 800px) {
       .mainNav ul {
         flex-flow: row; } }
     .mainNav ul a {
@@ -645,7 +689,7 @@ table tbody {
       border: #FFFFFF 0.1rem solid;
       color: #FFFFFF;
       text-align: center; }
-      @media (min-width: 1367px) {
+      @media (min-width: 800px) {
         .mainNav ul a {
           display: block;
           width: initial;
@@ -660,7 +704,7 @@ table tbody {
   .mainNav button {
     display: none;
     text-transform: capitalize; }
-    @media (min-width: 1367px) {
+    @media (min-width: 800px) {
       .mainNav button {
         background-color: #FFFFFF;
         color: rgba(0, 0, 0, 0.87);
@@ -715,7 +759,7 @@ table tbody {
   .mainNav h1 {
     text-align: center;
     align-self: flex-end; }
-    @media (min-width: 1367px) {
+    @media (min-width: 800px) {
       .mainNav h1 {
         display: none; } }
 
@@ -943,29 +987,64 @@ table tbody {
 .users .adminNav {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); }
 
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF; }
+  html::-webkit-scrollbar {
+    width: 0.5rem; }
+  html::-webkit-scrollbar-track {
+    background-color: #FFFFFF; }
+  html::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.38);
+    border-radius: 5rem; }
+
 .alumni {
   position: relative;
-  top: 10.6rem; }
+  top: 6rem; }
+  @media (min-width: 800px) {
+    .alumni {
+      top: 10.6rem; } }
   .alumni > section {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 2.4rem; }
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 1.6rem; }
+    @media (min-width: 800px) {
+      .alumni > section {
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: 2.4rem; } }
     .alumni > section .container {
-      grid-column: 3/11; }
+      margin: 0 1.6rem;
+      grid-column: 1/5; }
+      @media (min-width: 800px) {
+        .alumni > section .container {
+          grid-column: 3/11; } }
     .alumni > section .tint {
       display: grid;
-      grid-column: 1/13;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 2.4rem; }
-      .alumni > section .tint .container {
-        grid-column: 3/11; }
+      grid-column: 1/5;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 1.6rem; }
+      @media (min-width: 800px) {
+        .alumni > section .tint {
+          grid-column: 1/13;
+          grid-template-columns: repeat(12, 1fr);
+          column-gap: 2.4rem; } }
+    .alumni > section.mainContent .container {
+      margin: 0; }
+      @media (min-width: 800px) {
+        .alumni > section.mainContent .container {
+          margin: 0 1.6rem; } }
   .alumni .heroBox {
     position: relative;
     padding: 11.4rem 0 0;
-    background-image: url("../images/heroBoxBg.png");
-    background-size: cover;
+    background-image: url("../images/heroBoxBg2.png");
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position: center center; }
+    background-position: top 6rem center;
+    background-attachment: fixed; }
+    @media (min-width: 800px) {
+      .alumni .heroBox {
+        background-size: cover;
+        background-position: top -18rem center; } }
     .alumni .heroBox::before {
       content: '';
       position: absolute;
@@ -982,12 +1061,17 @@ table tbody {
     .alumni .heroBox .container {
       padding: 0.8rem 0; }
       .alumni .heroBox .container h1 {
-        padding-left: 1.6rem;
-        border-left: 0.6rem solid #C7B13F;
         font-family: 'Roboto Slab', serif;
-        font-size: 3.6rem;
+        padding-left: 0.6rem;
+        font-size: 2.4rem;
         line-height: 1.3;
-        flex: 1; }
+        flex: 1;
+        border-left: 0.4rem solid #C7B13F; }
+        @media (min-width: 800px) {
+          .alumni .heroBox .container h1 {
+            padding-left: 1.6rem;
+            font-size: 3.6rem;
+            border-left: 0.6rem solid #C7B13F; } }
 
 .userSurvey ~ .mainNav > * {
   display: none; }
@@ -1013,13 +1097,20 @@ table tbody {
   width: 100%;
   z-index: 24; }
   .userSurvey ~ .alumni .mainContent .container {
-    margin-top: 4.8rem;
-    margin-bottom: 4.8rem;
+    /* use longhand margin property 
+                because there is a shorthand declaration 
+                of margin for all .container class */
+    margin: 3.2rem 1.6rem;
     box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
     border-radius: 1rem;
-    padding: 0 4.2rem 8rem;
+    padding: 0 1.6rem 4.8rem;
     background-color: #FFFFFF;
     color: rgba(0, 0, 0, 0.87); }
+    @media (min-width: 800px) {
+      .userSurvey ~ .alumni .mainContent .container {
+        padding: 0 9.6rem 4.8rem;
+        margin-top: 4.8rem;
+        margin-bottom: 4.8rem; } }
     .userSurvey ~ .alumni .mainContent .container .form {
       gap: 2.4rem; }
       .userSurvey ~ .alumni .mainContent .container .form h1, .userSurvey ~ .alumni .mainContent .container .form h2 {
@@ -1046,8 +1137,11 @@ table tbody {
         align-self: center;
         width: 16rem; }
       .userSurvey ~ .alumni .mainContent .container .form button {
-        align-self: flex-end;
+        align-self: center;
         width: 18rem; }
+        @media (min-width: 800px) {
+          .userSurvey ~ .alumni .mainContent .container .form button {
+            align-self: flex-end; } }
 
 .admin {
   position: relative;
@@ -1298,11 +1392,11 @@ table tbody {
       padding: 2.4rem;
       border-bottom-left-radius: 1rem;
       border-bottom-right-radius: 1rem; }
-      .admin .mainContent .pagination button {
+      .admin .mainContent .pagination a, .admin .mainContent .pagination button {
         font-weight: 400;
-        min-height: 3rem;
+        min-height: 3rem !important;
         text-transform: capitalize; }
-        .admin .mainContent .pagination button svg {
+        .admin .mainContent .pagination a svg, .admin .mainContent .pagination button svg {
           width: 2.4rem;
           height: 2.4rem; }
       .admin .mainContent .pagination .deleteSelected {
@@ -1327,7 +1421,8 @@ table tbody {
       .admin .mainContent .pagination .start, .admin .mainContent .pagination .previous, .admin .mainContent .pagination .next, .admin .mainContent .pagination .end {
         padding: 0;
         min-width: 3rem;
-        background-color: transparent; }
+        background-color: transparent;
+        border-radius: 2.5rem; }
         .admin .mainContent .pagination .start:hover, .admin .mainContent .pagination .start :focus, .admin .mainContent .pagination .previous:hover, .admin .mainContent .pagination .previous :focus, .admin .mainContent .pagination .next:hover, .admin .mainContent .pagination .next :focus, .admin .mainContent .pagination .end:hover, .admin .mainContent .pagination .end :focus {
           background-color: #EEEEEE; }
 
@@ -1611,16 +1706,20 @@ table tbody {
   background-color: #42464F;
   color: #FFFFFF;
   position: relative;
-  top: 10.6rem;
+  top: 6rem;
   height: 40rem;
-  padding: 6rem 0;
+  padding: 6rem 6.1rem;
   display: flex;
   flex-flow: column;
   align-items: center;
   text-align: center;
   background-image: url("../images/PUP-Pylon-footer.png");
   background-repeat: no-repeat;
-  background-position: center; }
+  background-position: center;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); }
+  @media (min-width: 800px) {
+    .mainFooter {
+      top: 10.6rem; } }
   .mainFooter > * {
     z-index: 2; }
   .mainFooter::before {
@@ -1651,7 +1750,10 @@ table tbody {
     color: currentColor;
     margin-bottom: 1.6rem;
     width: 100%;
-    max-width: 40rem; }
+    max-width: 22.8rem; }
+    @media (min-width: 800px) {
+      .mainFooter hr {
+        max-width: 40rem; } }
   .mainFooter .tagline {
     margin-bottom: auto; }
 
@@ -1735,7 +1837,8 @@ input[type="radio"] {
 textarea {
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF;
-  border: 1px rgba(0, 0, 0, 0.2) solid; }
+  border: 1px rgba(0, 0, 0, 0.2) solid;
+  border-radius: 0.5rem; }
   textarea::-webkit-scrollbar {
     width: 0.5rem; }
   textarea::-webkit-scrollbar-track {
@@ -1798,7 +1901,7 @@ a:active {
 ul {
   list-style: none; }
 
-.adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .btnContainer a {
+.adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .pagination a, button, .alertModalContainer .alertModal div a, .home .mainContent .newsCon > a, .home .mainContent .eventsCon > a, .home .mainContent .jobCon > a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .allUser {
   min-height: 4.4rem;
   min-width: 6.4rem;
   display: flex;
@@ -1809,10 +1912,10 @@ ul {
   transition: 200ms ease;
   cursor: pointer;
   border-radius: 2.5rem; }
-  .adminHeader a:focus, .mainNav button.active ~ .userContainer a:focus:last-child, .mainNav > a:focus, .adminNav .mainCategoryList .categoryContainer:focus, .userSurvey ~ .alumni .mainContent .container .form a:focus, .admin .pageSpecificHeader > div:first-child button:focus, .admin .pageSpecificHeader > div:first-child a:focus, button:focus, .alertModalContainer .alertModal div a:focus, .users .filterNav .btnContainer .manageUsers:focus, .users .filterNav .btnContainer a:focus, .adminHeader a:hover, .mainNav button.active ~ .userContainer a:hover:last-child, .mainNav > a:hover, .adminNav .mainCategoryList .categoryContainer:hover, .userSurvey ~ .alumni .mainContent .container .form a:hover, .admin .pageSpecificHeader > div:first-child button:hover, .admin .pageSpecificHeader > div:first-child a:hover, button:hover, .alertModalContainer .alertModal div a:hover, .users .filterNav .btnContainer .manageUsers:hover, .users .filterNav .btnContainer a:hover {
+  .adminHeader a:focus, .mainNav button.active ~ .userContainer a:focus:last-child, .mainNav > a:focus, .adminNav .mainCategoryList .categoryContainer:focus, .userSurvey ~ .alumni .mainContent .container .form button:focus, .userSurvey ~ .alumni .mainContent .container .form a:focus, .admin .pageSpecificHeader > div:first-child button:focus, .admin .pageSpecificHeader > div:first-child a:focus, .admin .mainContent .pagination a:focus, button:focus, .alertModalContainer .alertModal div a:focus, .home .mainContent .newsCon > a:focus, .home .mainContent .eventsCon > a:focus, .home .mainContent .jobCon > a:focus, .users .filterNav .btnContainer .manageUsers:focus, .users .filterNav .allUser:focus, .adminHeader a:hover, .mainNav button.active ~ .userContainer a:hover:last-child, .mainNav > a:hover, .adminNav .mainCategoryList .categoryContainer:hover, .userSurvey ~ .alumni .mainContent .container .form button:hover, .userSurvey ~ .alumni .mainContent .container .form a:hover, .admin .pageSpecificHeader > div:first-child button:hover, .admin .pageSpecificHeader > div:first-child a:hover, .admin .mainContent .pagination a:hover, button:hover, .alertModalContainer .alertModal div a:hover, .home .mainContent .newsCon > a:hover, .home .mainContent .eventsCon > a:hover, .home .mainContent .jobCon > a:hover, .users .filterNav .btnContainer .manageUsers:hover, .users .filterNav .allUser:hover {
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
     outline: 0; }
-  .adminHeader a:active, .mainNav button.active ~ .userContainer a:active:last-child, .mainNav > a:active, .adminNav .mainCategoryList .categoryContainer:active, .userSurvey ~ .alumni .mainContent .container .form a:active, .admin .pageSpecificHeader > div:first-child button:active, .admin .pageSpecificHeader > div:first-child a:active, button:active, .alertModalContainer .alertModal div a:active, .users .filterNav .btnContainer .manageUsers:active, .users .filterNav .btnContainer a:active {
+  .adminHeader a:active, .mainNav button.active ~ .userContainer a:active:last-child, .mainNav > a:active, .adminNav .mainCategoryList .categoryContainer:active, .userSurvey ~ .alumni .mainContent .container .form button:active, .userSurvey ~ .alumni .mainContent .container .form a:active, .admin .pageSpecificHeader > div:first-child button:active, .admin .pageSpecificHeader > div:first-child a:active, .admin .mainContent .pagination a:active, button:active, .alertModalContainer .alertModal div a:active, .home .mainContent .newsCon > a:active, .home .mainContent .eventsCon > a:active, .home .mainContent .jobCon > a:active, .users .filterNav .btnContainer .manageUsers:active, .users .filterNav .allUser:active {
     filter: opacity(0.88); }
 
 .adminNav .mainCategoryList .categoryContainer, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="number"], .jobPortal .mainContent .data-table .status.open {
@@ -1820,7 +1923,7 @@ ul {
   border-style: solid;
   border-radius: 0.5rem; }
 
-.mainNav button, .mainNav > a, .adminNav .mainCategoryList .open .categoryContainer, .adminNav button, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .data-table .option .optionModal button, .admin .mainContent .pagination button, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]:checked::before, .mainContent.adminForm .form:last-child .btnGroupContainer button, .option .optionModal button, .modalContainer .modalPreview .pagination .btnContainer button, .alertModalContainer .alertModal div button, .addModalContainer .addModal .btn-opt-delete button, .addModalContainer .addModal .btnContainer button, .loginMain form button, .users .filterNav button, .users .filterNav a, .jobPortal .mainContent .data-table .status.closed, .jobPortal .mainContent .data-table .workType, .mainContent.questionnaire .form:first-child h2 > button {
+.mainNav button, .mainNav > a, .adminNav .mainCategoryList .open .categoryContainer, .adminNav button, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .data-table .option .optionModal button, .admin .mainContent .pagination a, .admin .mainContent .pagination button, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]:checked::before, .mainContent.adminForm .form:last-child .btnGroupContainer button, .option .optionModal button, .modalContainer .modalPreview .pagination .btnContainer button, .alertModalContainer .alertModal div button, .addModalContainer .addModal .btn-opt-delete button, .addModalContainer .addModal .btnContainer button, .modalFilterNav .btnContainer button, .home .mainContent .newsCon > a, .home .mainContent .eventsCon > a, .home .mainContent .jobCon > a, .loginMain form button, .users .filterNav button, .users .filterNav a, .jobPortal .mainContent .data-table .status.closed, .jobPortal .mainContent .data-table .workType, .mainContent.questionnaire .form:first-child h2 > button {
   border: 1px solid transparent; }
 
 .icon {
@@ -1891,7 +1994,7 @@ ul {
         width: 1.8rem;
         height: 2rem; }
 
-.modalContainer, .addModalContainer {
+.modalContainer, .addModalContainer, .modalConFilterNav {
   display: none;
   position: absolute;
   top: 50%;
@@ -1903,7 +2006,7 @@ ul {
   z-index: 25;
   align-items: center;
   justify-content: center; }
-  .modalContainer.show, .addModalContainer.show {
+  .modalContainer.show, .addModalContainer.show, .modalConFilterNav.show {
     display: flex; }
 
 .modalContainer .hidden-form {
@@ -2249,44 +2352,284 @@ ul {
       width: 100%;
       height: 100%; }
 
-body {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF; }
-  body::-webkit-scrollbar {
-    width: 0.5rem; }
-  body::-webkit-scrollbar-track {
-    background-color: #FFFFFF; }
-  body::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.38);
-    border-radius: 5rem; }
+.modalFilterNav {
+  background-color: #FFFFFF;
+  color: rgba(0, 0, 0, 0.87);
+  width: 61.4rem;
+  padding: 2.4rem 4rem;
+  border-radius: 1rem;
+  display: none;
+  flex-flow: column;
+  gap: 1.6rem; }
+  .modalFilterNav.newDept.show {
+    display: flex; }
+  .modalFilterNav.newCourse.show {
+    display: flex; }
+  .modalFilterNav.newBatch.show {
+    display: flex; }
+  .modalFilterNav h1 {
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 0.8rem; }
+  .modalFilterNav .btnContainer {
+    margin-top: 2.4rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 2.4rem; }
+    .modalFilterNav .btnContainer button {
+      min-height: 4rem;
+      width: 16rem; }
+      .modalFilterNav .btnContainer button:last-of-type {
+        background-color: #A63F3F;
+        color: #FFFFFF; }
+  .modalFilterNav input[type="text"], .modalFilterNav input[type="date"], .modalFilterNav input[type="tel"], .modalFilterNav input[type="email"], .modalFilterNav select, .modalFilterNav textarea {
+    border-radius: 0.5rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
+    min-width: 32.4rem;
+    padding-right: 1.6rem;
+    padding-left: 1.6rem; }
+    .modalFilterNav input[type="text"]:focus, .modalFilterNav input[type="date"]:focus, .modalFilterNav input[type="tel"]:focus, .modalFilterNav input[type="email"]:focus, .modalFilterNav select:focus, .modalFilterNav textarea:focus {
+      border-right: 1px rgba(0, 0, 0, 0.6) solid !important; }
+  .modalFilterNav [for="batch-id"] ~ .textFieldContainer::before {
+    content: 'Batch:';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    color: rgba(0, 0, 0, 0.6);
+    padding-left: 1.6rem; }
+  .modalFilterNav #batch-id {
+    padding-left: 6rem; }
+
+.card {
+  background-color: #EEEEEE;
+  color: rgba(0, 0, 0, 0.87); }
+  @media (min-width: 800px) {
+    .card {
+      border-radius: 1rem;
+      max-width: 86.8rem; } }
+  .card .card-img {
+    background-color: #121212;
+    color: #FFFFFF;
+    margin: 0;
+    min-height: 20rem;
+    min-width: 30rem;
+    width: 100vw;
+    height: calc(100vw - 60vw);
+    object-fit: cover; }
+    @media (min-width: 800px) {
+      .card .card-img {
+        width: 100%;
+        max-height: 48.7rem;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem; } }
+    .card .card-img::before, .card .card-img[src=""] {
+      display: none; }
+  .card .card-body {
+    padding: 2.4rem 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: center; }
+    @media (min-width: 800px) {
+      .card .card-body {
+        display: block; } }
+    .card .card-body .caption {
+      border-top: 1px solid #A63F3F;
+      padding-top: 0.4rem;
+      margin-top: 0.4rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      flex-flow: column;
+      gap: 1.2rem;
+      justify-content: space-between; }
+      @media (min-width: 415px) {
+        .card .card-body .caption {
+          padding-top: 0.8rem;
+          margin-top: 0.8rem; } }
+      @media (min-width: 415px) {
+        .card .card-body .caption {
+          flex-flow: row;
+          align-items: center;
+          margin-bottom: 2.4rem; } }
+    .card .card-body a, .card .card-body .date-posted {
+      display: inline-flex;
+      align-items: center; }
+    .card .card-body .date-posted {
+      gap: 0.4rem; }
+    .card .card-body .description {
+      margin-bottom: 0.8rem;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      overflow: hidden; }
+      @media (min-width: 800px) {
+        .card .card-body .description {
+          margin-bottom: 2.4rem; } }
+    .card .card-body .workType {
+      padding: 0.4rem 1.6rem;
+      border-radius: 0.5rem; }
+      .card .card-body .workType.fullTime {
+        background-color: #A63F3F;
+        color: #FFFFFF; }
+      .card .card-body .workType.partTime {
+        background-color: #C7B13F;
+        color: #FFFFFF; }
+
+.events.card {
+  background-color: #A63F3F;
+  color: #FFFFFF; }
+  .events.card * {
+    color: currentColor; }
+  @media (min-width: 800px) {
+    .events.card .card-img {
+      min-width: 0;
+      min-height: 0;
+      max-height: 16.4rem; } }
+  .events.card .card-body .caption {
+    border-color: currentColor; }
+
+.jobs.card {
+  border-radius: 1rem;
+  margin: 0 2.4rem;
+  background-color: #FFFFFF;
+  color: rgba(0, 0, 0, 0.87);
+  border: 1px solid #A63F3F; }
+  @media (min-width: 800px) {
+    .jobs.card {
+      margin: 0; } }
+  .jobs.card .card-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: wrap; }
+  .jobs.card .card-body {
+    padding: 0.8rem 0; }
+    .jobs.card .card-body .caption {
+      margin-bottom: 0.8rem; }
 
 .home > section.welcomeBox .container {
   display: flex;
   align-items: center;
   gap: 4rem; }
 
+@media (min-width: 800px) {
+  .home > section.mainContent {
+    grid-template-rows: 2fr 1fr 1fr; } }
+
 .home .heroBox {
-  padding: 14rem 0 7rem;
-  background-image: url("../images/heroBoxBg.png"); }
+  padding: 3.4rem 0 2.4rem; }
+  @media (min-width: 800px) {
+    .home .heroBox {
+      padding: 14rem 0 7rem; } }
   .home .heroBox .container {
     padding-top: 1rem;
     padding-bottom: 1rem; }
-    .home .heroBox .container h1 {
-      font-size: 5rem;
-      line-height: 1.31; }
+    @media (min-width: 800px) {
+      .home .heroBox .container h1 {
+        font-size: 5rem;
+        line-height: 1.31; } }
 
 .home .welcomeBox {
   background-color: #EEEEEE;
   color: rgba(0, 0, 0, 0.87);
-  padding: 3.2rem 0; }
-  .home .welcomeBox .container > *:nth-child(1) {
-    margin-left: 1.6rem;
-    min-width: 14.5rem; }
-  .home .welcomeBox .welcomeMessage > *:nth-child(1) {
-    padding-bottom: 0.8rem; }
-  .home .welcomeBox .welcomeMessage p {
-    border-top: 0.5px solid rgba(0, 0, 0, 0.38);
-    padding-top: 0.8rem; }
+  padding: 2.4rem 0.8rem; }
+  @media (min-width: 800px) {
+    .home .welcomeBox {
+      padding: 3.2rem 0; } }
+  .home .welcomeBox div.container {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr;
+    grid-template-areas: "svg header" "message message";
+    column-gap: 0.8rem;
+    row-gap: 1.6rem; }
+    @media (min-width: 800px) {
+      .home .welcomeBox div.container {
+        column-gap: 4.8rem;
+        row-gap: 0.8rem;
+        grid-template-columns: 12.7rem 1fr;
+        grid-template-areas: "svg header" "svg message"; } }
+    .home .welcomeBox div.container svg {
+      grid-area: svg; }
+    .home .welcomeBox div.container h2 {
+      grid-area: header;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+      padding-bottom: 0.8rem; }
+    .home .welcomeBox div.container p {
+      grid-area: message;
+      align-self: start; }
+
+.home .mainContent {
+  padding: 2.4rem 0;
+  row-gap: 2.4rem; }
+  .home .mainContent > div > h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem; }
+  .home .mainContent .newsCon, .home .mainContent .eventsCon, .home .mainContent .jobCon {
+    display: flex;
+    flex-flow: column;
+    gap: 1.6rem; }
+    .home .mainContent .newsCon > h3, .home .mainContent .newsCon .card-body, .home .mainContent .eventsCon > h3, .home .mainContent .eventsCon .card-body, .home .mainContent .jobCon > h3, .home .mainContent .jobCon .card-body {
+      margin: 0 2.4rem; }
+    @media (min-width: 800px) {
+      .home .mainContent .newsCon h3, .home .mainContent .eventsCon h3, .home .mainContent .jobCon h3 {
+        margin-left: 0;
+        margin-right: 0; } }
+    .home .mainContent .newsCon > a, .home .mainContent .eventsCon > a, .home .mainContent .jobCon > a {
+      background-color: #A63F3F;
+      color: #FFFFFF;
+      min-height: 4rem;
+      margin: 0 2.4rem; }
+      .home .mainContent .newsCon > a svg, .home .mainContent .eventsCon > a svg, .home .mainContent .jobCon > a svg {
+        color: currentColor; }
+    .home .mainContent .newsCon hr, .home .mainContent .eventsCon hr, .home .mainContent .jobCon hr {
+      margin: 0 2.4rem;
+      color: rgba(0, 0, 0, 0.38); }
+      @media (min-width: 800px) {
+        .home .mainContent .newsCon hr, .home .mainContent .eventsCon hr, .home .mainContent .jobCon hr {
+          display: none; } }
+  @media (min-width: 800px) {
+    .home .mainContent .newsCon {
+      grid-column: 3/9;
+      padding-right: 4rem;
+      margin-right: 1.6rem;
+      border-right: 1px solid rgba(0, 0, 0, 0.6); } }
+  @media (min-width: 800px) {
+    .home .mainContent .eventsCon, .home .mainContent .jobCon {
+      grid-column: 9/11;
+      margin: 0 !important; } }
+  .home .mainContent .eventsCon > a, .home .mainContent .jobCon > a {
+    background-color: #EEEEEE;
+    color: rgba(0, 0, 0, 0.87); }
+  @media (min-width: 800px) {
+    .home .mainContent .newsCon {
+      grid-row: 1/4; } }
+  @media (min-width: 800px) {
+    .home .mainContent .eventsCon {
+      grid-row: 1/2; } }
+  @media (min-width: 800px) {
+    .home .mainContent .jobCon {
+      grid-row: 2/3; } }
+  .home .mainContent .jobCon > a {
+    padding: 0;
+    text-align: start;
+    display: block;
+    text-transform: initial;
+    border-radius: 1rem;
+    margin: 0 2.4rem;
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87);
+    border: 1px solid #A63F3F; }
+    .home .mainContent .jobCon > a:focus, .home .mainContent .jobCon > a:hover {
+      text-decoration: none; }
+    @media (min-width: 800px) {
+      .home .mainContent .jobCon > a {
+        margin: 0; } }
+    .home .mainContent .jobCon > a .card-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+    .home .mainContent .jobCon > a .card-body .caption {
+      margin-bottom: 0.8rem; }
 
 .loginMain {
   height: 100vh;
@@ -2407,24 +2750,51 @@ body {
   background-color: #EEEEEE;
   box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
   z-index: 21; }
-  .users .filterNav button, .users .filterNav a {
-    min-height: 3rem;
+  .users .filterNav button {
     width: 100%; }
+  .users .filterNav button, .users .filterNav a {
+    min-height: 3rem; }
     .users .filterNav button svg, .users .filterNav a svg {
       width: 2.1rem;
-      height: 2.1rem; }
+      height: 2.1rem;
+      transition: 200ms ease; }
+  .users .filterNav .settings {
+    width: 2.1rem;
+    height: 2.1rem;
+    cursor: pointer; }
+    .users .filterNav .settings:focus, .users .filterNav .settings:hover {
+      opacity: 0.8; }
   .users .filterNav .btnContainer {
     display: flex;
     flex-flow: column;
-    gap: 2.4rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 0.05rem solid rgba(0, 0, 0, 0.38);
-    margin-bottom: 3.2rem; }
-    .users .filterNav .btnContainer > * {
-      text-transform: capitalize;
-      justify-content: flex-start; }
-      .users .filterNav .btnContainer > * > * {
-        margin-left: auto; }
+    margin-bottom: 2.4rem;
+    border-radius: 2.5rem;
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87); }
+    .users .filterNav .btnContainer > button {
+      justify-content: space-between !important; }
+    .users .filterNav .btnContainer svg.active {
+      display: none; }
+    .users .filterNav .btnContainer.active .manageUsers {
+      background-color: #A63F3F;
+      color: #FFFFFF; }
+      .users .filterNav .btnContainer.active .manageUsers svg.default {
+        display: none; }
+      .users .filterNav .btnContainer.active .manageUsers svg.active {
+        display: inline; }
+    .users .filterNav .btnContainer.active .manageOptions {
+      visibility: visible;
+      max-height: 200px;
+      opacity: 1;
+      margin-top: 0.8rem; }
+    .users .filterNav .btnContainer.active ~ .department .deptHead svg:first-of-type {
+      display: none; }
+    .users .filterNav .btnContainer.active ~ .department .deptHead svg:last-of-type {
+      display: inline; }
+    .users .filterNav .btnContainer.active ~ .department .groupHeader > span:last-of-type {
+      display: none; }
+    .users .filterNav .btnContainer.active ~ .department .groupHeader svg {
+      display: block !important; }
     .users .filterNav .btnContainer .manageUsers {
       background-color: #FFFFFF;
       color: rgba(0, 0, 0, 0.87);
@@ -2433,48 +2803,97 @@ body {
       .users .filterNav .btnContainer .manageUsers svg {
         width: 2.4rem;
         height: 2.4rem; }
-    .users .filterNav .btnContainer a {
-      background-color: #EEEEEE;
-      color: rgba(0, 0, 0, 0.87);
-      min-height: 3rem;
-      text-decoration: none; }
-      .users .filterNav .btnContainer a.active {
+    .users .filterNav .btnContainer .manageOptions {
+      visibility: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: 200ms ease, visibility 100ms ease; }
+      .users .filterNav .btnContainer .manageOptions button {
         background-color: #FFFFFF;
-        color: rgba(0, 0, 0, 0.87); }
-  .users .filterNav .groupList {
+        color: rgba(0, 0, 0, 0.87);
+        text-transform: capitalize; }
+        .users .filterNav .btnContainer .manageOptions button:focus, .users .filterNav .btnContainer .manageOptions button:hover {
+          box-shadow: none;
+          text-decoration: underline; }
+  .users .filterNav .allUser {
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    background-color: #EEEEEE;
+    color: rgba(0, 0, 0, 0.87);
+    min-height: 3rem;
+    text-decoration: none; }
+    .users .filterNav .allUser.active {
+      background-color: #FFFFFF;
+      color: rgba(0, 0, 0, 0.87); }
+  .users .filterNav hr {
+    color: rgba(0, 0, 0, 0.38); }
+  .users .filterNav .department, .users .filterNav .groupList {
     display: flex;
     flex-flow: column;
     gap: 0.8rem; }
-    .users .filterNav .groupList .group .groupHeader {
-      text-transform: uppercase;
-      justify-content: flex-start;
-      position: relative; }
-      .users .filterNav .groupList .group .groupHeader.active {
+  .users .filterNav .department {
+    margin-top: 3.2rem; }
+    .users .filterNav .department > li > .deptHead {
+      text-transform: capitalize;
+      justify-content: space-between;
+      padding: 0 1.6rem 0 0.8rem; }
+      .users .filterNav .department > li > .deptHead.active {
         background-color: #FFFFFF;
         color: rgba(0, 0, 0, 0.87); }
-        .users .filterNav .groupList .group .groupHeader.active ~ .subGroupList {
+        .users .filterNav .department > li > .deptHead.active ~ .groupList {
+          display: flex;
           visibility: visible;
           opacity: 1;
-          max-height: initial; }
-      .users .filterNav .groupList .group .groupHeader > span:first-child {
-        position: absolute;
-        left: 8rem; }
-      .users .filterNav .groupList .group .groupHeader > span:last-child {
-        margin-left: auto; }
-    .users .filterNav .groupList .subGroupList {
-      transition: 200ms ease;
+          max-height: 200px; }
+        .users .filterNav .department > li > .deptHead.active svg {
+          transform: rotate(180deg); }
+      .users .filterNav .department > li > .deptHead svg:last-of-type {
+        display: none; }
+    .users .filterNav .department .groupList {
       visibility: hidden;
       opacity: 0;
       max-height: 0;
-      display: flex;
       margin-top: 0.8rem;
-      flex-flow: column;
-      gap: 0.8rem; }
-      .users .filterNav .groupList .subGroupList a {
-        display: inline-block;
-        width: 100%;
-        color: rgba(0, 0, 0, 0.87);
-        font-weight: 500; }
+      transition: 200ms ease, visibility 100ms ease; }
+      .users .filterNav .department .groupList .group .groupHeader {
+        text-transform: uppercase;
+        justify-content: flex-start;
+        position: relative; }
+        .users .filterNav .department .groupList .group .groupHeader.active {
+          background-color: #FFFFFF;
+          color: rgba(0, 0, 0, 0.87); }
+          .users .filterNav .department .groupList .group .groupHeader.active ~ .subGroupList {
+            visibility: visible;
+            opacity: 1;
+            max-height: initial; }
+          .users .filterNav .department .groupList .group .groupHeader.active svg {
+            transform: rotate(180deg); }
+        .users .filterNav .department .groupList .group .groupHeader > span:first-of-type {
+          position: absolute;
+          left: 8rem; }
+        .users .filterNav .department .groupList .group .groupHeader > span:last-of-type, .users .filterNav .department .groupList .group .groupHeader svg {
+          margin-left: auto; }
+        .users .filterNav .department .groupList .group .groupHeader > svg:last-of-type {
+          display: none; }
+      .users .filterNav .department .groupList .subGroupList {
+        transition: 200ms ease;
+        visibility: hidden;
+        opacity: 0;
+        max-height: 0;
+        display: flex;
+        margin-top: 0.8rem;
+        flex-flow: column;
+        gap: 0.8rem; }
+        .users .filterNav .department .groupList .subGroupList .subGroup {
+          display: flex;
+          padding: 0 1.6rem;
+          align-items: center;
+          justify-content: space-between; }
+        .users .filterNav .department .groupList .subGroupList a {
+          flex: 1;
+          color: rgba(0, 0, 0, 0.87);
+          font-weight: 500;
+          text-align: left; }
   .users .filterNav .allUserCount, .users .filterNav .groupUserCount {
     background-color: #A63F3F;
     color: #FFFFFF;

@@ -39,9 +39,10 @@ class User {
     }
 
     public function register($data){
-        $this->db->query('INSERT INTO users(name,email,password,user_type) VALUES (:name,:email,:password,:user_type)');
+        $this->db->query('INSERT INTO users(name,student_no,email,password,user_type) VALUES (:name,:student_no,:email,:password,:user_type)');
 
         $this->db->bind(':name', $data['name']);
+        $this->db->bind(':student_no', $data['student_no']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':user_type', $data['user_type']);
@@ -49,6 +50,19 @@ class User {
         if($this->db->execute()){
             return true;
         } else{
+            return false;
+        }
+    }
+
+    public function deleteUserByStudNo($studNo) {
+        $this->db->query('DELETE FROM users WHERE student_no = :studNo');
+
+        $this->db->bind(':studNo', $studNo);
+
+        if($this->db->execute()){
+            return true;
+        }
+        else{
             return false;
         }
     }

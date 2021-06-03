@@ -54,13 +54,7 @@
                                                 <input type="radio" class="female" name="gender" id="female-id" value="Female">
                                             </fieldset>
                                         </div>
-                                        <div>
-                                            <label class="outsideLabel">Employment Status:</label>
-                                            <fieldset class="radioBtnContainer">
-                                                <input type="radio" class="eStatus" name="employment" id="employed-id" value="Employed" checked>
-                                                <input type="radio" class="eStatus" name="employment" id="unemployed-id" value="Unemployed">
-                                            </fieldset>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </section>
@@ -118,12 +112,12 @@
                                 <div class="infoSubCon">
                                      <div class="smallComponentsContainer">
                                         <div>
-                                            <label for="department-id" class="outsideLabel">Department:</label>
+                                            <label for="course-id" class="outsideLabel">Course:</label>
                                             <div class="textFieldContainer">
-                                                <select name="department" id="department-id" required>
-                                                    <option>--Department--</option>
-                                                    <?php foreach($data['departmentCode'] as $code):?>
-                                                        <option value="<?php echo $code->id ?>"><?php echo $code->dept_code;?></option>
+                                                <select name="course" id="course-id" required>
+                                                    <option>--Course--</option>
+                                                    <?php foreach($data['courseCode'] as $code):?>
+                                                        <option value="<?php echo $code->id ?>"><?php echo $code->course_code;?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                                 <span class="error"></span>
@@ -144,7 +138,7 @@
                                         <div>
                                             <label for="student-id" class="outsideLabel">Student ID:</label>
                                             <div class="textFieldContainer">
-                                                <input type="text" name="studentId" id="student-id"required>
+                                                <input type="text" name="student_no" id="student-id"required>
                                                 <span class="error"></span>
                                             </div>
                                         </div>
@@ -184,9 +178,5 @@
                 </section>
             </main>
 
-<script>
-    $(.document).ready(function{
-        $()
-    })
-</script>
+
 <?php require APPROOT . '/views/inc/footer.php';?>

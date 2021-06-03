@@ -77,7 +77,7 @@
 
         // QUESTION DATABASE INTERACTION 
 
-        public function getQuestion($id){
+        public function getQuestions($id){
             $this->db->query('SELECT * from questions where survey_id=:id order by abs(order_by) asc,abs(id) asc');
             $this->db->bind(':id', $id);
             $row = $this->db->ResultSet();
