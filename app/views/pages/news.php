@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<main class="alumni news">
+<main class="alumni alumniNews">
         <section class="heroBox">
             <div class="tint">
                 <div class="container">

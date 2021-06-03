@@ -162,4 +162,81 @@ class User {
         }
     }
 
+    public function singleUser($id){
+        $this->db->query('SELECT * FROM alumni WHERE student_no = :student_no');
+        $this->db->bind(':student_no', $id);
+        $row = $this->db->single();
+        if($this->db->rowCount() > 0){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function editProfile($data, $isUploaded){
+        if($isUploaded == 1 ){
+            $this->db->query('UPDATE alumni SET first_name=:first_name, middle_name=:middle_name, last_name=:last_name, gender=:gender, employment=:employment, birth_date=:birth_date, address=:address, city=:city, region=:region, postal=:postal, contact_no=:contact_no, email=:email, image=:image WHERE student_no = :student_no');
+
+            $this->db->bind(':first_name', $data['first_name']);
+            $this->db->bind(':middle_name', $data['middle_name']);
+            $this->db->bind(':last_name', $data['last_name']);
+            $this->db->bind(':gender', $data['gender']);
+            $this->db->bind(':employment', $data['employment']);
+            $this->db->bind(':birth_date', $data['birth_date']);
+            $this->db->bind(':address', $data['address']);
+            $this->db->bind(':city', $data['city']);
+            $this->db->bind(':region', $data['region']);
+            $this->db->bind(':postal', $data['postal']);
+            $this->db->bind(':contact_no', $data['contact_no']);
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':image', $data['file']);
+            $this->db->bind(':student_no', $data['student_no']);
+            
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } else{
+            $this->db->query('UPDATE alumni SET first_name=:first_name, middle_name=:middle_name, last_name=:last_name, gender=:gender, employment=:employment, birth_date=:birth_date, address=:address, city=:city, region=:region, postal=:postal, contact_no=:contact_no, email=:email WHERE student_no = :student_no');
+            $this->db->bind(':first_name', $data['first_name']);
+            $this->db->bind(':middle_name', $data['middle_name']);
+            $this->db->bind(':last_name', $data['last_name']);
+            $this->db->bind(':gender', $data['gender']);
+            $this->db->bind(':employment', $data['employment']);
+            $this->db->bind(':birth_date', $data['birth_date']);
+            $this->db->bind(':address', $data['address']);
+            $this->db->bind(':city', $data['city']);
+            $this->db->bind(':region', $data['region']);
+            $this->db->bind(':postal', $data['postal']);
+            $this->db->bind(':contact_no', $data['contact_no']);
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':student_no', $data['student_no']);
+            
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+       
+    }
+
+        //Insert into USERS IF first editProfile is DONE
+        public function accVerified($newData) {
+            $this->db->query('UPDATE users SET verify=:verify WHERE student_no = :student_no');
+            $this->db->bind(':verify', $newData['verify']);
+            $this->db->bind(':student_no', $newData['student_no']);
+            
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
 }

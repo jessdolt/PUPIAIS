@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<main class="alumni news">
+<main class="alumni alumniNews">
         <section class="heroBox">
             <div class="tint">
                 <div class="container">
@@ -19,7 +19,7 @@
         <section class="mainContent">
             <div class="container newsCon">
                 <h3>
-                    Latest News and Articles
+                    Latest Events
                 </h3>
                 <?php foreach($data['latestEvents'] as $event) : ?>
                 <article class="card news">
@@ -61,7 +61,7 @@
         </section>
         <section id="redirect" class="moreContent">
             <div class="container additional">
-                <h3>More News and Articles</h3>
+                <h3>More Events</h3>
                 <ul>
                     <?php foreach($data['oldEvents'] as $oldEvents) : ?>
                         <li>
