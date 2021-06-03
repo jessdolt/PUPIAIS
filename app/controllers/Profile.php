@@ -3,6 +3,19 @@
     class Profile extends Controller {
         public function __construct() {
             $this->userModel = $this->model('user');
+  
+            if($this->getID() == $_SESSION['student_no'] || $_SESSION['user_type'] == "Admin") {
+                
+            }else {
+                redirect('pages/home');
+            }
+
+        }
+
+        public function getID() {
+            $url= rtrim($_GET['url'],'/');
+            $url= explode('/', $url);
+            return $url[2];
         }
 
         public function viewProfile($id) {
@@ -18,6 +31,10 @@
         
 
         public function editProfile($id) {
+
+            if($_SESSION['student_no'] != $this->getID()) {
+                redirect('profile/viewProfile/'.$this->getID());
+            }
 
             $user = $this->userModel->singleUser($id);
 
@@ -122,5 +139,81 @@
     
             $this->view('users/editProfile', $data);
 
+        }
+
+        public function changePassword($id) {
+
+            if($_SESSION['student_no'] != $this->getID()) {
+                redirect('pages/home');
+            }
+
+            $data = [
+                'student_no' => $id,
+                'email' => '',
+                'oldPassword' => '',
+                'password' => '',
+                'confirmPassword' => '',
+                'oldPassword_error' => '',
+                'password_error' => '',
+                'confirmPassword_error' => ''
+            ];
+    
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                $data = [
+                    'student_no' => $id,
+                    'email' => $_SESSION['email'],
+                    'oldPassword' => trim($_POST['oldPassword']),
+                    'password' => trim($_POST['password']),
+                    'confirmPassword' => trim($_POST['confirmPassword']),
+                    'oldPassword_error' => '',
+                    'password_error' => '',
+                    'confirmPassword_error' => ''
+                ];
+    
+                $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
+    
+                if(empty($data['oldPassword'])) {
+                    $data['oldPassword_error'] = 'Please enter your current password.';
+                }
+    
+                // Validate password on length, numeric values,
+                if(empty($data['password'])){
+                    $data['password_error'] = 'Please enter password.';
+                } elseif(strlen($data['password']) < 7){
+                    $data['password_error'] = 'Password must be at least 8 characters';
+                } elseif (preg_match($passwordValidation, $data['password'])) {
+                    $data['password_error'] = 'Password must be have at least one numeric value.';
+                }
+    
+                //Validate confirm password
+                if (empty($data['confirmPassword'])) {
+                    $data['confirmPassword_error'] = 'Please enter password.';
+                } else {
+                    if ($data['password'] != $data['confirmPassword']) {
+                    $data['confirmPassword_error'] = 'Passwords do not match, please try again.';
+                    }
+                }
+    
+                if(empty($data['oldPassword_error']) && empty($data['password_error']) && empty($data['confirmPassword_error'])) {
+    
+                    if ($this->userModel->checkOldPassword($data)) {
+                        
+                        // Hash password
+                        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+    
+                        $this->userModel->newPassword($data);
+                        redirect('pages/home');
+                        
+                    } else {
+                        $data['oldPassword_error'] = 'Your old password doesn\'t match';
+                    }
+                }
+    
+            }
+    
+            $this->view('users/changePassword', $data);
+            
         }
     }

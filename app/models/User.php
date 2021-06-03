@@ -147,6 +147,7 @@ class User {
             return false;
         }
     }
+    
     // DELETE AFTER CHANGING PASSWORD
     public function deleteRequest($email) {
         $this->db->query('DELETE FROM pwdreset WHERE pwdResetEmail = :email');
@@ -259,4 +260,27 @@ class User {
             }
         }
 
+        public function checkOldPassword($data) {
+            $this->db->query('SELECT * FROM users WHERE email = :email');
+    
+            //Bind value
+            $this->db->bind(':email', $data['email']);
+            
+            $row = $this->db->single();
+    
+            if($this->db->rowCount() > 0) {
+    
+                $password = $data['oldPassword'];
+                $hashedPassword = $row->password;
+    
+                if (password_verify($password, $hashedPassword)) {
+                    return $row;
+                } else {
+                    return false;
+                }
+    
+            } else {
+                return false;
+            }
+        }
 }

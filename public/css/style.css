@@ -3400,10 +3400,17 @@ ul {
 
 .mainHeader ~ .editProfile .mainContent .container .form .questionCon {
   padding: 1.6rem 2.4rem;
-  border-left: none; }
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.38); }
   @media (min-width: 800px) {
     .mainHeader ~ .editProfile .mainContent .container .form .questionCon {
       padding: 1.6rem 4.8rem; } }
+  @media (min-width: 800px) {
+    .mainHeader ~ .editProfile .mainContent .container .form .questionCon.changePass {
+      max-width: 51rem;
+      align-self: center; } }
+  .mainHeader ~ .editProfile .mainContent .container .form .questionCon.changePass ~ button {
+    align-self: center; }
 
 .mainHeader ~ .editProfile .mainContent .container .form .addInfo {
   flex-flow: row wrap;
@@ -3441,8 +3448,6 @@ ul {
   transform: translate(-50%, -50%);
   width: 10rem;
   height: 10rem;
-  background-image: url("../images/profile-default-img.svg");
-  background-repeat: no-repeat;
   border-radius: 10rem;
   border: none; }
   @media (min-width: 415px) {
@@ -3540,13 +3545,13 @@ ul {
       width: 1.8rem;
       height: 1.8rem; }
 
-.mainHeader ~ .editProfile .mainContent input[type="text"], .mainHeader ~ .editProfile .mainContent input[type="date"], .mainHeader ~ .editProfile .mainContent input[type="tel"], .mainHeader ~ .editProfile .mainContent input[type="email"], .mainHeader ~ .editProfile .mainContent input[type="number"], .mainHeader ~ .editProfile .mainContent select, .mainHeader ~ .editProfile .mainContent textarea {
+.mainHeader ~ .editProfile .mainContent input[type="text"], .mainHeader ~ .editProfile .mainContent input[type="password"], .mainHeader ~ .editProfile .mainContent input[type="date"], .mainHeader ~ .editProfile .mainContent input[type="tel"], .mainHeader ~ .editProfile .mainContent input[type="email"], .mainHeader ~ .editProfile .mainContent input[type="number"], .mainHeader ~ .editProfile .mainContent select, .mainHeader ~ .editProfile .mainContent textarea {
   border-radius: 0.5rem;
   border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
   min-width: 0rem;
   padding-right: 1.6rem;
   padding-left: 1.6rem; }
-  .mainHeader ~ .editProfile .mainContent input[type="text"]:focus, .mainHeader ~ .editProfile .mainContent input[type="date"]:focus, .mainHeader ~ .editProfile .mainContent input[type="tel"]:focus, .mainHeader ~ .editProfile .mainContent input[type="email"]:focus, .mainHeader ~ .editProfile .mainContent input[type="number"]:focus, .mainHeader ~ .editProfile .mainContent select:focus, .mainHeader ~ .editProfile .mainContent textarea:focus {
+  .mainHeader ~ .editProfile .mainContent input[type="text"]:focus, .mainHeader ~ .editProfile .mainContent input[type="password"]:focus, .mainHeader ~ .editProfile .mainContent input[type="date"]:focus, .mainHeader ~ .editProfile .mainContent input[type="tel"]:focus, .mainHeader ~ .editProfile .mainContent input[type="email"]:focus, .mainHeader ~ .editProfile .mainContent input[type="number"]:focus, .mainHeader ~ .editProfile .mainContent select:focus, .mainHeader ~ .editProfile .mainContent textarea:focus {
     border-right: 1px rgba(0, 0, 0, 0.6) solid !important; }
 
 .mainHeader ~ .editProfile .mainContent input[type="number"] {

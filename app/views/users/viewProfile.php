@@ -1,5 +1,10 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
+<?php   
+    $url= rtrim($_GET['url'],'/');
+    $url= explode('/', $url);
+?>
+
 <main class="alumni">
         <section class="heroBox behind">
         </section>
@@ -12,7 +17,10 @@
                         <img src="<?php echo URLROOT;?>/uploads/<?php echo ($data['user']->image) ?>" id="myImg">
                     <?php } ?>
                     <h1 class="alumni-name"><?php echo $data['user']->first_name . ' ' . $data['user']->middle_name . ' ' . $data['user']->last_name ?></h1>
+
+
                     <span class="alumni-lrn">(<?php echo $data['user']->student_no; ?>)</span>
+                    <?php if($_SESSION['student_no'] == $url[2]) { ?>
                     <a href="<?php echo URLROOT; ?>/profile/editProfile/<?php echo $_SESSION['student_no'] ?>" class="editBtn">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.2406 1.50879L16.4906 3.75879L14.7754 5.47479L12.5254 3.22479L14.2406 1.50879Z" />
@@ -21,6 +29,7 @@
                         </svg>
                         <span>Edit Profile</span>
                     </a>
+                    <?php } ?>
                 </div>
                 <div class="profile-body">
                     <section class="profile-information">
