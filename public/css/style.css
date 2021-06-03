@@ -3439,27 +3439,45 @@ ul {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 10rem;
+  height: 10rem;
   background-image: url("../images/profile-default-img.svg");
   background-repeat: no-repeat;
+  border-radius: 10rem;
   border: none; }
+  @media (min-width: 415px) {
+    .mainHeader ~ .editProfile .mainContent .container .form .profilePic {
+      width: 16rem;
+      height: 16rem; } }
 
 .mainHeader ~ .editProfile .mainContent .container .form #profile-pic-btn {
   width: 0; }
 
 .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"] {
+  transition: 200ms ease;
   cursor: pointer;
   position: absolute;
-  top: 58%;
-  right: 12px; }
+  top: 65%;
+  right: 0px;
+  width: 2.7rem;
+  height: 2.7rem; }
+  @media (min-width: 415px) {
+    .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"] {
+      width: 4.3rem;
+      height: 4.3rem; } }
   .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"]:focus, .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"]:hover {
-    opacity: 0.87; }
+    filter: brightness(1.1); }
 
 .mainHeader ~ .editProfile .mainContent .container .form .avatar {
   position: relative;
   align-self: center;
   cursor: pointer;
-  width: 21rem;
-  height: 21rem; }
+  width: 10rem;
+  height: 10rem; }
+  @media (min-width: 415px) {
+    .mainHeader ~ .editProfile .mainContent .container .form .avatar {
+      width: 16rem;
+      height: 16rem; } }
 
 .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer {
   display: flex;
@@ -3594,11 +3612,15 @@ ul {
   position: relative;
   border-radius: 1rem 1rem 0 0;
   padding: 4.9rem 2.5rem 0.8rem 10.3rem;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
   background-color: #F4F4F4;
   color: rgba(0, 0, 0, 0.87); }
   @media (min-width: 800px) {
     .profile .profile-header {
-      padding: 8.1rem 10rem 0.8rem 31.2rem; } }
+      padding: 8.1rem 10rem 0.8rem 26.2rem; } }
+  @media (min-width: 1367px) {
+    .profile .profile-header {
+      padding-left: 31.2rem; } }
   .profile .profile-header img {
     position: absolute;
     top: 4.9rem;
@@ -3614,6 +3636,11 @@ ul {
     @media (min-width: 800px) {
       .profile .profile-header img {
         top: 3.2rem;
+        left: 5rem;
+        width: 18rem;
+        height: 18rem; } }
+    @media (min-width: 1367px) {
+      .profile .profile-header img {
         left: 10rem;
         width: 18rem;
         height: 18rem; } }
@@ -3631,25 +3658,41 @@ ul {
     border-radius: 5rem;
     transition: 200ms ease; }
     .profile .profile-header .editBtn:focus, .profile .profile-header .editBtn:hover {
-      opacity: 0.87; }
+      opacity: 0.93; }
+    .profile .profile-header .editBtn:active {
+      background-color: #A63F3F;
+      color: #FFFFFF; }
     @media (min-width: 800px) {
       .profile .profile-header .editBtn {
-        padding: 0.6rem 2rem;
         top: 12.2rem;
+        right: 5rem; } }
+    @media (min-width: 1367px) {
+      .profile .profile-header .editBtn {
+        padding: 0.6rem 2rem;
         right: 10rem; } }
     .profile .profile-header .editBtn svg {
       fill: currentColor; }
     .profile .profile-header .editBtn span {
       display: none; }
-      @media (min-width: 800px) {
+      @media (min-width: 1367px) {
         .profile .profile-header .editBtn span {
-          display: inline-block; } }
+          display: inline-block;
+          font-weight: 500;
+          text-transform: uppercase; } }
 
 .profile .profile-body {
-  padding: 3.2rem 1.6rem 2.4rem; }
+  display: flex;
+  flex-flow: column;
+  padding: 3.2rem 1.6rem 2.4rem;
+  gap: 2.4rem; }
   @media (min-width: 800px) {
     .profile .profile-body {
-      padding: 8.4rem 10rem 4.8rem; } }
+      padding: 8.4rem 5rem 4.8rem;
+      gap: 4rem; } }
+  @media (min-width: 1367px) {
+    .profile .profile-body {
+      padding: 8.4rem 10rem 4.8rem;
+      gap: 4rem; } }
   .profile .profile-body > section {
     border-radius: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.38);
@@ -3673,16 +3716,18 @@ ul {
     @media (min-width: 800px) {
       .profile .profile-body li {
         padding: 1.6rem 1rem;
-        display: flex; } }
+        display: flex;
+        gap: 10rem; } }
   .profile .profile-body .li-header, .profile .profile-body .li-data {
     flex: 1; }
   .profile .profile-body .li-header {
-    max-width: 21.4rem;
     font-size: 1.2rem; }
     @media (min-width: 800px) {
       .profile .profile-body .li-header {
         font-size: 1.4rem;
-        font-weight: 500; } }
+        font-weight: 500;
+        min-width: 10rem;
+        max-width: 21.4rem; } }
 
 .profile .alumni-lrn, .profile .li-header {
   color: rgba(0, 0, 0, 0.6);

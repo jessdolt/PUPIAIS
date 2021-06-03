@@ -97,6 +97,12 @@ class Pages extends Controller{
             }
         }
 
+        if($total == 0) {
+            $startFormula = 0;
+            $limitFormula = 0;
+
+        }
+
         $originalCount = $this->postModel->NoOfResults();
         if ($originalCount > 10) {
 

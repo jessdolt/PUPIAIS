@@ -2,7 +2,7 @@
 
     class Profile extends Controller {
         public function __construct() {
-            $this->profileModel = $this->model('profile');
+            $this->userModel = $this->model('user');
         }
 
         public function viewProfile($id) {
@@ -14,6 +14,8 @@
 
             $this->view('users/viewProfile', $data);
         }
+
+        
 
         public function editProfile($id) {
 
@@ -93,7 +95,7 @@
                         die("Something went wrong");
                     }
                 } else {
-                    $this->view('profile/viewProfile/'.$_SESSION['student_no'], $data);
+                    $this->view('users/viewProfile/'.$_SESSION['student_no'], $data);
                 }
     
             } else {
@@ -118,7 +120,7 @@
     
             }
     
-            $this->view('profile/viewProfile', $data);
+            $this->view('users/editProfile', $data);
 
         }
     }
