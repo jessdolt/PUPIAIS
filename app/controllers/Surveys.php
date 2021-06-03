@@ -77,6 +77,23 @@
                 die("There's an error deleting this record");
             }
         }
+
+        public function delete() {
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+                $todelete = $_POST['checkbox'];
+
+                foreach ($todelete as $id) {
+    
+                    if ($this->surveyModel->deleteSurvey($id)){
+                        redirect('admin/survey_list');
+                    }
+                    else {
+                        die("There's an error deleting this record");
+                    }
+                }
+            }
+        }
        
 
         public function question_modal(){
@@ -98,6 +115,7 @@
             $this->view('survey/manage_question' , $data);
         }
 
+        
         public function save_question(){
             extract($_POST);  
                 $data = "survey_id= $sid";
@@ -139,22 +157,7 @@
 
         }
 
-        public function delete() {
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
-                $todelete = $_POST['checkbox'];
-
-                foreach ($todelete as $id) {
-    
-                    if ($this->surveyModel->deleteSurvey($id)){
-                        redirect('admin/survey_list');
-                    }
-                    else {
-                        die("There's an error deleting this record");
-                    }
-                }
-            }
-        }
+       
 
         public function delete_question($qid,$sid){
            

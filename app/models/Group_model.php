@@ -7,14 +7,19 @@
             $this->db = new Database;
         }
 
-        public function showClassificaition(){
+        public function showClassification(){
             $this->db->query('SELECT *
                              FROM classification 
-                             INNER JOIN department
-                             ON classification.dept_id = department.id
+                            
+                             INNER JOIN courses
+                             ON classification.course_id = courses.id
                              INNER JOIN batch
                              ON classification.batch_id = batch.id
+                             INNER JOIN department
+                             ON courses.department_id = department.id
+                             order by batch.year asc
                             ');
+                            
             $row = $this->db->resultSet();
 
             if($row > 0){
@@ -22,23 +27,36 @@
             }
         }
 
-        
-
         public function addDepartment($data){
-            $this->db->query('INSERT INTO department(dept_name,dept_code) VALUES (:dept_name,:dept_code)');
+            $this->db->query('INSERT INTO department(department_name) VALUES (:dept_name)');
 
             $this->db->bind(':dept_name', $data['dept_name']);
-            $this->db->bind(':dept_code', $data['dept_code']);
-            
             try{
                 if($this->db->execute()){
-                    $this->insertBatch($data['dept_code']);
+                    redirect('admin/alumni');
                 }
             }
             catch (PDOException $e){
                 // $msgData = [
                 //     'errorMsg' => 'Batch '. $data['batch'] . ' is already in Database'
                 // ];
+                redirect('group/duplicateError');
+            }
+        }
+        
+
+        public function addCourse($data){
+            $this->db->query('INSERT INTO courses(course_name,course_code,department_id) VALUES (:course_name,:course_code,:department_id)');
+
+            $this->db->bind(':course_name', $data['course_name']);
+            $this->db->bind(':course_code', $data['course_code']);
+            $this->db->bind(':department_id', $data['department_id']);
+            try{
+                if($this->db->execute()){
+                    $this->insertBatch($data['course_code']);
+                }
+            }
+            catch (PDOException $e){
                 redirect('group/duplicateError');
             }
         }
@@ -52,49 +70,46 @@
                 }
             }
             catch (PDOException $e){
-                // $msgData = [
-                //     'errorMsg' => 'Batch '. $data['batch'] . ' is already in Database'
-                // ];
                 redirect('group/duplicateError');
             } 
         }
 
         public function insertGroup($year){
             $count = 0;
-            $this->db->query('SELECT * from department');
-            $rowDept= $this->db->resultSet();
+            $this->db->query('SELECT * from courses');
+            $rowCourse= $this->db->resultSet();
 
             $this->db->query('SELECT id from batch where year=:year');
             $this->db->bind(':year', $year);
             $rowBatch = $this->db->single();
 
-            foreach($rowDept as $dept){
-                $this->db->query('INSERT INTO classification(dept_id,batch_id) VALUES (:dept_id,:batch_id)');
-                $this->db->bind(':dept_id', $dept->id);
+            foreach($rowCourse as $course){
+                $this->db->query('INSERT INTO classification(course_id,batch_id) VALUES (:course_id,:batch_id)');
+                $this->db->bind(':course_id', $course->id);
                 $this->db->bind(':batch_id', $rowBatch->id);
                 $this->db->execute();
                 $count++;
             }
 
-            if($count === count($rowDept)){
+            if($count === count($rowCourse)){
                 redirect('admin/alumni');
             }
 
             
         }
 
-        public function insertBatch($dept){
+        public function insertBatch($course){
             $count = 0;
             $this->db->query('SELECT * from batch');
             $rowBatch = $this->db->resultSet();
 
-            $this->db->query('SELECT id from department where dept_code=:dept_code');
-            $this->db->bind(':dept_code', $dept);
-            $rowDept = $this->db->single();
+            $this->db->query('SELECT id from courses where course_code=:course_code');
+            $this->db->bind(':course_code', $course);
+            $rowCourse = $this->db->single();
 
             foreach($rowBatch as $batch){
-                $this->db->query('INSERT INTO classification(dept_id,batch_id) VALUES (:dept_id,:batch_id)');
-                $this->db->bind(':dept_id', $rowDept->id);
+                $this->db->query('INSERT INTO classification(course_id,batch_id) VALUES (:course_id,:batch_id)');
+                $this->db->bind(':course_id', $rowCourse->id);
                 $this->db->bind(':batch_id', $batch->id);
                 $this->db->execute();
                 $count++;

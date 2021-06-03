@@ -13,19 +13,25 @@
         public function new_dept(){
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $data =[
-                    'dept_name' => $_POST['dept_name'],
-                    'dept_code' => $_POST['dept_code']
+                    'dept_name' => $_POST['department_name'],
                 ];
                 $this->groupModel->addDepartment($data);
+                
             }
-
-            else{
-                $data = [];
-            }
-
-            $this->view('group/add_dept', $data);
         }
     
+
+        public function new_course(){
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $data =[
+                    'course_name' => $_POST['course_name'],
+                    'course_code' => $_POST['course_code'],
+                    'department_id' => $_POST['department_id']
+                ];
+                $this->groupModel->addCourse($data);
+            }
+
+        }
 
 
         //add batch
@@ -35,16 +41,8 @@
                     'batch' => $_POST['batch'],
                     
                 ];
-                if($this->groupModel->addBatch($data)){
-                    redirect('admin/alumni');
-                }
+                $this->groupModel->addBatch($data);
             }
-
-            else{
-                $data = [];
-            }
-
-            $this->view('group/add_batch', $data);
         }
 
         

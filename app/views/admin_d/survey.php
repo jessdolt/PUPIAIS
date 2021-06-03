@@ -32,7 +32,7 @@
                     </div>
                 </section>
                 <section class="mainContent">
-                    <form action="" class="table-form" method="POST">
+                    <form action="<?php echo URLROOT;?>/surveys/delete" class="table-form" method="POST">
                         <table class="data-table">
                             <thead>
                                 <tr>
@@ -42,12 +42,12 @@
                                     <th>Start Date</th>
                                     <th>End Date</th>
                                     <th></th>
-                                </tr>
+                                </tr> 
                             </thead>
                             <tbody>
                                 <?php foreach($data as $survey):?>
                                 <tr>
-                                    <td><input type="checkbox" name="checkbox[]" value="<?php echo $survey->id; ?>"></td>
+                                    <td><input type="checkbox" name="checkbox[]" value="<?php echo $survey->id;?>"></td>
                                     <td><p class="title"><?php  echo $survey->title?></p></td>
                                     <td><p class="Description"><?php echo $survey->description?></p></td>
                                     <td><time datetime="0000-09-02"><?php echo $survey->start_date?></time></td>

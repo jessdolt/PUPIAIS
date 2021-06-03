@@ -27,19 +27,25 @@
         public function alumni(){
             $this->alumniModel = $this->model('alumni_model');
             $this->groupModel = $this->model('group_model');
+            
+            $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
             $alumni = $this->alumniModel->showAlumni();
             $department = $this->alumniModel->showDepartment();
-            $classification = $this->groupModel->showClassificaition();
+            $courses = $this->alumniModel->showCourses();
+            $classification = $this->groupModel->showClassification();
 
             $data = [
                 'alumni' => $alumni,
                 'department' =>  $department,
+                'courses' => $courses,
                 'classification' => $classification,
                 'isPreview' => 0,
                 'title' => 'All Alumni',
                 'batch' => '',
-                'alumniCount' => count($alumni)
+                'alumniCount' => count($alumni),
+                'alumniPerCourse' => $alumniCountPerCourse
             ];
+
             // $data = $this->alumniModel->showAlumni();
             // $dep  = $this->alumniModel->showDepartment(); 
             // $year = $this->alumniModel->showYear();
