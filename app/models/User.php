@@ -311,6 +311,67 @@ class User {
             }
         }
 
+        public function profileAdditionalAdd($data){
+            $this->db->query('INSERT INTO employment (alumni_id, graduation, first_employment, current_employment, type_of_work, work_position, monthly_income, if_related, company_id) VALUES (:alumni_id, :graduation, :first_employment, :current_employment, :type_of_work, :work_position, :monthly_income, :if_related, :company_id)');
+            $this->db->bind(':alumni_id', $data['alumni_id']);
+            $this->db->bind(':graduation', $data['gDate']);
+            $this->db->bind(':first_employment', $data['eDate']);
+            $this->db->bind(':current_employment', $data['ceDate']);
+            $this->db->bind(':type_of_work', $data['tWork']);
+            $this->db->bind(':work_position', $data['wPosition']);
+            $this->db->bind(':monthly_income', $data['mIncome']);
+            $this->db->bind(':if_related', $data['ifRelated']);
+            $this->db->bind(':company_id', $data['file']);
+            
+            if($this->db->execute()){
+                return true;
+            } else{
+                return false;
+            }
+        }
+
+        public function profileAdditionalEdit($data) {
+            $this->db->query('UPDATE employment SET alumni_id=:alumni_id, graduation=:graduation, first_employmen=:first_employment, current_employment=:current_employment, type_of_work=:type_of_work, work_position=:work_position, monthly_income=:monthly_income, if_related=:if_related, company_id=:company_id WHERE alumni_id = :alumni_id');
+            $this->db->bind(':alumni_id', $data['alumni_id']);
+            $this->db->bind(':graduation', $data['gDate']);
+            $this->db->bind(':first_employment', $data['eDate']);
+            $this->db->bind(':current_employment', $data['ceDate']);
+            $this->db->bind(':type_of_work', $data['tWork']);
+            $this->db->bind(':work_position', $data['wPosition']);
+            $this->db->bind(':monthly_income', $data['mIncome']);
+            $this->db->bind(':if_related', $data['ifRelated']);
+            $this->db->bind(':company_id', $data['file']);
+            if($this->db->execute()){
+                return true;
+            } else{
+                return false;
+            }
+        }
+
+        public function employment($id) {
+            $this->db->query('SELECT * FROM employment WHERE alumni_id = :alumni_id');
+            $this->db->bind(':alumni_id', $id);
+            $row = $this->db->single();
+            if($this->db->rowCount() > 0){
+                return $row;
+            } else{
+                return false;
+            }
+        }
+        
+        // IF profileAdditional is DONE
+        public function additionalVerify($id) {
+            $this->db->query('SELECT * FROM employment WHERE alumni_id = :alumni_id');
+            $this->db->bind(':alumni_id', $id);
+            $this->db->single();
+    
+            if($this->db->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         public function checkOldPassword($data) {
             $this->db->query('SELECT * FROM users WHERE email = :email');
     
