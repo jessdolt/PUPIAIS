@@ -395,7 +395,7 @@ table tbody {
     font-size: 1.4rem;
     font-weight: 500; } }
 
-.card .date-posted {
+.card .date-posted, .card .availablePos {
   font-size: 1.2rem;
   color: rgba(0, 0, 0, 0.6); }
 
@@ -442,6 +442,11 @@ table tbody {
 .answerCon li {
   font-size: 1.4rem;
   font-weight: 500; }
+  .answerCon li span, .answerCon li p {
+    font-size: inherit;
+    font-weight: inherit; }
+  .answerCon li .answer-ratio {
+    font-weight: 400; }
 
 .loginMain h1 {
   font-family: 'Cinzel', serif;
@@ -465,6 +470,11 @@ table tbody {
   letter-spacing: 4.2rem; }
 
 .textFieldContainer .error {
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  color: #B00020; }
+
+.error {
   font-size: 1rem;
   letter-spacing: 0.15rem;
   color: #B00020; }
@@ -833,7 +843,8 @@ table tbody {
       .adminNav .accountNameContainer .imageContainer img {
         border-radius: 5rem;
         width: 6rem;
-        height: 6rem; }
+        height: 6rem;
+        object-fit: cover; }
     .adminNav .accountNameContainer a {
       margin-left: auto; }
       .adminNav .accountNameContainer a .icon {
@@ -1029,6 +1040,9 @@ html {
         border-bottom: 1px solid rgba(0, 0, 0, 0.38); }
       @media (min-width: 800px) {
         .alumni > section .container {
+          grid-column: 2/12; } }
+      @media (min-width: 1367px) {
+        .alumni > section .container {
           grid-column: 3/11; } }
     .alumni > section .tint {
       display: grid;
@@ -1115,7 +1129,8 @@ html {
             .alumni > section.behind ~ .mainContent > .container .form button {
               align-self: flex-end; } }
     .alumni > section.mainContent {
-      padding: 2.4rem 0; }
+      padding: 2.4rem 0;
+      background-color: #EEEEEE; }
       .alumni > section.mainContent .container > h3 {
         margin-bottom: 0.8rem; }
       .alumni > section.mainContent .container > h3, .alumni > section.mainContent .container .card-body {
@@ -1127,7 +1142,12 @@ html {
         gap: 1.6rem; }
         @media (min-width: 800px) {
           .alumni > section.mainContent .newsCon, .alumni > section.mainContent .eventsCon, .alumni > section.mainContent .jobCon {
-            grid-column: 3/11; } }
+            grid-column: 2/12;
+            gap: 4rem; } }
+        @media (min-width: 1367px) {
+          .alumni > section.mainContent .newsCon, .alumni > section.mainContent .eventsCon, .alumni > section.mainContent .jobCon {
+            grid-column: 3/11;
+            gap: 4rem; } }
         .alumni > section.mainContent .newsCon > h3, .alumni > section.mainContent .newsCon .card-body, .alumni > section.mainContent .eventsCon > h3, .alumni > section.mainContent .eventsCon .card-body, .alumni > section.mainContent .jobCon > h3, .alumni > section.mainContent .jobCon .card-body {
           margin: 0 2.4rem; }
         @media (min-width: 800px) {
@@ -1141,6 +1161,9 @@ html {
           margin: 0 2.4rem; }
           .alumni > section.mainContent .newsCon > a svg, .alumni > section.mainContent .eventsCon > a svg, .alumni > section.mainContent .jobCon > a svg {
             color: currentColor; }
+      @media (min-width: 800px) {
+        .alumni > section.mainContent .jobCon {
+          gap: 2.4rem !important; } }
       .alumni > section.mainContent .jobCon > a {
         padding: 0 !important;
         text-align: start !important;
@@ -1164,6 +1187,8 @@ html {
           margin-bottom: 0.8rem; }
     .alumni > section.moreContent .additional {
       padding: 0 2.4rem; }
+      .alumni > section.moreContent .additional > a {
+        color: #A63F3F !important; }
 
 .userSurvey ~ .mainNav > * {
   display: none; }
@@ -1840,6 +1865,9 @@ html {
   .mainFooter .tagline {
     margin-bottom: auto; }
 
+.print .main, .print main {
+  max-height: 100% !important; }
+
 input, textarea {
   -webkit-appearance: none;
   appearance: none;
@@ -2510,15 +2538,14 @@ ul {
     .card .card-img::before, .card .card-img[src=""] {
       display: none; }
   .card .card-body {
+    flex: 1;
     padding: 2.4rem 0;
-    min-width: 90%;
     display: flex;
     flex-flow: column;
     justify-content: center; }
     @media (min-width: 800px) {
       .card .card-body {
-        display: block;
-        min-width: 14rem; } }
+        /* min-width: 14rem; */ } }
     .card .card-body .caption {
       border-top: 1px solid #A63F3F;
       padding-top: 0.4rem;
@@ -2537,6 +2564,8 @@ ul {
           flex-flow: row;
           align-items: center;
           margin-bottom: 2.4rem; } }
+    .card .card-body a {
+      margin-top: auto; }
     .card .card-body a, .card .card-body .date-posted {
       display: inline-flex;
       align-items: center; }
@@ -2593,14 +2622,12 @@ ul {
     .jobs.card .card-body .caption {
       margin-bottom: 0.8rem; }
 
-.home > section.welcomeBox .container {
-  display: flex;
-  align-items: center;
-  gap: 4rem; }
-
-@media (min-width: 800px) {
-  .home > section.mainContent {
-    grid-template-rows: 2fr 1fr 1fr; } }
+.home > section.mainContent {
+  background-color: #FFFFFF; }
+  @media (min-width: 800px) {
+    .home > section.mainContent {
+      /* grid-template-rows: 2fr 1fr 1fr; */
+      grid-auto-rows: minmax(16.4rem, auto); } }
 
 .home .heroBox {
   padding: 3.4rem 0 2.4rem; }
@@ -2627,7 +2654,8 @@ ul {
     grid-template-columns: 4.5rem 1fr;
     grid-template-areas: "svg header" "message message";
     column-gap: 0.8rem;
-    row-gap: 1.6rem; }
+    row-gap: 1.6rem;
+    align-items: center; }
     @media (min-width: 800px) {
       .home .welcomeBox div.container {
         column-gap: 4.8rem;
@@ -2659,14 +2687,20 @@ ul {
         display: none; } }
   @media (min-width: 800px) {
     .home Section.mainContent .newsCon {
-      grid-column: 3/9;
+      grid-column: 2/9;
       padding-right: 4rem;
       margin-right: 1.6rem;
       border-right: 1px solid rgba(0, 0, 0, 0.6); } }
+  @media (min-width: 1367px) {
+    .home Section.mainContent .newsCon {
+      grid-column: 3/9; } }
   @media (min-width: 800px) {
     .home Section.mainContent .eventsCon, .home Section.mainContent .jobCon {
-      grid-column: 9/11;
+      grid-column: 9/12;
       margin: 0 !important; } }
+  @media (min-width: 1367px) {
+    .home Section.mainContent .eventsCon, .home Section.mainContent .jobCon {
+      grid-column: 9/11; } }
   @media (min-width: 800px) {
     .home Section.mainContent .newsCon {
       grid-row: 1/4; } }
@@ -2705,6 +2739,9 @@ ul {
 
 .alumniNews > section.mainContent {
   padding-top: 2.4rem; }
+  .alumniNews > section.mainContent .card {
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87); }
   .alumniNews > section.mainContent .card-img {
     width: initial;
     flex: 1; }
@@ -2728,6 +2765,38 @@ ul {
       @media (min-width: 800px) {
         .alumniNews > section.mainContent .card-body .description {
           margin-bottom: 1.6rem; } }
+  .alumniNews > section.mainContent.newsView {
+    padding-bottom: 3.2rem;
+    background-color: #FFFFFF; }
+    .alumniNews > section.mainContent.newsView .card {
+      flex-flow: column;
+      background-color: #FFFFFF;
+      color: rgba(0, 0, 0, 0.87);
+      margin: 0 2.4rem; }
+    .alumniNews > section.mainContent.newsView h3 {
+      color: #A63F3F; }
+    .alumniNews > section.mainContent.newsView .card-img {
+      flex: 1;
+      width: 100%;
+      max-height: 20.4rem;
+      border-radius: 0;
+      margin-bottom: 1.6rem; }
+      @media (min-width: 800px) {
+        .alumniNews > section.mainContent.newsView .card-img {
+          max-height: 69.6rem; } }
+    .alumniNews > section.mainContent.newsView .card-body {
+      padding: 1.6rem 0;
+      margin: 0; }
+    .alumniNews > section.mainContent.newsView .caption {
+      border-top: 1px solid rgba(0, 0, 0, 0.38);
+      margin-bottom: 2.4rem !important; }
+    .alumniNews > section.mainContent.newsView .description {
+      display: block; }
+    .alumniNews > section.mainContent.newsView ~ .moreContent {
+      background-color: #EEEEEE;
+      color: rgba(0, 0, 0, 0.87); }
+      .alumniNews > section.mainContent.newsView ~ .moreContent .additional h3 {
+        border-color: currentColor; }
 
 .alumniNews > section.moreContent {
   background-color: #A63F3F;
@@ -2766,6 +2835,144 @@ ul {
         fill: currentColor;
         width: inherit;
         height: inherit; }
+
+.jobPost section.mainContent {
+  row-gap: 4rem; }
+  .jobPost section.mainContent .jobCon {
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87);
+    position: relative;
+    padding: 2.4rem 0;
+    border-radius: 1rem;
+    flex-flow: row wrap !important;
+    margin: 0 !important; }
+    @media (min-width: 800px) {
+      .jobPost section.mainContent .jobCon {
+        padding: 2.4rem 4rem; } }
+    .jobPost section.mainContent .jobCon:nth-of-type(2) {
+      overflow-y: hidden;
+      max-height: 62.1rem;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF; }
+      .jobPost section.mainContent .jobCon:nth-of-type(2)::-webkit-scrollbar {
+        width: 0.5rem; }
+      .jobPost section.mainContent .jobCon:nth-of-type(2)::-webkit-scrollbar-track {
+        background-color: #FFFFFF; }
+      .jobPost section.mainContent .jobCon:nth-of-type(2)::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.38);
+        border-radius: 5rem; }
+    .jobPost section.mainContent .jobCon .card-filter.active {
+      top: 0;
+      height: 0;
+      visibility: hidden; }
+    .jobPost section.mainContent .jobCon > .card-filter {
+      content: 'Show Archive';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      visibility: visible;
+      transition: all 600ms ease, visibility 400ms ease 100ms;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: #FFFFFF;
+      font-size: 3.6rem;
+      font-weight: 500;
+      margin: 0;
+      border: 0;
+      z-index: 2;
+      text-decoration: none; }
+    .jobPost section.mainContent .jobCon > h3 {
+      min-width: 80%;
+      flex: 1; }
+    .jobPost section.mainContent .jobCon .card-body h3 {
+      margin-top: 1.6rem; }
+    @media (min-width: 800px) {
+      .jobPost section.mainContent .jobCon .card-body {
+        margin: 0 4rem !important;
+        padding: 1.8rem 0 2.4rem !important; } }
+    .jobPost section.mainContent .jobCon .jobs {
+      min-width: 31.2rem;
+      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+      border: 0 !important;
+      border-left: 4px solid !important; }
+      .jobPost section.mainContent .jobCon .jobs.fullTime {
+        border-color: #A63F3F !important; }
+      .jobPost section.mainContent .jobCon .jobs.partTime {
+        border-color: #C7B13F !important; }
+      @media (min-width: 800px) {
+        .jobPost section.mainContent .jobCon .jobs {
+          min-width: 37.65rem; } }
+    .jobPost section.mainContent .jobCon .caption {
+      margin-top: 1.2rem; }
+    .jobPost section.mainContent .jobCon img {
+      border-radius: 10rem;
+      width: 6rem;
+      height: 6rem;
+      object-fit: cover; }
+  .jobPost section.mainContent.jobView {
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87); }
+    .jobPost section.mainContent.jobView .jobCon {
+      padding-top: 0;
+      padding-bottom: 0; }
+    .jobPost section.mainContent.jobView .jobs {
+      border: none !important;
+      box-shadow: none; }
+    @media (min-width: 800px) {
+      .jobPost section.mainContent.jobView img {
+        width: 12rem;
+        height: 12rem; } }
+    .jobPost section.mainContent.jobView .description {
+      display: block; }
+    .jobPost section.mainContent.jobView .card-body {
+      margin: 0; }
+    .jobPost section.mainContent.jobView .card-title {
+      align-items: flex-end;
+      justify-content: stretch;
+      column-gap: 1.6rem; }
+      .jobPost section.mainContent.jobView .card-title h3 {
+        color: #A63F3F; }
+        @media (min-width: 800px) {
+          .jobPost section.mainContent.jobView .card-title h3 {
+            font-size: 3rem; } }
+      .jobPost section.mainContent.jobView .card-title img {
+        margin-left: auto; }
+    .jobPost section.mainContent.jobView .flex-row {
+      display: flex;
+      gap: 2.4rem;
+      margin-bottom: 2.4rem; }
+      .jobPost section.mainContent.jobView .flex-row.justify-start {
+        align-items: center; }
+
+.jobPost section.moreContent {
+  background-color: #EEEEEE;
+  color: rgba(0, 0, 0, 0.87); }
+  .jobPost section.moreContent .additional {
+    padding: 2.4rem 2.4rem 3.2rem; }
+    @media (min-width: 800px) {
+      .jobPost section.moreContent .additional {
+        padding: 3.2rem 0; } }
+    .jobPost section.moreContent .additional h3 {
+      border-color: #EEEEEE;
+      margin-bottom: 2.4rem; }
+      @media (min-width: 800px) {
+        .jobPost section.moreContent .additional h3 {
+          margin-bottom: 3.2rem; } }
+    .jobPost section.moreContent .additional ul {
+      display: flex;
+      flex-flow: column;
+      row-gap: 0.8rem;
+      padding: 0 0.8rem; }
+      @media (min-width: 800px) {
+        .jobPost section.moreContent .additional ul {
+          padding: 0 4rem; } }
+    .jobPost section.moreContent .additional a {
+      color: currentColor; }
 
 .loginMain {
   height: 100vh;
@@ -3197,6 +3404,8 @@ ul {
     color: #FFFFFF;
     margin-left: auto; }
   .mainContent.questionnaire .form:first-child .questionCon {
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87);
     display: flex;
     flex-flow: column;
     gap: 1.6rem;
@@ -3225,7 +3434,6 @@ ul {
     gap: 0.8rem; }
     .mainContent.questionnaire .form:first-child .answerCon div, .mainContent.questionnaire .form:first-child .answerCon ul {
       display: flex;
-      align-items: flex-start;
       gap: 0.8rem; }
     .mainContent.questionnaire .form:first-child .answerCon ul {
       list-style: disc;
@@ -3258,6 +3466,42 @@ ul {
     border-bottom: 1px solid rgba(0, 0, 0, 0.38); }
   .mainContent.questionnaire.adminForm .form:last-child .dateInfo {
     margin-top: 0; }
+
+.mainContent.reportView textarea {
+  background-color: #EEEEEE;
+  color: rgba(0, 0, 0, 0.87); }
+
+.mainContent.reportView .answer-list .answer {
+  margin-left: 1.6rem; }
+
+.mainContent.reportView .answer-list .flex-con {
+  display: flex;
+  align-items: center;
+  flex-flow: wrap;
+  gap: 1.6rem; }
+
+.mainContent.reportView .answer-list p {
+  min-width: 100%; }
+
+.mainContent.reportView .answer-list .answer-ratio {
+  min-width: 5.4rem; }
+
+.mainContent.reportView .answer-list .answer-progress-bar {
+  flex: 1;
+  background-color: #EEEEEE;
+  border-radius: 1rem;
+  height: 1.2rem; }
+  .mainContent.reportView .answer-list .answer-progress-bar .answer-progress-bar-percent {
+    background-color: #A63F3F;
+    width: 50%;
+    border-radius: inherit; }
+
+.mainContent.reportView .answer-list .answer-percentage {
+  background-color: #A63F3F;
+  color: #FFFFFF;
+  border-radius: 0.5rem;
+  min-width: 4.8rem;
+  text-align: center; }
 
 .report .mainContent {
   margin: 0;
