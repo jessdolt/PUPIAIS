@@ -24,6 +24,18 @@
             $this->view('admin_d/dashboard', $data);
         }
 
+        public function notif(){
+            $data =[];
+            
+            $this->view('admin_d/email_notif', $data);
+        }
+
+        public function passHash(){
+            $data =[];
+            
+            $this->view('admin_d/testPass', $data);
+        }
+
         public function alumni(){
             $this->alumniModel = $this->model('alumni_model');
             $this->groupModel = $this->model('group_model');

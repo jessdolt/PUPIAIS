@@ -1,10 +1,11 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-    
+   
 <main class="alumni home">
         <section class="heroBox">
             <div class="tint">
                 <div class="container">
                     <h1 class="heroBoxText">PUP Institute of Technology <br> Alumni Information System</h1>
+                    
                 </div>
             </div>
         </section>

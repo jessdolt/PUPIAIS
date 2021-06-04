@@ -103,7 +103,7 @@
 
             try{
                 if($this->db->execute()){
-                    return true;
+                    return $this->db->getLastId();
                 }
             }
             catch (PDOException $e){
@@ -128,7 +128,7 @@
             $this->db->bind(':batch', $data['batch']);
             
             if($this->db->execute()){
-                return true;
+                return $this->db->getLastId();
             } else{
                 return false;
             }

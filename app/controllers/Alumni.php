@@ -25,32 +25,63 @@ class Alumni extends Controller{
 
     } */
 
+    
+
     //Email specific alumni
     public function email($id){
+        $this->userModel = $this->model('user');
         $alumni = $this->alumniModel->getAlumniById($id);
-        
+        $alumniUser = $this->userModel->singleAlumni($alumni->student_no);
+        $referenceNo = rand(10000,99999);
+
         $mail = new PHPMailer();
         $mail->SMTPDebug = 2;
         $mail->isSMTP();
         $mail->SMTPAuth = true;
-        $mail->SMTPSecure = 'ssl';
         $mail->Host = 'smtp.gmail.com';
-        $mail->Port = '465';
+       
+        $mail->Username = 'itechpup1@gmail.com';
+        $mail->Password = 'PUPTest1';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = '587';
+
         $mail->isHTML();
-        $mail->Username = '';
-        $mail->Password = '';
-        $mail->setFrom('meepmeerpp@idk.com');
-        $mail->Subject = 'LMAOLMAO?'  ;
-        $mail->Body = 'ello bubu this yo password '.$alumni->userPassword;
-        $mail->addAddress($alumni->email);
-        $mail->Send();
+       
+        $mail->setFrom('itechpup1@gmail.com', 'PUP ITECH Administrator');
 
-        redirect('alumni');
+        $mail->addAddress($alumniUser->email);
+        $mail->Subject = 'Login Credentials for PUPIAIS (Reference No. '.$referenceNo.')';
 
+        $website = URLROOT;;
+       
+
+        $msg = '
+                <p>Your Username is <strong>'.$alumni->email.'</strong></p>
+                <p>Your Password is <strong>'.$alumniUser->password.'</strong></p>
+                <p>You can access Talpakan website at <strong>'. $website.'</strong></p>
+                ';
+                
+        $mail->Body = $msg;
+
+
+        $mail->Priority = 1;
+        $mail->addCustomHeader("X-MSMail-Priority: High");
+        $mail->addCustomHeader("Importance: High");
+       
+        if($mail->Send()){
+            if($this->userModel->updateSend($alumni->student_no)){
+                redirect('admin/alumni');
+            }
+        }
+        else{
+            echo $mail->ErrorInfo;
+        }
     }
 
+
+
         //Add Alumni
-        public function add(){
+    public function add(){
             $this->userModel = $this->model('user');    
             $courses = $this->alumniModel->showCourses();
 
@@ -59,6 +90,8 @@ class Alumni extends Controller{
                 $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
                 // $pass = rand();
                 // $pass = password_hash($pass, PASSWORD_DEFAULT);
+
+
                 $data = [
                     'student_no' => ($_POST['student_no']),
                     //'user_pass' => $pass,
@@ -133,19 +166,22 @@ class Alumni extends Controller{
 
                 // print_r($data);
                 if (empty($data['student_no_error']) && empty($data['first_name_error']) && empty($data['last_name_error']) && empty($data['middle_name_error']) && empty($data['birth_date_error']) && empty($data['address_error']) && empty($data['city_error']) && empty($data['region_error']) && empty($data['postal_error']) && empty($data['contact_no_error']) && empty($data['email_error']) && empty($data['departmentError']) && empty($data['batchError'])){
-                        if($this->alumniModel->addAlumni($data)){
-                            $pass = '12345';
-                            $pass = password_hash($pass, PASSWORD_DEFAULT);
-                            $newData = [
-                                'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
-                                'email' => $data['email'],
-                                'password' => $pass,
-                                'user_type' => 2
-                            ];
-                            if($this->userModel->register($newData)){
-                                redirect('admin/alumni');
-                            }
-                        }
+                           $alumni_id = $this->alumniModel->addAlumni($data);
+                            // $pass = '12345';
+                            // $pass = password_hash($pass, PASSWORD_DEFAULT);
+                            $pass = bin2hex(openssl_random_pseudo_bytes(5));
+                            if(!empty($alumni_id)){
+                                $newData = [
+                                    'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
+                                    'a_id' => $alumni_id,
+                                    'email' => $data['email'],
+                                    'password' => $pass,
+                                    'user_type' => 2
+                                ];
+                                if($this->userModel->register($newData)){
+                                    redirect('admin/alumni');
+                                }
+                            } 
                     }
                 else{
                     /* $this->alumniModel->addAlumni($data); */
@@ -302,13 +338,11 @@ class Alumni extends Controller{
         }
     }
 
-    public function deleteRow($id,$studNo) {
+    public function deleteRow($id) {
         $this->userModel = $this->model('user');
 
         if($this->alumniModel->deleteAlumni($id)){
-            if($this->userModel->deleteUserbyStudNo($studNo)){
                 redirect('admin/alumni');   
-            }
         }
     }
     
@@ -469,23 +503,25 @@ class Alumni extends Controller{
                 }
 
                 else{
-                    $this->alumniModel->addBulkAlumni($data);
-                    $pass = '12345';
-                    $pass = password_hash($pass, PASSWORD_DEFAULT);
-                    $newData = [
-                        'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
-                        'email' => $data['email'],
-                        'student_no' => $data['student_no'],
-                        'password' => $pass,
-                        'user_type' => 2
-                    ];
-                    $this->userModel->register($newData);
+                    $alumni_id = $this->alumniModel->addBulkAlumni($data);
+                    $pass = bin2hex(openssl_random_pseudo_bytes(5));
+                    if(!empty($alumni_id)){
+                        $newData = [
+                            'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
+                            'a_id' => $alumni_id,
+                            'email' => $data['email'],
+                            'password' => $pass,
+                            'user_type' => 2
+                        ];
+                        $this->userModel->register($newData);
+                    } 
                 }
             }
 
             if(!empty($duplication)){
                 $this->view('alumni/duplication', $duplication);
             }
+            
             else{
                 redirect('admin/alumni');
             }

@@ -33,6 +33,11 @@
             }
         }
 
+        //Get row id of the inserted data
+        public function getLastId(){
+            return $this->dbh->lastInsertId();
+        }
+
         //Prepare Statement with query
         public function query($sql){
             $this->stmt = $this->dbh->prepare($sql);

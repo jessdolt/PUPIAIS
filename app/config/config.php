@@ -8,7 +8,8 @@
 
     //App Root
     define('APPROOT',dirname(dirname(__FILE__)));
-
+    define('IMAGEROOT', dirname(dirname(dirname(__FILE__))). '\public\uploads\\');
+    
     //Url Root
     define('URLROOT', 'http://localhost/pupiais');
     

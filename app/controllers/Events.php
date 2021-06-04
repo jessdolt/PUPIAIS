@@ -32,7 +32,7 @@
               
                 $fileExt = explode ('.',$filename);
                 $fileActualExt = strtolower(end($fileExt));
-                $allowed = array('jpg','jpeg', 'png', 'pdf');
+                $allowed = array('jpg','jpeg', 'png', 'pdf','jfif');
 
                 if(in_array($fileActualExt, $allowed)){
                     if( $fileError === 0){
@@ -108,7 +108,7 @@
               
                 $fileExt = explode ('.',$filename);
                 $fileActualExt = strtolower(end($fileExt));
-                $allowed = array('jpg','jpeg', 'png', 'pdf');
+                $allowed = array('jpg','jpeg', 'png', 'pdf','jfif');
 
                 if(in_array($fileActualExt, $allowed) && $isUploaded == 1){
                     if( $fileError === 0){
