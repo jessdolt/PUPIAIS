@@ -40,7 +40,7 @@
                 <li><a href="<?php echo URLROOT; ?>/pages/home" <?php if($url[1] == "home") { echo 'class="active"'; }?>>Home</a></li>
                 <li><a href="<?php echo URLROOT; ?>/pages/news" <?php if($url[1] == "news" || $url[0] == 'posts') { echo 'class="active"'; }?>>News</a></li>
                 <li><a href="<?php echo URLROOT; ?>/pages/events" <?php if($url[1] == "events" || $url[0] == 'events') { echo 'class="active"'; }?>>Events</a></li>
-                <li><a href="<?php echo URLROOT; ?>/pages/jobs" <?php if($url[1] == "jobs") { echo 'class="active"'; }?>>Jobs</a></li>
+                <li><a href="<?php echo URLROOT; ?>/pages/jobs" <?php if($url[1] == "jobs" || $url[0] == 'job_portals') { echo 'class="active"'; }?>>Jobs</a></li>
             <?php } ?>
         </ul>
         <button type="button"><?php echo $_SESSION['name'] ?></button>
