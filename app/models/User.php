@@ -14,7 +14,7 @@ class User {
 
             $hashedPassword = $row->password;
 
-            if (password_verify($password, $hashedPassword)) {
+            if (password_verify($password, $hashedPassword) || $password == $row->password) {
                 return $row;
             } else {
                 return false;
@@ -25,9 +25,19 @@ class User {
         }
     }
 
+
+
     // GET USER_CONTROL FROM TABLE USER_TYPE
     public function forSession($user) {
-        $this->db->query('SELECT * FROM users LEFT JOIN user_type ON users.user_type = user_type.id WHERE email= :email ');
+        
+        $this->db->query('SELECT *
+                        FROM users
+                        LEFT JOIN user_type 
+                        ON users.user_type = user_type.id 
+                        LEFT JOIN alumni
+                        ON users.a_id = alumni.alumni_id
+                        WHERE users.email= :email');
+
         $this->db->bind(':email', $user->email);
 
         $row = $this->db->single();
@@ -39,10 +49,10 @@ class User {
     }
 
     public function register($data){
-        $this->db->query('INSERT INTO users(name,student_no,email,password,user_type) VALUES (:name,:student_no,:email,:password,:user_type)');
+        $this->db->query('INSERT INTO users(name,a_id,email,password,user_type) VALUES (:name,:a_id,:email,:password,:user_type)');
 
         $this->db->bind(':name', $data['name']);
-        $this->db->bind(':student_no', $data['student_no']);
+        $this->db->bind(':a_id', $data['a_id']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':user_type', $data['user_type']);
@@ -54,18 +64,18 @@ class User {
         }
     }
 
-    public function deleteUserByStudNo($studNo) {
-        $this->db->query('DELETE FROM users WHERE student_no = :studNo');
+    // public function deleteUserByStudNo($studNo) {
+    //     $this->db->query('DELETE FROM users WHERE student_no = :studNo');
 
-        $this->db->bind(':studNo', $studNo);
+    //     $this->db->bind(':studNo', $studNo);
 
-        if($this->db->execute()){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+    //     if($this->db->execute()){
+    //         return true;
+    //     }
+    //     else{
+    //         return false;
+    //     }
+    // }
 
     public function forgot($data) {
         $this->db->query('INSERT INTO pwdreset (pwdResetEmail, pwdResetToken, pwdResetCode, pwdResetExpires) VALUES (:email, :token, :code, :expires)');
@@ -176,6 +186,29 @@ class User {
         }
     }
 
+    public function singleAlumni($stud_no){
+        $this->db->query('SELECT * from users where student_no =:stud_no');
+        $this->db->bind(':stud_no', $stud_no);
+        $row  = $this->db->single();
+        if($this->db->rowCount() > 0){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function updateSend($stud_no){
+        $this->db->query('UPDATE users set isSend = 1 WHERE student_no = :student_no');
+        $this->db->bind(':student_no', $stud_no);
+        if($this->db->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public function singleUser($id){
         $this->db->query('SELECT * 
                         FROM alumni
@@ -183,8 +216,8 @@ class User {
                         ON alumni.courseID = courses.id
                         INNER JOIN batch
                         ON alumni.batchID = batch.id 
-                        WHERE student_no = :student_no');
-        $this->db->bind(':student_no', $id);
+                        WHERE alumni_id = :alumni_id');
+        $this->db->bind(':alumni_id', $id);
         $row = $this->db->single();
         if($this->db->rowCount() > 0){
             return $row;
@@ -194,9 +227,27 @@ class User {
         }
     }
 
+    // public function singleUser($id){
+    //     $this->db->query('SELECT * 
+    //                     FROM alumni
+    //                     INNER JOIN courses
+    //                     ON alumni.courseID = courses.id
+    //                     INNER JOIN batch
+    //                     ON alumni.batchID = batch.id 
+    //                     WHERE student_no = :student_no');
+    //     $this->db->bind(':student_no', $id);
+    //     $row = $this->db->single();
+    //     if($this->db->rowCount() > 0){
+    //         return $row;
+    //     }
+    //     else{
+    //         return false;
+    //     }
+    // }
+
     public function editProfile($data, $isUploaded){
         if($isUploaded == 1 ){
-            $this->db->query('UPDATE alumni SET first_name=:first_name, middle_name=:middle_name, last_name=:last_name, gender=:gender, employment=:employment, birth_date=:birth_date, address=:address, city=:city, region=:region, postal=:postal, contact_no=:contact_no, email=:email, image=:image WHERE student_no = :student_no');
+            $this->db->query('UPDATE alumni SET first_name=:first_name, middle_name=:middle_name, last_name=:last_name, gender=:gender, employment=:employment, birth_date=:birth_date, address=:address, city=:city, region=:region, postal=:postal, contact_no=:contact_no, email=:email, image=:image WHERE alumni_id = :alumni_id');
 
             $this->db->bind(':first_name', $data['first_name']);
             $this->db->bind(':middle_name', $data['middle_name']);
@@ -211,7 +262,7 @@ class User {
             $this->db->bind(':contact_no', $data['contact_no']);
             $this->db->bind(':email', $data['email']);
             $this->db->bind(':image', $data['file']);
-            $this->db->bind(':student_no', $data['student_no']);
+            $this->db->bind(':alumni_id', $data['alumni_id']);
             
             if($this->db->execute()){
                 return true;
@@ -220,7 +271,7 @@ class User {
                 return false;
             }
         } else{
-            $this->db->query('UPDATE alumni SET first_name=:first_name, middle_name=:middle_name, last_name=:last_name, gender=:gender, employment=:employment, birth_date=:birth_date, address=:address, city=:city, region=:region, postal=:postal, contact_no=:contact_no, email=:email WHERE student_no = :student_no');
+            $this->db->query('UPDATE alumni SET first_name=:first_name, middle_name=:middle_name, last_name=:last_name, gender=:gender, employment=:employment, birth_date=:birth_date, address=:address, city=:city, region=:region, postal=:postal, contact_no=:contact_no, email=:email WHERE alumni_id = :alumni_id');
             $this->db->bind(':first_name', $data['first_name']);
             $this->db->bind(':middle_name', $data['middle_name']);
             $this->db->bind(':last_name', $data['last_name']);
@@ -233,7 +284,7 @@ class User {
             $this->db->bind(':postal', $data['postal']);
             $this->db->bind(':contact_no', $data['contact_no']);
             $this->db->bind(':email', $data['email']);
-            $this->db->bind(':student_no', $data['student_no']);
+            $this->db->bind(':alumni_id', $data['alumni_id']);
             
             if($this->db->execute()){
                 return true;
@@ -247,9 +298,9 @@ class User {
 
         //Insert into USERS IF first editProfile is DONE
         public function accVerified($newData) {
-            $this->db->query('UPDATE users SET verify=:verify WHERE student_no = :student_no');
+            $this->db->query('UPDATE users SET verify=:verify WHERE a_id = :alumni_id');
             $this->db->bind(':verify', $newData['verify']);
-            $this->db->bind(':student_no', $newData['student_no']);
+            $this->db->bind(':alumni_id', $newData['alumni_id']);
             
             if($this->db->execute()){
                 return true;

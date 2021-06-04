@@ -5,8 +5,7 @@
         </section>
         <section class="mainContent questionnaire">
             <div class="container">
-                <form action="<?php echo URLROOT; ?>/profile/editProfile/<?php echo $data['student_no']?>" method="POST" class="form" enctype="multipart/form-data">
-
+                <form action="<?php echo URLROOT; ?>/profile/editProfile/<?php echo $data['alumni_id']?>" method="POST" class="form" enctype="multipart/form-data">
                     <div>
                         <h2>Edit your profile</h2>
                         <p>Basic info, like your name and photo</p>
@@ -19,11 +18,11 @@
                             </h3>
                         </div>
                         <div class="avatar">
-                        <?php if (empty($data['file'])) { ?>
+                        <?php if (empty($data['file'])) : ?>
                             <img class="profilePic" src="<?php echo URLROOT ?>/images/default-profile-picture.png" id="myImg" width="200" height="200">
-                        <?php } else { ?>
+                        <?php else : ?>
                             <img class="profilePic" src="<?php echo URLROOT ?>/uploads/<?php echo $data['file']?>" id="myImg" width="200" height="200">
-                        <?php } ?>
+                        <?php endif; ?>
                             <label for="profile-pic-btn">
                                 <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="43" height="43" rx="21.5" fill="white"/>

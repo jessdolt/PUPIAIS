@@ -392,8 +392,10 @@
             $_SESSION['email'] = $newUser->email;
             $_SESSION['name'] = $newUser->name;
             $_SESSION['student_no'] = $newUser->student_no;
+            $_SESSION['alumni_id'] = $newUser->a_id;
             $_SESSION['user_type'] = $newUser->user_control;
-
+            // $_SESSION['test'] = $newUser;
+            
             if ($_SESSION['user_type'] == "Admin" || $_SESSION['user_type'] == "Content Creator") {
                 redirect('admin/dashboard');
             } else {
@@ -406,6 +408,7 @@
             unset($_SESSION['id']);
             unset($_SESSION['email']);
             unset($_SESSION['name']);
+            unset($_SESSION['alumni_id']);
             unset($_SESSION['student_no']);
             unset($_SESSION['user_type']);
             session_destroy();

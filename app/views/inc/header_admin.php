@@ -93,6 +93,12 @@
                                 <li><a href="<?php echo URLROOT;?>/admin/survey_report">Survey Report</a></li>
                             </ul>
                         </li>
+                        <li class="mainCategory" >
+                            <div class="categoryContainer">
+                                <a href="<?php echo URLROOT;?>/admin/notif">Send Email</a>
+                            </div>
+                        </li>
+                        
                     </ul>
             
                     <button class="btnLogout">

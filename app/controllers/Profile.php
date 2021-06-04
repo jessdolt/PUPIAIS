@@ -15,7 +15,6 @@
             $this->view('users/viewProfile', $data);
         }
 
-        
 
         public function editProfile($id) {
 
@@ -28,7 +27,7 @@
                 $isUploaded = $_POST['isUploaded'];
     
                 $data = [
-                    'student_no' => $id,
+                    'alumni_id' => $id,
                     'file' => $user->image,
                     'first_name' => ($_POST['first_name']),
                     'last_name' => ($_POST['last_name']),
@@ -72,36 +71,35 @@
                     $data['file_error'] = 'There was a problem in uploading the file';
                 }
     
-                if (empty($data['file_error'])) {
-                    if ($this->userModel->editProfile($data, $isUploaded)) {
-    
+                if(empty($data['file_error'])) {
+                    if($this->userModel->editProfile($data, $isUploaded)) {
+                        
                         $newData = [
                             'verify' => 'YES',
-                            'student_no' => $_SESSION['student_no']
+                            'alumni_id' => $_SESSION['alumni_id']
                         ];
                         $this->userModel->accVerified($newData);
-    
+                        
                         if ($data['employment'] == 'Unemployed') {
-                            redirect('profile/viewProfile/'.$_SESSION['student_no']);
+                            redirect('profile/viewProfile/'.$_SESSION['alumni_id']);
                         } else {
-                            if ($this->userModel->additionalVerify($_SESSION['student_no'])) {
-                                redirect('profile/viewProfile/'.$_SESSION['student_no']);
+                            if ($this->userModel->additionalVerify($_SESSION['alumni_id'])) {
+                                redirect('profile/viewProfile/'.$_SESSION['alumni_id']);
                             } else {
-                                redirect('profile/viewProfile/'.$_SESSION['student_no']);
+                                redirect('profile/viewProfile/'.$_SESSION['alumni_id']);
                             }
                         }
-                        
                     } else {
                         die("Something went wrong");
                     }
                 } else {
-                    $this->view('users/viewProfile/'.$_SESSION['student_no'], $data);
+                    $this->view('users/viewProfile/'.$_SESSION['alumni_id'], $data);
                 }
     
             } else {
     
                 $data = [
-                    'student_no' => $id,
+                    'alumni_id' => $id,
                     'file' => $user->image,
                     'first_name' => $user->first_name,
                     'last_name' => $user->last_name,

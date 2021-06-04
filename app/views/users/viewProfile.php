@@ -6,14 +6,14 @@
         <section class="mainContent profile">
             <div class="container">
                 <div class="profile-header">
-                    <?php if (empty($data['user']->image)) { ?>
+                    <?php if (empty($data['user']->image)) :?>
                         <img src="<?php echo URLROOT;?>/images/default-profile-picture.png" id="myImg">
-                    <?php } else { ?>
+                    <?php else: ?>
                         <img src="<?php echo URLROOT;?>/uploads/<?php echo ($data['user']->image) ?>" id="myImg">
-                    <?php } ?>
+                    <?php endif; ?>
                     <h1 class="alumni-name"><?php echo $data['user']->first_name . ' ' . $data['user']->middle_name . ' ' . $data['user']->last_name ?></h1>
                     <span class="alumni-lrn">(<?php echo $data['user']->student_no; ?>)</span>
-                    <a href="<?php echo URLROOT; ?>/profile/editProfile/<?php echo $_SESSION['student_no'] ?>" class="editBtn">
+                    <a href="<?php echo URLROOT; ?>/profile/editProfile/<?php echo $_SESSION['alumni_id'] ?>" class="editBtn">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.2406 1.50879L16.4906 3.75879L14.7754 5.47479L12.5254 3.22479L14.2406 1.50879Z" />
                             <path d="M6 11.9999H8.25L13.7153 6.53467L11.4653 4.28467L6 9.74992V11.9999Z"/>
