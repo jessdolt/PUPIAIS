@@ -192,7 +192,7 @@
                                 <td><div class="option" tabindex="0">
                                     <span class="optionSpan icon">&#8942</span>
                                     <div class="optionModal">
-                                        <a href="#">View</a>
+                                        <a href="<?php echo URLROOT;?>/profile/viewProfile/<?php echo $alumni->alumni_id?>">View</a>
                                         <a href="<?php echo URLROOT;?>/alumni/edit/<?php echo $alumni->alumni_id?>">
                                             <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M15.8233 1.67676L18.3233 4.17676L16.4175 6.08342L13.9175 3.58342L15.8233 1.67676Z" fill="black" fill-opacity="0.87"/>

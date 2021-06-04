@@ -28,7 +28,6 @@
             $this->view('users/viewProfile', $data);
         }
 
-
         public function editProfile($id) {
 
             $user = $this->userModel->singleUser($id);
@@ -100,9 +99,10 @@
                                 redirect('profile/viewProfile/'.$_SESSION['alumni_id']);
                             } else {
                                 //ADDITIONAL INFORMATION
-                                redirect('profile//'.$_SESSION['alumni_id']);
+                                redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
                             }
                         }
+
                     } else {
                         die("Something went wrong");
                     }
@@ -211,4 +211,186 @@
             $this->view('users/changePassword', $data);
             
         }
+
+        public function profileAdditionalAdd($id) {
+
+            $user = $this->userModel->singleUser($id);
+            if ($user->employment == 'Employed') {
+                // If there is a record in employment
+                if($this->userModel->additionalVerify($id) == true) {
+                    redirect('profile/profileAdditionalEdit'.$id);
+                } else {
+                    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    
+                        $file = $_FILES['newsImageInput'];
+        
+                        $data = [
+                            'alumni_id' => $_SESSION['alumni_id'],
+                            'gDate' => $_POST['gDate'],
+                            'eDate' => $_POST['eDate'],
+                            'ceDate' => $_POST['ceDate'],
+                            'tWork' => $_POST['tWork'],
+                            'wPosition' => $_POST['wPosition'],
+                            'mIncome' => $_POST['mIncome'],
+                            'ifRelated' => $_POST['ifRelated'],
+                            'file' => '',
+                            'file_error' => ''
+        
+                        ];
+        
+                        $filename = $file['name'];
+                        $fileTmpName = $file['tmp_name'];
+                        $fileSize = $file['size'];
+                        $fileError = $file['error'];
+                        $fileType = $file['type'];
+        
+                        $fileExt = explode ('.',$filename);
+                        $fileActualExt = strtolower(end($fileExt));
+                        $allowed = array('jpg','jpeg', 'png');
+        
+                        if(in_array($fileActualExt, $allowed)){
+                            if( $fileError === 0){
+                                if($fileSize < 1000000){        
+                                    $fileNameNew = uniqid('',true).".".$fileActualExt;
+                                    $target = "uploads/". basename($fileNameNew);
+                                    move_uploaded_file($fileTmpName, $target);
+                                    $data['file'] = $fileNameNew;
+                                }
+                            } else {
+                                $data['file_error'] = 'File Size too big. Maximum of 1mb only';
+                            }
+                        } else {
+                            $data['file_error'] = 'There was a problem in uploading the file';
+                        }
+        
+                        if(empty($data['file_error']) && empty($data['gDate_error'])){
+                            if($this->userModel->profileAdditionalAdd($data)){
+                                redirect('profile/viewProfile/'.$_SESSION['alumni_id']);
+                            }
+                            else{
+                                die("Something went wrong");
+                            } 
+                        } else{
+                            $this->view('users/additionalProfileAdd', $data);
+                        }
+                    }
+                    else{
+                        $data = [
+                            'gDate' => '',
+                            'eDate' => '',
+                            'ceDate' => '',
+                            'tWork' => '',
+                            'wPosition' => '',
+                            'mIncome' => '',
+                            'ifRelated' => '',
+                            'file' => '',
+                            'file_error' => ''
+                        ];
+                    }
+                    
+                    $this->view('users/additionalProfileAdd', $data);
+                }
+
+            }
+            else {
+                redirect('profile/viewProfile/'.$id);
+            }
+        }
+
+        public function profileAdditionalEdit($id) {
+
+            $user = $this->userModel->singleUser($id);
+    
+            if ($user->employment == 'Employed') {
+
+                if($this->userModel->additionalVerify($id)) {
+
+                    $employment = $this->userModel->employment($id);
+
+                    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+                        
+        
+                        $file = $_FILES['newsImageInput'];
+        
+                        $data = [
+                            'alumni_id' => $_SESSION['alumni_id'],
+                            'gDate' => $_POST['gDate'],
+                            'eDate' => $_POST['eDate'],
+                            'ceDate' => $_POST['ceDate'],
+                            'tWork' => $_POST['tWork'],
+                            'wPosition' => $_POST['wPosition'],
+                            'mIncome' => $_POST['mIncome'],
+                            'ifRelated' => $_POST['ifRelated'],
+                            'file' => '',
+                            'file_error' => ''
+        
+                        ];
+        
+                        $filename = $file['name'];
+                        $fileTmpName = $file['tmp_name'];
+                        $fileSize = $file['size'];
+                        $fileError = $file['error'];
+                        $fileType = $file['type'];
+        
+                        $fileExt = explode ('.',$filename);
+                        $fileActualExt = strtolower(end($fileExt));
+                        $allowed = array('jpg','jpeg', 'png');
+        
+                        if(in_array($fileActualExt, $allowed)){
+                            if( $fileError === 0){
+                                if($fileSize < 1000000){        
+                                    $fileNameNew = uniqid('',true).".".$fileActualExt;
+                                    $target = "uploads/". basename($fileNameNew);
+                                    move_uploaded_file($fileTmpName, $target);
+                                    $data['file'] = $fileNameNew;
+                                }
+                            } else {
+                                $data['file_error'] = 'File Size too big. Maximum of 1mb only';
+                            }
+                        } else {
+                            $data['file_error'] = 'There was a problem in uploading the file';
+                        }
+        
+                        if(empty($data['file_error']) && empty($data['gDate_error'])){
+                            if($this->userModel->profileAdditionalEdit($data)){
+                                redirect('profile/viewProfile/'.$_SESSION['alumni_id']);
+                            }
+                            else{
+                                die("Something went wrong");
+                            } 
+                        } else{
+                            $this->view('users/additionalProfileEdit', $data);
+                        }
+                    }
+
+                    else{
+                        $data = [
+                            'gDate' => $employment->graduation,
+                            'eDate' => $employment->first_employment,
+                            'ceDate' => $employment->current_employment,
+                            'tWork' => $employment->type_of_work,
+                            'wPosition' => $employment->work_position,
+                            'mIncome' => $employment->monthly_income,
+                            'ifRelated' => $employment->if_related,
+                            'file' => $employment->company_id,
+                            'file_error' => ''
+                        ];
+                    }
+                    
+                    $this->view('users/additionalProfileEdit', $data);
+
+                } else {
+                    redirect('profile/additionalProfileAdd'.$_SESSION['alumni_id']);
+                }
+    
+
+            }
+            else {
+                redirect('profile/viewProfile/'.$id);
+            }
+        }
+
+
+
     }
