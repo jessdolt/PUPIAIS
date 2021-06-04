@@ -63,15 +63,15 @@
                             <div>
                                 <label class="outsideLabel">Employment Status:</label>
                                 <fieldset class="radioBtnContainer">
+                                    <input type="radio" class="eStatus" name="employment" id="unemployed-id" value="Unemployed" <?php echo ($data['employment'] == 'Unemployed') ? 'checked' : ''?> checked>
                                     <input type="radio" class="eStatus" name="employment" id="employed-id" value="Employed" <?php echo ($data['employment'] == 'Employed') ? 'checked' : ''?>>
-                                    <input type="radio" class="eStatus" name="employment" id="unemployed-id" value="Unemployed" <?php echo ($data['employment'] == 'Unemployed') ? 'checked' : ''?>>
                                 </fieldset>
                             </div>
                             <div>
                                 <label class="outsideLabel">Gender:</label>
                                 <fieldset class="radioBtnContainer">
-                                    <input type="radio" class="male" name="gender" id="male-id" value="Male" <?php echo ($data['gender'] == 'MALE') ? 'checked' : '' ?>>
-                                    <input type="radio" class="female" name="gender" id="female-id" value="Female" <?php echo ($data['gender'] == 'FEMALE') ? 'checked' : '' ?>>
+                                    <input type="radio" class="male" name="gender" id="male-id" value="Male" <?php echo ($data['gender'] == 'Male') ? 'checked' : '' ?> checked>
+                                    <input type="radio" class="female" name="gender" id="female-id" value="Female" <?php echo ($data['gender'] == 'Female') ? 'checked' : '' ?>>
                                 </fieldset>
                             </div>
                         </div>
@@ -141,7 +141,7 @@
         </section>
     </main>
 
-    <script>
+<script>
     const fileUpload = document.getElementById('profile-pic-btn');
     const img_box = document.getElementById('myImg');
     const reader = new FileReader();

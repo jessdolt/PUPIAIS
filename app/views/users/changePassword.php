@@ -5,7 +5,7 @@
         </section>
         <section class="mainContent questionnaire">
             <div class="container">
-                <form action="<?php echo URLROOT; ?>/profile/changePassword/<?php echo $data['student_no']?>" method="POST" class="form">
+                <form action="<?php echo URLROOT; ?>/profile/changePassword/<?php echo $data['alumni_id']?>" method="POST" class="form">
                     <div>
                         <h2>Change Password</h2>
                         <p>Choose a strong password and don’t reuse it for other accounts.</p>

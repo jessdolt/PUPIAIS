@@ -1127,7 +1127,8 @@ html {
         gap: 1.6rem; }
         @media (min-width: 800px) {
           .alumni > section.mainContent .newsCon, .alumni > section.mainContent .eventsCon, .alumni > section.mainContent .jobCon {
-            grid-column: 3/11; } }
+            grid-column: 3/11;
+            gap: 4rem; } }
         .alumni > section.mainContent .newsCon > h3, .alumni > section.mainContent .newsCon .card-body, .alumni > section.mainContent .eventsCon > h3, .alumni > section.mainContent .eventsCon .card-body, .alumni > section.mainContent .jobCon > h3, .alumni > section.mainContent .jobCon .card-body {
           margin: 0 2.4rem; }
         @media (min-width: 800px) {
@@ -1141,6 +1142,9 @@ html {
           margin: 0 2.4rem; }
           .alumni > section.mainContent .newsCon > a svg, .alumni > section.mainContent .eventsCon > a svg, .alumni > section.mainContent .jobCon > a svg {
             color: currentColor; }
+      @media (min-width: 800px) {
+        .alumni > section.mainContent .jobCon {
+          gap: 2.4rem !important; } }
       .alumni > section.mainContent .jobCon > a {
         padding: 0 !important;
         text-align: start !important;
@@ -2510,6 +2514,7 @@ ul {
     .card .card-img::before, .card .card-img[src=""] {
       display: none; }
   .card .card-body {
+    flex: 1;
     padding: 2.4rem 0;
     min-width: 90%;
     display: flex;
@@ -2593,11 +2598,6 @@ ul {
     .jobs.card .card-body .caption {
       margin-bottom: 0.8rem; }
 
-.home > section.welcomeBox .container {
-  display: flex;
-  align-items: center;
-  gap: 4rem; }
-
 @media (min-width: 800px) {
   .home > section.mainContent {
     grid-template-rows: 2fr 1fr 1fr; } }
@@ -2627,7 +2627,8 @@ ul {
     grid-template-columns: 4.5rem 1fr;
     grid-template-areas: "svg header" "message message";
     column-gap: 0.8rem;
-    row-gap: 1.6rem; }
+    row-gap: 1.6rem;
+    align-items: center; }
     @media (min-width: 800px) {
       .home .welcomeBox div.container {
         column-gap: 4.8rem;
@@ -2728,6 +2729,37 @@ ul {
       @media (min-width: 800px) {
         .alumniNews > section.mainContent .card-body .description {
           margin-bottom: 1.6rem; } }
+  .alumniNews > section.mainContent.newsView {
+    padding-bottom: 3.2rem; }
+    .alumniNews > section.mainContent.newsView .card {
+      flex-flow: column;
+      background-color: #FFFFFF;
+      color: rgba(0, 0, 0, 0.87); }
+    .alumniNews > section.mainContent.newsView h3 {
+      color: #A63F3F; }
+    .alumniNews > section.mainContent.newsView .card-img {
+      flex: 1;
+      width: initial;
+      max-height: 20.4rem;
+      border-radius: 0;
+      margin-right: 2.4rem;
+      margin-left: 2.4rem;
+      margin-bottom: 1.6rem; }
+      @media (min-width: 800px) {
+        .alumniNews > section.mainContent.newsView .card-img {
+          max-height: 69.6rem; } }
+    .alumniNews > section.mainContent.newsView .card-body {
+      padding: 1.6rem 0; }
+    .alumniNews > section.mainContent.newsView .caption {
+      border-top: 1px solid rgba(0, 0, 0, 0.38);
+      margin-bottom: 2.4rem !important; }
+    .alumniNews > section.mainContent.newsView .description {
+      display: block; }
+    .alumniNews > section.mainContent.newsView ~ .moreContent {
+      background-color: #EEEEEE;
+      color: rgba(0, 0, 0, 0.87); }
+      .alumniNews > section.mainContent.newsView ~ .moreContent .additional > a {
+        color: #A63F3F; }
 
 .alumniNews > section.moreContent {
   background-color: #A63F3F;

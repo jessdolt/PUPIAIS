@@ -4,7 +4,7 @@
         public function __construct() {
             $this->userModel = $this->model('user');
   
-            if($this->getID() == $_SESSION['student_no'] || $_SESSION['user_type'] == "Admin") {
+            if($this->getID() == $_SESSION['alumni_id'] || $_SESSION['user_type'] == "Admin") {
                 
             }else {
                 redirect('pages/home');
@@ -30,10 +30,6 @@
 
 
         public function editProfile($id) {
-
-            if($_SESSION['student_no'] != $this->getID()) {
-                redirect('profile/viewProfile/'.$this->getID());
-            }
 
             $user = $this->userModel->singleUser($id);
 
@@ -103,7 +99,8 @@
                             if ($this->userModel->additionalVerify($_SESSION['alumni_id'])) {
                                 redirect('profile/viewProfile/'.$_SESSION['alumni_id']);
                             } else {
-                                redirect('profile/viewProfile/'.$_SESSION['alumni_id']);
+                                //ADDITIONAL INFORMATION
+                                redirect('profile//'.$_SESSION['alumni_id']);
                             }
                         }
                     } else {
@@ -141,12 +138,12 @@
 
         public function changePassword($id) {
 
-            if($_SESSION['student_no'] != $this->getID()) {
+            if($_SESSION['alumni_id'] != $this->getID()) {
                 redirect('pages/home');
             }
 
             $data = [
-                'student_no' => $id,
+                'alumni_id' => $id,
                 'email' => '',
                 'oldPassword' => '',
                 'password' => '',
@@ -160,7 +157,7 @@
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
     
                 $data = [
-                    'student_no' => $id,
+                    'alumni_id' => $id,
                     'email' => $_SESSION['email'],
                     'oldPassword' => trim($_POST['oldPassword']),
                     'password' => trim($_POST['password']),

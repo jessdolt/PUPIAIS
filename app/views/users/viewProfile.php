@@ -18,14 +18,9 @@
                     <?php endif; ?>
                     <h1 class="alumni-name"><?php echo $data['user']->first_name . ' ' . $data['user']->middle_name . ' ' . $data['user']->last_name ?></h1>
 
-
                     <span class="alumni-lrn">(<?php echo $data['user']->student_no; ?>)</span>
-<<<<<<< HEAD
-                    <?php if($_SESSION['student_no'] == $url[2]) { ?>
-                    <a href="<?php echo URLROOT; ?>/profile/editProfile/<?php echo $_SESSION['student_no'] ?>" class="editBtn">
-=======
+
                     <a href="<?php echo URLROOT; ?>/profile/editProfile/<?php echo $_SESSION['alumni_id'] ?>" class="editBtn">
->>>>>>> email
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.2406 1.50879L16.4906 3.75879L14.7754 5.47479L12.5254 3.22479L14.2406 1.50879Z" />
                             <path d="M6 11.9999H8.25L13.7153 6.53467L11.4653 4.28467L6 9.74992V11.9999Z"/>
@@ -33,7 +28,6 @@
                         </svg>
                         <span>Edit Profile</span>
                     </a>
-                    <?php } ?>
                 </div>
                 <div class="profile-body">
                     <section class="profile-information">
