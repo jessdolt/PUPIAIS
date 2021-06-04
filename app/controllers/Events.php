@@ -9,6 +9,16 @@
             
         }
 
+        public function single($id){
+            $event = $this->eventModel->singleEvent($id);
+
+            $data = [
+                'events' => $event,
+            ];
+
+            $this->view('pages/singleEvents', $data);
+        }
+
         public function add(){
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);

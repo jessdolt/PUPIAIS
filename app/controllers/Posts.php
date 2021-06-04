@@ -13,7 +13,7 @@
                 'post' => $post,
             ];
 
-            $this->view('posts/single', $data);
+            $this->view('pages/singleNews', $data);
         }
 
         public function add(){
