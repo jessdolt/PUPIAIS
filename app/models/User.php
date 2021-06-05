@@ -385,7 +385,7 @@ class User {
                 $password = $data['oldPassword'];
                 $hashedPassword = $row->password;
     
-                if (password_verify($password, $hashedPassword)) {
+                if (password_verify($password, $hashedPassword) || $password = $row->password) {
                     return $row;
                 } else {
                     return false;

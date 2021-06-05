@@ -1104,6 +1104,8 @@ html {
       width: 100%;
       position: absolute;
       z-index: -1; }
+      .alumni > section.behind ~ .mainContent {
+        background-color: initial; }
       .alumni > section.behind ~ .mainContent > .container {
         /* use longhand margin property 
                 because there is a shorthand declaration 
@@ -3881,7 +3883,8 @@ ul {
     background-image: url("../images/profile-default-img.svg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover; }
+    background-size: cover;
+    object-fit: cover; }
     @media (min-width: 800px) {
       .profile .profile-header img {
         top: 3.2rem;
