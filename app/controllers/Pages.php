@@ -26,13 +26,11 @@ class Pages extends Controller{
         /* $this->checkSurvey(); */
         // redirect('pages/home');
         // }
-        $this->postModel = $this->model('post');
-        $news = $this->postModel->showNewsList();
+        
 
 
         $data = [
-            'title' => 'tngina mo gumana ka na',
-            'news' => $news
+            'title' => 'tngina mo gumana ka na'
         ];
 
         $this->view('prac/prac', $data);
