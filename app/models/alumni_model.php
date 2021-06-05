@@ -194,17 +194,28 @@
             $this->db->bind(':id',$data['id']);
         }
 
-        public function deleteAlumni($id) {
-            $this->db->query('DELETE FROM alumni WHERE alumni_id = :id');
-
+        public function deleteAlumni($id){
+            $this->db->query('SELECT * FROM alumni where alumni_id= (:id)');
             $this->db->bind(':id', $id);
-
-            if($this->db->execute()){
-                return true;
+            $row = $this->db->single();
+            if($this->db->rowCount() > 0 ){
+               $img = $row->image;
             }
             else{
                 return false;
             }
+            if(unlink(IMAGEROOT.$img)){
+                $this->db->query('DELETE FROM alumni where alumni_id= (:id)');
+                $this->db->bind(':id', $id);
+
+                if($this->db->execute()){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+            
         }
 
         public function deleteDepartment($id) {

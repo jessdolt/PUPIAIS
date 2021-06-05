@@ -24,7 +24,10 @@
 ?>
 
 <body id="<?php echo $_SESSION['user_type']?>">
-    <header class="mainHeader" <?php echo ($url[0] == 'survey_widget') ? 'userSurvey': ''?>>
+    <header class="mainHeader <?php 
+                                echo ($url[0] == 'survey_widget') ? 'userSurvey': '';
+                                echo ($url[1] == 'editProfile' && $data['accInfo']->verify != "YES") ? 'userSurvey firstEdit' : '';
+                                ?>">
         <h1>Polytechnic University of the Philippines</h1>
         <svg class="icon hamburgerIcon" tabindex="0" viewBox="0 0 44 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13.3333 32H29.0286C29.7619 32 30.3619 31.4 30.3619 30.6667C30.3619 29.9333 29.7619 29.3333 29.0286 29.3333H13.3333C12.6 29.3333 12 29.9333 12 30.6667C12 31.4 12.6 32 13.3333 32ZM13.3333 25.3333H34.6667C35.4 25.3333 36 24.7333 36 24C36 23.2667 35.4 22.6667 34.6667 22.6667H13.3333C12.6 22.6667 12 23.2667 12 24C12 24.7333 12.6 25.3333 13.3333 25.3333ZM12 17.3333C12 18.0667 12.6 18.6667 13.3333 18.6667H29.0286C29.7619 18.6667 30.3619 18.0667 30.3619 17.3333C30.3619 16.6 29.7619 16 29.0286 16L13.3333 16C12.6 16 12 16.6 12 17.3333Z"/>
@@ -36,16 +39,23 @@
             <path d="M32.6007 15.413C32.0683 14.8805 31.2082 14.8805 30.6758 15.413L24 22.0751L17.3242 15.3993C16.7918 14.8669 15.9317 14.8669 15.3993 15.3993C14.8669 15.9317 14.8669 16.7918 15.3993 17.3242L22.0751 24L15.3993 30.6758C14.8669 31.2082 14.8669 32.0683 15.3993 32.6007C15.9317 33.1331 16.7918 33.1331 17.3242 32.6007L24 25.9249L30.6758 32.6007C31.2082 33.1331 32.0683 33.1331 32.6007 32.6007C33.1331 32.0683 33.1331 31.2082 32.6007 30.6758L25.9249 24L32.6007 17.3242C33.1195 16.8055 33.1195 15.9317 32.6007 15.413V15.413Z"/>
         </svg>
         <ul>
-            <?php if($url[0] != 'survey_widget') {?>
+            <?php if($url[0] == 'survey_widget' || $url[1] == 'profileAdditionalAdd' || $url[1] == 'profileAdditionalEdit') : ?>
+            <?php else : ?>
                 <li><a href="<?php echo URLROOT; ?>/pages/home" <?php if($url[1] == "home") { echo 'class="active"'; }?>>Home</a></li>
                 <li><a href="<?php echo URLROOT; ?>/pages/news" <?php if($url[1] == "news" || $url[0] == 'posts') { echo 'class="active"'; }?>>News</a></li>
                 <li><a href="<?php echo URLROOT; ?>/pages/events" <?php if($url[1] == "events" || $url[0] == 'events') { echo 'class="active"'; }?>>Events</a></li>
-                <li><a href="<?php echo URLROOT; ?>/pages/jobs" <?php if($url[1] == "jobs" || $url[0] == 'job_portals') { echo 'class="active"'; }?>>Jobs</a></li>
-            <?php } ?>
+                <li><a href="<?php echo URLROOT; ?>/pages/job_portals" <?php if($url[1] == "job_portals" || $url[0] == 'job_portals') { echo 'class="active"'; }?>>Jobs</a></li>
+            <?php endif; ?>
         </ul>
         <button type="button"><?php echo $_SESSION['name'] ?></button>
         <div class="userContainer">
-            <p class="studentId"><?php echo $_SESSION['student_no'] ?></p>
+            <div class="avatar">
+                <?php if (empty($_SESSION['image'])) :?>
+                    <img src="<?php echo URLROOT;?>/images/default-navbar-profile.png">
+                <?php else: ?>
+                    <img src="<?php echo URLROOT;?>/uploads/<?php echo ($_SESSION['image']) ?>">
+                <?php endif; ?>
+            </div>
             <a href="<?php echo URLROOT; ?>/profile/viewProfile/<?php echo $_SESSION['alumni_id'] ?>" class="profile">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 4C14.21 4 16 5.79 16 8C16 10.21 14.21 12 12 12C9.79 12 8 10.21 8 8C8 5.79 9.79 4 12 4ZM12 20C12 20 20 20 20 18C20 15.6 16.1 13 12 13C7.9 13 4 15.6 4 18C4 20 12 20 12 20Z" fill="black" fill-opacity="0.87"/>

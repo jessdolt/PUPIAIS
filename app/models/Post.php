@@ -135,15 +135,25 @@
         }
 
         public function deleteNews($id){
-
-            $this->db->query('DELETE FROM posts WHERE id=:id');
+            $this->db->query('SELECT * FROM posts WHERE id = :id ');
             $this->db->bind(':id', $id);
-
-            if($this->db->execute()){
-                return true;
+            $row = $this->db->single();
+            if($this->db->rowCount() > 0 ){
+               $img = $row->image;
             }
             else{
                 return false;
+            }
+            if(unlink(IMAGEROOT.$img)) {
+                $this->db->query('DELETE FROM posts WHERE id=:id');
+                $this->db->bind(':id', $id);
+
+                if($this->db->execute()){
+                    return true;
+                }
+                else{
+                    return false;
+                }
             }
 
         }

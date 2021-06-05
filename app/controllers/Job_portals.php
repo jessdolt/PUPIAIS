@@ -208,7 +208,7 @@
                 'user_type' => $user_type
             ];
 
-            $this->view('job_portal/single', $data);
+            $this->view('pages/singleJobs', $data);
         }
 
 

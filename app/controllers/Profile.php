@@ -4,33 +4,35 @@
         public function __construct() {
             $this->userModel = $this->model('user');
   
-            if($this->getID() == $_SESSION['alumni_id'] || $_SESSION['user_type'] == "Admin") {
+            if(getProfileID() == $_SESSION['alumni_id'] || $_SESSION['user_type'] == "Admin") {
                 
-            }else {
+            } else {
                 redirect('pages/home');
             }
 
         }
 
-        public function getID() {
-            $url= rtrim($_GET['url'],'/');
-            $url= explode('/', $url);
-            return $url[2];
+        function accountPass() {
+            //REDIRECT ANYONE WHO IS NOT THE USER
+            if ($_SESSION['alumni_id'] != getProfileID()) {
+                redirect('pages/home');
+            }
         }
 
         public function viewProfile($id) {
             $user = $this->userModel->singleUser($id);
-
             $data = [
-                'user' => $user
+                'user' => $user,
             ];
 
             $this->view('users/viewProfile', $data);
         }
 
         public function editProfile($id) {
+            $this->accountPass();
 
             $user = $this->userModel->singleUser($id);
+            $accInfo = $this->userModel->singleAcc($id);
 
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
@@ -53,6 +55,7 @@
                     'contact_no' => ($_POST['contact_no']),
                     'email' => ($_POST['email']),
                     'employment' => ($_POST['employment']),
+                    'accInfo' => $accInfo,
                     'file_error' => ''
                 ];
     
@@ -127,6 +130,7 @@
                     'contact_no' => $user->contact_no,
                     'email' => $user->email,
                     'employment' => $user->employment,
+                    'accInfo' => $accInfo,
                     'file_error' => ''
                 ];
     
@@ -138,9 +142,7 @@
 
         public function changePassword($id) {
 
-            if($_SESSION['alumni_id'] != $this->getID()) {
-                redirect('pages/home');
-            }
+        $this->accountPass();
 
             $data = [
                 'alumni_id' => $id,
@@ -213,7 +215,7 @@
         }
 
         public function profileAdditionalAdd($id) {
-
+            $this->accountPass();
             $user = $this->userModel->singleUser($id);
             if ($user->employment == 'Employed') {
                 // If there is a record in employment
@@ -293,12 +295,12 @@
 
             }
             else {
-                redirect('profile/viewProfile/'.$id);
+                redirect('profile/editProfile/'.$id);
             }
         }
 
         public function profileAdditionalEdit($id) {
-
+            $this->accountPass();
             $user = $this->userModel->singleUser($id);
     
             if ($user->employment == 'Employed') {
