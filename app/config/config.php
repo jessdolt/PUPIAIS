@@ -1,9 +1,15 @@
 <?php 
     //DB Params
-    define('DB_HOST', 'localhost');
-    define('DB_USER', 'root');
-    define('DB_PASS', '12345');
-    define('DB_NAME', 'pupiais');
+    // define('DB_HOST', 'localhost');
+    // define('DB_USER', 'root');
+    // define('DB_PASS', '12345');
+    // define('DB_NAME', 'pupiais');
+
+
+    define('DB_HOST', 'remotemysql.com');
+    define('DB_USER', 'kWvw5fOvvN');
+    define('DB_PASS', 'kckZkdHrVC');
+    define('DB_NAME', 'kWvw5fOvvN');
 
 
     //App Root
