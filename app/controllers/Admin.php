@@ -19,6 +19,12 @@
 
         }
 
+        public function api_test(){
+
+            $data = [];
+            $this->view('tryouts/api_test', $data);
+        }
+
         public function dashboard(){
             $data = [];
             $this->view('admin_d/dashboard', $data);

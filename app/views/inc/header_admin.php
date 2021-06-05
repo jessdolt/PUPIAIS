@@ -98,7 +98,13 @@
                                 <a href="<?php echo URLROOT;?>/admin/notif">Send Email</a>
                             </div>
                         </li>
-                        
+
+                        <li class="mainCategory" >
+                            <div class="categoryContainer">
+                                <a href="<?php echo URLROOT;?>/admin/api_test">API TEST</a>
+                            </div>
+                        </li>
+
                     </ul>
             
                     <button class="btnLogout">
@@ -110,4 +116,4 @@
                     </button>
                 </nav>
 
-         
+          
