@@ -3,11 +3,11 @@
 class Pages extends Controller{
     public function __construct(){
 
-        if (!isLoggedIn()) {
-            redirect('users/login');
-        }
-        $this->checkVerify();
-        $this->isEmployed();
+        // if (!isLoggedIn()) {
+        //     redirect('users/login');
+        // }
+        // $this->checkVerify();
+        // $this->isEmployed();
         // CHECK IF PROFILE UPDATED (VERIFIED)
 
 
@@ -21,12 +21,14 @@ class Pages extends Controller{
     public function index(){
 
 
-        if(isLoggedIn()) {
+        // if(isLoggedIn()) {
             
         /* $this->checkSurvey(); */
-        redirect('pages/home');
-        }
+        // redirect('pages/home');
+        // }
 
+        $data =[];
+        $this->view('prac/prac', $data);
 
     }
     
