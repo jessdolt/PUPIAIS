@@ -15,12 +15,11 @@
             //Get Posts
             $posts = $this->forumModel->getPosts(); 
             $pop = $this->forumModel->getPopular();
-            $my = $this->forumModel->getCurrent($_SESSION['Id']);
+            $my = $this->forumModel->getCurrent($_SESSION['id']);
             $data = [
                 'posts' => $posts,
                 'popular' => $pop,
                 'user_posts' => $my,
-                'id' => $_SESSION['Id']
             ];
 
             $this->view('forum/index',$data);

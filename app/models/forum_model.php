@@ -1,0 +1,241 @@
+<?php 
+
+    class forum_model{
+        private $db;
+
+        public function __construct(){
+            $this->db = new Database;
+        }
+
+        public function viewCounter($data){
+            $this->db->query('UPDATE topic SET topic_views = :views WHERE topic_id = :id');
+            $this->db->bind(':id', $data['post']->topic_id);
+            $views = $data['post']->topic_views;
+            $views = $views + 1;
+            $this->db->bind(':views', $views);
+
+            if($this->db->execute()){
+                return true;
+            } else{
+                return false;
+            }
+        }
+
+        public function topicVotes($data){
+            $this->db->query('UPDATE topic SET votes = :votes WHERE topic_id = :id');
+
+        }
+
+        public function getPosts(){
+            $this->db->query('SELECT *,
+                             topic.topic_id as postId,
+                             users.user_id as userId,
+                             topic.created_at as postCreated
+                             FROM topic
+                             INNER JOIN users 
+                             ON topic.topic_author = users.user_id
+                             ORDER BY topic.created_at DESC
+                             ');
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
+        public function getPopular(){
+            $this->db->query('SELECT *,
+                             topic.topic_id as postId,
+                             users.user_id as userId,
+                             topic.created_at as postCreated
+                             FROM topic
+                             INNER JOIN users 
+                             ON topic.topic_author = users.user_id
+                             ORDER BY topic.topic_views DESC
+                             ');
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
+        public function getCurrent($id){
+            $this->db->query('SELECT *,
+                             topic.topic_id as postId,
+                             users.user_id as userId,
+                             topic.created_at as postCreated
+                             FROM topic
+                             INNER JOIN users 
+                             ON topic.topic_author = users.user_id
+                             WHERE users.user_id = :id
+                             ORDER BY topic.created_at DESC 
+                             ');
+            $this->db->bind(':id',$id);
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
+        public function getComments(){
+            $this->db->query('SELECT *,
+            comment.comment_id as commentID,
+            users.user_id as userId,
+            comment.commented_at as postCreated
+            FROM comment
+            INNER JOIN users 
+            ON comment.comment_sender = users.user_id
+            ORDER BY comment.commented_at DESC
+            ');
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
+        public function getReply(){
+            $this->db->query('SELECT *
+            FROM reply
+            INNER JOIN users 
+            ON reply.reply_sender = users.user_id
+            ORDER BY reply.replied_at DESC
+            ');
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
+        public function getPostById($id){
+            $this->db->query('SELECT * FROM topic WHERE topic_id = :id');
+            $this->db->bind(':id',$id);
+            $row = $this->db->single();
+            return $row;
+        }
+
+        
+        public function getReplyByYear($id){
+            $this->db->query('SELECT * FROM reply WHERE reply_id = :id');
+            $this->db->bind(':id',$id);
+            $row = $this->db->single();
+            return $row;
+        }
+
+
+        public function addPost($data){
+            $this->db->query('INSERT INTO topic (title,topic_author,body) VALUES (:title,:user_id,:body)');
+            //bind values
+           
+            $this->db->bind(':title', $data['title']);
+            $this->db->bind(':user_id', $data['user_id']);
+            $this->db->bind(':body', $data['body']);
+
+            //Execute
+            if($this->db->execute()){
+                return true;
+            } else{
+                return false;
+            }
+        }
+
+        public function addComment($data){
+            $this->db->query('INSERT INTO comment (comment_for,comment,comment_sender) VALUES (:comment_for,:comment,:comment_sender)');
+            
+            $this->db->bind(':comment_for', $data['comment_for']);
+            $this->db->bind(':comment', $data['comment']);
+            $this->db->bind(':comment_sender', $data['comment_sender']);
+
+            //Execute
+            if($this->db->execute()){
+                return true;
+            } else{
+                return false;
+            }
+        }
+
+        public function addReply($data) {
+            $this->db->query('INSERT INTO reply (parent_comment,reply,reply_sender) VALUES (:parent,:reply,:reply_sender)');
+
+            $this->db->bind(':parent', $data['parent']);
+            $this->db->bind(':reply', $data['reply']);
+            $this->db->bind(':reply_sender', $data['reply_sender']);
+
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function updatePost($data){
+            $this->db->query('UPDATE topic SET title = :title, body = :body WHERE topic_id = :id');
+            //bind values
+            $this->db->bind(':id', $data['id']);
+            $this->db->bind(':title', $data['title']);
+            $this->db->bind(':body', $data['body']);
+
+            //Execute
+            if($this->db->execute()){
+                return true;
+            } else{
+                return false;
+            }
+        }
+
+        public function updateComment($data){
+            $this->db->query('UPDATE comment SET comment = :body WHERE comment_id = :id');
+            //bind values
+            $this->db->bind(':id', $data['id']);
+            $this->db->bind(':comment', $data['comment']);
+
+            //Execute
+            if($this->db->execute()){
+                return true;
+            } else{
+                return false;
+            }
+        }
+
+        public function updateReply($data){
+            $this->db->query('UPDATE reply SET reply = :reply WHERE reply_id = :id');
+            //bind values
+            $this->db->bind(':id', $data['id']);
+            $this->db->bind(':reply', $data['reply']);
+
+            //Execute
+            if($this->db->execute()){
+                return true;
+            } else{
+                return false;
+            }
+        }
+
+        public function topicView($data){
+            $this->db->query('UPDATE topic SET topic_views = :view WHERE topic_id = :id');
+        }
+
+        public function deletePost($id){
+            $this->db->query('DELETE FROM topic where topic_id = :id');
+            //bind values
+            $this->db->bind(':id', $id);
+            //Execute
+            if($this->db->execute()){
+                return true;
+            } else{
+                return false;
+            }
+        }
+
+        public function deleteComment($id){
+            $this->db->query('DELETE FROM comment where comment_id = :id');
+            //bind values
+            $this->db->bind(':id', $id);
+            //Execute
+            if($this->db->execute()){
+                return true;
+            } else{
+                return false;
+            }
+        }
+
+        public function deleteReply($id){
+            $this->db->query('DELETE FROM reply where reply_id = :id');
+            //bind values
+            $this->db->bind(':id', $id);
+            //Execute
+            if($this->db->execute()){
+                return true;
+            } else{
+                return false;
+            }
+        }
+    }
