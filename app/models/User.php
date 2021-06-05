@@ -77,6 +77,19 @@ class User {
     //     }
     // }
 
+    public function deleteUser($id) {
+        $this->db->query('DELETE FROM users WHERE a_id = :alumni_id');
+
+        $this->db->bind(':alumni_id', $id);
+
+        if($this->db->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public function forgot($data) {
         $this->db->query('INSERT INTO pwdreset (pwdResetEmail, pwdResetToken, pwdResetCode, pwdResetExpires) VALUES (:email, :token, :code, :expires)');
     
@@ -228,23 +241,17 @@ class User {
         }
     }
 
-    // public function singleUser($id){
-    //     $this->db->query('SELECT * 
-    //                     FROM alumni
-    //                     INNER JOIN courses
-    //                     ON alumni.courseID = courses.id
-    //                     INNER JOIN batch
-    //                     ON alumni.batchID = batch.id 
-    //                     WHERE student_no = :student_no');
-    //     $this->db->bind(':student_no', $id);
-    //     $row = $this->db->single();
-    //     if($this->db->rowCount() > 0){
-    //         return $row;
-    //     }
-    //     else{
-    //         return false;
-    //     }
-    // }
+    public function singleAcc($id) {
+        $this->db->query('SELECT * FROM users WHERE a_id = :alumni_id');
+        $this->db->bind(':alumni_id', $id);
+        $row = $this->db->single();
+        if($this->db->rowCount() > 0){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
 
     public function editProfile($data, $isUploaded){
         if($isUploaded == 1 ){
@@ -392,6 +399,22 @@ class User {
                 }
     
             } else {
+                return false;
+            }
+        }
+
+        public function singleUserAlumniJoin($id){
+            $this->db->query('SELECT * 
+                            FROM alumni
+                            INNER JOIN users
+                            ON alumni.alumni_id = users.a_id
+                            WHERE alumni_id = :alumni_id');
+            $this->db->bind(':alumni_id', $id);
+            $row = $this->db->single();
+            if($this->db->rowCount() > 0){
+                return $row;
+            }
+            else{
                 return false;
             }
         }

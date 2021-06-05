@@ -394,6 +394,7 @@
             $_SESSION['student_no'] = $newUser->student_no;
             $_SESSION['alumni_id'] = $newUser->a_id;
             $_SESSION['user_type'] = $newUser->user_control;
+            $_SESSION['image'] = $newUser->image;
             
             if ($_SESSION['user_type'] == "Admin" || $_SESSION['user_type'] == "Content Creator") {
                 redirect('admin/dashboard');

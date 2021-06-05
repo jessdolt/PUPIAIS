@@ -27,3 +27,9 @@
             return false;
         }
     }
+
+    function getProfileID() {
+        $url= rtrim($_GET['url'],'/');
+        $url= explode('/', $url);
+        return $url[2];
+    }

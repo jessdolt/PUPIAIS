@@ -9,6 +9,7 @@
     //App Root
     define('APPROOT',dirname(dirname(__FILE__)));
     define('IMAGEROOT', dirname(dirname(dirname(__FILE__))). '\public\uploads\\');
+    define('CLOGOROOT', dirname(dirname(dirname(__FILE__))). '\public\company_logo\\');
     
     //Url Root
     define('URLROOT', 'http://localhost/pupiais');

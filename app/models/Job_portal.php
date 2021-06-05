@@ -24,6 +24,23 @@
             }
         }
 
+        public function showJobListActive(){
+            $this->db->query('SELECT * FROM job_portal WHERE job_status = "Active" ORDER BY posted_on DESC');
+                $row = $this->db->resultSet();
+                if($row > 0){
+                    return $row;
+            }
+        }
+
+        public function showJobListArchive(){
+            $this->db->query('SELECT * FROM job_portal WHERE job_status = "Archived" ORDER BY posted_on DESC');
+                $row = $this->db->resultSet();
+                if($row > 0){
+                    return $row;
+            }
+        }
+
+
         public function showJobsIndex($page, $rowsperpage){
             $this->db->query('SELECT * FROM job_portal ORDER BY posted_on DESC LIMIT :page, :rowsperpage');
             $this->db->bind(':page', $page);
@@ -121,13 +138,25 @@
         }
 
         public function deleteJob($id){
-            $this->db->query('DELETE FROM job_portal where id= (:id)');
+            $this->db->query('SELECT * FROM job_portal WHERE id = :id ');
             $this->db->bind(':id', $id);
-            if($this->db->execute()){
-                return true;
+            $row = $this->db->single();
+            if($this->db->rowCount() > 0 ){
+               $img = $row->company_logo;
             }
             else{
                 return false;
+            }
+            if(unlink(CLOGOROOT.$img)) {
+                $this->db->query('DELETE FROM job_portal WHERE id=:id');
+                $this->db->bind(':id', $id);
+
+                if($this->db->execute()){
+                    return true;
+                }
+                else{
+                    return false;
+                }
             }
 
         }

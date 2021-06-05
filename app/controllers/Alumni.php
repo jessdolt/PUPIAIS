@@ -315,9 +315,9 @@ class Alumni extends Controller{
             array_print($_POST);
 
             foreach($todelete as $alumni){
-                foreach($alumni as $student_no => $id){
+                foreach($alumni as $alumni_id => $id){
                     if($this->alumniModel->deleteAlumni($id)){
-                        if($this->userModel->deleteUserByStudNo($student_no)){
+                        if($this->userModel->deleteUser($alumni_id)){
                             redirect('admin/alumni');
                         }
                         else{

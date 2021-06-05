@@ -53,7 +53,7 @@
                                 <td><div class="option icon" tabindex="0">
                                     <span class="optionSpan">&#8942</span>
                                     <div class="optionModal">
-                                        <a href="<?php echo URLROOT;?>/events/view">View</a>
+                                        <a href="<?php echo URLROOT ?>/events/single/<?php echo $event->id?>">View</a>
                                         <a href="<?php echo URLROOT;?>/events/edit/<?php echo $event->id?>">
                                             <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M15.8233 1.67676L18.3233 4.17676L16.4175 6.08342L13.9175 3.58342L15.8233 1.67676Z" fill="black" fill-opacity="0.87"/>

@@ -6,6 +6,10 @@ class Pages extends Controller{
         if (!isLoggedIn()) {
             redirect('users/login');
         }
+        $this->checkVerify();
+        $this->isEmployed();
+        // CHECK IF PROFILE UPDATED (VERIFIED)
+
 
         // $this->surveyWidgetModel = $this->model('s_widget');
         // $surveyExists = $this->surveyWidgetModel->getSurvey();
@@ -14,11 +18,16 @@ class Pages extends Controller{
         // }   
     }
     
-    public function index(){ 
-        if (isLoggedIn()){
-            /* $this->checkSurvey(); */
-            redirect('pages/home');
+    public function index(){
+
+
+        if(isLoggedIn()) {
+            
+        /* $this->checkSurvey(); */
+        redirect('pages/home');
         }
+
+
     }
     
     function checkSurvey(){
@@ -41,8 +50,26 @@ class Pages extends Controller{
             redirect('survey_widget');
         }
     }
+    
+    function checkVerify() {
+        $this->userModel = $this->model('user');
+        $user = $this->userModel->singleAcc($_SESSION['alumni_id']);
+        if(userType() == "Alumni" && $user->verify != "YES") {
+            redirect('profile/editProfile/'.$_SESSION['alumni_id']);
+        }
+    }
+
+    function isEmployed() {
+        $this->userModel = $this->model('user');
+        $user = $this->userModel->singleUserAlumniJoin($_SESSION['alumni_id']);
+        $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
+        if(userType() == "Alumni" && $user->employment == "Employed" && $findRecord == false) {
+            redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
+        }
+    }
 
     public function home() {
+
         $this->postModel = $this->model('post');
         $this->eventModel = $this->model('event');
         $this->jobModel = $this->model('job_portal');
@@ -104,7 +131,7 @@ class Pages extends Controller{
         }
 
         $originalCount = $this->postModel->NoOfResults();
-        if ($originalCount > 10) {
+        if ($originalCount < 10) {
 
             $data = [
                 'latestNews' => $news,
@@ -121,7 +148,7 @@ class Pages extends Controller{
 
             $data = [
                 'latestNews' => $news,
-                'oldNews' => $posts,
+                'oldNews' => $oldNews,
                 'start' => 0,
                 'limit' => 0,
                 'total' => 0,
@@ -142,7 +169,7 @@ class Pages extends Controller{
 
         // Get Page # in URL
         $page = $this->getPage();
-                
+                        
         // Limit row displayed
         $limit = 10;
 
@@ -173,7 +200,8 @@ class Pages extends Controller{
         }
 
         $originalCount = $this->eventModel->NoOfResults();
-        if ($originalCount > 10) {
+        
+        if ($originalCount < 10) {
 
             $data = [
                 'latestEvents' => $events,
@@ -203,6 +231,17 @@ class Pages extends Controller{
         }
 
         $this->view('pages/events', $data);
+    }
+
+    public function job_portals() {
+        $this->jobModel = $this->model('job_portal');
+        $job_portal_active = $this->jobModel->showJobListActive();
+        $job_portal_archived = $this->jobModel->showJobListArchive();
+        $data = [
+            'active' => $job_portal_active,
+            'archive' => $job_portal_archived
+        ];
+        $this->view('pages/job_portals', $data);
     }
 
     public function login(){

@@ -327,7 +327,7 @@ html {
 h1, h2, h3, h4, h5, h6,
 p, a, span, li, dl,
 label, button, input, textarea, select,
-thead, tbody, tfoot, th {
+thead, tbody, tfoot, th, pre {
   line-height: 1.5;
   letter-spacing: 0.025rem;
   font-weight: 400; }
@@ -395,7 +395,7 @@ table tbody {
     font-size: 1.4rem;
     font-weight: 500; } }
 
-.card .date-posted, .card .availablePos {
+.card .date-posted, .card .date-updated, .card .availablePos {
   font-size: 1.2rem;
   color: rgba(0, 0, 0, 0.6); }
 
@@ -757,8 +757,20 @@ table tbody {
     border-radius: 1rem;
     min-width: 20rem;
     padding: 1.6rem 2.4rem;
-    z-index: 100; }
+    z-index: 100;
+    box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12); }
+    .mainNav .userContainer .avatar {
+      position: relative;
+      width: 8rem;
+      height: 8rem;
+      align-self: center; }
+      .mainNav .userContainer .avatar img {
+        object-fit: cover;
+        width: inherit;
+        height: inherit;
+        border-radius: 100rem; }
     .mainNav .userContainer p {
+      padding-top: 1.6rem;
       text-align: center;
       padding-bottom: 1.6rem;
       border-bottom: 1px solid rgba(0, 0, 0, 0.38);
@@ -769,6 +781,9 @@ table tbody {
       gap: 0.4rem;
       text-align: left;
       color: rgba(0, 0, 0, 0.87); }
+      .mainNav .userContainer a:first-of-type {
+        padding-top: 1.6rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.38); }
   .mainNav > a {
     background-color: #FFFFFF;
     color: rgba(0, 0, 0, 0.87);
@@ -1104,6 +1119,8 @@ html {
       width: 100%;
       position: absolute;
       z-index: -1; }
+      .alumni > section.behind ~ .mainContent {
+        background-color: initial; }
       .alumni > section.behind ~ .mainContent > .container {
         /* use longhand margin property 
                 because there is a shorthand declaration 
@@ -2035,7 +2052,7 @@ ul {
   border-style: solid;
   border-radius: 0.5rem; }
 
-.mainNav button, .mainNav > a, .adminNav .mainCategoryList .open .categoryContainer, .adminNav button, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .data-table .option .optionModal button, .admin .mainContent .pagination a, .admin .mainContent .pagination button, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]:checked::before, .mainContent.adminForm .form:last-child .btnGroupContainer button, .option .optionModal button, .modalContainer .modalPreview .pagination .btnContainer button, .alertModalContainer .alertModal div button, .addModalContainer .addModal .btn-opt-delete button, .addModalContainer .addModal .btnContainer button, .modalFilterNav .btnContainer button, .loginMain form button, .users .filterNav button, .users .filterNav a, .jobPortal .mainContent .data-table .status.closed, .jobPortal .mainContent .data-table .workType, .mainContent.questionnaire .form:first-child h2 > button, .mainHeader ~ .editProfile .mainContent input[type="radio"]:checked::before {
+.mainNav button, .mainNav > a, .adminNav .mainCategoryList .open .categoryContainer, .adminNav button, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .data-table .option .optionModal button, .admin .mainContent .pagination a, .admin .mainContent .pagination button, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]:checked::before, .mainContent.adminForm .form:last-child .btnGroupContainer button, .option .optionModal button, .modalContainer .modalPreview .pagination .btnContainer button, .alertModalContainer .alertModal div button, .addModalContainer .addModal .btn-opt-delete button, .addModalContainer .addModal .btnContainer button, .modalFilterNav .btnContainer button, .modalFilterNav .btnContainer a, .loginMain form button, .users .filterNav button, .users .filterNav a, .jobPortal .mainContent .data-table .status.closed, .jobPortal .mainContent .data-table .workType, .mainContent.questionnaire .form:first-child h2 > button, .mainHeader ~ .editProfile .mainContent input[type="radio"]:checked::before {
   border: 1px solid transparent; }
 
 .icon {
@@ -2473,11 +2490,7 @@ ul {
   display: none;
   flex-flow: column;
   gap: 1.6rem; }
-  .modalFilterNav.newDept.show {
-    display: flex; }
-  .modalFilterNav.newCourse.show {
-    display: flex; }
-  .modalFilterNav.newBatch.show {
+  .modalFilterNav.newDept.show, .modalFilterNav.newCourse.show, .modalFilterNav.newBatch.show, .modalFilterNav.editDept.show, .modalFilterNav.editCourse.show, .modalFilterNav.editBatch.show {
     display: flex; }
   .modalFilterNav h1 {
     border-bottom: 1px solid #EEEEEE;
@@ -2485,14 +2498,27 @@ ul {
   .modalFilterNav .btnContainer {
     margin-top: 2.4rem;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     gap: 2.4rem; }
-    .modalFilterNav .btnContainer button {
+    .modalFilterNav .btnContainer button, .modalFilterNav .btnContainer a {
       min-height: 4rem;
       width: 16rem; }
-      .modalFilterNav .btnContainer button:last-of-type {
+      .modalFilterNav .btnContainer button:last-of-type, .modalFilterNav .btnContainer a:last-of-type {
         background-color: #A63F3F;
         color: #FFFFFF; }
+      .modalFilterNav .btnContainer button svg, .modalFilterNav .btnContainer a svg {
+        width: 1.8rem;
+        height: 2rem;
+        align-self: center; }
+    .modalFilterNav .btnContainer a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 3rem !important;
+      min-height: 3rem !important;
+      border-radius: 5rem;
+      margin-right: auto; }
   .modalFilterNav input[type="text"], .modalFilterNav input[type="date"], .modalFilterNav input[type="tel"], .modalFilterNav input[type="email"], .modalFilterNav select, .modalFilterNav textarea {
     border-radius: 0.5rem;
     border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
@@ -2566,11 +2592,14 @@ ul {
           margin-bottom: 2.4rem; } }
     .card .card-body a {
       margin-top: auto; }
+    .card .card-body .author {
+      min-width: max-content; }
     .card .card-body a, .card .card-body .date-posted {
       display: inline-flex;
       align-items: center; }
     .card .card-body .date-posted {
-      gap: 0.4rem; }
+      gap: 0.8rem;
+      flex-flow: wrap; }
     .card .card-body .description {
       margin-bottom: 0.8rem;
       display: -webkit-box;
@@ -3351,6 +3380,105 @@ ul {
     background-color: #C7B13F;
     color: #FFFFFF; }
 
+.forum > section.heroBox .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: wrap;
+  gap: 1.6rem;
+  padding: 0.8rem 0 1.6rem; }
+  @media (min-width: 800px) {
+    .forum > section.heroBox .container {
+      padding: 0.8rem 0;
+      justify-content: space-between; } }
+  .forum > section.heroBox .container h1 {
+    font-size: calc(1.8rem + 1vw);
+    text-align: center;
+    max-width: max-content; }
+  .forum > section.heroBox .container .textFieldContainer {
+    border-radius: 5rem;
+    min-width: 30rem; }
+    .forum > section.heroBox .container .textFieldContainer input {
+      border-radius: 5rem 0 0 5rem; }
+    .forum > section.heroBox .container .textFieldContainer .icon {
+      border-radius: 0 5rem 5rem 0; }
+
+.forum > section.mainContent {
+  /* .forum-list{
+                .list-item{
+                }
+            } */ }
+  @media (min-width: 800px) {
+    .forum > section.mainContent .forumCon {
+      grid-column: 2/9;
+      padding-right: 4rem;
+      margin-right: 1.6rem; } }
+  @media (min-width: 1367px) {
+    .forum > section.mainContent .forumCon {
+      grid-column: 3/9; } }
+  @media (min-width: 800px) {
+    .forum > section.mainContent .catCon, .forum > section.mainContent .popCon, .forum > section.mainContent .myDisCon {
+      grid-column: 9/12;
+      margin: 0 !important; } }
+  @media (min-width: 1367px) {
+    .forum > section.mainContent .catCon, .forum > section.mainContent .popCon, .forum > section.mainContent .myDisCon {
+      grid-column: 9/11; } }
+  .forum > section.mainContent .forumCon {
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87);
+    border-radius: 1rem;
+    padding: 2.4rem; }
+  .forum > section.mainContent .forum-link {
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    gap: 1.6rem;
+    text-decoration: none;
+    padding: 0.8rem 1.6rem 0;
+    transition: 200ms ease;
+    border-radius: 1rem; }
+    .forum > section.mainContent .forum-link:focus, .forum > section.mainContent .forum-link:hover {
+      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); }
+  .forum > section.mainContent .forum-image {
+    margin: 0.475rem;
+    width: 4.75rem;
+    height: 4.75rem;
+    border-radius: 10rem;
+    background-position: center;
+    background-size: cover; }
+    .forum > section.mainContent .forum-image.help {
+      background-image: url("../images/heroBoxBg.png"); }
+    .forum > section.mainContent .forum-image.general {
+      background-image: url("../images/heroBoxBg.png"); }
+    .forum > section.mainContent .forum-image.blog {
+      background-image: url("../images/heroBoxBg.png"); }
+  .forum > section.mainContent .forum-details-con {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: wrap;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.38); }
+    .forum > section.mainContent .forum-details-con .forum-details {
+      text-align: start; }
+      .forum > section.mainContent .forum-details-con .forum-details span {
+        color: rgba(0, 0, 0, 0.6); }
+  .forum > section.mainContent .commentCount {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(0, 0, 0, 0.6); }
+  .forum > section.mainContent .pagination, .forum > section.mainContent a {
+    display: flex;
+    align-items: center; }
+    .forum > section.mainContent .pagination svg, .forum > section.mainContent a svg {
+      width: 2.4rem;
+      height: 2.4rem; }
+  .forum > section.mainContent .pagination {
+    padding-top: 2.4rem;
+    justify-content: flex-end; }
+
 .survey .mainContent .data-table th:nth-child(2), .survey .mainContent .data-table td:nth-child(2) {
   min-width: 13.6rem;
   flex: 1; }
@@ -3881,7 +4009,8 @@ ul {
     background-image: url("../images/profile-default-img.svg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover; }
+    background-size: cover;
+    object-fit: cover; }
     @media (min-width: 800px) {
       .profile .profile-header img {
         top: 3.2rem;
