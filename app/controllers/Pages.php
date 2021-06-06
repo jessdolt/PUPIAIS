@@ -6,7 +6,7 @@ class Pages extends Controller{
         if (!isLoggedIn()) {
             redirect('users/login');
         }
-        $this->checkVerify();
+        //$this->checkVerify();
         $this->isEmployed();
         // CHECK IF PROFILE UPDATED (VERIFIED)
 
