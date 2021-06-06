@@ -65,9 +65,6 @@ class Pages extends Controller{
         if(userType() == "Alumni" && $user->employment == "Employed" && empty($findRecord)) {
             redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
         }
-        else{
-            echo 'meron na' ;
-        }
     }
 
     public function home() {
