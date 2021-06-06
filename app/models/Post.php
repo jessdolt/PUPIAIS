@@ -17,7 +17,7 @@
         */
         
         public function showNewsHome(){
-            $this->db->query('SELECT * FROM posts ORDER BY created_at DESC LIMIT 3;');
+            $this->db->query('SELECT * FROM posts ORDER BY created_at DESC LIMIT 3');
                 $row = $this->db->resultSet();
                 if($row > 0){
                     return $row;
@@ -26,7 +26,7 @@
         }
 
         public function showNewsList(){
-            $this->db->query('SELECT * FROM posts ORDER BY created_at DESC LIMIT 10;');
+            $this->db->query('SELECT * FROM posts ORDER BY created_at DESC LIMIT 10');
                 $row = $this->db->resultSet();
                 if($row > 0){
                     return $row;
