@@ -23,10 +23,10 @@ class Pages extends Controller{
     }
     
     public function index(){
-        if(isLoggedIn()) { 
+        if(isLoggedIn() ) { 
             $this->checkVerify();
            //$this->checkSurvey();
-            redirect('pages/home');
+           
         }   
     }
 
