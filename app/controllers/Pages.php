@@ -17,7 +17,7 @@ class Pages extends Controller{
         //     redirect('survey_widget');
         // }   
         $this->newsModel = $this->model('post');
-        $this->alumniModel = $this->model('alumni_model');
+        //$this->alumniModel = $this->model('alumni_model');
     }
     
     public function index(){
