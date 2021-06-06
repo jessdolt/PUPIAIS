@@ -181,7 +181,7 @@ class Alumni extends Controller{
                                 if($this->userModel->register($newData)){
                                     redirect('admin/alumni');
                                 }
-                            } 
+                            }
                     }
                 else{
                     /* $this->alumniModel->addAlumni($data); */

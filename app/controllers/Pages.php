@@ -15,15 +15,14 @@ class Pages extends Controller{
                 if($this->isEmployed()) {
                     redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
                 } else {
-                    //$this->checkSurvey();
+                    $this->checkSurvey();
                 }
             }
         }
 
-        //$this->checkVerify();
-        //s$this->isEmployed(); 
-        //pag walang $this->isEmployed() nagana yung deploy
-        //$this->isEmployed();
+        // $this->checkVerify();
+        // $this->isEmployed();
+        // CHECK IF PROFILE UPDATED (VERIFIED)
 
         //$this->checkSurvey();
         // CHECK IF PROFILE UPDATED (VERIFIED)
@@ -39,10 +38,11 @@ class Pages extends Controller{
     }
     
     public function index(){
-        if(isLoggedIn()) { 
-            //$this->checkSurvey();
-            redirect('pages/home');
-        }   
+
+        if(isLoggedIn()) {
+        /* $this->checkSurvey(); */
+        redirect('pages/home');
+        }
     }
 
     function checkVerify() {
@@ -112,8 +112,6 @@ class Pages extends Controller{
     //     }
     // }
 
-    
-    
 
     public function home() {
 

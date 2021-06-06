@@ -29,28 +29,28 @@
                             <div>
                                 <label for="current-emp-date" class="outsideLabel">Date of Current Employment:</label>
                                 <div class="textFieldContainer">
-                                    <input type="date" name="ceDate" id="current-emp-date"required>
+                                    <input type="date" name="ceDate" id="current-emp-date" required>
                                     <span class="error"></span>
                                 </div>
                             </div>
                             <div>
                                 <label for="type-of-work" class="outsideLabel">Current Nature/Type of Work:</label>
                                 <div class="textFieldContainer">
-                                    <input type="text" name="tWork" id="type-of-work"required>
+                                    <input type="text" name="tWork" id="type-of-work" required>
                                     <span class="error"></span>
                                 </div>
                             </div>
                             <div>
                                 <label for="work-position" class="outsideLabel">Current Plantilla Item/Work Position:</label>
                                 <div class="textFieldContainer">
-                                    <input type="text" name="wPosition" id="work-position"required>
+                                    <input type="text" name="wPosition" id="work-position" required>
                                     <span class="error"></span>
                                 </div>
                             </div>
                             <div>
                                 <label for="cur-monthly-income" class="outsideLabel">Current Monthly Income:</label>
                                 <div class="textFieldContainer">
-                                    <input type="number" name="mIncome" id="cur-monthly-income"required>
+                                    <input type="number" name="mIncome" id="cur-monthly-income" required>
                                     <span class="error"></span>
                                 </div>
                             </div>
@@ -64,7 +64,9 @@
                         </div>
                         <div class="imageInputContainer">
                             <label for="news-image-input">Company ID:</label>
-                            <img src="" id="myImg">
+                            <div class="image-con">
+                                <img src=" " id="myImg">
+                            </div>
                             <label for="news-image-input" class="fileUploadBtn">
                                 Edit
                                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -26,7 +26,8 @@
 <body id="<?php echo $_SESSION['user_type']?>">
     <header class="mainHeader <?php 
                                 echo ($url[0] == 'survey_widget') ? 'userSurvey': ''; ?> <?php
-                                echo ($url[1] == 'editProfile' && $data['accInfo']->verify != "YES") ? 'userSurvey firstEdit' : '';
+                                echo ($url[1] == 'editProfile' && $data['accInfo']->verify != "YES") ? 'userSurvey firstEdit' : ''; ?><?php 
+                                echo ($url[1] == 'profileAdditionalAdd') ? ' userSurvey' : '';
                                 ?> ">
         <h1>Polytechnic University of the Philippines</h1>
         <svg class="icon hamburgerIcon" tabindex="0" viewBox="0 0 44 48" fill="none" xmlns="http://www.w3.org/2000/svg">
