@@ -23,10 +23,9 @@ class Pages extends Controller{
     }
     
     public function index(){
-        if(isLoggedIn() ) { 
+        if(isLoggedIn()) { 
             $this->checkVerify();
            //$this->checkSurvey();
-           
         }   
     }
 
@@ -49,9 +48,9 @@ class Pages extends Controller{
         if(userType() == "Alumni" && $user->employment == "Employed" && empty($findRecord)) {
             redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
         }
-      
+        if(!empty($findRecord)) {
             redirect('pages/home');
-        
+        }
     }
 
     function checkSurvey(){
