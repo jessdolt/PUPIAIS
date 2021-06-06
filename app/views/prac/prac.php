@@ -21,3 +21,15 @@
 
     
 ?> 
+
+
+
+<?php 
+    $db = new Database;
+
+    $db->query('SELECT * FROM posts');
+    $row = $db->resultSet();
+    array_print($row);
+
+    
+?> 

@@ -35,12 +35,11 @@ class Pages extends Controller{
         // $this->newsModel = $this->model('post');
         // 
 
-        $this->alumniModel = $this->model('user');
-        $alumni = $this->alumniModel->singleUser(179);
+        $this->alumniModel = $this->model('alumni_model');
+        $alumni = $this->alumniModel->showAlumni();
         $data = [
            'news' => $alumni
         ];
-
         $this->view('prac/prac', $data);
     }
     
