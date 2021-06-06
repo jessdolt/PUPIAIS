@@ -2,7 +2,7 @@
 
 <main class="alumni">
     
-        <section class="heroBox">
+        <section class="heroBox behind">
         </section>
         <section class="mainContent questionnaire">
             <div class="container">

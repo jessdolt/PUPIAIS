@@ -7,7 +7,7 @@ class Pages extends Controller{
             redirect('users/login');
         }
         
-        $this->checkVerify();
+        //$this->checkVerify();
         //s$this->isEmployed(); 
         //pag walang $this->isEmployed() nagana yung deploy
         //$this->isEmployed();
@@ -27,8 +27,8 @@ class Pages extends Controller{
     
     public function index(){
         if(isLoggedIn()) { 
-           //$this->checkSurvey();
-            redirect('pages/home');
+            $this->checkSurvey();
+            //redirect('pages/home');
         }   
     }
 
