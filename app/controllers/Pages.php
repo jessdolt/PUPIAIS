@@ -35,7 +35,7 @@ class Pages extends Controller{
                 'alumni' => $alumni,
                 'department' =>  $department,
                 'courses' => $courses,
-                 'classification' => $classification,
+                'classification' => $classification,
                 'isPreview' => 0,
                 'title' => 'All Alumni',
                 'batch' => '',
@@ -46,7 +46,7 @@ class Pages extends Controller{
             // $data = [
             //     'alumni' => $alumni
             // ];
-
+ 
             $this->view('prac/prac', $data);
     }
     
