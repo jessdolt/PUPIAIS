@@ -63,20 +63,19 @@ class Pages extends Controller{
         $user = $this->userModel->singleUserAlumniJoin($_SESSION['alumni_id']);
         $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
         // if(userType() == "Alumni" && $user->employment == "Employed" && $findRecord != 1) {
-        //     // redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
-
-        // }  
+        //     redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
+        // }
+        // else{
+        //     redirect('pages/home');
+        // }
 
         $data =[
-            'a' = $user,
-            'b' = $findRecord
+            'a' => $user,
+            'b' => $findRecord
         ];
 
-        $this->view('prac/prac',$data);
+        $this->view('prac/prac', $data);
     }
-
-   
-
 
     public function home() {
 
