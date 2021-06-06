@@ -6,6 +6,7 @@ class Pages extends Controller{
         if (!isLoggedIn()) {
             redirect('users/login');
         }
+        
         $this->checkVerify();
         //$this->isEmployed();
         //$this->checkSurvey();
@@ -23,12 +24,28 @@ class Pages extends Controller{
     
     public function index(){
         if(isLoggedIn()) { 
-            $this->checkSurvey();
+           //$this->checkSurvey();
             //redirect('pages/home');
         }   
-
     }
-    
+
+    function checkVerify() {
+        $this->userModel = $this->model('user');
+        $user = $this->userModel->singleAcc($_SESSION['alumni_id']);
+        if(userType() == "Alumni" && $user->verify != "YES") {
+            redirect('profile/editProfile/'.$_SESSION['alumni_id']);
+        }
+    }
+
+
+    function isEmployed() {
+        $this->userModel = $this->model('user');
+        $user = $this->userModel->singleUserAlumniJoin($_SESSION['alumni_id']);
+        $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
+        if(userType() == "Alumni" && $user->employment == "Employed" && empty($findRecord)) {
+            redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
+        }
+    }
 
     function checkSurvey(){
         $this->surveyListModel = $this->model('s_widget');
@@ -51,22 +68,7 @@ class Pages extends Controller{
         }
     }
     
-    function checkVerify() {
-        $this->userModel = $this->model('user');
-        $user = $this->userModel->singleAcc($_SESSION['alumni_id']);
-        if(userType() == "Alumni" && $user->verify != "YES") {
-            redirect('profile/editProfile/'.$_SESSION['alumni_id']);
-        }
-    }
-
-    function isEmployed() {
-        $this->userModel = $this->model('user');
-        $user = $this->userModel->singleUserAlumniJoin($_SESSION['alumni_id']);
-        $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
-        if(userType() == "Alumni" && $user->employment == "Employed" && empty($findRecord)) {
-            redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
-        }
-    }
+    
 
     public function home() {
 
