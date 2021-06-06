@@ -169,20 +169,19 @@ class Alumni extends Controller{
                            $alumni_id = $this->alumniModel->addAlumni($data);
                             // $pass = '12345';
                             // $pass = password_hash($pass, PASSWORD_DEFAULT);
-                            // $pass = bin2hex(openssl_random_pseudo_bytes(5));
-                            // if(!empty($alumni_id)){
-                            //     $newData = [
-                            //         'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
-                            //         'a_id' => $alumni_id,
-                            //         'email' => $data['email'],
-                            //         'password' => $pass,
-                            //         'user_type' => 2
-                            //     ];
-                            //     if($this->userModel->register($newData)){
-                            //         redirect('admin/alumni');
-                            //     }
-                            // }
-                            echo $alumni_id;
+                            $pass = bin2hex(openssl_random_pseudo_bytes(5));
+                            if(!empty($alumni_id)){
+                                $newData = [
+                                    'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
+                                    'a_id' => $alumni_id,
+                                    'email' => $data['email'],
+                                    'password' => $pass,
+                                    'user_type' => 2
+                                ];
+                                if($this->userModel->register($newData)){
+                                    redirect('admin/alumni');
+                                }
+                            }
                     }
                 else{
                     /* $this->alumniModel->addAlumni($data); */

@@ -19,6 +19,7 @@
     //Url Root
     define('URLROOT', 'http://localhost/pupiais'); 
     //http://localhost/pupiais
+
     //define('URLROOT', 'https://pupiais.herokuapp.com'); 
     //https://pupiais.herokuapp.com
     
