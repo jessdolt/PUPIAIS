@@ -6,8 +6,8 @@ class Pages extends Controller{
         if (!isLoggedIn()) {
             redirect('users/login');
         }
-        $this->checkVerify();
-        
+        //$this->checkVerify();
+        $this->isEmployed();
         // CHECK IF PROFILE UPDATED (VERIFIED)
 
         // $this->surveyWidgetModel = $this->model('s_widget');
@@ -56,21 +56,25 @@ class Pages extends Controller{
         if(userType() == "Alumni" && $user->verify != "YES") {
             redirect('profile/editProfile/'.$_SESSION['alumni_id']);
         }
-        else{
-            $this->isEmployed();
-        }
     }
 
     function isEmployed() {
         $this->userModel = $this->model('user');
         $user = $this->userModel->singleUserAlumniJoin($_SESSION['alumni_id']);
         $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
-        if(userType() == "Alumni" && $user->employment == "Employed" && $findRecord == false) {
-            redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
-        }
-        else{
-            redirect('pages/home');
-        }
+        // if(userType() == "Alumni" && $user->employment == "Employed" && $findRecord == false) {
+        //     redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
+        // }
+        // else{
+        //     redirect('pages/home');
+        // }
+
+        $data =[
+            'a' => $user,
+            'b' => $findRecord
+        ];
+
+        $this->view('prac/prac', $data);
     }
 
     public function home() {
