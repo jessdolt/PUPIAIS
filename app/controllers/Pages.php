@@ -3,11 +3,11 @@
 class Pages extends Controller{
     public function __construct(){
 
-        // if (!isLoggedIn()) {
-        //     redirect('users/login');
-        // }
-        // $this->checkVerify();
-        // $this->isEmployed();
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->checkVerify();
+        $this->isEmployed();
         // CHECK IF PROFILE UPDATED (VERIFIED)
 
 
