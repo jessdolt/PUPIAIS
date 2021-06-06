@@ -64,7 +64,7 @@ class Pages extends Controller{
         $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
         if(userType() == "Alumni" && $user->employment == "Employed" && $findRecord != 1) {
             redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
-        }
+        }  
     }
 
     public function home() {
