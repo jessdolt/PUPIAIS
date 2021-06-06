@@ -2,7 +2,7 @@
 
 class Pages extends Controller{
     public function __construct(){
-        echo 'hello this is constructor';
+        // echo 'hello this is constructor';
         // if (!isLoggedIn()) {
         //     redirect('users/login');
         // }
