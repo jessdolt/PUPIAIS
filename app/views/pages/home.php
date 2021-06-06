@@ -5,7 +5,9 @@
             <div class="tint">
                 <div class="container">
                     <h1 class="heroBoxText">PUP Institute of Technology <br> Alumni Information System</h1>
-                    
+                    <?php $url= rtrim($_GET['url'],'/');
+                        $url= explode('/', $url);
+                        array_print($url);?>
                 </div>
             </div>
         </section>
