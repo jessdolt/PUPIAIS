@@ -21,14 +21,14 @@ class Pages extends Controller{
     }
     
     public function index(){
-            $this->alumniModel = $this->model('Alumni_model');
-            //$this->groupModel = $this->model('group_model');
+            //$this->alumniModel = $this->model('Alumni_model');
+            $this->groupModel = $this->model('group_model');
             
             //$alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
-            $alumni = $this->alumniModel->showAlumni();
+            //$alumni = $this->alumniModel->showAlumni();
             //$department = $this->alumniModel->showDepartment();
             //$courses = $this->alumniModel->showCourses();
-            //$classification = $this->groupModel->showClassification();
+            $classification = $this->groupModel->showClassification();
 
             // $data = [
             //     'alumni' => $alumni,
@@ -43,7 +43,7 @@ class Pages extends Controller{
             // ];
 
             $data = [
-                'alumni' => $alumni
+                'alumni' => $classification
             ];
 
             $this->view('prac/prac', $data);
