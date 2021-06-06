@@ -63,10 +63,10 @@ class Pages extends Controller{
         $user = $this->userModel->singleUserAlumniJoin($_SESSION['alumni_id']);
         $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
         if(userType() == "Alumni" && $user->employment == "Employed" && empty($findRecord)) {
-            echo '<h1> tngina mo jess </h1>';
+            redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
         }
         else{
-             echo '<h1> hehehe  </h1>';
+            echo 'meron na' ;
         }
     }
 
