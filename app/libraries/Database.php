@@ -8,14 +8,14 @@
     */
 
     class Database{
-        public $host = DB_HOST;
-        public $user = DB_USER;
-        public $pass = DB_PASS;
-        public $dbname = DB_NAME;
+        private $host = DB_HOST;
+        private $user = DB_USER;
+        private $pass = DB_PASS;
+        private $dbname = DB_NAME;
 
-        public $dbh;
-        public $stmt;
-        public $error;
+        private $dbh;
+        private $stmt;
+        private $error;
 
         public function __construct(){
             //Set DSN
