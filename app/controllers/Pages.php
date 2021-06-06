@@ -3,11 +3,11 @@
 class Pages extends Controller{
     public function __construct(){
       
-        // if (!isLoggedIn()) {
-        //     redirect('users/login');
-        // }
-        // $this->checkVerify();
-        // $this->isEmployed();
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->checkVerify();
+        $this->isEmployed();
         // CHECK IF PROFILE UPDATED (VERIFIED)
 
         // $this->surveyWidgetModel = $this->model('s_widget');
@@ -21,33 +21,11 @@ class Pages extends Controller{
     }
     
     public function index(){
-            $this->alumniModel = $this->model('alumni_model');
-            
-            $this->groupModel = $this->model('group_model');
-            
-            $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
-            $alumni = $this->alumniModel->showAlumni();
-            $department = $this->alumniModel->showDepartment();
-            $courses = $this->alumniModel->showCourses();
-            $classification = $this->groupModel->showClassification();
+        if(isLoggedIn()) { 
+        /* $this->checkSurvey(); */
+        redirect('pages/home');
+        }   
 
-            $data = [
-                'alumni' => $alumni,
-                'department' =>  $department,
-                'courses' => $courses,
-                'classification' => $classification,
-                'isPreview' => 0,
-                'title' => 'All Alumni',
-                'batch' => '',
-                'alumniCount' => count($alumni),
-                'alumniPerCourse' => $alumniCountPerCourse
-            ];
-
-            // $data = [
-            //     'alumni' => $alumni
-            // ];
- 
-            $this->view('prac/prac', $data);
     }
     
 
