@@ -26,7 +26,7 @@ class Pages extends Controller{
         // /* $this->checkSurvey(); */
         // redirect('pages/home');
         // }
-
+        $this->alumniModel = $this->model('alumni_model');
         $data = [];
         $this->view('prac/prac', $data);
 
