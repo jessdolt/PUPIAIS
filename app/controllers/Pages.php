@@ -21,14 +21,14 @@ class Pages extends Controller{
     }
     
     public function index(){
-            $this->qwe = $this->model('alumni_model');
+            $this->alumniModel = $this->model('alumni_model');
             
             //$this->groupModel = $this->model('group_model');
             
-            $alumniCountPerCourse = $this->qwe->alumniCountPerCourse();
-            $alumni = $this->qwe->showAlumni();
-            $department = $this->qwe->showDepartment();
-            $courses = $this->qwe->showCourses();
+            $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
+            $alumni = $this->alumniModel->showAlumni();
+            $department = $this->alumniModel->showDepartment();
+            $courses = $this->alumniModel->showCourses();
             //$classification = $this->groupModel->showClassification();
 
             $data = [
