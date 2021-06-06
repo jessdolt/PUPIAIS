@@ -27,14 +27,13 @@ class Pages extends Controller{
         //redirect('pages/home');
         //}
 
-        // $this->alumniModel = $this->model('alumni_model');
+        $this->alumniModel = $this->model('alumni_model');
         
-        // $alumni = $this->alumniModel->showAlumni();
-        // //$this->newsModel = $this->model('post');
-        // $news = $this->newsModel->showNewsHome();
+        $alumni = $this->alumniModel->showAlumni();
+        $this->newsModel = $this->model('post');
+        //$news = $this->newsModel->showNewsHome();
         $data = [
-          
-             
+           'alumni' => $alumni
         ];
 
         $this->view('prac/prac', $data);
