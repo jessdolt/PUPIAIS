@@ -150,6 +150,11 @@
             $this->view('users/login', $data);
         }
 
+        public function testLogin(){
+            $data = [];
+            $this->view('prac/prac', $data);
+        }
+
         public function forgotPassword() {
 
             $data = [
