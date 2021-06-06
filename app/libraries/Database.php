@@ -84,4 +84,8 @@
         public function rowCount(){
             return $this->stmt->rowCount();
         }
+
+        public function closeConnection(){
+            $this->dbh = null;
+        }
     }

@@ -18,6 +18,8 @@
             if($row > 0){
                 return $row;
             }
+
+            $this->db->closeConnection();
         }
 
         public function alumniCountPerCourse(){
