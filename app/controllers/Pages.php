@@ -4,7 +4,7 @@ class Pages extends Controller{
     public function __construct(){
       
         //if (!isLoggedIn()) {
-            redirect('users/testLogin');
+            
         //}
         // $this->checkVerify();
         // $this->isEmployed();
@@ -21,7 +21,8 @@ class Pages extends Controller{
     }
     
     public function index(){
-
+        $data = [];
+        $this->view('prac/prac',$data);
 
         //  if(isLoggedIn()) {
             
