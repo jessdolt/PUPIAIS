@@ -8,6 +8,8 @@ class Pages extends Controller{
         }
         
         $this->checkVerify();
+        //s$this->isEmployed(); 
+        //pag walang $this->isEmployed() nagana yung deploy
         //$this->isEmployed();
 
         //$this->checkSurvey();
