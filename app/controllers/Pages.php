@@ -2,7 +2,7 @@
 
 class Pages extends Controller{
     public function __construct(){
-        $this->alumniModel = $this->model('alumni_model');
+        
         // if (!isLoggedIn()) {
         //     redirect('users/login');
         // }
@@ -26,8 +26,11 @@ class Pages extends Controller{
         // /* $this->checkSurvey(); */
         // redirect('pages/home');
         // }
-      
-        $data = [];
+        $this->alumniModel = $this->model('alumni_model');
+        $alumni = $this->alumniModel->showAlumni();
+        $data = [
+            'alumni' => $alumni
+        ];
         $this->view('prac/prac', $data);
 
     }

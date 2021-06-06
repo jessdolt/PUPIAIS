@@ -1,3 +1,5 @@
+<?php array_print($data)?>
+
 <?php
 $servername = "us-cdbr-east-04.cleardb.com";
 $username = "b9e84a4bdcd7c6";
