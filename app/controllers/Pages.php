@@ -36,9 +36,12 @@ class Pages extends Controller{
         // 
 
         $this->alumniModel = $this->model('event');
+        $this->newModel = $this->model('post');
         $alumni = $this->alumniModel->showEventHome();
+        $news = $this->newModel->showNewsHome();
         $data = [
-           'news' => $alumni
+           'news' => $alumni,
+           'qwe' => $news
         ];
         $this->view('prac/prac', $data);
     }
