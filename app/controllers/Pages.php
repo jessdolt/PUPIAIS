@@ -23,13 +23,11 @@ class Pages extends Controller{
     }
     
     public function index(){
-        // if(isLoggedIn()) { 
-        //     $this->checkVerify();
-        //    //$this->checkSurvey();
-        // }   
-        // redirect('pages/home');
-
-        echo 'gago index to';
+        if(isLoggedIn()) { 
+            $this->checkVerify();
+           //$this->checkSurvey();
+        }   
+        redirect('pages/home');
     }
 
     function checkVerify() {
@@ -50,9 +48,6 @@ class Pages extends Controller{
         $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
         if(userType() == "Alumni" && $user->employment == "Employed" && empty($findRecord)) {
             redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
-        }
-        if(!empty($findRecord)) {
-            redirect('pages/home');
         }
     }
 
