@@ -1,6 +1,6 @@
 <?php
 
-    class Alumni_model {
+    class Alumni_model{
         private $db;
         public function __construct() {
             $this->db = new Database;
