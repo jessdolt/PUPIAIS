@@ -6,7 +6,7 @@
 
     Class Core{
         protected $currentController = 'Pages';
-        protected $currentMethod = 'index';
+        protected $currentMethod = 'home';
         protected $params = []; 
 
         public function __construct(){
