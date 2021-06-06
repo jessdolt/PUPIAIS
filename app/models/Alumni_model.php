@@ -206,6 +206,7 @@
             else{
                 return false;
             }
+            
             if(unlink(IMAGEROOT.$img)){
                 $this->db->query('DELETE FROM alumni where alumni_id= (:id)');
                 $this->db->bind(':id', $id);

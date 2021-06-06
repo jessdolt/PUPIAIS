@@ -314,16 +314,12 @@ class Alumni extends Controller{
             $todelete = $_POST['checkbox'];
             array_print($_POST);
 
-            foreach($todelete as $alumni){
-                foreach($alumni as $alumni_id => $id){
-                    if($this->alumniModel->deleteAlumni($id)){
-                        if($this->userModel->deleteUser($alumni_id)){
-                            redirect('admin/alumni');
-                        }
-                        else{
-                            die("Something went wrong!");
-                        }
-                    }
+            foreach($todelete as $alumni_id){
+                if($this->alumniModel->deleteAlumni($alumni_id)){
+                    redirect('admin/alumni');     
+                }
+                else{
+                    die("Something went wrong!");
                 }
             }
             // foreach ($todelete as $id) {
