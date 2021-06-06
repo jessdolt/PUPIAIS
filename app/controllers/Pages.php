@@ -6,11 +6,23 @@ class Pages extends Controller{
         if (!isLoggedIn()) {
             redirect('users/login');
         }
-        
-        //$this->checkVerify();
-        //s$this->isEmployed(); 
-        //pag walang $this->isEmployed() nagana yung deploy
-        //$this->isEmployed();
+
+        // Verify
+        if(userType() == "Alumni") {
+            if ($this->checkVerify()) {
+                redirect('profile/editProfile/'.$_SESSION['alumni_id']);
+            } else {
+                if($this->isEmployed()) {
+                    redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
+                } else {
+                    $this->checkSurvey();
+                }
+            }
+        }
+
+        // $this->checkVerify();
+        // $this->isEmployed();
+        // CHECK IF PROFILE UPDATED (VERIFIED)
 
         //$this->checkSurvey();
         // CHECK IF PROFILE UPDATED (VERIFIED)
@@ -26,29 +38,39 @@ class Pages extends Controller{
     }
     
     public function index(){
-        if(isLoggedIn()) { 
-            //$this->checkSurvey();
-            redirect('pages/home');
-        }   
+
+        if(isLoggedIn()) {
+        /* $this->checkSurvey(); */
+        redirect('pages/home');
+        }
     }
 
     function checkVerify() {
         $this->userModel = $this->model('user');
         $user = $this->userModel->singleAcc($_SESSION['alumni_id']);
-        if(userType() == "Alumni" && $user->verify != "YES") {
-            redirect('profile/editProfile/'.$_SESSION['alumni_id']);
+        if($user->verify != "YES") {
+            return true;
+            // redirect('profile/editProfile/'.$_SESSION['alumni_id']);
+        } else {
+            return false;
         }
     }
 
     function isEmployed() {
-        $this->userModel = $this->model('user');
         $user = $this->userModel->singleUserAlumniJoin($_SESSION['alumni_id']);
         $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
-        if(userType() == "Alumni" && $user->employment == "Employed" && empty($findRecord)) {
-            redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
+        if($user->employment == "Employed") {
+            if(empty($findRecord)) {
+                return true;
+                // redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
     }
-
+    
     function checkSurvey(){
         $this->surveyListModel = $this->model('s_widget');
         $currentSurvey = $this->surveyListModel->getSurvey();
@@ -69,9 +91,24 @@ class Pages extends Controller{
             redirect('survey_widget');
         }
     }
-    
-    
+/*     
+    function checkVerify() {
+        $this->userModel = $this->model('user');
+        $user = $this->userModel->singleAcc($_SESSION['alumni_id']);
+        if(userType() == "Alumni" && $user->verify != "YES") {
+            redirect('profile/editProfile/'.$_SESSION['alumni_id']);
+        }
+    }
 
+    function isEmployed() {
+        $this->userModel = $this->model('user');
+        $user = $this->userModel->singleUserAlumniJoin($_SESSION['alumni_id']);
+        $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
+        if(userType() == "Alumni" && $user->employment == "Employed" && $findRecord == false) {
+            redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
+        }
+    }
+*/
     public function home() {
 
         $this->postModel = $this->model('post');
