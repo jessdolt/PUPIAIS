@@ -24,22 +24,26 @@ class Pages extends Controller{
             $this->alumniModel = $this->model('alumni_model');
             //$this->groupModel = $this->model('group_model');
             
-            $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
+            //$alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
             $alumni = $this->alumniModel->showAlumni();
-            $department = $this->alumniModel->showDepartment();
-            $courses = $this->alumniModel->showCourses();
+            //$department = $this->alumniModel->showDepartment();
+            //$courses = $this->alumniModel->showCourses();
             //$classification = $this->groupModel->showClassification();
 
+            // $data = [
+            //     'alumni' => $alumni,
+            //     'department' =>  $department,
+            //     'courses' => $courses,
+            //     // 'classification' => $classification,
+            //     'isPreview' => 0,
+            //     'title' => 'All Alumni',
+            //     'batch' => '',
+            //     'alumniCount' => count($alumni),
+            //     'alumniPerCourse' => $alumniCountPerCourse
+            // ];
+
             $data = [
-                'alumni' => $alumni,
-                'department' =>  $department,
-                'courses' => $courses,
-                // 'classification' => $classification,
-                'isPreview' => 0,
-                'title' => 'All Alumni',
-                'batch' => '',
-                'alumniCount' => count($alumni),
-                'alumniPerCourse' => $alumniCountPerCourse
+                'alumni' => $alumni
             ];
 
             $this->view('prac/prac', $data);
