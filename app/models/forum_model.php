@@ -21,6 +21,17 @@
             }
         }
 
+        public function commentCounter($id){
+            $this->db->query('SELECT COUNT(comment_id) FROM comment WHERE commment_for = :id');
+            $this->db->bind(':id', $id);
+
+            if($this->db->execute()){
+                return true;
+            } else{
+                return false;
+            }
+        }
+
         public function topicVotes($data){
             $this->db->query('UPDATE topic SET votes = :votes WHERE topic_id = :id');
 
@@ -49,6 +60,7 @@
                              INNER JOIN users 
                              ON topic.topic_author = users.user_id
                              ORDER BY topic.topic_views DESC
+                             LIMIT 5
                              ');
             $results = $this->db->resultSet();
             return $results;
@@ -78,6 +90,8 @@
             FROM comment
             INNER JOIN users 
             ON comment.comment_sender = users.user_id
+            INNER JOIN alumni
+            ON users.a_id = alumni.alumni_id
             ORDER BY comment.commented_at DESC
             ');
             $results = $this->db->resultSet();

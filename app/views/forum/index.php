@@ -4,7 +4,7 @@
         <section class="heroBox">
             <div class="tint">
                 <div class="container">
-                    <h1 class="heroBoxText">Job Portal</h1>
+                    <h1 class="heroBoxText">Forum</h1>
                     <div class="textFieldContainer">
                         <input type="search" name="searchNews" id="search-news" placeholder="Search">
                         <label class="icon" for="search-news">
@@ -131,10 +131,10 @@
                     <h3>My Discussions</h3>
                 </div>
                 <ul class="category-list">
-                <?php foreach($data['popular'] as $pop): ?>
+                <?php foreach($data['user_posts'] as $my): ?>
                     <li class="list-item">
                         <button>
-                            <span class="forum-title">Sample General Discussions</span>
+                            <span class="forum-title"><?php echo $my->title?></span>
                         </button>
                     </li>
                     <?php endforeach; ?>

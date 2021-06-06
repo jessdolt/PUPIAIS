@@ -33,6 +33,7 @@
             $user = $this->userModel->getUserByID($post->topic_author);
             $alumni = $this->alumniModel->getAlumniByID($user->a_id);
             $current = $this->alumniModel->getAlumniByID($_SESSION['alumni_id']);
+            $pop = $this->forumModel->getPopular();
             $data = [
                 'post' => $post,
                 'user' => $user,
@@ -40,6 +41,7 @@
                 'reply' => $reply,
                 'alumni' => $alumni,
                 'current' => $current,
+                'popular' => $pop,
             ];
             
             
