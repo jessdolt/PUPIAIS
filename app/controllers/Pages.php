@@ -3,13 +3,12 @@
 class Pages extends Controller{
     public function __construct(){
       
-        //if (!isLoggedIn()) {
-            //redirect('users/login');
-        //}
-        // $this->checkVerify();
-        // $this->isEmployed();
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->checkVerify();
+        $this->isEmployed();
         // CHECK IF PROFILE UPDATED (VERIFIED)
-
 
         // $this->surveyWidgetModel = $this->model('s_widget');
         // $surveyExists = $this->surveyWidgetModel->getSurvey();
@@ -22,24 +21,13 @@ class Pages extends Controller{
     }
     
     public function index(){
-        
-        //header('Location:'. URLROOT .'/' .'Users/testLogin');
+        if(isLoggedIn()) { 
+        /* $this->checkSurvey(); */
+        redirect('pages/home');
+        }   
 
-        // $data = [];
-        // $this->view('prac/prac', $data);
-        //  if(isLoggedIn()) {
-            
-        // /* $this->checkSurvey(); */
-        // redirect('pages/home');
-        // }   
     }
     
-    public function testURL(){
-        echo 'this is testURL';
-        $url= rtrim($_GET['url'],'/');
-        $url= explode('/', $url);
-        array_print($url);
-    }
 
     function checkSurvey(){
         $this->surveyListModel = $this->model('s_widget');
