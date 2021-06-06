@@ -8,7 +8,7 @@ class Pages extends Controller{
         }
         //$this->checkVerify();
         //$this->isEmployed();
-        $this->checkSurvey();
+        //$this->checkSurvey();
         // CHECK IF PROFILE UPDATED (VERIFIED)
 
         // $this->surveyWidgetModel = $this->model('s_widget');
