@@ -23,19 +23,19 @@ class Pages extends Controller{
     public function index(){
             $this->alumniModel = $this->model('alumni_model');
             
-            //$this->groupModel = $this->model('group_model');
+            $this->groupModel = $this->model('group_model');
             
             $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
             $alumni = $this->alumniModel->showAlumni();
             $department = $this->alumniModel->showDepartment();
             $courses = $this->alumniModel->showCourses();
-            //$classification = $this->groupModel->showClassification();
+            $classification = $this->groupModel->showClassification();
 
             $data = [
                 'alumni' => $alumni,
                 'department' =>  $department,
                 'courses' => $courses,
-                // 'classification' => $classification,
+                 'classification' => $classification,
                 'isPreview' => 0,
                 'title' => 'All Alumni',
                 'batch' => '',
