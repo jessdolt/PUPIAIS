@@ -1246,7 +1246,8 @@ html {
       .userSurvey ~ .alumni .mainContent .container .form .surveyCard p {
         color: rgba(0, 0, 0, 0.6);
         margin-top: 0.8rem;
-        margin-bottom: 1.6rem; }
+        margin-bottom: 1.6rem;
+        text-align: left; }
     .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a {
       background-color: #15CC8A;
       color: #FFFFFF;
@@ -2932,14 +2933,16 @@ ul {
       min-width: 31.2rem;
       box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
       border: 0 !important;
-      border-left: 4px solid !important; }
+      border-left: 4px solid !important;
+      flex: 1; }
       .jobPost section.mainContent .jobCon .jobs.fullTime {
         border-color: #A63F3F !important; }
       .jobPost section.mainContent .jobCon .jobs.partTime {
         border-color: #C7B13F !important; }
       @media (min-width: 800px) {
         .jobPost section.mainContent .jobCon .jobs {
-          min-width: 37.65rem; } }
+          min-width: 37.65rem;
+          flex: none; } }
     .jobPost section.mainContent .jobCon .caption {
       margin-top: 1.2rem; }
     .jobPost section.mainContent .jobCon img {
@@ -3422,7 +3425,7 @@ ul {
     min-height: 97.2rem; }
     @media (min-width: 800px) {
       .forum > section.mainContent .forumCon {
-        grid-row: 1/5;
+        grid-row: 1/6;
         grid-column: 2/9;
         padding-right: 4rem;
         margin-right: 1.6rem; } }
@@ -3513,7 +3516,17 @@ ul {
   .forum > section.mainContent .pagination {
     padding-top: 2.4rem;
     justify-content: flex-end;
-    margin-top: auto; }
+    margin-top: auto;
+    gap: 0.8rem; }
+    .forum > section.mainContent .pagination a {
+      transition: 200ms ease;
+      justify-content: center;
+      width: 3.2rem;
+      height: 3.2rem; }
+      .forum > section.mainContent .pagination a:focus, .forum > section.mainContent .pagination a:hover {
+        background-color: #EEEEEE;
+        color: rgba(0, 0, 0, 0.87);
+        border-radius: 5rem; }
   .forum > section.mainContent .conHeader {
     display: flex;
     align-items: center;
@@ -3558,7 +3571,9 @@ ul {
     column-gap: 0.4rem; }
 
 .forum > section.forumView img {
-  border: 3px solid #FFFFFF; }
+  border: 3px solid #FFFFFF;
+  object-fit: cover;
+  border-radius: 10rem; }
 
 .forum > section.forumView button {
   text-transform: capitalize;
@@ -3624,7 +3639,8 @@ ul {
     cursor: pointer; }
 
 .forum > section.forumView .description {
-  margin-left: 10.4rem; }
+  margin-left: 10.4rem;
+  width: 100%; }
 
 .forum > section.forumView .vote-con {
   position: absolute;
@@ -3732,16 +3748,18 @@ ul {
     display: flex;
     gap: 0.8rem;
     margin-bottom: 1.6rem; }
-  .forum > section.forumView .comment-main-con .comment-list .btn-con button {
+  .forum > section.forumView .comment-main-con .comment-list .btn-con button, .forum > section.forumView .comment-main-con .comment-list .btn-con a {
     min-height: 2.1rem;
     border: none;
     background-color: transparent;
     padding: 0; }
-    .forum > section.forumView .comment-main-con .comment-list .btn-con button:focus, .forum > section.forumView .comment-main-con .comment-list .btn-con button:hover {
+    .forum > section.forumView .comment-main-con .comment-list .btn-con button:focus, .forum > section.forumView .comment-main-con .comment-list .btn-con button:hover, .forum > section.forumView .comment-main-con .comment-list .btn-con a:focus, .forum > section.forumView .comment-main-con .comment-list .btn-con a:hover {
       box-shadow: none;
       text-decoration: underline; }
   .forum > section.forumView .comment-main-con .comment-list .btn-con svg {
     fill: none; }
+  .forum > section.forumView .comment-main-con .comment-list .btn-con a:visited {
+    color: rgba(0, 0, 0, 0.87); }
   .forum > section.forumView .comment-main-con .comment-list .btn-con2 {
     display: none;
     justify-content: flex-end; }
@@ -3750,7 +3768,7 @@ ul {
       .forum > section.forumView .comment-main-con .comment-list .btn-con2 button.cancel {
         background-color: #EEEEEE;
         color: rgba(0, 0, 0, 0.87); }
-      .forum > section.forumView .comment-main-con .comment-list .btn-con2 button.reply {
+      .forum > section.forumView .comment-main-con .comment-list .btn-con2 button.submit-reply {
         background-color: #A63F3F;
         color: #FFFFFF; }
 
@@ -3774,7 +3792,7 @@ ul {
 
 select, input, textarea {
   text-indent: 0px;
-  color: rgba(0, 0, 0, 0.6) !important;
+  /* color: $mediumEmphasis !important; */
   resize: none; }
 
 .textFieldContainer {
@@ -3784,10 +3802,6 @@ select, input, textarea {
     border-right: 1px solid rgba(0, 0, 0, 0.2) !important; }
     .textFieldContainer textarea:focus {
       border-right: 1px solid rgba(0, 0, 0, 0.6) !important; }
-
-img {
-  object-fit: cover;
-  border-radius: 10rem; }
 
 #Alumni .modalConFilterNav .modalFilterNav {
   position: relative; }
@@ -4207,12 +4221,24 @@ img {
   position: relative;
   min-width: 26.4rem;
   min-height: 15.2rem;
+  width: 100%;
   gap: 0; }
   @media (min-width: 1367px) {
     .mainHeader ~ .editProfile .mainContent .imageInputContainer {
       min-height: 23.7rem;
       flex: 1; } }
+  .mainHeader ~ .editProfile .mainContent .imageInputContainer .image-con {
+    position: relative;
+    padding-top: 56.25%;
+    flex: 1; }
   .mainHeader ~ .editProfile .mainContent .imageInputContainer img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
     border: 1px solid rgba(0, 0, 0, 0.38);
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;

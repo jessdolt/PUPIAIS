@@ -88,8 +88,7 @@
                                         Reply
                                     </button>
                                     <?php if($comment->comment_sender == $_SESSION['id']): ?>
-                                    <a href="<?php echo URLROOT;?>/forum/deleteComment/<?php echo $comment->comment_id?>">
-                                    <button>
+                                    <a href="<?php echo URLROOT;?>/forum/deleteComment/<?php echo $comment->comment_id?>/<?php echo $comment->comment_for?>">
                                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M15.6562 6.78125L14.8163 15.9367C14.7895 16.1952 14.6798 16.4335 14.5082 16.6065C14.3366 16.7794 14.1149 16.875 13.8853 16.875H7.11504C6.88538 16.875 6.6637 16.7794 6.49208 16.6065C6.32046 16.4335 6.21083 16.1952 6.18398 15.9367L5.34375 6.78125" stroke="black" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/>
                                             <path d="M16.5938 4.125H4.40625C4.14737 4.125 3.9375 4.36285 3.9375 4.65625V6.25C3.9375 6.5434 4.14737 6.78125 4.40625 6.78125H16.5938C16.8526 6.78125 17.0625 6.5434 17.0625 6.25V4.65625C17.0625 4.36285 16.8526 4.125 16.5938 4.125Z" stroke="black" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -97,7 +96,6 @@
                                             <path d="M12.1406 13.6875L8.85938 9.96875" stroke="black" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                         Delete
-                                    </button>
                                     </a>
                                     <?php endif; ?>
                                 </div>

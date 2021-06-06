@@ -13,6 +13,7 @@
 
         public function index(){
             //Get Posts
+            $category = $this->forumModel->getCategory();
             $posts = $this->forumModel->getPosts(); 
             $pop = $this->forumModel->getPopular();
             $my = $this->forumModel->getCurrent($_SESSION['id']);
@@ -21,6 +22,7 @@
                 'posts' => $posts,
                 'popular' => $pop,
                 'user_posts' => $my,
+                'category' => $category,
             ];
 
             $this->view('forum/index',$data);
@@ -226,7 +228,7 @@
                 }
             }
 
-        public function deleteComment($id){
+        public function deleteComment($id,$for){
             $comment = $this->forumModel->getCommentById($id);
             if($comment->comment_sender != $_SESSION['id']){
                 redirect('forum/index');
@@ -234,7 +236,7 @@
 
             if($this->forumModel->deleteComment($id)){
                 
-                redirect('forum/show/' . $id);
+                redirect('forum/show/' . $for);
             }    
             else{
                 die("Something went wrong");

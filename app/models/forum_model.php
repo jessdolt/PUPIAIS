@@ -80,6 +80,12 @@
             return $results;
         }
 
+        public function getCategory(){
+            $this->db->query('SELECT * FROM category');
+            $results = $this->db->resultSet();
+            return $results;
+        }
+    
         public function getComments(){
             $this->db->query('SELECT *,
             comment.comment_id as commentID,
@@ -107,6 +113,13 @@
             return $results;
         }
 
+        public function getCommentById($id){
+            $this->db->query('SELECT * FROM comment WHERE comment_id = :id');
+            $this->db->bind(':id',$id);
+            $row = $this->db->single();
+            return $row;
+        }
+
         public function getPostById($id){
             $this->db->query('SELECT * FROM topic WHERE topic_id = :id');
             $this->db->bind(':id',$id);
@@ -114,12 +127,6 @@
             return $row;
         }
 
-        public function getCommentById($id){
-            $this->db->query('SELECT * FROM comment WHERE comment_id = :id');
-            $this->db->bind(':id',$id);
-            $row = $this->db->single();
-            return $row;
-        }
         public function getReplyById($id){
             $this->db->query('SELECT * FROM reply WHERE reply_id = :id');
             $this->db->bind(':id',$id);
