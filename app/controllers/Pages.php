@@ -29,12 +29,14 @@ class Pages extends Controller{
         //redirect('pages/home');
         //}
 
-        $this->newsModel = $this->model('post');
+        // $this->newsModel = $this->model('post');
         // $news = $this->newsModel->showNewsHome();
         // $alumni = $this->alumniModel->showAlumni();
         // $this->newsModel = $this->model('post');
         // 
-        $alumni = $this->newsModel->showNewsHome();
+        
+        $this->alumniModel = $this->model('alumni_model');
+        $alumni = $this->alumniModel->showAlumni();
         $data = [
            'news' => $alumni
         ];
