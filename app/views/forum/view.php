@@ -53,7 +53,7 @@
                     </button>
                 </form>
                 <div class="comment-main-con">
-                    <h3 class="comment-count">3 Comments</h3>
+                    <h3 class="comment-count"><?php array_print($data['post']->topic_id)?>Comments</h3>
                     <!-- primary comment -->
                     <form action="" class="comment-con">
                         <img src="<?php echo URLROOT;?>/uploads/<?php echo ($data['current']->image) ?>" >
@@ -86,6 +86,7 @@
                                         </svg>
                                         Reply
                                     </button>
+                                    <?php if($comment->comment_sender == $_SESSION['id']): ?>
                                     <button>
                                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M15.6562 6.78125L14.8163 15.9367C14.7895 16.1952 14.6798 16.4335 14.5082 16.6065C14.3366 16.7794 14.1149 16.875 13.8853 16.875H7.11504C6.88538 16.875 6.6637 16.7794 6.49208 16.6065C6.32046 16.4335 6.21083 16.1952 6.18398 15.9367L5.34375 6.78125" stroke="black" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -95,6 +96,7 @@
                                         </svg>
                                         Delete
                                     </button>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="btn-con2">
                                     <button type="button" class="cancel">Cancel</button>

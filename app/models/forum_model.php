@@ -22,7 +22,7 @@
         }
 
         public function commentCounter($id){
-            $this->db->query('SELECT COUNT(comment_id) FROM comment WHERE commment_for = :id');
+            $this->db->query('SELECT COUNT(*) FROM comment WHERE comment_for = :id');
             $this->db->bind(':id', $id);
 
             if($this->db->execute()){
