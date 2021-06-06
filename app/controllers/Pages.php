@@ -26,9 +26,8 @@ class Pages extends Controller{
         if(isLoggedIn()) { 
             $this->checkVerify();
            //$this->checkSurvey();
-
-            redirect('pages/home');
         }   
+        redirect('pages/home');
     }
 
     function checkVerify() {
