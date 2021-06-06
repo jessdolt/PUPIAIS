@@ -21,7 +21,7 @@ class Pages extends Controller{
     }
     
     public function index(){
-            $this->alumniModel = $this->model('alumni_model');
+            $this->qwe = $this->model('alumni_model');
             
             //$this->groupModel = $this->model('group_model');
             

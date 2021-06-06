@@ -9,11 +9,11 @@
         // Load model 
         public function model($model){
             // Require model file
-            // $nModal = ucfirst($model);
-            require '../app/models/' . $model .'.php';
+            $nModal = ucfirst($model);
+            require '../app/models/' . $nModal .'.php';
 
             // Instatiate model
-            return new $model();
+            return new $nModal();
         }
 
         // Load view
