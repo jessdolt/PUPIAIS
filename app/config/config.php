@@ -18,7 +18,7 @@
     define('CLOGOROOT', dirname(dirname(dirname(__FILE__))). '\public\company_logo\\');
     
     //Url Root
-    define('URLROOT', 'http://localhost/pupiais');
+    define('URLROOT', 'https://pupiais.herokuapp.com');
 
     //https://pupiais.herokuapp.com
     
