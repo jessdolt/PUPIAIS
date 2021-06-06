@@ -4,7 +4,7 @@ class Pages extends Controller{
     public function __construct(){
       
         //if (!isLoggedIn()) {
-            
+            //redirect('users/login');
         //}
         // $this->checkVerify();
         // $this->isEmployed();
@@ -18,13 +18,12 @@ class Pages extends Controller{
         // }   
       
         //$this->alumniModel = $this->model('alumni_model');\
-        $data = [];
-        $this->view('prac/prac',$data);
+        
     }
     
     public function index(){
         
-
+        header('Location:'. URLROOT .'/' .'users/testLogin');
         //  if(isLoggedIn()) {
             
         // /* $this->checkSurvey(); */
