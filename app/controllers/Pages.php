@@ -49,9 +49,9 @@ class Pages extends Controller{
         if(userType() == "Alumni" && $user->employment == "Employed" && empty($findRecord)) {
             redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
         }
-        else{
+      
             redirect('pages/home');
-        }
+        
     }
 
     function checkSurvey(){
