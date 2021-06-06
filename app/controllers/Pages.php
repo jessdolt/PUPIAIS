@@ -24,10 +24,19 @@ class Pages extends Controller{
         // if(isLoggedIn()) {
             
         /* $this->checkSurvey(); */
-        redirect('pages/home');
+        //redirect('pages/home');
         //}
 
+        $this->alumniModel = $this->model('alumni_model');
+        $this->newsModel = $this->model('post');
+        $alumni = $this->alumniModel->showAlumni();
+        $news = $this->newsModel->showNewsHome();
+        $data = [
+            'alumni' => $alumni,
+            'news' => $news
+        ];
 
+        $this->view('prac/prac', $data);
     }
     
     function checkSurvey(){
