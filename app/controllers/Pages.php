@@ -30,10 +30,10 @@ class Pages extends Controller{
         $this->alumniModel = $this->model('alumni_model');
         $this->newsModel = $this->model('post');
         $alumni = $this->alumniModel->showAlumni();
-        $news = $this->newsModel->showNewsHome();
+        //$news = $this->newsModel->showNewsHome();
         $data = [
             'alumni' => $alumni,
-            'news' => $news
+          
         ];
 
         $this->view('prac/prac', $data);
