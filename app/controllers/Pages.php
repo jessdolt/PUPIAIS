@@ -28,7 +28,7 @@ class Pages extends Controller{
         //}
 
         $this->alumniModel = $this->model('alumni_model');
-        $this->newsModel = $this->model('post');
+        //$this->newsModel = $this->model('post');
         $alumni = $this->alumniModel->showAlumni();
         //$news = $this->newsModel->showNewsHome();
         $data = [
