@@ -6,7 +6,7 @@ class Pages extends Controller{
         if (!isLoggedIn()) {
             redirect('users/login');
         }
-        //$this->checkVerify();
+        $this->checkVerify();
         $this->isEmployed();
         // CHECK IF PROFILE UPDATED (VERIFIED)
 
@@ -62,19 +62,9 @@ class Pages extends Controller{
         $this->userModel = $this->model('user');
         $user = $this->userModel->singleUserAlumniJoin($_SESSION['alumni_id']);
         $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
-        // if(userType() == "Alumni" && $user->employment == "Employed" && $findRecord == false) {
-        //     redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
-        // }
-        // else{
-        //     redirect('pages/home');
-        // }
-
-        $data =[
-            'a' => $user,
-            'b' => $findRecord
-        ];
-
-        $this->view('prac/prac', $data);
+        if(userType() == "Alumni" && $user->employment == "Employed" && $findRecord != 1) {
+            redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
+        }
     }
 
     public function home() {
