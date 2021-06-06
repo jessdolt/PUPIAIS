@@ -7,7 +7,7 @@ class Pages extends Controller{
             redirect('users/login');
         }
         $this->checkVerify();
-        //$this->isEmployed();
+        $this->isEmployed();
         // CHECK IF PROFILE UPDATED (VERIFIED)
 
         // $this->surveyWidgetModel = $this->model('s_widget');
