@@ -7,7 +7,8 @@ class Pages extends Controller{
             redirect('users/login');
         }
         
-        
+        $this->checkVerify();
+        $this->isEmployed();
         
         //$this->checkSurvey();
         // CHECK IF PROFILE UPDATED (VERIFIED)
@@ -24,10 +25,9 @@ class Pages extends Controller{
     
     public function index(){
         if(isLoggedIn()) { 
-            $this->checkVerify();
            //$this->checkSurvey();
+            redirect('pages/home');
         }   
-        redirect('pages/home');
     }
 
     function checkVerify() {
@@ -36,11 +36,7 @@ class Pages extends Controller{
         if(userType() == "Alumni" && $user->verify != "YES") {
             redirect('profile/editProfile/'.$_SESSION['alumni_id']);
         }
-        else{
-            $this->isEmployed();
-        }
     }
-
 
     function isEmployed() {
         $this->userModel = $this->model('user');
