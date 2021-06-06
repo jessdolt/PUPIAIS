@@ -25,19 +25,17 @@ class Pages extends Controller{
         
         //header('Location:'. URLROOT .'/' .'Users/testLogin');
 
-        $data = [];
-        $this->view('prac/prac', $data);
+        // $data = [];
+        // $this->view('prac/prac', $data);
         //  if(isLoggedIn()) {
             
         // /* $this->checkSurvey(); */
         // redirect('pages/home');
-        // }
-
-      
-        
+        // }   
     }
     
     public function testURL(){
+        echo 'this is testURL';
         $url= rtrim($_GET['url'],'/');
         $url= explode('/', $url);
         array_print($url);
