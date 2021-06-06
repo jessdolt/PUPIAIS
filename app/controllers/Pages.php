@@ -30,10 +30,10 @@ class Pages extends Controller{
         //}
 
        
-        
+        // $news = $this->newsModel->showNewsHome();
         // $alumni = $this->alumniModel->showAlumni();
-     
-        // //$news = $this->newsModel->showNewsHome();
+        // $this->newsModel = $this->model('post');
+        // 
         // $data = [
         //    'alumni' => $alumni
         // ];
