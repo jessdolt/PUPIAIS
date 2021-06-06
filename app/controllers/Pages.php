@@ -6,8 +6,22 @@ class Pages extends Controller{
         if (!isLoggedIn()) {
             redirect('users/login');
         }
-        $this->checkVerify();
-        $this->isEmployed();
+
+        // Verify
+        if(userType() == "Alumni") {
+            if ($this->checkVerify()) {
+                redirect('profile/editProfile/'.$_SESSION['alumni_id']);
+            } else {
+                if($this->isEmployed()) {
+                    redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
+                } else {
+                    $this->checkSurvey();
+                }
+            }
+        }
+
+        // $this->checkVerify();
+        // $this->isEmployed();
         // CHECK IF PROFILE UPDATED (VERIFIED)
 
 
@@ -22,12 +36,38 @@ class Pages extends Controller{
 
 
         if(isLoggedIn()) {
-            
         /* $this->checkSurvey(); */
         redirect('pages/home');
         }
 
 
+    }
+
+    function checkVerify() {
+        $this->userModel = $this->model('user');
+        $user = $this->userModel->singleAcc($_SESSION['alumni_id']);
+        if($user->verify != "YES") {
+            return true;
+            // redirect('profile/editProfile/'.$_SESSION['alumni_id']);
+        } else {
+            return false;
+        }
+    }
+
+    function isEmployed() {
+        $this->userModel = $this->model('user');
+        $user = $this->userModel->singleUserAlumniJoin($_SESSION['alumni_id']);
+        $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
+        if($user->employment == "Employed") {
+            if(empty($findRecord)) {
+                return true;
+                // redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
     
     function checkSurvey(){
@@ -50,7 +90,7 @@ class Pages extends Controller{
             redirect('survey_widget');
         }
     }
-    
+/*     
     function checkVerify() {
         $this->userModel = $this->model('user');
         $user = $this->userModel->singleAcc($_SESSION['alumni_id']);
@@ -67,7 +107,7 @@ class Pages extends Controller{
             redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
         }
     }
-
+*/
     public function home() {
 
         $this->postModel = $this->model('post');
