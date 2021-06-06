@@ -2,12 +2,12 @@
 
 class Pages extends Controller{
     public function __construct(){
-        // echo 'hello this is constructor';
-        // if (!isLoggedIn()) {
-        //     redirect('users/login');
-        // }
-        // $this->checkVerify();
-        // $this->isEmployed();
+      
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->checkVerify();
+        $this->isEmployed();
         // CHECK IF PROFILE UPDATED (VERIFIED)
 
 
@@ -23,27 +23,14 @@ class Pages extends Controller{
     public function index(){
 
 
-        // if(isLoggedIn()) {
+         if(isLoggedIn()) {
             
         /* $this->checkSurvey(); */
-        //redirect('pages/home');
-        //}
+        redirect('pages/home');
+        }
 
-        // $this->newsModel = $this->model('post');
-        // $news = $this->newsModel->showNewsHome();
-        // $alumni = $this->alumniModel->showAlumni();
-        // $this->newsModel = $this->model('post');
-        // 
-
-        $this->alumniModel = $this->model('event');
-        $this->newModel = $this->model('post');
-        $alumni = $this->alumniModel->showEventHome();
-        $news = $this->newModel->showNewsHome();
-        $data = [
-           'news' => $alumni,
-           'qwe' => $news
-        ];
-        $this->view('prac/prac', $data);
+      
+        
     }
     
     function checkSurvey(){

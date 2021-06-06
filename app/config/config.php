@@ -11,7 +11,6 @@
     define('DB_PASS', '2891ffd3');
     define('DB_NAME', 'heroku_ec03275637a73ae');
 
-
     //App Root
     define('APPROOT',dirname(dirname(__FILE__)));
     define('IMAGEROOT', dirname(dirname(dirname(__FILE__))). '\public\uploads\\');

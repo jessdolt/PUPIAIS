@@ -19,7 +19,7 @@
                 return $row;
             }
 
-            $this->db->closeConnection();
+
         }
 
         public function alumniCountPerCourse(){
