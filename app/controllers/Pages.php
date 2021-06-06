@@ -16,6 +16,8 @@ class Pages extends Controller{
         // if(isset($surveyExists)){
         //     redirect('survey_widget');
         // }   
+        $this->newsModel = $this->model('post');
+        $this->alumniModel = $this->model('alumni_model');
     }
     
     public function index(){
@@ -27,16 +29,16 @@ class Pages extends Controller{
         //redirect('pages/home');
         //}
 
-        $this->alumniModel = $this->model('alumni_model');
+       
         
-        $alumni = $this->alumniModel->showAlumni();
-        $this->newsModel = $this->model('post');
-        //$news = $this->newsModel->showNewsHome();
-        $data = [
-           'alumni' => $alumni
-        ];
+        // $alumni = $this->alumniModel->showAlumni();
+     
+        // //$news = $this->newsModel->showNewsHome();
+        // $data = [
+        //    'alumni' => $alumni
+        // ];
 
-        $this->view('prac/prac', $data);
+        // $this->view('prac/prac', $data);
     }
     
     function checkSurvey(){
