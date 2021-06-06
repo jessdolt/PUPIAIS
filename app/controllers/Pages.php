@@ -17,12 +17,13 @@ class Pages extends Controller{
         //     redirect('survey_widget');
         // }   
       
-        //$this->alumniModel = $this->model('alumni_model');
+        //$this->alumniModel = $this->model('alumni_model');\
+        $data = [];
+        $this->view('prac/prac',$data);
     }
     
     public function index(){
-        $data = [];
-        $this->view('prac/prac',$data);
+        
 
         //  if(isLoggedIn()) {
             
