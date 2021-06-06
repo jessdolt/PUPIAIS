@@ -8,8 +8,8 @@ class Pages extends Controller{
         }
         
         $this->checkVerify();
-        $this->isEmployed();
-        
+        //$this->isEmployed();
+
         //$this->checkSurvey();
         // CHECK IF PROFILE UPDATED (VERIFIED)
 

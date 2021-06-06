@@ -398,8 +398,8 @@
             
             if ($_SESSION['user_type'] == "Admin" || $_SESSION['user_type'] == "Content Creator") {
                 redirect('admin/dashboard');
-            } else {
-                redirect('pages');
+            } else { 
+                redirect('pages'); 
             }
 
         }
