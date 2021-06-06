@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo SITENAME;?></title>
     <link rel="shortcut icon" href="<?php echo URLROOT;?>/images/logo-32px.png" type="image/x-icon">
-    <link rel="stylesheet" href="<?php echo URLROOT;?>/css/style.press.css">
+    <link rel="stylesheet" href="<?php echo URLROOT;?>/css/style.css">
     <script src="<?php echo URLROOT;?>/js/index.js" defer></script>
     <script
      src="https://code.jquery.com/jquery-3.6.0.min.js"
