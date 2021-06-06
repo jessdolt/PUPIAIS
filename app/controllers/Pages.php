@@ -37,6 +37,12 @@ class Pages extends Controller{
         
     }
     
+    public function testURL(){
+        $url= rtrim($_GET['url'],'/');
+        $url= explode('/', $url);
+        array_print($url);
+    }
+
     function checkSurvey(){
         $this->surveyListModel = $this->model('s_widget');
         $currentSurvey = $this->surveyListModel->getSurvey();

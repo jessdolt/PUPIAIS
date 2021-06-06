@@ -6,7 +6,7 @@
 
     Class Core{
         protected $currentController = 'Pages';
-        protected $currentMethod = 'index';
+        protected $currentMethod = 'testURL';
         protected $params = []; 
 
         public function __construct(){
@@ -21,7 +21,7 @@
                 //If exists, set as controller
                 $this->currentController = ucwords($url[0]);
                 unset($url[0]);
-                 }
+                }
 
             }
 
