@@ -21,7 +21,7 @@
                 //If exists, set as controller
                 $this->currentController = ucwords($url[0]);
                 unset($url[0]);
-        }
+                 }
 
             }
 
