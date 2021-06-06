@@ -6,8 +6,8 @@ class Pages extends Controller{
         if (!isLoggedIn()) {
             redirect('users/login');
         }
-        $this->checkVerify();
-        $this->isEmployed();
+        // $this->checkVerify();
+        // $this->isEmployed();
         // CHECK IF PROFILE UPDATED (VERIFIED)
 
         // $this->surveyWidgetModel = $this->model('s_widget');
@@ -83,7 +83,7 @@ class Pages extends Controller{
         //     'job_portals' => $job_portal
         // ];
 
-        $data =[ ];
+        $data =[];
         $this->view('prac/prac', $data);
   
 
