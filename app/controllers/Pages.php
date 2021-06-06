@@ -85,7 +85,7 @@ class Pages extends Controller{
 
         $data =[ ];
         $this->view('prac/prac', $data);
-
+  
 
         // $this->view('pages/home', $data);
     }
