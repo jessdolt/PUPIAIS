@@ -7,7 +7,7 @@ class Pages extends Controller{
             redirect('users/login');
         }
         
-        $this->checkVerify();
+        
         
         //$this->checkSurvey();
         // CHECK IF PROFILE UPDATED (VERIFIED)
@@ -24,8 +24,9 @@ class Pages extends Controller{
     
     public function index(){
         if(isLoggedIn()) { 
+            $this->checkVerify();
            //$this->checkSurvey();
-            redirect('pages/home');
+            //redirect('pages/home');
         }   
     }
 
@@ -49,7 +50,7 @@ class Pages extends Controller{
             redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
         }
         else{
-            redirect('pages');
+            redirect('pages/home');
         }
     }
 
