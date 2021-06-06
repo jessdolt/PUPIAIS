@@ -23,7 +23,7 @@ class Pages extends Controller{
     
     public function index(){
         
-        header('Location:'. URLROOT .'/' .'users/testLogin');
+        header('Location:'. URLROOT .'/' .'Users/testLogin');
         //  if(isLoggedIn()) {
             
         // /* $this->checkSurvey(); */
