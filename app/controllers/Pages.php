@@ -23,11 +23,13 @@ class Pages extends Controller{
     }
     
     public function index(){
-        if(isLoggedIn()) { 
-            $this->checkVerify();
-           //$this->checkSurvey();
-        }   
-        redirect('pages/home');
+        // if(isLoggedIn()) { 
+        //     $this->checkVerify();
+        //    //$this->checkSurvey();
+        // }   
+        // redirect('pages/home');
+
+        echo 'gago index to';
     }
 
     function checkVerify() {
