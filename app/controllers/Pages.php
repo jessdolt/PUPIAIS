@@ -22,8 +22,8 @@ class Pages extends Controller{
     
     public function index(){
         if(isLoggedIn()) { 
-        /* $this->checkSurvey(); */
-        redirect('pages/home');
+            $this->checkSurvey();
+            //redirect('pages/home');
         }   
 
     }
