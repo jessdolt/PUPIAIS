@@ -16,6 +16,7 @@
             $posts = $this->forumModel->getPosts(); 
             $pop = $this->forumModel->getPopular();
             $my = $this->forumModel->getCurrent($_SESSION['id']);
+
             $data = [
                 'posts' => $posts,
                 'popular' => $pop,
@@ -33,7 +34,7 @@
             $user = $this->userModel->getUserByID($post->topic_author);
             $alumni = $this->alumniModel->getAlumniByID($user->a_id);
             $current = $this->alumniModel->getAlumniByID($_SESSION['alumni_id']);
-            $counter = $this->forumModel->commentCounter($post->topic_id);
+            $counter = $this->forumModel->commentCounter($id);
             $pop = $this->forumModel->getPopular();
             
             $data = [
@@ -224,6 +225,21 @@
                     die("Something went wrong");
                 }
             }
+
+        public function deleteComment($id){
+            $comment = $this->forumModel->getCommentById($id);
+            if($comment->comment_sender != $_SESSION['id']){
+                redirect('forum/index');
+            }
+
+            if($this->forumModel->deleteComment($id)){
+                
+                redirect('forum/show/' . $id);
+            }    
+            else{
+                die("Something went wrong");
+            }
+        }
 
     }
 

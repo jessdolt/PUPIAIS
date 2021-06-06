@@ -35,7 +35,7 @@
                         </span>
                     </div>
                     <p class="description">
-                        But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+                        <?php echo $data['post']->body ?>
                     </p>
                 </div>
                 <form action="" class="vote-con">
@@ -53,9 +53,9 @@
                     </button>
                 </form>
                 <div class="comment-main-con">
-                    <h3 class="comment-count"><?php echo($data['counter'])?> Comments</h3>
+                    <h3 class="comment-count"><?php echo($data['counter']->counter)?> Comments</h3>
                     <!-- primary comment -->
-                    <form action="<?php echo URLROOT;?>/forum/comment" method="POST" class="comment-con">
+                    <form action="<?php echo URLROOT;?>/forum/comment/<?php echo $data['post']->topic_id;?>" method="POST" class="comment-con">
                         <img src="<?php echo URLROOT;?>/uploads/<?php echo ($data['current']->image) ?>" >
                         <div class="textFieldContainer">
                             <textarea name="comment" required></textarea>
@@ -88,6 +88,7 @@
                                         Reply
                                     </button>
                                     <?php if($comment->comment_sender == $_SESSION['id']): ?>
+                                    <a href="<?php echo URLROOT;?>/forum/deleteComment/<?php echo $comment->comment_id?>">
                                     <button>
                                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M15.6562 6.78125L14.8163 15.9367C14.7895 16.1952 14.6798 16.4335 14.5082 16.6065C14.3366 16.7794 14.1149 16.875 13.8853 16.875H7.11504C6.88538 16.875 6.6637 16.7794 6.49208 16.6065C6.32046 16.4335 6.21083 16.1952 6.18398 15.9367L5.34375 6.78125" stroke="black" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -97,6 +98,7 @@
                                         </svg>
                                         Delete
                                     </button>
+                                    </a>
                                     <?php endif; ?>
                                 </div>
                                 <div class="btn-con2">
@@ -144,7 +146,7 @@
                                     <path d="M50 6.25C50 4.5924 49.3415 3.00269 48.1694 1.83058C46.9973 0.65848 45.4076 0 43.75 0L6.25 0C4.5924 0 3.00269 0.65848 1.83058 1.83058C0.65848 3.00269 0 4.5924 0 6.25L0 31.25C0 32.9076 0.65848 34.4973 1.83058 35.6694C3.00269 36.8415 4.5924 37.5 6.25 37.5H36.2063C37.035 37.5002 37.8297 37.8295 38.4156 38.4156L47.3312 47.3312C47.5496 47.5501 47.828 47.6993 48.1311 47.76C48.4343 47.8206 48.7487 47.7899 49.0344 47.6718C49.3201 47.5537 49.5644 47.3535 49.7363 47.0965C49.9081 46.8395 49.9999 46.5373 50 46.2281V6.25ZM15.625 18.75C15.625 19.5788 15.2958 20.3737 14.7097 20.9597C14.1237 21.5458 13.3288 21.875 12.5 21.875C11.6712 21.875 10.8763 21.5458 10.2903 20.9597C9.70424 20.3737 9.375 19.5788 9.375 18.75C9.375 17.9212 9.70424 17.1263 10.2903 16.5403C10.8763 15.9542 11.6712 15.625 12.5 15.625C13.3288 15.625 14.1237 15.9542 14.7097 16.5403C15.2958 17.1263 15.625 17.9212 15.625 18.75V18.75ZM28.125 18.75C28.125 19.5788 27.7958 20.3737 27.2097 20.9597C26.6237 21.5458 25.8288 21.875 25 21.875C24.1712 21.875 23.3763 21.5458 22.7903 20.9597C22.2042 20.3737 21.875 19.5788 21.875 18.75C21.875 17.9212 22.2042 17.1263 22.7903 16.5403C23.3763 15.9542 24.1712 15.625 25 15.625C25.8288 15.625 26.6237 15.9542 27.2097 16.5403C27.7958 17.1263 28.125 17.9212 28.125 18.75ZM37.5 21.875C36.6712 21.875 35.8763 21.5458 35.2903 20.9597C34.7042 20.3737 34.375 19.5788 34.375 18.75C34.375 17.9212 34.7042 17.1263 35.2903 16.5403C35.8763 15.9542 36.6712 15.625 37.5 15.625C38.3288 15.625 39.1237 15.9542 39.7097 16.5403C40.2958 17.1263 40.625 17.9212 40.625 18.75C40.625 19.5788 40.2958 20.3737 39.7097 20.9597C39.1237 21.5458 38.3288 21.875 37.5 21.875Z" fill="black" fill-opacity="0.6"/>
                                     </svg>
                             </span>
-                            <span class="comments-count">0000</span>
+                            <span class="comments-count"><?php echo($data['counter']->counter)?></span>
                         </div>
                     </li>
                 </ul>

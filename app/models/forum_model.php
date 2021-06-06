@@ -22,14 +22,10 @@
         }
 
         public function commentCounter($id){
-            $this->db->query('SELECT COUNT(*) FROM comment WHERE comment_for = :id');
-            $this->db->bind(':id', $id);
-
-            if($this->db->execute()){
-                return true;
-            } else{
-                return false;
-            }
+            $this->db->query('SELECT count(*) as counter FROM `comment` WHERE comment_for = :id');
+            $this->db->bind(':id',$id);
+            $row = $this->db->single();
+            return $row;
         }
 
         public function topicVotes($data){
@@ -39,13 +35,15 @@
 
         public function getPosts(){
             $this->db->query('SELECT *,
-                             topic.topic_id as postId,
-                             users.user_id as userId,
-                             topic.created_at as postCreated
-                             FROM topic
-                             INNER JOIN users 
-                             ON topic.topic_author = users.user_id
-                             ORDER BY topic.created_at DESC
+            topic.topic_id as postId,
+            users.user_id as userId,
+            topic.created_at as postCreated
+            FROM topic
+            INNER JOIN users 
+            ON topic.topic_author = users.user_id
+            INNER JOIN category
+            ON topic.category = category.category_id
+            ORDER BY topic.created_at DESC
                              ');
             $results = $this->db->resultSet();
             return $results;
@@ -116,8 +114,13 @@
             return $row;
         }
 
-        
-        public function getReplyByYear($id){
+        public function getCommentById($id){
+            $this->db->query('SELECT * FROM comment WHERE comment_id = :id');
+            $this->db->bind(':id',$id);
+            $row = $this->db->single();
+            return $row;
+        }
+        public function getReplyById($id){
             $this->db->query('SELECT * FROM reply WHERE reply_id = :id');
             $this->db->bind(':id',$id);
             $row = $this->db->single();
