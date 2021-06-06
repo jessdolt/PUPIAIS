@@ -9,7 +9,7 @@
         // Load model 
         public function model($model){
             // Require model file
-            require '../app/models/' . $model .'.php';
+            require '../app/models/' . ucfirst($model) .'.php';
 
             // Instatiate model
             return new $model();
