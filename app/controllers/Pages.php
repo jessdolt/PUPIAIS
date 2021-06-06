@@ -69,22 +69,25 @@ class Pages extends Controller{
 
     public function home() {
 
-        $this->postModel = $this->model('post');
-        $this->eventModel = $this->model('event');
-        $this->jobModel = $this->model('job_portal');
+        // $this->postModel = $this->model('post');
+        // $this->eventModel = $this->model('event');
+        // $this->jobModel = $this->model('job_portal');
 
-        $news = $this->postModel->showNewsHome();
-        $events = $this->eventModel->showEventHome();
-        $job_portal = $this->jobModel->showJobsHome();
+        // $news = $this->postModel->showNewsHome();
+        // $events = $this->eventModel->showEventHome();
+        // $job_portal = $this->jobModel->showJobsHome();
 
-        $data = [
-            'news' => $news,
-            'events' => $events,
-            'job_portals' => $job_portal
-        ];
+        // $data = [
+        //     'news' => $news,
+        //     'events' => $events,
+        //     'job_portals' => $job_portal
+        // ];
+
+        $data =[ ];
+        $this->view('prac/prac', $data);
 
 
-        $this->view('pages/home', $data);
+        // $this->view('pages/home', $data);
     }
 
     public function news() {
