@@ -92,26 +92,6 @@ class Pages extends Controller{
             redirect('survey_widget');
         }
     }
-    
-
-
-    // function checkVerify() {
-    //     $this->userModel = $this->model('user');
-    //     $user = $this->userModel->singleAcc($_SESSION['alumni_id']);
-    //     if(userType() == "Alumni" && $user->verify != "YES") {
-    //         redirect('profile/editProfile/'.$_SESSION['alumni_id']);
-    //     }
-    // }
-
-    // function isEmployed() {
-    //     $this->userModel = $this->model('user');
-    //     $user = $this->userModel->singleUserAlumniJoin($_SESSION['alumni_id']);
-    //     $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
-    //     if(userType() == "Alumni" && $user->employment == "Employed" && empty($findRecord)) {
-    //         redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
-    //     }
-    // }
-
 
     public function home() {
 
@@ -141,15 +121,12 @@ class Pages extends Controller{
                 
         // Limit row displayed
         $limit = 10;
+        $start = ($page - 1) * $limit;
+        $oldNews = $this->postModel->showNewsIndex($start + 10, $limit);
 
         $pagination = $this->postModel->NoOfResultsOld();
-
         $total = count($pagination);
         $pages = ceil($total/$limit);
-
-        $start = (($page - 1) * $limit) + 10;
-
-        $oldNews = $this->postModel->showNewsIndex($start, $limit);
 
         // No URL bypass
         if($pages == 0) {
@@ -159,7 +136,7 @@ class Pages extends Controller{
             redirect('pages/news?page='.$pages);
         }
 
-        $startFormula = ($start + 1) - 10;
+        $startFormula = $start + 1;
         $limitFormula = $startFormula - 1 + $limit;
 
         if($page == $pages) {
@@ -171,11 +148,7 @@ class Pages extends Controller{
         if($total == 0) {
             $startFormula = 0;
             $limitFormula = 0;
-
         }
-
-        $originalCount = $this->postModel->NoOfResults();
-        if ($originalCount < 10) {
 
             $data = [
                 'latestNews' => $news,
@@ -188,21 +161,6 @@ class Pages extends Controller{
                 'next' => '?page='. ($page == $pages ? $pages : $page + 1),
                 'last' => '?page=' . $pages
             ];
-        } else {
-
-            $data = [
-                'latestNews' => $news,
-                'oldNews' => $oldNews,
-                'start' => 0,
-                'limit' => 0,
-                'total' => 0,
-                'first' => '?page=0',
-                'previous' => '?page=0',
-                'next' => '?page=0',
-                'last' => '?page=0'
-            ];
-
-        }
 
         $this->view('pages/news', $data);
     }
@@ -222,9 +180,9 @@ class Pages extends Controller{
         $total = count($pagination);
         $pages = ceil($total/$limit);
 
-        $start = (($page - 1) * $limit) + 10;
+        $start = ($page - 1) * $limit;
 
-        $oldEvents = $this->eventModel->showEventsIndex($start, $limit);
+        $oldEvents = $this->eventModel->showEventsIndex($start + 10, $limit);
 
         // No URL bypass
         if($pages == 0) {
@@ -234,7 +192,7 @@ class Pages extends Controller{
             redirect('pages/events?page='.$pages);
         }
 
-        $startFormula = ($start + 1) - 10;
+        $startFormula = $start + 1;
         $limitFormula = $startFormula - 1 + $limit;
 
         if($page == $pages) {

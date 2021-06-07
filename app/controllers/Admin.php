@@ -45,13 +45,49 @@
         public function alumni(){
             $this->alumniModel = $this->model('alumni_model');
             $this->groupModel = $this->model('group_model');
+
+            // Get Page # in URL
+            $page = $this->getPage();
+
+            // Limit row displayed
+            $limit = 20;
+            $start = ($page - 1) * $limit;
             
             $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
-            $alumni = $this->alumniModel->showAlumni();
+            // $alumni = $this->alumniModel->showAlumni();
             $department = $this->alumniModel->showDepartment();
             $courses = $this->alumniModel->showCourses();
             $classification = $this->groupModel->showClassification();
 
+            $alumni = $this->alumniModel->showAlumniIndex($start, $limit);
+
+            $pagination = $this->alumniModel->showAlumni();
+
+            $total = count($pagination);
+            $pages = ceil($total/$limit);
+
+            // No URL bypass
+            if($pages == 0) {
+                $pages = 1;
+            }
+            if($page > $pages) {
+                redirect('admin/alumni?page='.$pages);
+            }
+
+            $startFormula = $start + 1;
+            $limitFormula = $startFormula - 1 + $limit;
+
+            if($page == $pages) {
+                if ($limitFormula >= $total) {
+                    $limitFormula = $total;
+                }
+            }
+
+            if($total == 0) {
+                $startFormula = 0;
+                $limitFormula = 0;
+            }
+            
             $data = [
                 'alumni' => $alumni,
                 'department' =>  $department,
@@ -61,7 +97,15 @@
                 'title' => 'All Alumni',
                 'batch' => '',
                 'alumniCount' => count($alumni),
-                'alumniPerCourse' => $alumniCountPerCourse
+                'alumniPerCourse' => $alumniCountPerCourse,
+                
+                'start' => $startFormula,
+                'limit' => $limitFormula,
+                'total' => $total,
+                'first' => '?page=1',
+                'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+                'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+                'last' => '?page=' . $pages
             ];
 
             // $data = $this->alumniModel->showAlumni();
@@ -107,7 +151,6 @@
             if($total == 0) {
                 $startFormula = 0;
                 $limitFormula = 0;
-
             }
 
             $data = [
@@ -178,8 +221,6 @@
             $this->view('admin_d/events', $data);
 
         }
-
-
 
         public function job_portal() {
             $this->jobModel = $this->model('job_portal');
@@ -278,7 +319,6 @@
             if($total == 0) {
                 $startFormula = 0;
                 $limitFormula = 0;
-
             }
 
             $data = [
