@@ -121,4 +121,138 @@
         }
 
 
+
+        ///edit functions
+       
+        public function getDepartmentById($dept_id){
+            $this->db->query('SELECT * FROM department WHERE id=:dept_id');
+            $this->db->bind(':dept_id', $dept_id);
+            $row = $this->db->single();
+            if($this->db->rowCount() > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function updateDepartment($data){
+            $this->db->query('UPDATE department SET department_name = :dept_name WHERE id = :dept_id');
+            $this->db->bind(':dept_name', $data['dept_name']);
+            $this->db->bind(':dept_id', $data['dept_id']);
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        
+        //course edit
+        public function getDepartment(){
+            $this->db->query('SELECT * FROM `department`');
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+
+
+        public function getCourseById($course_id){
+            $this->db->query('SELECT * FROM courses WHERE id=:course_id');
+            $this->db->bind(':course_id', $course_id);
+            $row = $this->db->single();
+            if($this->db->rowCount() > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
+
+        public function updateCourse($data){
+            $this->db->query('UPDATE courses SET course_name = :course_name, course_code = :course_code, department_id = :dept_id WHERE id = :course_id');
+            $this->db->bind(':course_name', $data['course_name']);
+            $this->db->bind(':course_code', $data['course_code']);
+            $this->db->bind(':dept_id', $data['department_id']);
+            $this->db->bind(':course_id', $data['course_id']);
+
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+
+        //edit batch
+        public function getBatchById($batch_id){
+            $this->db->query('SELECT * FROM batch WHERE id=:batch_id');
+            $this->db->bind(':batch_id', $batch_id);
+            $row = $this->db->single();
+            if($this->db->rowCount() > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function updateBatch($data){
+            $this->db->query('UPDATE batch SET year = :year WHERE id = :batch_id');
+            $this->db->bind(':year', $data['year']);
+            $this->db->bind(':batch_id', $data['batch_id']);
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+
+        //delete 
+
+        public function deleteDept($id){
+            $this->db->query('DELETE FROM department WHERE id = :dept_id');
+
+            $this->db->bind(':dept_id', $id);
+
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function deleteCourse($id){
+            $this->db->query('DELETE FROM courses WHERE id = :course_id');
+
+            $this->db->bind(':course_id', $id);
+
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function deleteBatch($id){
+            $this->db->query('DELETE FROM batch WHERE id = :batch_id');
+
+            $this->db->bind(':batch_id', $id);
+
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
 }

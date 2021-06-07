@@ -51,9 +51,9 @@
                 <ul class="department">
                     <?php foreach($data['department'] as $dept):?>
                         <li>
-                            <button class="deptHead">
+                            <button class="deptHead" data-dept_id='<?php echo $dept->id?>'>
                                 <?php echo $dept->department_name?>
-                                <span class="icon dropArrow">
+                                <span class="icon dropArrow" >
                                     <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M16 21.3333C15.6885 21.3339 15.3866 21.2254 15.1467 21.0266L7.14671 14.36C6.87442 14.1336 6.70319 13.8084 6.67068 13.4559C6.63817 13.1033 6.74706 12.7522 6.97338 12.48C7.19969 12.2077 7.52491 12.0364 7.87748 12.0039C8.23005 11.9714 8.58109 12.0803 8.85338 12.3066L16 18.28L23.1467 12.52C23.2831 12.4092 23.44 12.3265 23.6085 12.2766C23.7769 12.2267 23.9536 12.2106 24.1283 12.2291C24.303 12.2477 24.4723 12.3007 24.6265 12.3849C24.7807 12.4691 24.9167 12.583 25.0267 12.72C25.1488 12.8571 25.2413 13.0179 25.2984 13.1924C25.3554 13.3669 25.3758 13.5513 25.3583 13.734C25.3408 13.9168 25.2857 14.094 25.1965 14.2544C25.1073 14.4149 24.986 14.5552 24.84 14.6666L16.84 21.1066C16.5933 21.274 16.2975 21.3538 16 21.3333Z"/>
                                     </svg>
@@ -66,7 +66,7 @@
                                 <?php foreach($data['courses'] as $course):?>
                                     <?php if($course->department_id == $dept->id):?>
                                         <li class="group">
-                                            <button class="groupHeader">
+                                            <button class="groupHeader" data-course_id='<?php echo $course->id?>'>
                                                 <?php echo $course->course_code?>
                                                 <span class="icon dropArrow">
                                                     <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +85,7 @@
                                                 <ul class="subGroupList">
                                                     <?php foreach($data['classification'] as $class):?>
                                                     <?php if($course->id == $class->course_id):?>
-                                                        <li class="subGroup">
+                                                        <li class="subGroup" data-batch_id='<?php echo $class->batch_id?>'>
                                                             <a href="<?php echo URLROOT;?>/alumni/show/<?php echo $course->id?>/<?php echo $class->batch_id?>">Batch <?php echo $class->year?></a>
                                                             <svg class="settings" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M16.2854 7.86008L14.6104 7.36008C14.4945 6.95573 14.3353 6.56512 14.1354 6.19508L14.9554 4.66008C14.9861 4.60214 14.9974 4.53582 14.9875 4.47097C14.9776 4.40612 14.947 4.34619 14.9004 4.30008L13.7054 3.10008C13.6592 3.05341 13.5993 3.02286 13.5345 3.01295C13.4696 3.00304 13.4033 3.01431 13.3454 3.04508L11.8204 3.86008C11.4467 3.65041 11.0509 3.48272 10.6404 3.36008L10.1404 1.70508C10.1192 1.64408 10.0792 1.59138 10.0262 1.55454C9.97322 1.5177 9.90989 1.49863 9.84535 1.50008H8.15535C8.09042 1.50038 8.02728 1.52139 7.97513 1.56006C7.92297 1.59873 7.88451 1.65304 7.86535 1.71508L7.36535 3.36508C6.95136 3.48707 6.55223 3.65477 6.17535 3.86508L4.67535 3.05508C4.61741 3.02431 4.55109 3.01304 4.48624 3.02295C4.42139 3.03286 4.36146 3.06341 4.31535 3.11008L3.10035 4.29508C3.05369 4.34119 3.02313 4.40112 3.01322 4.46597C3.00332 4.53082 3.01458 4.59714 3.04535 4.65508L3.85535 6.15508C3.64538 6.53037 3.47769 6.9278 3.35535 7.34008L1.70035 7.84008C1.63831 7.85924 1.58401 7.89769 1.54534 7.94985C1.50667 8.00201 1.48565 8.06515 1.48535 8.13008V9.82008C1.48565 9.885 1.50667 9.94814 1.54534 10.0003C1.58401 10.0525 1.63831 10.0909 1.70035 10.1101L3.36535 10.6101C3.48902 11.0155 3.65669 11.4061 3.86535 11.7751L3.04535 13.3451C3.01458 13.403 3.00332 13.4693 3.01322 13.5342C3.02313 13.599 3.05369 13.659 3.10035 13.7051L4.29535 14.9001C4.34146 14.9467 4.40139 14.9773 4.46624 14.9872C4.53109 14.9971 4.59741 14.9858 4.65535 14.9551L6.20035 14.1301C6.56583 14.3273 6.95136 14.4849 7.35035 14.6001L7.85035 16.2851C7.86951 16.3471 7.90797 16.4014 7.96013 16.4401C8.01228 16.4788 8.07542 16.4998 8.14035 16.5001H9.83035C9.89528 16.4998 9.95842 16.4788 10.0106 16.4401C10.0627 16.4014 10.1012 16.3471 10.1204 16.2851L10.6204 14.5951C11.0159 14.4793 11.3981 14.3217 11.7604 14.1251L13.3154 14.9551C13.3733 14.9858 13.4396 14.9971 13.5045 14.9872C13.5693 14.9773 13.6292 14.9467 13.6754 14.9001L14.8704 13.7051C14.917 13.659 14.9476 13.599 14.9575 13.5342C14.9674 13.4693 14.9561 13.403 14.9254 13.3451L14.0954 11.7951C14.294 11.4314 14.4533 11.0476 14.5704 10.6501L16.2554 10.1501C16.3174 10.1309 16.3717 10.0925 16.4104 10.0403C16.449 9.98814 16.47 9.925 16.4704 9.86008V8.15508C16.4733 8.0929 16.4572 8.03131 16.4241 7.97858C16.391 7.92585 16.3426 7.8845 16.2854 7.86008V7.86008ZM9.00035 11.7501C8.45645 11.7501 7.92477 11.5888 7.47253 11.2866C7.0203 10.9844 6.66782 10.555 6.45968 10.0525C6.25154 9.54996 6.19708 8.99703 6.30319 8.46358C6.4093 7.93013 6.67121 7.44013 7.05581 7.05553C7.4404 6.67094 7.93041 6.40903 8.46385 6.30292C8.9973 6.19681 9.55023 6.25127 10.0527 6.45941C10.5552 6.66755 10.9847 7.02002 11.2869 7.47226C11.5891 7.92449 11.7504 8.45618 11.7504 9.00008C11.7504 9.72942 11.4606 10.4289 10.9449 10.9446C10.4292 11.4603 9.7297 11.7501 9.00035 11.7501V11.7501Z"/>
@@ -252,7 +252,7 @@
 </div>
 
 
-<div class="modalContainer">
+<div class="modalContainer" >
         <div class="modalPreview">
             <table class="data-table">
                 <thead>
@@ -322,11 +322,11 @@
                 <?php }?>
                 <?php endif; ?>
         </form>
-    </div>
+</div>
     <input type="hidden" value="<?php echo $data['isPreview']?>" id="isPreview">
     
 
-    <div class="modalConFilterNav">
+    <div class="modalConFilterNav" id="manageModal">
         <!-- addNewDept -->
         <form action="<?php echo URLROOT;?>/group/new_dept" class="modalFilterNav newDept" method="POST">
             <h1>New Department</h1>
@@ -342,8 +342,6 @@
                 <button type="submit">Create</button>
             </div>
         </form>
-
-
         <!-- AddNewCourse -->
         <form action="<?php echo URLROOT;?>/group/new_course" class="modalFilterNav newCourse" method="POST">
             <h1>New Course</h1>
@@ -395,8 +393,92 @@
                 <button>Create</button>
             </div>
         </form>
-        </div>
+        <!-- editDept -->
+       
+        <!-- editCourse -->
+        
+        <!-- editBatch -->
+        
+    </div>
+        
+        
+<script>
+    $(document).ready(function(){
+           $('.settings').click(function(){
+               var cName = $(this.parentNode);
+               cName = getFirstWord(cName.attr('class'));
+               if(cName == 'icon'){
+                   
+                    var dept= $(this.parentNode.parentNode);
+                    var dept_id = dept.attr('data-dept_id');
+                    console.log(dept_id);
+                    $.ajax({ 
+                        url:'<?php echo URLROOT;?>/group/edit_dept_modal',
+                        data: { id : dept_id},
+                        method: 'POST',
+                        type: 'POST',
+                        success:function(res){
+                            //console.log(res);
+                            $('#manageModal').append(res);
+                            $('#manageModal').addClass('show');
+                            manageGroup();
+                        }, 
+                        error: function(er){
+                            console.log(er);
+                        }
+                    });
+               }
+               
+               else if(cName == 'groupHeader'){
+                    var course = $(this.parentNode);
+                    var course_id = course.attr('data-course_id');
+                    //console.log(course_id);
+                    $.ajax({ 
+                        url:'<?php echo URLROOT;?>/group/edit_course_modal',
+                        data: { id : course_id },
+                        method: 'POST',
+                        type: 'POST',
+                        success:function(res){
+                            //console.log(res);
+                            $('#manageModal').append(res);
+                            $('#manageModal').addClass('show');
+                            manageGroup();
+                        }, 
+                        error: function(er){
+                            console.log(er);
+                        }
+                    });
+                    
+               }
+               else if(cName == 'subGroup'){
+                    var batch = $(this.parentNode);
+                    var batch_id = batch.attr('data-batch_id');
+                    //console.log(batch_id);
+                    $.ajax({ 
+                        url:'<?php echo URLROOT;?>/group/edit_batch_modal',
+                        data: { id : batch_id },
+                        method: 'POST',
+                        type: 'POST',
+                        success:function(res){
+                            //console.log(res);
+                            $('#manageModal').append(res);
+                            $('#manageModal').addClass('show');
+                            manageGroup();
+                        }, 
+                        error: function(er){
+                            console.log(er);
+                        }
+                    });
+               }
+           })
+    })
+ 
+    function getFirstWord($str){
+        return $str.split(" ")[0];
+    }
 
+
+</script>
 
 
 <script>
@@ -427,14 +509,47 @@
             const btnAddDept = document.getElementById('btn-add-dept');
             const btnAddCourse = document.getElementById('btn-add-course');
             const btnAddBatch = document.getElementById('btn-add-batch');
-
+            //const btnSettings = document.querySelectorAll('.settings');
             const manageModal = document.querySelector('.modalConFilterNav');
 
             const formDept = document.querySelector('.newDept');
             const formCourse = document.querySelector('.newCourse');
             const formBatch = document.querySelector('.newBatch');
+            // const formEditDept = document.querySelector('.editDept');
+            // const formEditCourse = document.querySelector('.editCourse');
+            // const formEditBatch = document.querySelector('.editBatch');
 
             let btnCancels = document.querySelectorAll('.btn-form-cancel');
+
+            // btnSettings.forEach(setting => setting.addEventListener('click', function(){
+            //     let cName = setting.parentNode.className;
+            //     cName = getFirstWord(cName);
+            //     // let qwe = setting.parentNode.parentNode;
+            //     // console.log(qwe);
+            //     // console.log(qwe.dataset.dept_id);
+            //     // console.log(qwe.dataset.dept_name);
+            //     if(cName == 'icon'){
+            //         // const dept = setting.parentNode.parentNode;
+            //         // const id = dept.dataset.dept_id;
+            //         // const name = dept.dataset.dept_name;
+            //         //console.log(formEditDept.child);
+            //         manageModal.classList.add('show');
+            //         formEditDept.classList.add('show');
+                    
+            //     }
+            //     else if(cName == 'groupHeader'){
+            //         manageModal.classList.add('show');
+            //         formEditCourse.classList.add('show');
+            //     }
+            //     else if(cName == 'subGroup'){
+            //         manageModal.classList.add('show');
+            //         formEditBatch.classList.add('show');
+            //     }
+
+            //     //icon  == department
+            //     //groupdHeadere == course
+            //     //subGroup == batch
+            // }))
 
             btnAddDept.addEventListener('click', function(){
                 manageModal.classList.add('show');
@@ -457,7 +572,7 @@
                 parentModal.classList.remove('show');
             }))
         }
-
+         
 </script>
 
 
