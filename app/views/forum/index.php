@@ -22,7 +22,15 @@
                 <?php foreach($data['posts'] as $post): ?>
                     <li class="list-item">
                         <a href="<?php echo URLROOT;?>/forum/show/<?php echo $post->postId?>" class="forum-link">
-                            <span class="forum-image help"></span><!-- Help General Blog -->
+                            <?php if($post->category == 1): ?>
+                            <span class="forum-image General" src></span><!-- Icon for General -->
+                            <?php endif; ?>
+                            <?php if($post->category == 2): ?>
+                            <span class="forum-image Help" src></span><!-- Icon for Help -->
+                            <?php endif; ?>
+                            <?php if($post->category == 3): ?>
+                            <span class="forum-image Blog" src></span><!-- Icon for Blog -->
+                            <?php endif; ?>
                             <div class="forum-details-con">
                                 <div class="forum-details">
                                     <h3><?php echo $post->title?></h3>
@@ -36,7 +44,7 @@
                                     <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M21 2.625C21 1.92881 20.7234 1.26113 20.2312 0.768845C19.7389 0.276562 19.0712 0 18.375 0L2.625 0C1.92881 0 1.26113 0.276562 0.768845 0.768845C0.276562 1.26113 0 1.92881 0 2.625L0 13.125C0 13.8212 0.276562 14.4889 0.768845 14.9812C1.26113 15.4734 1.92881 15.75 2.625 15.75H15.2066C15.5547 15.7501 15.8885 15.8884 16.1346 16.1346L19.8791 19.8791C19.9708 19.9711 20.0877 20.0337 20.2151 20.0592C20.3424 20.0846 20.4744 20.0718 20.5944 20.0222C20.7144 19.9725 20.817 19.8885 20.8892 19.7805C20.9614 19.6726 21 19.5457 21 19.4158V2.625ZM6.5625 7.875C6.5625 8.2231 6.42422 8.55694 6.17808 8.80308C5.93194 9.04922 5.5981 9.1875 5.25 9.1875C4.9019 9.1875 4.56806 9.04922 4.32192 8.80308C4.07578 8.55694 3.9375 8.2231 3.9375 7.875C3.9375 7.5269 4.07578 7.19306 4.32192 6.94692C4.56806 6.70078 4.9019 6.5625 5.25 6.5625C5.5981 6.5625 5.93194 6.70078 6.17808 6.94692C6.42422 7.19306 6.5625 7.5269 6.5625 7.875ZM11.8125 7.875C11.8125 8.2231 11.6742 8.55694 11.4281 8.80308C11.1819 9.04922 10.8481 9.1875 10.5 9.1875C10.1519 9.1875 9.81806 9.04922 9.57192 8.80308C9.32578 8.55694 9.1875 8.2231 9.1875 7.875C9.1875 7.5269 9.32578 7.19306 9.57192 6.94692C9.81806 6.70078 10.1519 6.5625 10.5 6.5625C10.8481 6.5625 11.1819 6.70078 11.4281 6.94692C11.6742 7.19306 11.8125 7.5269 11.8125 7.875ZM15.75 9.1875C15.4019 9.1875 15.0681 9.04922 14.8219 8.80308C14.5758 8.55694 14.4375 8.2231 14.4375 7.875C14.4375 7.5269 14.5758 7.19306 14.8219 6.94692C15.0681 6.70078 15.4019 6.5625 15.75 6.5625C16.0981 6.5625 16.4319 6.70078 16.6781 6.94692C16.9242 7.19306 17.0625 7.5269 17.0625 7.875C17.0625 8.2231 16.9242 8.55694 16.6781 8.80308C16.4319 9.04922 16.0981 9.1875 15.75 9.1875Z" fill="#A63F3F"/>
                                     </svg>
-                                       
+                                       <?php echo $post->counter ?>
                                 </span>
                             </div>
                         </a>
@@ -78,30 +86,22 @@
                     <h3>Categories</h3>
                 </div>
                 <ul class="category-list">
+               
                     <li class="list-item">
-                        <button>
+                    <a href="<?php echo URLROOT; ?>/forum/index">      
                             <span class="category">All Discussions</span>
-                            <span class="forumCount">0000</span>
-                        </button>
+                            <span class="forumCount"><?php echo $data['all'][0]->counter ?></span>
+                    </a>
                     </li>
+                <?php foreach($data['category'] as $category):?>
                     <li class="list-item">
-                        <button>
-                            <span class="category">General Discussions</span>
-                            <span class="forumCount">0000</span>
-                        </button>
+                    <a href="<?php echo URLROOT; ?>/forum/showFiltered/<?php echo $category->category_id?>">
+                            <span class="category"><?php echo $category->category_name?></span>
+                            <span class="forumCount"><?php echo $category->counter?></span>
+                    </a>
+
                     </li>
-                    <li class="list-item">
-                        <button>
-                            <span class="category">Help</span>
-                            <span class="forumCount">0000</span>
-                        </button>
-                    </li>
-                    <li class="list-item">
-                        <button>
-                            <span class="category">Blog</span>
-                            <span class="forumCount">0000</span>
-                        </button>
-                    </li>
+                <?php endforeach;?>
                 </ul>
             </div>
             <div class="container popCon">
@@ -112,7 +112,7 @@
                     <h3>Popular Discussions</h3>
                 </div>
                 <ul class="category-list">
-                <?php foreach($data['popular'] as $pop): ?>
+                <?php foreach($data['popular'] as $pop):?>
                     <li class="list-item">
                         <a href="<?php echo URLROOT;?>/forum/show/<?php echo $pop->topic_id?>">
                                 <h4 class="forum-title"><?php echo $pop->title ?></h4>
@@ -152,7 +152,7 @@
     </footer>
     <div class="modalConFilterNav">
         <!-- AddNewCourse -->
-        <form action="<?php echo URLROOT;?>/forum/add" class="modalFilterNav newCourse">
+        <form action="<?php echo URLROOT;?>/forum/add" method="POST" class="modalFilterNav newCourse">
             <h1>New Discussion:</h1>
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M16.7619 14.9997L22.1369 9.63724C22.3723 9.40186 22.5046 9.08262 22.5046 8.74974C22.5046 8.41687 22.3723 8.09762 22.1369 7.86224C21.9016 7.62686 21.5823 7.49463 21.2494 7.49463C20.9166 7.49463 20.5973 7.62686 20.3619 7.86224L14.9994 13.2372L9.63694 7.86224C9.40156 7.62686 9.08231 7.49463 8.74944 7.49463C8.41656 7.49463 8.09732 7.62686 7.86194 7.86224C7.62656 8.09762 7.49432 8.41687 7.49432 8.74974C7.49432 9.08262 7.62656 9.40186 7.86194 9.63724L13.2369 14.9997L7.86194 20.3622C7.74477 20.4785 7.65178 20.6167 7.58832 20.769C7.52486 20.9214 7.49219 21.0847 7.49219 21.2497C7.49219 21.4148 7.52486 21.5781 7.58832 21.7305C7.65178 21.8828 7.74477 22.021 7.86194 22.1372C7.97814 22.2544 8.11639 22.3474 8.26871 22.4109C8.42104 22.4743 8.58442 22.507 8.74944 22.507C8.91445 22.507 9.07783 22.4743 9.23016 22.4109C9.38248 22.3474 9.52073 22.2544 9.63694 22.1372L14.9994 16.7622L20.3619 22.1372C20.4781 22.2544 20.6164 22.3474 20.7687 22.4109C20.921 22.4743 21.0844 22.507 21.2494 22.507C21.4145 22.507 21.5778 22.4743 21.7302 22.4109C21.8825 22.3474 22.0207 22.2544 22.1369 22.1372C22.2541 22.021 22.3471 21.8828 22.4106 21.7305C22.474 21.5781 22.5067 21.4148 22.5067 21.2497C22.5067 21.0847 22.474 20.9214 22.4106 20.769C22.3471 20.6167 22.2541 20.4785 22.1369 20.3622L16.7619 14.9997Z" fill="black" fill-opacity="0.87"/>

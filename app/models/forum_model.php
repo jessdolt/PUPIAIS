@@ -20,12 +20,19 @@
                 return false;
             }
         }
-
+        //comment counter
         public function commentCounter($id){
             $this->db->query('SELECT count(*) as counter FROM `comment` WHERE comment_for = :id');
             $this->db->bind(':id',$id);
             $row = $this->db->single();
             return $row;
+        }
+
+        //counter for all discussions
+        public function categoryCounter(){
+            $this->db->query('SELECT COUNT(*) as counter FROM `topic`');
+            $results = $this->db->resultSet();
+            return $results;
         }
 
         public function topicVotes($data){
@@ -37,14 +44,38 @@
             $this->db->query('SELECT *,
             topic.topic_id as postId,
             users.user_id as userId,
-            topic.created_at as postCreated
+            topic.created_at as postCreated,
+            COUNT(comment_id) as counter
             FROM topic
             INNER JOIN users 
             ON topic.topic_author = users.user_id
             INNER JOIN category
             ON topic.category = category.category_id
+            LEFT JOIN comment
+            ON comment_for = topic.topic_id
+            GROUP BY topic_id
             ORDER BY topic.created_at DESC
                              ');
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
+        public function getPostByCategory($id){
+            $this->db->query('SELECT *, topic.topic_id as postId,
+                                        users.user_id as userId,
+                                        topic.created_at as postCreated,
+                                        COUNT(comment_id) as counter
+                                        FROM topic
+                                        INNER JOIN users 
+                                        ON topic.topic_author = users.user_id
+                                        INNER JOIN category
+                                        ON topic.category = category.category_id
+                                        LEFT JOIN comment
+                                        ON comment_for = topic.topic_id
+                                        WHERE category = :id
+                                        GROUP BY topic_id
+                                        ORDER BY topic.created_at DESC');
+            $this->db->bind('id', $id);
             $results = $this->db->resultSet();
             return $results;
         }
@@ -81,7 +112,7 @@
         }
 
         public function getCategory(){
-            $this->db->query('SELECT * FROM category');
+            $this->db->query('SELECT *, COUNT(*) as counter FROM category INNER JOIN topic on topic.category = category.category_id GROUP BY category');
             $results = $this->db->resultSet();
             return $results;
         }
@@ -136,9 +167,10 @@
 
 
         public function addPost($data){
-            $this->db->query('INSERT INTO topic (title,topic_author,body) VALUES (:title,:user_id,:body)');
+            $this->db->query('INSERT INTO topic (category,title,topic_author,body) VALUES (:category,:title,:user_id,:body)');
             //bind values
            
+            $this->db->bind(':category', $data['category']);
             $this->db->bind(':title', $data['title']);
             $this->db->bind(':user_id', $data['user_id']);
             $this->db->bind(':body', $data['body']);

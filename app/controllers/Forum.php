@@ -14,6 +14,7 @@
         public function index(){
             //Get Posts
             $category = $this->forumModel->getCategory();
+            $all = $this->forumModel->categoryCounter();
             $posts = $this->forumModel->getPosts(); 
             $pop = $this->forumModel->getPopular();
             $my = $this->forumModel->getCurrent($_SESSION['id']);
@@ -23,11 +24,30 @@
                 'popular' => $pop,
                 'user_posts' => $my,
                 'category' => $category,
+                'all' => $all,
             ];
 
             $this->view('forum/index',$data);
         }
 
+        
+        public function showFiltered($id){
+            $category = $this->forumModel->getCategory();
+            $all = $this->forumModel->categoryCounter();
+            $posts = $this->forumModel->getPostByCategory($id); 
+            $pop = $this->forumModel->getPopular();
+            $my = $this->forumModel->getCurrent($_SESSION['id']);
+
+            $data = [
+                'posts' => $posts,
+                'popular' => $pop,
+                'user_posts' => $my,
+                'category' => $category,
+                'all' => $all,
+            ];
+
+            $this->view('forum/index',$data);
+        }
 
         public function show($id){
             $post = $this->forumModel->getPostById($id);
@@ -55,11 +75,13 @@
             $this->forumModel->viewCounter($data);
         }
 
+
         public function add(){
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
 
                 $data = [
+                    'category' => trim($_POST['category']),
                     'title' => trim($_POST['title']),
                     'body' => trim($_POST['body']),
                     'user_id' => $_SESSION['id'],
@@ -91,6 +113,7 @@
 
             } else{
                 $data = [
+                    'category' => '',
                     'title' => '',
                     'body' => '',
                     'title_err' => '',
