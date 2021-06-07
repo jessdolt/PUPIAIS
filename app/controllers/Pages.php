@@ -6,12 +6,12 @@ class Pages extends Controller{
         if (!isLoggedIn()) {
             redirect('users/login');
         }
-        
-
+    
         if(userType() == "Alumni") {
             if ($this->checkVerify()) {
                 redirect('profile/editProfile/'.$_SESSION['alumni_id']);
-            } else {
+            } 
+            else {
                 if($this->isEmployed()) {
                     redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
                 } else {
