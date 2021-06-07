@@ -24,8 +24,8 @@
         </section>
         <section class="moreContent">
             <div class="container additional">
-                <a href="#">View more news and articles...</a>
-                <h3>Other News and Articles</h3>
+                <a href="<?php echo URLROOT; ?>/pages/events">View more events...</a>
+                <h3>Other Events</h3>
                 <ul>
                     <li>
                         <a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a>

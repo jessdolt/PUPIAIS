@@ -349,18 +349,56 @@ class Alumni extends Controller{
     public function show($course_id,$batch_id){
         $this->groupModel = $this->model('group_model');
 
+        // Get Page # in URL
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        } elseif($_GET['page'] == 0) {
+            $page = 1;
+        } else {
+            $page = $_GET['page'];
+        }
+
+        // Limit row displayed
+        $limit = 20;
+        $start = ($page - 1) * $limit;
+
         $department = $this->alumniModel->showDepartment();
         $courses = $this->alumniModel->showCourses();
         $classification = $this->groupModel->showClassification();
 
         $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
-        $alumniCount = $this->alumniModel->showAlumni();
 
-    
-
-        $alumni = $this->alumniModel->getAlumniByClass($course_id,$batch_id);
+        // $alumni = $this->alumniModel->getAlumniByClass($course_id,$batch_id);
         $course_name = $this->alumniModel->getCourseById($course_id);
         $batch_name = $this->alumniModel->getBatchById($batch_id);
+
+        $newData = [
+            'course_id' => $course_id,
+            'batch_id' => $batch_id,
+            'limit' => $limit,
+            'start' => $start
+        ];
+
+        $alumniCount = $this->alumniModel->NoOfResultsFiltered($newData);
+        $alumni = $this->alumniModel->getAlumniByClassIndex($newData);
+
+        $total = count($alumniCount);
+        $pages = ceil($total/$limit);
+
+        $startFormula = $start + 1;
+        $limitFormula = $startFormula - 1 + $limit;
+
+        if($page == $pages) {
+            if ($limitFormula >= $total) {
+                $limitFormula = $total;
+            }
+        }
+
+        if($total == 0) {
+            $startFormula = 0;
+            $limitFormula = 0;
+        }
+
 
         $data = [
             'alumni' => $alumni,
@@ -371,7 +409,15 @@ class Alumni extends Controller{
             'title' => $course_name->course_code,
             'batch' => $batch_name->year,
             'alumniCount' => count($alumniCount),
-            'alumniPerCourse' => $alumniCountPerCourse
+            'alumniPerCourse' => $alumniCountPerCourse,
+
+            'start' => $startFormula,
+            'limit' => $limitFormula,
+            'total' => $total,
+            'first' => '?page=1',
+            'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+            'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+            'last' => '?page=' . $pages
         ];
 
         $this->view('admin_d/alumni', $data);

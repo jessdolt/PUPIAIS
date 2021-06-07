@@ -30,9 +30,10 @@
         </section>
         <section class="moreContent">
             <div class="container additional">
-                <a href="#">View more news and articles...</a>
+                <a href="<?php echo URLROOT; ?>/pages/news">View more news and articles...</a>
                 <h3>Other News and Articles</h3>
                 <ul>
+                    
                     <li>
                         <a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a>
                     </li>

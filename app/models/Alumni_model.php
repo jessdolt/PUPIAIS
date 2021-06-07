@@ -18,9 +18,35 @@
             if($row > 0){
                 return $row;
             }
-
-
         }
+
+        public function showAlumniIndex($page, $rowsperpage) {
+            $this->db->query('SELECT * 
+                            FROM alumni
+                            INNER JOIN courses
+                            ON alumni.courseID = courses.id
+                            INNER JOIN batch
+                            ON alumni.batchID = batch.id
+                            LIMIT :page, :rowsperpage
+                            ');
+            $this->db->bind(':page', $page);
+            $this->db->bind(':rowsperpage', $rowsperpage);
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+
+        public function NoOfResults() {
+            $this->db->query('SELECT ALL alumni_id FROM alumni'); 
+
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+
+
 
         public function alumniCountPerCourse(){
             $this->db->query('SELECT * FROM courses');
@@ -316,6 +342,52 @@
                             ');
             $this->db->bind(':course_id', $course_id);
             $this->db->bind(':batch_id', $batch_id);
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function getAlumniByClassIndex($newData){
+            $this->db->query('SELECT * 
+                            FROM alumni
+                            INNER JOIN courses 
+                            ON alumni.courseID = courses.id
+                            INNER JOIN batch
+                            ON alumni.batchID = batch.id
+                            WHERE courseID=:course_id AND batchID=:batch_id
+                            LIMIT :start, :limit
+                            ');
+            $this->db->bind(':course_id', $newData['course_id']);
+            $this->db->bind(':batch_id', $newData['batch_id']);
+            $this->db->bind(':start', $newData['start']);
+            $this->db->bind(':limit', $newData['limit']);
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function NoOfResultsFiltered($newData){
+            $this->db->query('SELECT ALL alumni_id
+                            FROM alumni
+                            INNER JOIN courses 
+                            ON alumni.courseID = courses.id
+                            INNER JOIN batch
+                            ON alumni.batchID = batch.id
+                            WHERE courseID=:course_id AND batchID=:batch_id
+                            LIMIT :start, :limit
+                            ');
+            $this->db->bind(':course_id', $newData['course_id']);
+            $this->db->bind(':batch_id', $newData['batch_id']);
+            $this->db->bind(':start', $newData['start']);
+            $this->db->bind(':limit', $newData['limit']);
             $row = $this->db->resultSet();
             if($row > 0){
                 return $row;
