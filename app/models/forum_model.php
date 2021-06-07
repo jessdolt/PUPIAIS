@@ -138,7 +138,9 @@
             FROM reply
             INNER JOIN users 
             ON reply.reply_sender = users.user_id
-            ORDER BY reply.replied_at DESC
+            INNER JOIN alumni
+            ON users.a_id = alumni.alumni_id
+            ORDER BY reply.replied_at ASC
             ');
             $results = $this->db->resultSet();
             return $results;

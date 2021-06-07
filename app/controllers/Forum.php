@@ -266,6 +266,21 @@
             }
         }
 
+        public function deleteReply($id,$for){
+            $comment = $this->forumModel->getReplyById($id);
+            if($comment->comment_sender != $_SESSION['id']){
+                redirect('forum/index');
+            }
+
+            if($this->forumModel->deleteReply($id)){
+                
+                redirect('forum/show/' . $for);
+            }    
+            else{
+                die("Something went wrong");
+            }
+        }
+
     }
 
 

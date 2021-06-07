@@ -15,18 +15,6 @@ class Alumni extends Controller{
         $this->view('alumni/index', $data);
     }
     
-/*     public function csv() {
-     
-        if(isset($_POST['submit'])){
-            var_dump($_FILES['csv']);
-
-            redirect('alumni');
-        }
-
-    } */
-
-    
-
     //Email specific alumni
     public function email($id){
         $this->userModel = $this->model('user');
@@ -355,8 +343,6 @@ class Alumni extends Controller{
 
         $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
         $alumniCount = $this->alumniModel->showAlumni();
-
-    
 
         $alumni = $this->alumniModel->getAlumniByClass($course_id,$batch_id);
         $course_name = $this->alumniModel->getCourseById($course_id);
