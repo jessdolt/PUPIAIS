@@ -7,3 +7,20 @@ function previewSurvey(){
         addSurveyModal.classList.remove('show');
     })
 }
+
+
+function previewChangeCover(){
+    const changeModalContainer = document.querySelector('.changeModalContainer');
+    const changeCoverModal = document.querySelector('.changeCoverModal');
+    
+    changeModalContainer.classList.add('show');
+    changeCoverModal.classList.add('show');
+
+
+    const cancelCoverModal = document.querySelector('#closeCoverModal');
+    cancelCoverModal.addEventListener('click', function(){
+       
+        changeModalContainer.classList.remove('show');
+        changeCoverModal.classList.remove('show');
+    })
+}

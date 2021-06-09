@@ -327,7 +327,7 @@ html {
 h1, h2, h3, h4, h5, h6,
 p, a, span, li, dl,
 label, button, input, textarea, select,
-thead, tbody, tfoot, th, pre {
+thead, tbody, tfoot, th, pre, div {
   line-height: 1.5;
   letter-spacing: 0.025rem;
   font-weight: 400; }
@@ -335,13 +335,13 @@ thead, tbody, tfoot, th, pre {
 select {
   text-indent: -2px; }
 
-button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .pagination a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .allUser {
+button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .pagination a, .managePage .btn-con > a, .managePage ul.btn-con .list-item, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .allUser, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"] {
   font-weight: 500;
   text-transform: uppercase; }
-  button span, button a, .adminHeader a span, .mainNav button.active ~ .userContainer a:last-child span, .mainNav > a span, .adminNav .mainCategoryList .categoryContainer span, .alumni > section.behind ~ .mainContent > .container .form button span, .alumni > section.behind ~ .mainContent > .container .form a span, .alumni > section.mainContent .newsCon > a span, .alumni > section.mainContent .eventsCon > a span, .alumni > section.mainContent .jobCon > a span, .userSurvey ~ .alumni .mainContent .container .form button span, .userSurvey ~ .alumni .mainContent .container .form a span, .admin .pageSpecificHeader > div:first-child button span, .admin .pageSpecificHeader > div:first-child a span, .admin .mainContent .pagination a span, button span, .alertModalContainer .alertModal div a span, .users .filterNav .btnContainer .manageUsers span, .users .filterNav .allUser span, .adminHeader a a, .mainNav button.active ~ .userContainer a:last-child a, .mainNav > a a, .adminNav .mainCategoryList .categoryContainer a, .alumni > section.behind ~ .mainContent > .container .form button a, .alumni > section.behind ~ .mainContent > .container .form a a, .alumni > section.mainContent .newsCon > a a, .alumni > section.mainContent .eventsCon > a a, .alumni > section.mainContent .jobCon > a a, .userSurvey ~ .alumni .mainContent .container .form button a, .userSurvey ~ .alumni .mainContent .container .form a a, .admin .pageSpecificHeader > div:first-child button a, .admin .pageSpecificHeader > div:first-child a a, .admin .mainContent .pagination a a, button a, .alertModalContainer .alertModal div a a, .users .filterNav .btnContainer .manageUsers a, .users .filterNav .allUser a {
+  button span, button a, .adminHeader a span, .mainNav button.active ~ .userContainer a:last-child span, .mainNav > a span, .adminNav .mainCategoryList .categoryContainer span, .alumni > section.behind ~ .mainContent > .container .form button span, .alumni > section.behind ~ .mainContent > .container .form a span, .alumni > section.mainContent .newsCon > a span, .alumni > section.mainContent .eventsCon > a span, .alumni > section.mainContent .jobCon > a span, .userSurvey ~ .alumni .mainContent .container .form button span, .userSurvey ~ .alumni .mainContent .container .form a span, .admin .pageSpecificHeader > div:first-child button span, .admin .pageSpecificHeader > div:first-child a span, .admin .mainContent .pagination a span, .managePage .btn-con > a span, .managePage ul.btn-con .list-item span, button span, .alertModalContainer .alertModal div a span, .users .filterNav .btnContainer .manageUsers span, .users .filterNav .allUser span, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"] span, .adminHeader a a, .mainNav button.active ~ .userContainer a:last-child a, .mainNav > a a, .adminNav .mainCategoryList .categoryContainer a, .alumni > section.behind ~ .mainContent > .container .form button a, .alumni > section.behind ~ .mainContent > .container .form a a, .alumni > section.mainContent .newsCon > a a, .alumni > section.mainContent .eventsCon > a a, .alumni > section.mainContent .jobCon > a a, .userSurvey ~ .alumni .mainContent .container .form button a, .userSurvey ~ .alumni .mainContent .container .form a a, .admin .pageSpecificHeader > div:first-child button a, .admin .pageSpecificHeader > div:first-child a a, .admin .mainContent .pagination a a, .managePage .btn-con > a a, .managePage ul.btn-con .list-item a, button a, .alertModalContainer .alertModal div a a, .users .filterNav .btnContainer .manageUsers a, .users .filterNav .allUser a, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"] a {
     font-weight: 500; }
 
-input, a, p, span, button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .pagination a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .allUser, textarea, select, option, pre {
+input, a, p, span, button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .pagination a, .managePage .btn-con > a, .managePage ul.btn-con .list-item, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .allUser, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"], textarea, select, option, pre, div {
   font-size: 1.4rem;
   font-family: 'Roboto', sans-serif; }
 
@@ -509,6 +509,9 @@ table tbody {
 
 .midot {
   font-size: 1.5rem; }
+
+.alumGallery h3 {
+  font-size: 1.8rem; }
 
 .fullscreen {
   width: 100%;
@@ -1831,6 +1834,216 @@ html {
         background-color: #A63F3F;
         color: #FFFFFF; }
 
+.managePage {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF;
+  overflow: auto; }
+  .managePage::-webkit-scrollbar {
+    width: 0.5rem; }
+  .managePage::-webkit-scrollbar-track {
+    background-color: #FFFFFF; }
+  .managePage::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.38);
+    border-radius: 5rem; }
+  .managePage.cont-creator ul.btn-con > * {
+    transition: visibility 0s, box-shadow 200ms !important;
+    transition-timing-function: ease;
+    visibility: hidden; }
+  .managePage.cont-creator ul.btn-con > li:nth-of-type(1), .managePage.cont-creator ul.btn-con > li:nth-of-type(2) {
+    visibility: visible; }
+
+.managePage {
+  background-image: url("../images/managePageBg.svg");
+  background-position: center;
+  align-items: center; }
+  .managePage .card-con {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 4.8rem 8rem 16.9rem;
+    margin-top: 4.8rem;
+    border-radius: 1rem;
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87);
+    background-image: url(../images/PUP-Pylon.svg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 14.1rem 15.3rem;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); }
+    .managePage .card-con > * + * {
+      margin-top: 2.4rem; }
+    .managePage .card-con.active [for="upload-pic"] {
+      display: block; }
+    .managePage .card-con.active .btn-con > * {
+      display: block; }
+    .managePage .card-con.active .edit {
+      display: none; }
+    .managePage .card-con.specificPadding {
+      padding-left: 4.8rem;
+      padding-right: 4.8rem; }
+      .managePage .card-con.specificPadding .header-con, .managePage .card-con.specificPadding form {
+        width: 51.2rem; }
+  .managePage .header-con {
+    width: 44.8rem;
+    text-align: center;
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.38); }
+    .managePage .header-con > span {
+      color: rgba(0, 0, 0, 0.6); }
+  .managePage form {
+    width: 41.4rem;
+    flex-flow: wrap;
+    justify-content: space-between;
+    display: flex; }
+    .managePage form > * + * {
+      margin-top: 1.6rem; }
+    .managePage form > * {
+      min-width: 100%; }
+    .managePage form label {
+      color: rgba(0, 0, 0, 0.6); }
+    .managePage form .small-con {
+      min-width: 18.3rem; }
+  .managePage .btn-con {
+    margin-top: 3.2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .managePage .btn-con > button + button {
+      margin-left: 3.2rem; }
+    .managePage .btn-con > button, .managePage .btn-con > a {
+      background-color: #A63F3F;
+      color: #FFFFFF;
+      width: 14rem; }
+    .managePage .btn-con .save, .managePage .btn-con .cancel {
+      display: none; }
+    .managePage .btn-con .cancel {
+      background-color: #EEEEEE;
+      color: rgba(0, 0, 0, 0.87); }
+    .managePage .btn-con .changePass {
+      width: initial; }
+  .managePage ul.btn-con {
+    flex-flow: column; }
+    .managePage ul.btn-con > * + * {
+      margin-top: 1.6rem; }
+    .managePage ul.btn-con .list-item {
+      width: 32rem;
+      border-radius: 10rem !important;
+      align-items: initial !important;
+      padding: 0 !important;
+      border-color: rgba(0, 0, 0, 0.6); }
+      .managePage ul.btn-con .list-item a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        color: currentColor;
+        text-transform: capitalize; }
+        .managePage ul.btn-con .list-item a svg {
+          position: absolute;
+          top: 1rem;
+          left: 1rem; }
+  .managePage > p {
+    margin-top: 3.2rem;
+    color: rgba(0, 0, 0, 0.6); }
+  .managePage .table-form {
+    border: 1px solid rgba(0, 0, 0, 0.38);
+    border-radius: 1rem;
+    padding: 0.4rem 1.6rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF; }
+    .managePage .table-form::-webkit-scrollbar {
+      width: 0.5rem; }
+    .managePage .table-form::-webkit-scrollbar-track {
+      background-color: #FFFFFF; }
+    .managePage .table-form::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.38);
+      border-radius: 5rem; }
+  .managePage table {
+    display: block;
+    max-width: 100%;
+    height: 20.8rem; }
+    .managePage table tbody {
+      display: inherit;
+      max-width: inherit; }
+    .managePage table tr {
+      display: flex;
+      align-items: center;
+      padding: 0.6rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+      .managePage table tr > * + * {
+        margin-left: 1.6rem;
+        flex: 1; }
+    .managePage table td {
+      display: inline-block;
+      position: relative; }
+      .managePage table td:first-of-type {
+        max-width: 2.8rem;
+        max-height: 2.8rem;
+        width: 2.8em;
+        height: 2.8rem; }
+      .managePage table td:nth-of-type(2), .managePage table td:nth-of-type(3) {
+        min-width: 18rem; }
+      .managePage table td:last-of-type {
+        max-width: 2.1rem;
+        max-height: 2.1rem;
+        width: 2.1em;
+        height: 2.1rem; }
+        .managePage table td:last-of-type .option {
+          width: 0;
+          height: 0;
+          min-width: 2.1rem;
+          min-height: 2.1rem; }
+          .managePage table td:last-of-type .option span {
+            font-size: 2rem;
+            border-radius: 5rem; }
+        .managePage table td:last-of-type .optionModal {
+          top: -1rem;
+          left: -5rem;
+          z-index: 24; }
+      .managePage table td p {
+        overflow: hidden;
+        text-overflow: ellipsis; }
+      .managePage table td img {
+        min-width: 2.8rem;
+        min-height: 2.8rem; }
+  .managePage .image-con {
+    position: relative;
+    width: 12rem;
+    height: 12rem; }
+  .managePage img {
+    object-fit: cover;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%; }
+  .managePage [for="upload-pic"] {
+    display: none;
+    transition: 200ms ease;
+    position: absolute;
+    right: -0.872rem;
+    bottom: 1.37rem;
+    cursor: pointer;
+    line-height: 0;
+    font-size: 0; }
+    .managePage [for="upload-pic"]:hover {
+      filter: brightness(1.2); }
+  .managePage input[type="text"], .managePage input[type="password"], .managePage input[type="date"], .managePage input[type="tel"], .managePage input[type="email"], .managePage input[type="number"], .managePage select, .managePage textarea {
+    border-radius: 0.5rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
+    min-width: 0rem;
+    padding-right: 1.6rem;
+    padding-left: 1.6rem; }
+    .managePage input[type="text"]:focus, .managePage input[type="password"]:focus, .managePage input[type="date"]:focus, .managePage input[type="tel"]:focus, .managePage input[type="email"]:focus, .managePage input[type="number"]:focus, .managePage select:focus, .managePage textarea:focus {
+      border-right: 1px rgba(0, 0, 0, 0.6) solid !important; }
+
 .mainFooter {
   background-color: #42464F;
   color: #FFFFFF;
@@ -1895,6 +2108,15 @@ input, textarea {
   background-color: #FFFFFF;
   color: rgba(0, 0, 0, 0.87);
   transition: 200ms ease; }
+
+[role="textbox"] {
+  padding: .85rem 1.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  min-width: 100%;
+  max-width: 100%; }
+  [role="textbox"]::before {
+    transition: 200ms ease; }
 
 .textFieldContainer {
   position: relative;
@@ -1996,10 +2218,12 @@ textarea {
   margin: 0; }
 
 input:required:-moz-ui-invalid {
-  border: 1px solid #B00020;
+  border: 1px solid #B00020 !important;
+  border-right: 1px solid #B00020 !important;
   box-shadow: none; }
   input:required:-moz-ui-invalid ~ .icon {
-    border: 1px solid #B00020;
+    border: 1px solid #B00020 !important;
+    border-right: 1px solid #B00020 !important;
     box-shadow: none; }
 
 input[type="search"]::-webkit-search-cancel-button {
@@ -2034,7 +2258,7 @@ a:active {
 ul {
   list-style: none; }
 
-.adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .pagination a, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .allUser {
+.adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .pagination a, .managePage .btn-con > a, .managePage ul.btn-con .list-item, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .allUser, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"] {
   min-height: 4.4rem;
   min-width: 6.4rem;
   display: flex;
@@ -2045,18 +2269,18 @@ ul {
   transition: 200ms ease;
   cursor: pointer;
   border-radius: 2.5rem; }
-  .adminHeader a:focus, .mainNav button.active ~ .userContainer a:focus:last-child, .mainNav > a:focus, .adminNav .mainCategoryList .categoryContainer:focus, .alumni > section.behind ~ .mainContent > .container .form button:focus, .alumni > section.behind ~ .mainContent > .container .form a:focus, .alumni > section.mainContent .newsCon > a:focus, .alumni > section.mainContent .eventsCon > a:focus, .alumni > section.mainContent .jobCon > a:focus, .userSurvey ~ .alumni .mainContent .container .form button:focus, .userSurvey ~ .alumni .mainContent .container .form a:focus, .admin .pageSpecificHeader > div:first-child button:focus, .admin .pageSpecificHeader > div:first-child a:focus, .admin .mainContent .pagination a:focus, button:focus, .alertModalContainer .alertModal div a:focus, .users .filterNav .btnContainer .manageUsers:focus, .users .filterNav .allUser:focus, .adminHeader a:hover, .mainNav button.active ~ .userContainer a:hover:last-child, .mainNav > a:hover, .adminNav .mainCategoryList .categoryContainer:hover, .alumni > section.behind ~ .mainContent > .container .form button:hover, .alumni > section.behind ~ .mainContent > .container .form a:hover, .alumni > section.mainContent .newsCon > a:hover, .alumni > section.mainContent .eventsCon > a:hover, .alumni > section.mainContent .jobCon > a:hover, .userSurvey ~ .alumni .mainContent .container .form button:hover, .userSurvey ~ .alumni .mainContent .container .form a:hover, .admin .pageSpecificHeader > div:first-child button:hover, .admin .pageSpecificHeader > div:first-child a:hover, .admin .mainContent .pagination a:hover, button:hover, .alertModalContainer .alertModal div a:hover, .users .filterNav .btnContainer .manageUsers:hover, .users .filterNav .allUser:hover {
+  .adminHeader a:focus, .mainNav button.active ~ .userContainer a:focus:last-child, .mainNav > a:focus, .adminNav .mainCategoryList .categoryContainer:focus, .alumni > section.behind ~ .mainContent > .container .form button:focus, .alumni > section.behind ~ .mainContent > .container .form a:focus, .alumni > section.mainContent .newsCon > a:focus, .alumni > section.mainContent .eventsCon > a:focus, .alumni > section.mainContent .jobCon > a:focus, .userSurvey ~ .alumni .mainContent .container .form button:focus, .userSurvey ~ .alumni .mainContent .container .form a:focus, .admin .pageSpecificHeader > div:first-child button:focus, .admin .pageSpecificHeader > div:first-child a:focus, .admin .mainContent .pagination a:focus, .managePage .btn-con > a:focus, .managePage ul.btn-con .list-item:focus, button:focus, .alertModalContainer .alertModal div a:focus, .users .filterNav .btnContainer .manageUsers:focus, .users .filterNav .allUser:focus, .alumGallery.adminForm .form:nth-of-type(2) :focus[for="upload-photo"], .adminHeader a:hover, .mainNav button.active ~ .userContainer a:hover:last-child, .mainNav > a:hover, .adminNav .mainCategoryList .categoryContainer:hover, .alumni > section.behind ~ .mainContent > .container .form button:hover, .alumni > section.behind ~ .mainContent > .container .form a:hover, .alumni > section.mainContent .newsCon > a:hover, .alumni > section.mainContent .eventsCon > a:hover, .alumni > section.mainContent .jobCon > a:hover, .userSurvey ~ .alumni .mainContent .container .form button:hover, .userSurvey ~ .alumni .mainContent .container .form a:hover, .admin .pageSpecificHeader > div:first-child button:hover, .admin .pageSpecificHeader > div:first-child a:hover, .admin .mainContent .pagination a:hover, .managePage .btn-con > a:hover, .managePage ul.btn-con .list-item:hover, button:hover, .alertModalContainer .alertModal div a:hover, .users .filterNav .btnContainer .manageUsers:hover, .users .filterNav .allUser:hover, .alumGallery.adminForm .form:nth-of-type(2) :hover[for="upload-photo"] {
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
     outline: 0; }
-  .adminHeader a:active, .mainNav button.active ~ .userContainer a:active:last-child, .mainNav > a:active, .adminNav .mainCategoryList .categoryContainer:active, .alumni > section.behind ~ .mainContent > .container .form button:active, .alumni > section.behind ~ .mainContent > .container .form a:active, .alumni > section.mainContent .newsCon > a:active, .alumni > section.mainContent .eventsCon > a:active, .alumni > section.mainContent .jobCon > a:active, .userSurvey ~ .alumni .mainContent .container .form button:active, .userSurvey ~ .alumni .mainContent .container .form a:active, .admin .pageSpecificHeader > div:first-child button:active, .admin .pageSpecificHeader > div:first-child a:active, .admin .mainContent .pagination a:active, button:active, .alertModalContainer .alertModal div a:active, .users .filterNav .btnContainer .manageUsers:active, .users .filterNav .allUser:active {
+  .adminHeader a:active, .mainNav button.active ~ .userContainer a:active:last-child, .mainNav > a:active, .adminNav .mainCategoryList .categoryContainer:active, .alumni > section.behind ~ .mainContent > .container .form button:active, .alumni > section.behind ~ .mainContent > .container .form a:active, .alumni > section.mainContent .newsCon > a:active, .alumni > section.mainContent .eventsCon > a:active, .alumni > section.mainContent .jobCon > a:active, .userSurvey ~ .alumni .mainContent .container .form button:active, .userSurvey ~ .alumni .mainContent .container .form a:active, .admin .pageSpecificHeader > div:first-child button:active, .admin .pageSpecificHeader > div:first-child a:active, .admin .mainContent .pagination a:active, .managePage .btn-con > a:active, .managePage ul.btn-con .list-item:active, button:active, .alertModalContainer .alertModal div a:active, .users .filterNav .btnContainer .manageUsers:active, .users .filterNav .allUser:active, .alumGallery.adminForm .form:nth-of-type(2) :active[for="upload-photo"] {
     filter: opacity(0.88); }
 
-.adminNav .mainCategoryList .categoryContainer, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="number"], .jobPortal .mainContent .data-table .status.open, .mainHeader ~ .editProfile .mainContent input[type="number"] {
+.adminNav .mainCategoryList .categoryContainer, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="number"], .managePage ul.btn-con .list-item, .jobPortal .mainContent .data-table .status.open, .mainHeader ~ .editProfile .mainContent input[type="number"] {
   border-width: 1px;
   border-style: solid;
   border-radius: 0.5rem; }
 
-.mainNav button, .mainNav > a, .adminNav .mainCategoryList .open .categoryContainer, .adminNav button, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .data-table .option .optionModal button, .admin .mainContent .pagination a, .admin .mainContent .pagination button, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]:checked::before, .mainContent.adminForm .form:last-child .btnGroupContainer button, .option .optionModal button, .modalContainer .modalPreview .pagination .btnContainer button, .alertModalContainer .alertModal div button, .addModalContainer .addModal .btn-opt-delete button, .addModalContainer .addModal .btnContainer button, .modalFilterNav .btnContainer button, .modalFilterNav .btnContainer a, .loginMain form button, .users .filterNav button, .users .filterNav a, .jobPortal .mainContent .data-table .status.closed, .jobPortal .mainContent .data-table .workType, .forum > section.mainContent .newDis button, .forum > section.mainContent .catCon a, .forum > section.mainContent .catCon button, .forum > section.mainContent .popCon a, .forum > section.mainContent .popCon button, .forum > section.mainContent .myDisCon a, .forum > section.mainContent .myDisCon button, .forum > section.forumView .optionCon > .optionModal button, .forum > section.forumView .vote-con button, .forum > section.forumView .comment-main-con .comment-con > button, .forum > section.forumView .comment-main-con .comment-list .btn-con2 button, .mainContent.questionnaire .form:first-child h2 > button, .mainHeader ~ .editProfile .mainContent input[type="radio"]:checked::before {
+.mainNav button, .mainNav > a, .adminNav .mainCategoryList .open .categoryContainer, .adminNav button, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .data-table .option .optionModal button, .admin .mainContent .pagination a, .admin .mainContent .pagination button, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]:checked::before, .mainContent.adminForm .form:last-child .btnGroupContainer button, .managePage .btn-con > button, .managePage .btn-con > a, .option .optionModal button, .modalContainer .modalPreview .pagination .btnContainer button, .alertModalContainer .alertModal div button, .addModalContainer .addModal .btn-opt-delete button, .addModalContainer .addModal .btnContainer button, .modalFilterNav .btnContainer button, .modalFilterNav .btnContainer a, .loginMain form button, .users .filterNav button, .users .filterNav a, .jobPortal .mainContent .data-table .status.closed, .jobPortal .mainContent .data-table .workType, .alumGallery.adminForm .album-list .option button, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"], .forum > section.mainContent .newDis button, .forum > section.mainContent .catCon a, .forum > section.mainContent .catCon button, .forum > section.mainContent .popCon a, .forum > section.mainContent .popCon button, .forum > section.mainContent .myDisCon a, .forum > section.mainContent .myDisCon button, .forum > section.forumView .optionCon > .optionModal button, .forum > section.forumView .vote-con button, .forum > section.forumView .comment-main-con .comment-con > button, .forum > section.forumView .comment-main-con .comment-list .btn-con2 button, .mainContent.questionnaire .form:first-child h2 > button, .mainHeader ~ .editProfile .mainContent input[type="radio"]:checked::before {
   border: 1px solid transparent; }
 
 .icon {
@@ -2069,7 +2293,7 @@ ul {
   transition: 200ms ease;
   fill: currentcolor; }
   .icon:focus, .icon:hover {
-    filter: opacity(0.88); }
+    filter: brightness(1.01); }
 
 .option {
   width: 3rem;
@@ -2109,10 +2333,13 @@ ul {
     transition: all 200ms ease;
     background-color: #EEEEEE;
     color: rgba(0, 0, 0, 0.87); }
+    .option .optionModal button {
+      background-color: #FFFFFF;
+      color: rgba(0, 0, 0, 0.87); }
     .option .optionModal .btnEditInline {
       background-color: #FFFFFF;
       color: rgba(0, 0, 0, 0.87); }
-    .option .optionModal .btnDeleteInline {
+    .option .optionModal .btnDeleteInline, .option .optionModal .btnDeleteAccount {
       background-color: #B61734;
       color: #FFFFFF; }
     .option .optionModal > * {
@@ -2127,7 +2354,7 @@ ul {
         width: 1.8rem;
         height: 2rem; }
 
-.modalContainer, .addModalContainer, .modalConFilterNav {
+.modalContainer, .addModalContainer, .modalConFilterNav, .changeModalContainer {
   display: none;
   position: absolute;
   top: 50%;
@@ -2139,7 +2366,7 @@ ul {
   z-index: 25;
   align-items: center;
   justify-content: center; }
-  .modalContainer.show, .addModalContainer.show, .modalConFilterNav.show {
+  .modalContainer.show, .addModalContainer.show, .modalConFilterNav.show, .changeModalContainer.show {
     display: flex; }
 
 .modalContainer .hidden-form {
@@ -2298,6 +2525,7 @@ ul {
     background-image: url("../images/alertContainer.png");
     background-position: top 1px right 0;
     background-repeat: no-repeat;
+    background-size: 100% 100%;
     /* box-shadow: $elevate24dp; */ }
     .alertModalContainer .alertModal.logoutAlert.show {
       display: flex; }
@@ -2320,6 +2548,8 @@ ul {
       .alertModalContainer .alertModal.deleteAlertAll.show div button:last-child {
         background-color: #B61734;
         color: #FFFFFF; }
+    .alertModalContainer .alertModal.manage h2 {
+      font-size: 2.4rem; }
     .alertModalContainer .alertModal svg {
       position: absolute;
       transform: translateY(-80%);
@@ -2344,6 +2574,22 @@ ul {
       .alertModalContainer .alertModal div button {
         background-color: #EEEEEE;
         color: rgba(0, 0, 0, 0.87); }
+      .alertModalContainer .alertModal div .modalDeleteInline {
+        background-color: #B61734;
+        color: #FFFFFF; }
+    .alertModalContainer .alertModal .column {
+      flex-flow: column;
+      gap: 0; }
+      .alertModalContainer .alertModal .column > div {
+        margin-top: 0; }
+    .alertModalContainer .alertModal input[type="password"] {
+      border-radius: 0.5rem;
+      border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
+      min-width: 32.4rem;
+      padding-right: 1.6rem;
+      padding-left: 1.6rem; }
+      .alertModalContainer .alertModal input[type="password"]:focus {
+        border-right: 1px rgba(0, 0, 0, 0.6) solid !important; }
 
 .addModalContainer .addModal {
   display: flex;
@@ -2519,8 +2765,8 @@ ul {
       display: flex;
       align-items: center;
       justify-content: center;
-      max-width: 3rem !important;
-      min-height: 3rem !important;
+      max-width: 4rem !important;
+      min-height: 4rem !important;
       border-radius: 5rem;
       margin-right: auto; }
   .modalFilterNav input[type="text"], .modalFilterNav input[type="date"], .modalFilterNav input[type="tel"], .modalFilterNav input[type="email"], .modalFilterNav select, .modalFilterNav textarea {
@@ -2541,6 +2787,79 @@ ul {
     padding-left: 1.6rem; }
   .modalFilterNav #batch-id {
     padding-left: 6rem; }
+
+.changeModalContainer .changeCoverModal {
+  background-color: #FFFFFF;
+  color: rgba(0, 0, 0, 0.87);
+  position: relative;
+  width: 67.2rem;
+  padding: 2.4rem 4rem;
+  border-radius: 1rem;
+  display: none;
+  flex-flow: column;
+  gap: 1.6rem; }
+  .changeModalContainer .changeCoverModal.show {
+    display: flex; }
+  .changeModalContainer .changeCoverModal > svg {
+    cursor: pointer;
+    position: absolute;
+    top: 2.4rem;
+    right: 3.4rem; }
+  .changeModalContainer .changeCoverModal h3 {
+    border-bottom: 1px solid #EEEEEE;
+    font-weight: 500; }
+  .changeModalContainer .changeCoverModal .uploaded-list, .changeModalContainer .changeCoverModal .uploaded-item, .changeModalContainer .changeCoverModal img {
+    border-radius: 1rem; }
+  .changeModalContainer .changeCoverModal .uploaded-list {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF;
+    padding: 2.4rem 3.2rem 2.4rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11.7rem, 1fr));
+    column-gap: 1.6rem;
+    row-gap: 1.6rem;
+    max-height: 31.2rem;
+    overflow-y: auto; }
+    .changeModalContainer .changeCoverModal .uploaded-list::-webkit-scrollbar-corner {
+      background: red; }
+    .changeModalContainer .changeCoverModal .uploaded-list::-webkit-scrollbar {
+      width: 0.5rem; }
+    .changeModalContainer .changeCoverModal .uploaded-list::-webkit-scrollbar-track {
+      background-color: #FFFFFF;
+      border-radius: 1rem; }
+    .changeModalContainer .changeCoverModal .uploaded-list::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.38);
+      border-radius: 5rem; }
+  .changeModalContainer .changeCoverModal .uploaded-item {
+    position: relative;
+    padding-top: 100%;
+    overflow: hidden; }
+    .changeModalContainer .changeCoverModal .uploaded-item.selected img {
+      filter: brightness(0.6); }
+    .changeModalContainer .changeCoverModal .uploaded-item.selected::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("../images/check-icon.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 1; }
+  .changeModalContainer .changeCoverModal img {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 200ms ease; }
+    .changeModalContainer .changeCoverModal img:hover {
+      transform: scale(1.1);
+      filter: brightness(1.2); }
 
 .card {
   background-color: #EEEEEE;
@@ -3388,6 +3707,161 @@ ul {
     background-color: #C7B13F;
     color: #FFFFFF; }
 
+.alumGallery, .album-list {
+  background-color: #FFFFFF;
+  color: rgba(0, 0, 0, 0.87);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  column-gap: 2.4rem;
+  row-gap: 2.4rem;
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+.alumGallery {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF;
+  padding: 3.2rem 2.8rem; }
+  .alumGallery::-webkit-scrollbar {
+    width: 0.5rem; }
+  .alumGallery::-webkit-scrollbar-track {
+    background-color: #FFFFFF; }
+  .alumGallery::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.38);
+    border-radius: 5rem; }
+  .alumGallery .album-cover {
+    background-color: #B61734;
+    color: #FFFFFF;
+    position: relative;
+    padding-top: 100%;
+    width: 100%;
+    margin-bottom: 0.8rem; }
+    .alumGallery .album-cover > a, .alumGallery .album-cover > button {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 1rem;
+      border: 0; }
+      .alumGallery .album-cover > a:focus, .alumGallery .album-cover > a:hover, .alumGallery .album-cover > button:focus, .alumGallery .album-cover > button:hover {
+        filter: none; }
+  .alumGallery .album-cover, .alumGallery img, .alumGallery a {
+    border-radius: 1rem;
+    border: 0; }
+  .alumGallery img {
+    transition: 200ms;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%; }
+    .alumGallery img:hover {
+      transform: scale(1.2);
+      filter: brightness(0.8); }
+  .alumGallery .option {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    z-index: 2;
+    transition: 200ms ease;
+    border-radius: 5rem;
+    background-color: rgba(0, 0, 0, 0.38); }
+    .alumGallery .option:focus, .alumGallery .option:hover {
+      background-color: rgba(0, 0, 0, 0.2); }
+    .alumGallery .option:active {
+      transform: scale(0.9); }
+    .alumGallery .option span {
+      top: 40%; }
+      .alumGallery .option span:focus, .alumGallery .option span:hover {
+        color: #FFFFFF;
+        background-color: transparent; }
+    .alumGallery .option .optionModal {
+      left: -17.6rem;
+      width: max-content; }
+      .alumGallery .option .optionModal > * {
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+        .alumGallery .option .optionModal > *:focus, .alumGallery .option .optionModal > *:hover {
+          box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); }
+      .alumGallery .option .optionModal .view {
+        background-color: #FFFFFF;
+        color: rgba(0, 0, 0, 0.87); }
+      .alumGallery .option .optionModal .changePic {
+        text-transform: capitalize;
+        padding: 0.45rem 1.6rem; }
+      .alumGallery .option .optionModal svg {
+        width: 2rem;
+        height: 2rem; }
+  .alumGallery .album-body {
+    padding: 0.8rem; }
+  .alumGallery.adminForm {
+    padding: 0;
+    display: initial; }
+    .alumGallery.adminForm .form:first-child {
+      background-image: url("../images/gallery-default.svg");
+      background-repeat: no-repeat;
+      background-position: center; }
+      .alumGallery.adminForm .form:first-child h3 {
+        text-align: start;
+        color: currentColor;
+        margin-top: 0; }
+    .alumGallery.adminForm .album-list {
+      padding: 3.2rem 0; }
+      .alumGallery.adminForm .album-list .option {
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+        .alumGallery.adminForm .album-list .option button {
+          padding: 0;
+          min-width: 0;
+          min-height: 0;
+          background-color: transparent; }
+      .alumGallery.adminForm .album-list .album-con {
+        background-color: #EEEEEE;
+        border-radius: 1rem; }
+      .alumGallery.adminForm .album-list img, .alumGallery.adminForm .album-list button {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0; }
+    .alumGallery.adminForm .form:nth-of-type(2) .input-container {
+      min-width: 22rem;
+      position: relative; }
+    .alumGallery.adminForm .form:nth-of-type(2) input[type="file"] {
+      position: absolute; }
+    .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"] {
+      background-color: #FFFFFF;
+      color: rgba(0, 0, 0, 0.87);
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin-top: 2.4rem; }
+      .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"] svg {
+        position: absolute;
+        left: 1.3rem;
+        top: 1.3rem;
+        width: 1.8rem;
+        height: 1.8rem; }
+    .alumGallery.adminForm [role="textbox"]:empty::before {
+      content: 'Description';
+      color: rgba(0, 0, 0, 0.6); }
+    .alumGallery.adminForm input {
+      border-radius: 0.5rem;
+      border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
+      padding-right: 1.6rem; }
+      .alumGallery.adminForm input:focus {
+        border-right: 1px rgba(0, 0, 0, 0.6) solid !important; }
+      .alumGallery.adminForm input:required:-moz-ui-invalid {
+        border: 1px solid #B00020 !important;
+        border-right: 1px solid #B00020 !important;
+        box-shadow: none; }
+        .alumGallery.adminForm input:required:-moz-ui-invalid ~ .icon {
+          border: 1px solid #B00020 !important;
+          border-right: 1px solid #B00020 !important;
+          box-shadow: none; }
+
 .forum > section.heroBox .container {
   display: flex;
   align-items: center;
@@ -3715,18 +4189,28 @@ ul {
       color: #FFFFFF;
       min-height: 3rem;
       margin-left: auto; }
+  .forum > section.forumView .comment-main-con .comment-list .list-item:last-of-type {
+    border-left: none; }
   .forum > section.forumView .comment-main-con .comment-list .list-item.active > form > img, .forum > section.forumView .comment-main-con .comment-list .list-item.active > form > .commentInfo, .forum > section.forumView .comment-main-con .comment-list .list-item.active > form > .btn-con {
     display: none; }
   .forum > section.forumView .comment-main-con .comment-list .list-item.active > form > .btn-con2 {
     display: flex; }
+  .forum > section.forumView .comment-main-con .comment-list .textFieldContainer [role="textbox"] {
+    padding: .85rem 1.6rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    min-width: 100%;
+    max-width: 100%; }
   .forum > section.forumView .comment-main-con .comment-list .textFieldContainer textarea {
-    height: 4rem;
+    height: initial;
     transition: none;
-    resize: vertical; }
-    .forum > section.forumView .comment-main-con .comment-list .textFieldContainer textarea:read-only {
-      resize: none; }
-    .forum > section.forumView .comment-main-con .comment-list .textFieldContainer textarea.active {
-      height: 8rem; }
+    resize: none;
+    /* &:read-only{
+                                resize: none;
+                            }
+                            &.active{
+                                height: initial;
+                            } */ }
   .forum > section.forumView .comment-main-con .comment-list img {
     position: absolute;
     top: 0;

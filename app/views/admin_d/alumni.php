@@ -5,7 +5,6 @@
 ?>
         
 <section class="filterNav">
-    
             <div class="btnContainer">
                     <!-- update a to button -->
                     <button type="button" class="manageUsers">

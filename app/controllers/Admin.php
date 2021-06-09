@@ -363,20 +363,33 @@
             ];
 
             $this->view('admin_d/survey_report', $data);
-    }
-
-    public function getPage() {
-
-        // Get Page # in URL
-        if (!isset($_GET['page'])) {
-            $page = 1;
-        } elseif($_GET['page'] == 0) {
-            $page = 1;
-        } else {
-            $page = $_GET['page'];
         }
 
-        return $page;
+        public function getPage() {
 
-    }
+            // Get Page # in URL
+            if (!isset($_GET['page'])) {
+                $page = 1;
+            } elseif($_GET['page'] == 0) {
+                $page = 1;
+            } else {
+                $page = $_GET['page'];
+            }
+
+            return $page;
+
+        }
+
+
+        public function gallery(){
+            $this->galleryModel = $this->model('gallery');
+            $rowGallery = $this->galleryModel->showGallery();
+            $rowImages = $this->galleryModel->showImages();
+            $data = [
+                'gallery' => $rowGallery,
+                'images' => $rowImages 
+            ];
+
+            $this->view('admin_d/gallery' , $data);
+        }
 }
