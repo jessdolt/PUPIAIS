@@ -13,10 +13,10 @@
         const apiEvents = document.getElementById('api-events');
 
         apiNews.addEventListener('click', function(){
-            fetch('http://localhost/pupiais/api/posts/read').then(res => res.json()).then(data => console.log(data))
+            fetch('<?php echo URLROOT;?>/api/posts/read').then(res => res.json()).then(data => console.log(data))
         })
 
         apiEvents.addEventListener('click', function(){
-            fetch('http://localhost/pupiais/api/events/read').then(res => res.json()).then(data => console.log(data))
+            fetch('<?php echo URLROOT;?>/api/events/read').then(res => res.json()).then(data => console.log(data))
         })
  </script>
