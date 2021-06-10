@@ -6,10 +6,10 @@
     // define('DB_NAME', 'pupiais');
 
     //https://remotemysql.com/login.php
-    // define('DB_HOST', 'us-cdbr-east-04.cleardb.com');
-    // define('DB_USER', 'b9e84a4bdcd7c6');
-    // define('DB_PASS', '2891ffd3');
-    // define('DB_NAME', 'heroku_ec03275637a73ae');
+    define('DB_HOST', 'us-cdbr-east-04.cleardb.com');
+    define('DB_USER', 'b9e84a4bdcd7c6');
+    define('DB_PASS', '2891ffd3');
+    define('DB_NAME', 'heroku_ec03275637a73ae');
 
     //App Root
     define('APPROOT',dirname(dirname(__FILE__)));
@@ -20,8 +20,8 @@
     //define('URLROOT', 'http://localhost/pupiais'); 
     //http://localhost/pupiais
 
-    // define('URLROOT', 'https://pupiais.herokuapp.com'); 
-    https://pupiais.herokuapp.com
+    define('URLROOT', 'https://pupiais.herokuapp.com'); 
+    //https://pupiais.herokuapp.com
     
     //Site Name
     define('SITENAME', 'PUPIAIS');
