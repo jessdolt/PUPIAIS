@@ -3,6 +3,9 @@
     class Surveys extends Controller{
         public function __construct(){
             $this->surveyModel = $this->model('survey');
+            if(userType() == "Alumni"){
+                redirect('pages/home');
+            }
         }
 
         public function index(){
@@ -70,12 +73,18 @@
         }
 
         public function delete_survey($id){
-            if($this->surveyModel->deleteSurvey($id)){
-                redirect('admin/survey_list');
+            if(userType() == "Alumni"){
+                redirect('pages/home');
             }
             else{
-                die("There's an error deleting this record");
+                if($this->surveyModel->deleteSurvey($id)){
+                    redirect('admin/survey_list');
+                }
+                else{
+                    die("There's an error deleting this record");
+                }
             }
+            
         }
 
         public function delete() {

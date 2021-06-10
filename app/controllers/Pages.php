@@ -14,10 +14,13 @@ class Pages extends Controller{
             else {
                 if($this->isEmployed()) {
                     redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
-                } else {
-                    $this->checkSurvey();
+                } 
+                if($this->checkSurvey()){
+                    redirect('survey_widget');
                 }
             }
+
+            
         }
 
         // $this->checkVerify();
@@ -38,10 +41,9 @@ class Pages extends Controller{
     }
     
     public function index(){
-
         if(isLoggedIn()) {
         /* $this->checkSurvey(); */
-        redirect('pages/home');
+            redirect('pages/home');
         }
     }
 
@@ -86,10 +88,12 @@ class Pages extends Controller{
             }
         }
         if(count($currentSurvey) == count($answered)){
-            redirect('pages/home');
+            // redirect('pages/home'); 
+            return false;
         }
         else{
-            redirect('survey_widget');
+            return true;
+            //redirect('survey_widget');
         }
     }
 
