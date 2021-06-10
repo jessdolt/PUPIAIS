@@ -1,9 +1,9 @@
 <?php 
     //DB Params
-    define('DB_HOST', 'localhost');
-    define('DB_USER', 'root');
-    define('DB_PASS', '12345');
-    define('DB_NAME', 'pupiais');
+    // define('DB_HOST', 'localhost');
+    // define('DB_USER', 'root');
+    // define('DB_PASS', '12345');
+    // define('DB_NAME', 'pupiais');
 
     //https://remotemysql.com/login.php
     // define('DB_HOST', 'us-cdbr-east-04.cleardb.com');
@@ -17,11 +17,11 @@
     define('CLOGOROOT', dirname(dirname(dirname(__FILE__))). '\public\company_logo\\');
     
     //Url Root
-    define('URLROOT', 'http://localhost/pupiais'); 
+    //define('URLROOT', 'http://localhost/pupiais'); 
     //http://localhost/pupiais
 
     // define('URLROOT', 'https://pupiais.herokuapp.com'); 
-    //https://pupiais.herokuapp.com
+    https://pupiais.herokuapp.com
     
     //Site Name
     define('SITENAME', 'PUPIAIS');
