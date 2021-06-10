@@ -9,18 +9,22 @@
             $this->forumModel = $this->model('forum_model');
             $this->userModel = $this->model('User');
             $this->alumniModel = $this->model('alumni_model');
+            $this->voteModel = $this->model('vote_model');
         }
 
         public function index(){
             //Get Posts
             $category = $this->forumModel->getCategory();
             $all = $this->forumModel->categoryCounter();
-            $posts = $this->forumModel->getPosts(); 
+            $posts = $this->forumModel->getPosts();
+            $reply = $this->forumModel->getPostsReplies();
             $pop = $this->forumModel->getPopular();
             $my = $this->forumModel->getCurrent($_SESSION['id']);
 
+
             $data = [
-                'posts' => $posts,
+                'post' => $posts,
+                'reply' => $reply,
                 'popular' => $pop,
                 'user_posts' => $my,
                 'category' => $category,
@@ -56,9 +60,17 @@
             $user = $this->userModel->getUserByID($post->topic_author);
             $alumni = $this->alumniModel->getAlumniByID($user->a_id);
             $current = $this->alumniModel->getAlumniByID($_SESSION['alumni_id']);
-            $counter = $this->forumModel->commentCounter($id);
+            $commentCounter = $this->forumModel->commentCounter($id);
+            $replyCounter = $this->forumModel->replyCounter($id);
             $pop = $this->forumModel->getPopular();
             
+            $test = [
+                'topic_id' => $id,
+                'user_id'  => $_SESSION['id'],
+            ];
+
+            $vote = $this->voteModel->getUserVote($test);
+
             $data = [
                 'post' => $post,
                 'user' => $user,
@@ -67,7 +79,9 @@
                 'alumni' => $alumni,
                 'current' => $current,
                 'popular' => $pop,
-                'counter' => $counter,
+                'vote' => $vote,
+                'comment-counter' => $commentCounter,
+                'reply-counter' => $replyCounter,
             ];
             
             
@@ -160,6 +174,7 @@
                 $data = [
                     'parent' => $id,
                     'reply' => trim($_POST['reply']),
+                    'reply_for' => $topic,
                     'reply_sender' => $_SESSION['id'],
                 ];
 
@@ -206,7 +221,7 @@
                     // Validated
                     if($this->forumModel->updatePost($data)){
                         
-                        redirect('forum');
+                        redirect('forum/show/' .$id);
                     }else{
                         die('Something went wrong');
                     }
@@ -244,7 +259,7 @@
                 
                 if($this->forumModel->deletePost($id)){
                 
-                    redirect('forum');
+                    redirect('forum/index');
                 }    
                 else{
                     die("Something went wrong");

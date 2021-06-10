@@ -11,8 +11,9 @@
                             <span class="midot">&middot</span>
                             <span class="time-elapsed"><?php echo time_elapsed_string($data['post']->created_at);?></span>
                             <span class="midot">·</span>
-                            <span class="forum-type">General Discussion</span>
+                            <span class="forum-type"><?php echo $data['post']->category_name ?></span>
                         </div>
+                        <?php if($data['post']->topic_author == $_SESSION['id']): ?>
                         <span class="optionCon">
                             <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3.9375 12.4688C3.41536 12.4688 2.9146 12.2613 2.54538 11.8921C2.17617 11.5229 1.96875 11.0221 1.96875 10.5C1.96875 9.97786 2.17617 9.4771 2.54538 9.10788C2.9146 8.73867 3.41536 8.53125 3.9375 8.53125C4.45965 8.53125 4.9604 8.73867 5.32962 9.10788C5.69883 9.4771 5.90625 9.97786 5.90625 10.5C5.90625 11.0221 5.69883 11.5229 5.32962 11.8921C4.9604 12.2613 4.45965 12.4688 3.9375 12.4688ZM10.5 12.4688C9.97785 12.4688 9.4771 12.2613 9.10788 11.8921C8.73867 11.5229 8.53125 11.0221 8.53125 10.5C8.53125 9.97786 8.73867 9.4771 9.10788 9.10788C9.4771 8.73867 9.97785 8.53125 10.5 8.53125C11.0221 8.53125 11.5229 8.73867 11.8921 9.10788C12.2613 9.4771 12.4688 9.97786 12.4688 10.5C12.4688 11.0221 12.2613 11.5229 11.8921 11.8921C11.5229 12.2613 11.0221 12.4688 10.5 12.4688ZM17.0625 12.4688C16.5404 12.4688 16.0396 12.2613 15.6704 11.8921C15.3012 11.5229 15.0938 11.0221 15.0938 10.5C15.0938 9.97786 15.3012 9.4771 15.6704 9.10788C16.0396 8.73867 16.5404 8.53125 17.0625 8.53125C17.5846 8.53125 18.0854 8.73867 18.4546 9.10788C18.8238 9.4771 19.0312 9.97786 19.0312 10.5C19.0312 11.0221 18.8238 11.5229 18.4546 11.8921C18.0854 12.2613 17.5846 12.4688 17.0625 12.4688Z" fill="black" fill-opacity="0.87"/>
@@ -25,7 +26,7 @@
                                         <path d="M15.8333 15.8333H6.79833C6.77667 15.8333 6.75417 15.8417 6.7325 15.8417C6.705 15.8417 6.6775 15.8342 6.64917 15.8333H4.16667V4.16667H9.8725L11.5392 2.5H4.16667C3.2475 2.5 2.5 3.24667 2.5 4.16667V15.8333C2.5 16.7533 3.2475 17.5 4.16667 17.5H15.8333C16.2754 17.5 16.6993 17.3244 17.0118 17.0118C17.3244 16.6993 17.5 16.2754 17.5 15.8333V8.61L15.8333 10.2767V15.8333Z" fill="black" fill-opacity="0.87"/>
                                     </svg>
                                 </button>
-                                <button type="button" class="btnDeletePost" data-url="questionnaire1/ewan">
+                                <button type="button" class="btnDeletePost" data-url="<?php echo URLROOT;?>/forum/delete/<?php echo $data['post']->topic_id?>" >
                                     <svg width="18px" height="20px" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M15.75 1.875H2.25C1.62868 1.875 1.125 2.43464 1.125 3.125V3.75C1.125 4.44036 1.62868 5 2.25 5H15.75C16.3713 5 16.875 4.44036 16.875 3.75V3.125C16.875 2.43464 16.3713 1.875 15.75 1.875Z"/>
                                         <path d="M2.61724 6.25C2.57772 6.24977 2.53859 6.25879 2.50242 6.27648C2.46624 6.29417 2.43383 6.32014 2.40729 6.35268C2.38076 6.38523 2.36069 6.42362 2.34841 6.46536C2.33612 6.5071 2.33189 6.55125 2.33599 6.59493L3.26095 16.4606C3.26076 16.4634 3.26076 16.4663 3.26095 16.4691C3.30928 16.9255 3.50672 17.3462 3.81579 17.6514C4.12486 17.9567 4.52404 18.1252 4.93755 18.125H13.0618C13.4752 18.125 13.8742 17.9564 14.1831 17.6512C14.4921 17.3459 14.6894 16.9253 14.7377 16.4691V16.4609L15.6613 6.59493C15.6654 6.55125 15.6611 6.5071 15.6488 6.46536C15.6366 6.42362 15.6165 6.38523 15.59 6.35268C15.5634 6.32014 15.531 6.29417 15.4948 6.27648C15.4587 6.25879 15.4195 6.24977 15.38 6.25H2.61724ZM11.3662 13.3082C11.4197 13.3659 11.4623 13.4349 11.4916 13.5111C11.5209 13.5873 11.5362 13.6692 11.5367 13.752C11.5373 13.8349 11.523 13.917 11.4947 13.9937C11.4664 14.0703 11.4246 14.1399 11.3719 14.1985C11.3192 14.2571 11.2565 14.3034 11.1875 14.3348C11.1185 14.3662 11.0446 14.3821 10.97 14.3814C10.8955 14.3808 10.8217 14.3637 10.7532 14.3312C10.6846 14.2986 10.6226 14.2512 10.5706 14.1918L8.99986 12.4465L7.42872 14.1918C7.32275 14.3062 7.18051 14.3697 7.03276 14.3685C6.885 14.3674 6.74359 14.3016 6.63908 14.1856C6.53458 14.0695 6.47537 13.9124 6.47426 13.7482C6.47315 13.5841 6.53022 13.426 6.63314 13.3082L8.20427 11.5625L6.63314 9.8168C6.53022 9.699 6.47315 9.54093 6.47426 9.37676C6.47537 9.21259 6.53458 9.05549 6.63908 8.93942C6.74359 8.82336 6.885 8.75764 7.03276 8.75648C7.18051 8.75532 7.32275 8.8188 7.42872 8.93321L8.99986 10.6785L10.5706 8.93321C10.6766 8.8188 10.8188 8.75532 10.9666 8.75648C11.1144 8.75764 11.2558 8.82336 11.3603 8.93942C11.4648 9.05549 11.524 9.21259 11.5251 9.37676C11.5262 9.54093 11.4691 9.699 11.3662 9.8168L9.79509 11.5625L11.3662 13.3082Z"/>
@@ -33,27 +34,46 @@
                                 </button>
                             </div>
                         </span>
+                        <?php endif; ?>
                     </div>
                     <p class="description">
-                        <?php echo $data['post']->body ?>
+                        <?php echo$data['post']->body ?>
                     </p>
                 </div>
-                <form action="" class="vote-con">
+                <div class="vote-con" id="vote-form" votetype='<?php 
+                if(empty($data['vote'])) {
+                    echo 'normal';
+                 }
+                elseif(!empty($data['vote'])) {
+                    if($data['vote'][0]->vote == 1) {
+                        echo 'up';
+                    }
+                    else {
+                        echo 'down';
+                    }
+                }
+            ?>'>
                     <!-- ilmer use "selected" class to highlight vote -->
-                    <button  class="up-vote" type="button">
+                    <button  class="up-vote" type="button"  data-up="1">
                         <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M21.3671 7.38483C21.2142 7.16277 21.0096 6.98119 20.7709 6.85576C20.5322 6.73032 20.2667 6.66478 19.9971 6.66478C19.7274 6.66478 19.4619 6.73032 19.2232 6.85576C18.9845 6.98119 18.78 7.16277 18.6271 7.38483L3.62705 29.0515C3.45343 29.3014 3.35161 29.5941 3.33266 29.8978C3.31372 30.2015 3.37836 30.5046 3.51958 30.7742C3.66079 31.0437 3.87318 31.2694 4.13366 31.4267C4.39414 31.5841 4.69275 31.667 4.99705 31.6665L34.9971 31.6665C35.3006 31.6652 35.5982 31.5813 35.8576 31.4236C36.117 31.2659 36.3285 31.0404 36.4694 30.7715C36.6103 30.5026 36.6752 30.2003 36.6572 29.8973C36.6392 29.5942 36.5389 29.3018 36.3671 29.0515L21.3671 7.38483Z"/>
                         </svg>
                         </button>
-                    <span class="vote-count"><?php echo $data['post']->votes?></span>
-                    <button class="down-vote" type="button">
+                        <span class="vote-count" id="vote-count">0</span>
+                    <button class="down-vote" type="button" data-down="-1">
                         <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M21.3671 7.38483C21.2142 7.16277 21.0096 6.98119 20.7709 6.85576C20.5322 6.73032 20.2667 6.66478 19.9971 6.66478C19.7274 6.66478 19.4619 6.73032 19.2232 6.85576C18.9845 6.98119 18.78 7.16277 18.6271 7.38483L3.62705 29.0515C3.45343 29.3014 3.35161 29.5941 3.33266 29.8978C3.31372 30.2015 3.37836 30.5046 3.51958 30.7742C3.66079 31.0437 3.87318 31.2694 4.13366 31.4267C4.39414 31.5841 4.69275 31.667 4.99705 31.6665L34.9971 31.6665C35.3006 31.6652 35.5982 31.5813 35.8576 31.4236C36.117 31.2659 36.3285 31.0404 36.4694 30.7715C36.6103 30.5026 36.6752 30.2003 36.6572 29.8973C36.6392 29.5942 36.5389 29.3018 36.3671 29.0515L21.3671 7.38483Z"/>
                         </svg>
                     </button>
-                </form>
+                </div>
                 <div class="comment-main-con">
-                    <h3 class="comment-count"><?php echo($data['counter']->counter)?> Comments</h3>
+                    <?php $cmt = $data['comment-counter']?>
+                    <?php $rmt = $data['reply-counter']?>
+                    <?php if($cmt->counter == 0):?>
+                        <h3 class="comment-count"><?php echo $cmt->counter?> Comments</h3>
+                    <?php else: ?>
+                        <h3 class="comment-count"><?php echo $cmt->counter + $rmt->replies?> Comments</h3>
+                    <?php endif;?>
                     <!-- primary comment -->
                     <form action="<?php echo URLROOT;?>/forum/comment/<?php echo $data['post']->topic_id;?>" method="POST" class="comment-con">
                         <img src="<?php echo URLROOT;?>/uploads/<?php echo ($data['current']->image) ?>" >
@@ -75,9 +95,8 @@
                                     <span class="midot">·</span>
                                     <span class="date-posted"><?php echo time_elapsed_string($comment->commented_at);?></span>
                                 </div>
-                                <div class="textFieldContainer">
-                                    <textarea name="textId" readonly><?php echo $comment->comment?></textarea>
-                                    <span class="error"></span>
+                                <div class="input" role="textbox" maxlength="1000" readonly>
+                                   <?php echo $comment->comment?>
                                 </div>
                                 <div class="btn-con">
                                     <button type="button" name="btn-reply" class="btn-reply">
@@ -116,9 +135,8 @@
                                             <span class="midot">·</span>
                                             <span class="date-posted"><?php echo time_elapsed_string($reply->replied_at);?></span>
                                         </div>
-                                        <div class="textFieldContainer">
-                                            <textarea name="reply" readonly><?php echo $reply->reply?></textarea>
-                                            <span class="error"></span>
+                                        <div class="input" role="textbox" maxlength="1000" readonly>
+                                            <?php echo $reply->reply?>
                                         </div>
                                         <div class="btn-con">
                                         <?php if($reply->reply_sender == $_SESSION['id']): ?>
@@ -164,7 +182,7 @@
                                 <path d="M24.9997 3L5 28.7815H15.7751V47H34.2249V28.7815H45L24.9997 3Z" fill="black" fill-opacity="0.6"/>
                                 </svg>
                             </span>
-                            <span class="up-vote-count"><?php echo $data['post']->votes?></span>
+                            <span class="vote-count">0</span>
                         </div>
                         <div>
                             <span class="views">
@@ -183,7 +201,16 @@
                                     <path d="M50 6.25C50 4.5924 49.3415 3.00269 48.1694 1.83058C46.9973 0.65848 45.4076 0 43.75 0L6.25 0C4.5924 0 3.00269 0.65848 1.83058 1.83058C0.65848 3.00269 0 4.5924 0 6.25L0 31.25C0 32.9076 0.65848 34.4973 1.83058 35.6694C3.00269 36.8415 4.5924 37.5 6.25 37.5H36.2063C37.035 37.5002 37.8297 37.8295 38.4156 38.4156L47.3312 47.3312C47.5496 47.5501 47.828 47.6993 48.1311 47.76C48.4343 47.8206 48.7487 47.7899 49.0344 47.6718C49.3201 47.5537 49.5644 47.3535 49.7363 47.0965C49.9081 46.8395 49.9999 46.5373 50 46.2281V6.25ZM15.625 18.75C15.625 19.5788 15.2958 20.3737 14.7097 20.9597C14.1237 21.5458 13.3288 21.875 12.5 21.875C11.6712 21.875 10.8763 21.5458 10.2903 20.9597C9.70424 20.3737 9.375 19.5788 9.375 18.75C9.375 17.9212 9.70424 17.1263 10.2903 16.5403C10.8763 15.9542 11.6712 15.625 12.5 15.625C13.3288 15.625 14.1237 15.9542 14.7097 16.5403C15.2958 17.1263 15.625 17.9212 15.625 18.75V18.75ZM28.125 18.75C28.125 19.5788 27.7958 20.3737 27.2097 20.9597C26.6237 21.5458 25.8288 21.875 25 21.875C24.1712 21.875 23.3763 21.5458 22.7903 20.9597C22.2042 20.3737 21.875 19.5788 21.875 18.75C21.875 17.9212 22.2042 17.1263 22.7903 16.5403C23.3763 15.9542 24.1712 15.625 25 15.625C25.8288 15.625 26.6237 15.9542 27.2097 16.5403C27.7958 17.1263 28.125 17.9212 28.125 18.75ZM37.5 21.875C36.6712 21.875 35.8763 21.5458 35.2903 20.9597C34.7042 20.3737 34.375 19.5788 34.375 18.75C34.375 17.9212 34.7042 17.1263 35.2903 16.5403C35.8763 15.9542 36.6712 15.625 37.5 15.625C38.3288 15.625 39.1237 15.9542 39.7097 16.5403C40.2958 17.1263 40.625 17.9212 40.625 18.75C40.625 19.5788 40.2958 20.3737 39.7097 20.9597C39.1237 21.5458 38.3288 21.875 37.5 21.875Z" fill="black" fill-opacity="0.6"/>
                                     </svg>
                             </span>
-                            <span class="comments-count"><?php echo($data['counter']->counter)?></span>
+                            <?php if($data['comment-counter']->counter  == 0): ?>
+                            <span class="comments-count">
+                                <?php echo($data['comment-counter']->counter)?>
+                            </span>
+                            <?php else: ?>
+                        <span class="comments-count">
+                            <?php echo($data['comment-counter']->counter) + ($data['reply-counter']->replies)?>
+                            </span>
+                            <?php endif; ?>
+                            
                         </div>
                     </li>
                 </ul>
@@ -209,20 +236,246 @@
             </div>
         </section>
     </main>
+    
+    <div class="modalConFilterNav">
+        <!-- AddNewCourse -->
+        <form action="<?php echo URLROOT;?>/forum/edit/<?php echo $data['post']->topic_id?>" method="POST" class="modalFilterNav newCourse">
+            <h1>Edit Discussion:</h1>
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.7619 14.9997L22.1369 9.63724C22.3723 9.40186 22.5046 9.08262 22.5046 8.74974C22.5046 8.41687 22.3723 8.09762 22.1369 7.86224C21.9016 7.62686 21.5823 7.49463 21.2494 7.49463C20.9166 7.49463 20.5973 7.62686 20.3619 7.86224L14.9994 13.2372L9.63694 7.86224C9.40156 7.62686 9.08231 7.49463 8.74944 7.49463C8.41656 7.49463 8.09732 7.62686 7.86194 7.86224C7.62656 8.09762 7.49432 8.41687 7.49432 8.74974C7.49432 9.08262 7.62656 9.40186 7.86194 9.63724L13.2369 14.9997L7.86194 20.3622C7.74477 20.4785 7.65178 20.6167 7.58832 20.769C7.52486 20.9214 7.49219 21.0847 7.49219 21.2497C7.49219 21.4148 7.52486 21.5781 7.58832 21.7305C7.65178 21.8828 7.74477 22.021 7.86194 22.1372C7.97814 22.2544 8.11639 22.3474 8.26871 22.4109C8.42104 22.4743 8.58442 22.507 8.74944 22.507C8.91445 22.507 9.07783 22.4743 9.23016 22.4109C9.38248 22.3474 9.52073 22.2544 9.63694 22.1372L14.9994 16.7622L20.3619 22.1372C20.4781 22.2544 20.6164 22.3474 20.7687 22.4109C20.921 22.4743 21.0844 22.507 21.2494 22.507C21.4145 22.507 21.5778 22.4743 21.7302 22.4109C21.8825 22.3474 22.0207 22.2544 22.1369 22.1372C22.2541 22.021 22.3471 21.8828 22.4106 21.7305C22.474 21.5781 22.5067 21.4148 22.5067 21.2497C22.5067 21.0847 22.474 20.9214 22.4106 20.769C22.3471 20.6167 22.2541 20.4785 22.1369 20.3622L16.7619 14.9997Z" fill="black" fill-opacity="0.87"/>
+            </svg>
+            <div>
+                <label for="title-id" class="outsideLabel">Title:</label>
+                <div class="textFieldContainer">
+                    <input type="text" name="title" id="title-id"required value="<?php echo $data['post']->title?>">
+                    <span class="error"></span>
+                </div>
+            </div>
+            <div>
+                <label for="text-id" class="outsideLabel">Text:</label>
+                <div class="textFieldContainer">
+                    <textarea name="body" id="text-id"required><?php echo $data['post']->body?></textarea>
+                    <span class="error"></span>
+                </div>
+            </div>
+            
+            <div class="btnContainer">
+                <button>Edit</button>
+            </div>
+        </form>
+    </div>
 
+
+    <?php require APPROOT . '/views/inc/footer.php'; ?>
     <script>
     $(document).ready(function(){
         
-        let upvote = `yep`
-        console.log(upvote)
+        getVoteCount()
+        selected()
+        
+        function getVoteCount(){
+            $.ajax({ 
+                url:'<?php echo URLROOT;?>/vote/getVote',
+                data: {id:<?php echo $data['post']->topic_id?>}, 
+                method: 'POST',
+                type: 'POST',
+                success:function(res){
+                    //console.log(res);
+                    if(res == "") {
+                        $('.vote-count').html('0');
+                    }
+                    else {
+                        $('.vote-count').html(res);
+                    }
+                }, 
+                error: function(er){
+                    console.log(er);
+                }
+            })
+        }
+
+        function selected(){
+            let checker = $('.vote-con').attr('votetype')
+            
+            if(checker == 'up' ){
+                let select = $('.up-vote').toggleClass("selected")
+                console.log('voteType = up')
+            }
+            else if(checker == 'down'){
+                let select = $('.down-vote').toggleClass("selected")
+                console.log('voteType = down')
+            }
+        }   
 
         $('.up-vote').click(function() {
-            
-            console.log(upvote)
+            let parent = $(this.parentNode);
+            let vote = parent.attr('votetype');
+
+                if(vote == 'normal'){
+
+                    parent.attr('votetype', 'up');
+
+                    $.ajax({
+                        url:'<?php echo URLROOT;?>/vote/upVote',
+                        data: {
+                            topic_id:<?php echo $data['post']->topic_id?>, 
+                            user_id:<?php echo $_SESSION['id']?>, 
+                            count: 1
+                            }, 
+                        method: 'POST',
+                        type: 'POST',
+                        success:function(res){
+                            console.log('it work');
+                            let select = $('.up-vote').toggleClass("selected")
+                            if(res == 1){
+                                getVoteCount();
+                            }
+                        }, 
+                        error: function(er){
+                            console.log(er);
+                        }
+                    });
+
+                }
+                else if(vote == 'up') {
+                console.log('else work')
+                parent.attr('votetype','normal');
+                    $.ajax({ 
+                        url:'<?php echo URLROOT;?>/vote/normalStateVote',
+                        data: {
+                            topic_id:<?php echo $data['post']->topic_id?>, 
+                            user_id:<?php echo $_SESSION['id']?>,
+                            }, 
+                        method: 'POST',
+                        type: 'POST',
+                        success:function(res){
+                            //console.log(res);
+                            if(res == 1){
+                                getVoteCount();
+                                let select = $('.up-vote').toggleClass("selected");
+                                let focus = $('.up-vote').blur();
+                            }
+                        }, 
+                        error: function(er){
+                            console.log(er);
+                        }
+
+                    });
+                }
+                
+                else if(vote == 'down'){
+                console.log("else 2 work")
+                parent.attr('votetype', 'up');
+                $.ajax({ 
+                        url:'<?php echo URLROOT;?>/vote/upVote',
+                        data: {
+                            topic_id:<?php echo $data['post']->topic_id?>, 
+                            user_id:<?php echo $_SESSION['id']?>,
+                            count: 1,
+                            isVoted: 1
+                            }, 
+                        method: 'POST',
+                        type: 'POST',
+                        success:function(res){
+                            if(res == 1){
+                                getVoteCount();
+                                let select = $('.up-vote').toggleClass("selected");
+                                let deselect = $('.down-vote').toggleClass("selected");
+                            }
+                        }, 
+                        error: function(er){
+                            console.log(er);
+                        }
+                    });
+                } 
+        
         });
 
         $('.down-vote').click(function() {
-            console.log("downvote yap")
+
+            let parent = $(this.parentNode);
+            let vote = parent.attr('votetype');
+
+                if(vote == 'normal'){
+
+                    parent.attr('votetype', 'down');
+
+                    $.ajax({
+                        url:'<?php echo URLROOT;?>/vote/downVote',
+                        data: {
+                            topic_id:<?php echo $data['post']->topic_id?>, 
+                            user_id:<?php echo $_SESSION['id']?>, 
+                            count: -1
+                            }, 
+                        method: 'POST',
+                        type: 'POST',
+                        success:function(res){
+                            console.log('it work');
+                            let select = $('.down-vote').toggleClass("selected")
+                            if(res == 1){
+                                getVoteCount();
+                            }
+                        }, 
+                        error: function(er){
+                            console.log(er);
+                        }
+                    });
+
+                }
+                else if(vote == 'down') {
+                console.log('else work')
+                parent.attr('votetype','normal');
+                    $.ajax({ 
+                        url:'<?php echo URLROOT;?>/vote/normalStateVote',
+                        data: {
+                            topic_id:<?php echo $data['post']->topic_id?>, 
+                            user_id:<?php echo $_SESSION['id']?>,
+                            }, 
+                        method: 'POST',
+                        type: 'POST',
+                        success:function(res){
+                            //console.log(res);
+                            if(res == 1){
+                                getVoteCount();
+                                let select = $('.down-vote').toggleClass("selected");
+                                let focus = $('.down-vote').blur();
+
+                            }
+                        }, 
+                        error: function(er){
+                            console.log(er);
+                        }
+
+                    });
+                }
+                
+                else if(vote == 'up'){
+                console.log("else 2 work")
+                parent.attr('votetype', 'down');
+                $.ajax({ 
+                        url:'<?php echo URLROOT;?>/vote/downVote',
+                        data: {
+                            topic_id:<?php echo $data['post']->topic_id?>, 
+                            user_id:<?php echo $_SESSION['id']?>,
+                            count: -1,
+                            isVoted: 1
+                            }, 
+                        method: 'POST',
+                        type: 'POST',
+                        success:function(res){
+                            if(res == 1){
+                                getVoteCount();
+                                let select = $('.down-vote').toggleClass("selected");
+                                let deselect = $('.up-vote').toggleClass("selected");
+                            }
+                        }, 
+                        error: function(er){
+                            console.log(er);
+                        }
+                    });
+                } 
+        
+
         });
 
         $('.btn-reply').click(function() {
@@ -343,4 +596,3 @@
 
     </script>
             
-<?php require APPROOT . '/views/inc/footer.php'; ?>

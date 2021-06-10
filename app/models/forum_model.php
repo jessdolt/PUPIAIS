@@ -21,8 +21,17 @@
             }
         }
         //comment counter
+
         public function commentCounter($id){
-            $this->db->query('SELECT count(*) as counter FROM `comment` WHERE comment_for = :id');
+            $this->db->query('SELECT *, COUNT(comment_id) as counter FROM `topic`  LEFT JOIN `comment` ON comment.comment_for = topic.topic_id WHERE comment_for = :id');
+            $this->db->bind(':id',$id);
+            $row = $this->db->single();
+            return $row;
+        }
+
+
+        public function replyCounter($id){
+            $this->db->query('SELECT *, COUNT(comment_id) as counter, COUNT(reply_id) as replies FROM `comment` LEFT JOIN `reply` ON reply.parent_comment = comment_id where comment_for = :id group by comment_for');
             $this->db->bind(':id',$id);
             $row = $this->db->single();
             return $row;
@@ -42,10 +51,8 @@
 
         public function getPosts(){
             $this->db->query('SELECT *,
-            topic.topic_id as postId,
             users.user_id as userId,
-            topic.created_at as postCreated,
-            COUNT(comment_id) as counter
+            count(comment_id) as comment
             FROM topic
             INNER JOIN users 
             ON topic.topic_author = users.user_id
@@ -55,7 +62,17 @@
             ON comment_for = topic.topic_id
             GROUP BY topic_id
             ORDER BY topic.created_at DESC
-                             ');
+            ');
+            /* $this->db->query('SELECT comment_for ,count(comment_id) as comments from comment where comment_for group by comment_for'); */
+            /* $this->db->query('SELECT reply_for ,count(reply_id)  as replies from reply where reply_for group by reply_for'); */
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
+
+
+        public function getPostsReplies(){
+            $this->db->query('SELECT *, COUNT(reply_id) AS replies FROM topic LEFT JOIN comment ON comment_for = topic_id LEFT JOIN reply ON reply_for = topic_id GROUP BY comment_id');
             $results = $this->db->resultSet();
             return $results;
         }
@@ -104,7 +121,8 @@
                              INNER JOIN users 
                              ON topic.topic_author = users.user_id
                              WHERE users.user_id = :id
-                             ORDER BY topic.created_at DESC 
+                             ORDER BY topic.created_at DESC
+                             LIMIT 5
                              ');
             $this->db->bind(':id',$id);
             $results = $this->db->resultSet();
@@ -154,7 +172,7 @@
         }
 
         public function getPostById($id){
-            $this->db->query('SELECT * FROM topic WHERE topic_id = :id');
+            $this->db->query('SELECT * FROM topic left join category on category_id = category WHERE topic_id = :id');
             $this->db->bind(':id',$id);
             $row = $this->db->single();
             return $row;
@@ -201,11 +219,12 @@
         }
 
         public function addReply($data) {
-            $this->db->query('INSERT INTO reply (parent_comment,reply,reply_sender) VALUES (:parent,:reply,:reply_sender)');
+            $this->db->query('INSERT INTO reply (parent_comment,reply,reply_sender,reply_for) VALUES (:parent,:reply,:reply_sender,:reply_for)');
 
             $this->db->bind(':parent', $data['parent']);
             $this->db->bind(':reply', $data['reply']);
             $this->db->bind(':reply_sender', $data['reply_sender']);
+            $this->db->bind(':reply_for', $data['reply_for']);
 
             if($this->db->execute()){
                 return true;
