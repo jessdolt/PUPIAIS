@@ -435,7 +435,6 @@ class User {
             }
         }
 
-<<<<<<< HEAD
         public function singleUserAlumniJoin($id){
             $this->db->query('SELECT * 
                             FROM alumni
@@ -451,7 +450,6 @@ class User {
                 return false;
             }
         }
-=======
         
         public function getUserById($id){
             $this->db->query('SELECT * FROM users WHERE user_id = :id');
@@ -460,5 +458,4 @@ class User {
             $row = $this->db->single();
             return $row; 
             }
->>>>>>> new
 }

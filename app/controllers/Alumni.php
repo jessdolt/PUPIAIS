@@ -352,14 +352,9 @@ class Alumni extends Controller{
         $classification = $this->groupModel->showClassification();
 
         $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
-<<<<<<< HEAD
-
-        // $alumni = $this->alumniModel->getAlumniByClass($course_id,$batch_id);
-=======
         $alumniCount = $this->alumniModel->showAlumni();
 
         $alumni = $this->alumniModel->getAlumniByClass($course_id,$batch_id);
->>>>>>> new
         $course_name = $this->alumniModel->getCourseById($course_id);
         $batch_name = $this->alumniModel->getBatchById($batch_id);
 

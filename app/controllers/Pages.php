@@ -87,6 +87,7 @@ class Pages extends Controller{
                 }
             }
         }
+        
         if(count($currentSurvey) == count($answered)){
             // redirect('pages/home'); 
             return false;
