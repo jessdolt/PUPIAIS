@@ -498,7 +498,7 @@
                         <span class="date-posted">September 00,0000</span>
                     </div>
                     <div class="textFieldContainer">
-                        <textarea name="reply" class="active"   onshow="()=>{console.log('if work')}" required></textarea>
+                        <textarea name="reply" class="active" id="reply-con" required></textarea>
                         <span class="error"></span>
                     </div>
                     <div class="btn-con">
@@ -531,7 +531,7 @@
                 const subComment = $('<li class = "list-item active"> </li>');
                 subComment.append(replyContainer);
                 subComment.appendTo(subList);
-
+                
 
                
             }
@@ -550,7 +550,7 @@
                         <span class="date-posted">September 00,0000</span>
                     </div>
                     <div class="textFieldContainer">
-                        <textarea name="reply" class="active"   onshow="()=>{console.log('if work')}" required></textarea>
+                        <textarea name="reply" class="active"  id="reply-con" required></textarea>
                         <span class="error"></span>
                     </div>
                     <div class="btn-con">
