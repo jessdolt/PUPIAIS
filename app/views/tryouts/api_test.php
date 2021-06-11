@@ -188,7 +188,8 @@
                             // showBarChart(answerObject, `myChart${index}`, index);
                         }
                         
-                        showChart(answerObject, `myChart${index}`);
+                        console.log(answerObject);
+                       showChart(answerObject, `myChart${index}`);
                     }
                     else{
                         let chartDiv = `
@@ -240,9 +241,9 @@
         }
 
         function showChart(ansObj, chartDiv){
-            var divNew = document.getElementById(chartDiv);
+            // var divNew = document.getElementById(chartDiv);
           
-            console.log(divNew);
+            //console.log(divNew);
             const labels = [];
             const data = {
                 labels: labels,
@@ -263,7 +264,7 @@
                 }
             });
 
-            console.log(labels);
+            //console.log(labels);
          
             const config = {
                 type: 'pie',
@@ -276,7 +277,7 @@
                 config
             );
 
-            console.log(config);
+            console.log(myChart);
         }
 
         // function showBarChart(ansObj, chartDiv){
