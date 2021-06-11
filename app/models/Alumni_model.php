@@ -162,6 +162,14 @@
             }
         }
 
+        public function getUserTypeIdAlumni() {
+            $this->db->query('SELECT * FROM user_type WHERE user_control = "Alumni"');
+            $row = $this->db->single();
+            if($row > 0){
+                return $row;
+            }
+        }
+
         public function addDepartment($data){
             $this->db->query('INSERT INTO department (department,departmentCode) VALUES (:department,:departmentCode)');
 

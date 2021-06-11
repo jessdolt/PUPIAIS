@@ -125,6 +125,18 @@
             }
         }
 
+        public function otherNews($id) {
+            $this->db->query('SELECT * FROM posts WHERE id <> :id ORDER BY created_at DESC LIMIT 5');
+            $this->db->bind(':id', $id);
+            $row = $this->db->resultSet();
+            if($this->db->rowCount() > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
         public function findPostById($id) {
             $this->db->query('SELECT * FROM posts WHERE id = :id');
     

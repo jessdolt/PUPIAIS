@@ -11,13 +11,17 @@
 
         public function single($id){
             $event = $this->eventModel->singleEvent($id);
+            $other = $this->eventModel->otherEvent($id);
 
             $data = [
                 'events' => $event,
+                'other' => $other
             ];
 
             $this->view('pages/singleEvents', $data);
         }
+
+
 
         public function add(){
             if($_SERVER['REQUEST_METHOD'] == 'POST'){

@@ -119,6 +119,18 @@
             }
         }
 
+        public function otherEvent($id){
+            $this->db->query('SELECT * FROM events WHERE id <> :id ORDER BY created_at DESC LIMIT 5');
+            $this->db->bind(':id', $id);
+            $row = $this->db->resultSet();
+            if($this->db->rowCount() > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
         public function deleteEvent($id){
             $this->db->query('SELECT * FROM events where id= (:id)');
             $this->db->bind(':id', $id);

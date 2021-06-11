@@ -1,6 +1,13 @@
 CKEDITOR.replace( 'description' );
 CKEDITOR.config.height = '40vh';
 
+CKEDITOR.on('instanceReady', function( ev ) {
+    ev.editor.dataProcessor.htmlFilter.addRules({
+      elements: {
+        p: function (e) { e.attributes.style = 'font-size: 14px; font-family:Roboto;'; }
+      }
+    });
+  });
 
 const fileUpload = document.getElementById('fileUpload');
 const img_box = document.getElementById('myImg');

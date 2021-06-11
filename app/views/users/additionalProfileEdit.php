@@ -5,7 +5,7 @@
         </section>
         <section class="mainContent questionnaire">
             <div class="container">
-                <form action="<?php echo URLROOT;?>/users/profileAdditional/<?php echo $_SESSION['alumni_id'] ?>" method="POST" enctype="multipart/form-data" class="form">
+                <form action="<?php echo URLROOT;?>/users/profileAdditionalEdit/<?php echo $_SESSION['alumni_id'] ?>" method="POST" enctype="multipart/form-data" class="form">
                     <div>
                         <h2>Additional Information</h2>
                         <p>Since you are employed, we would like you to answer this short survey</p>
@@ -15,50 +15,50 @@
                             <div>
                                 <label for="grad-date" class="outsideLabel">Date of Graduation:</label>
                                 <div class="textFieldContainer">
-                                    <input type="date" name="gradDate" id="grad-date"required>
+                                    <input type="date" name="gDate" id="grad-date" value=<?php echo $data['gDate']?> required>
                                     <span class="error"></span>
                                 </div>
                             </div>
                             <div>
                                 <label for="first-emp-date" class="outsideLabel">Date of 1st Employment:</label>
                                 <div class="textFieldContainer">
-                                    <input type="date" name="firstEmpDate" id="first-emp-date"required>
+                                    <input type="date" name="eDate" id="first-emp-date" value=<?php echo $data['eDate']?> required>
                                     <span class="error"></span>
                                 </div>
                             </div>
                             <div>
                                 <label for="current-emp-date" class="outsideLabel">Date of Current Employment:</label>
                                 <div class="textFieldContainer">
-                                    <input type="date" name="currentEmpDate" id="current-emp-date"required>
+                                    <input type="date" name="ceDate" id="current-emp-date" value=<?php echo $data['ceDate']?> required>
                                     <span class="error"></span>
                                 </div>
                             </div>
                             <div>
                                 <label for="type-of-work" class="outsideLabel">Current Nature/Type of Work:</label>
                                 <div class="textFieldContainer">
-                                    <input type="text" name="typeOfWork" id="type-of-work"required>
+                                    <input type="text" name="tWork" id="type-of-work" value=<?php echo $data['tWork']?> required>
                                     <span class="error"></span>
                                 </div>
                             </div>
                             <div>
                                 <label for="work-position" class="outsideLabel">Current Plantilla Item/Work Position:</label>
                                 <div class="textFieldContainer">
-                                    <input type="text" name="workPosition" id="work-position"required>
+                                    <input type="text" name="wPosition" id="work-position" value=<?php echo $data['wPosition']?> required>
                                     <span class="error"></span>
                                 </div>
                             </div>
                             <div>
                                 <label for="cur-monthly-income" class="outsideLabel">Current Monthly Income:</label>
                                 <div class="textFieldContainer">
-                                    <input type="number" name="curMonthlyIncome" id="cur-monthly-income"required>
+                                    <input type="number" name="mIncome" id="cur-monthly-income" value=<?php echo $data['mIncome']?> required>
                                     <span class="error"></span>
                                 </div>
                             </div>
                             <div>
                                 <label class="outsideLabel">Is your job or/work related to their undergradute program:</label>
                                 <fieldset class="radioBtnContainer">
-                                    <input type="radio" class="related" name="related" id="yes-id" value="yes" checked>
-                                    <input type="radio" class="related" name="related" id="no-id" value="no">
+                                    <input type="radio" class="related" name="ifRelated" id="yes-id" value="Yes" <?php ($data['ifRelated'] == "Yes") ? 'checked' : ''?>>
+                                    <input type="radio" class="related" name="ifRelated" id="yes-id" value="Yes" <?php ($data['ifRelated'] == "No") ? 'checked' : ''?>>
                                 </fieldset>
                             </div>
                         </div>

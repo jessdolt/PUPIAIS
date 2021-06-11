@@ -27,9 +27,11 @@
                 <a href="<?php echo URLROOT; ?>/pages/events">View more events...</a>
                 <h3>Other Events</h3>
                 <ul>
+                <?php foreach($data['other'] as $otherEvents) : ?>
                     <li>
-                        <a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a>
+                        <a href="<?php echo URLROOT ?>/events/single/<?php echo $otherEvents->id?>"><?php echo $otherEvents->title ?></a>
                     </li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
         </section>
