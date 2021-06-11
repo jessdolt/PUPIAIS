@@ -87,9 +87,9 @@
 
         public function survey($request_type){
             if($request_type == 'read'){
-                $result = $this->apiModel->survey_set_read(29);
-                $resultQuestions = $this->apiModel->questions_read(29);
-                $resultAnswers = $this->apiModel->answers_read(29);
+                $result = $this->apiModel->survey_set_read(18);
+                $resultQuestions = $this->apiModel->questions_read(18);
+                $resultAnswers = $this->apiModel->answers_read(18);
 
                 //array_print($result);
                 $chart_arr = array();

@@ -80,22 +80,28 @@ class Pages extends Controller{
         $answeredSurvey = $this->surveyListModel->surveyAnswered($_SESSION['id']);
 
         $answered = array();
-        foreach($currentSurvey as $c_survey){
-            foreach($answeredSurvey as $a_survey ){
-                if($c_survey->id === $a_survey->survey_id){
-                    array_push($answered, 1);
+        if(!empty($currentSurvey)){
+            foreach($currentSurvey as $c_survey){
+                foreach($answeredSurvey as $a_survey ){
+                    if($c_survey->id === $a_survey->survey_id){
+                        array_push($answered, 1);
+                    }
                 }
             }
-        }
-        
-        if(count($currentSurvey) == count($answered)){
-            // redirect('pages/home'); 
-            return false;
+            
+            if(count($currentSurvey) == count($answered)){
+                // redirect('pages/home'); 
+                return false;
+            }
+            else{
+                return true;
+                //redirect('survey_widget');
+            }
         }
         else{
-            return true;
-            //redirect('survey_widget');
+            return false;
         }
+        
     }
 
     public function home() {
