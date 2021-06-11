@@ -10,7 +10,9 @@
     }
 
     function userType() {
-        if ($_SESSION['user_type'] == "Admin") {
+        if ($_SESSION['user_type'] == "Super Admin") {
+            return 'Super Admin';
+        } elseif ($_SESSION['user_type'] == "Admin") {
             return 'Admin';
         } elseif ($_SESSION['user_type'] == "Alumni") {
             return 'Alumni';
@@ -21,7 +23,7 @@
     }
 
     function isAdmin() {
-        if ($_SESSION['user_type'] == "Admin" || $_SESSION['user_type'] == "Content Creator") {
+        if ($_SESSION['user_type'] == "Admin" || $_SESSION['user_type'] == "Super Admin" || $_SESSION['user_type'] == "Content Creator") {
             return true;
         } else {
             return false;

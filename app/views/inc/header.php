@@ -23,7 +23,7 @@
     $url= explode('/', $url);
 ?>
 
-<body id="<?php echo $_SESSION['user_type']?>">
+<body id="<?php echo ($_SESSION['user_type'] == "Alumni") ? 'Alumni' : 'Admin' ?>">
     <header class="mainHeader <?php 
                                 echo ($url[0] == 'survey_widget') ? 'userSurvey': ''; ?> <?php
                                 echo ($url[1] == 'editProfile' && $data['accInfo']->verify != "YES") ? 'userSurvey firstEdit' : ''; ?><?php 
@@ -53,7 +53,7 @@
         <div class="userContainer">
             <div class="avatar">
                 <?php if (empty($_SESSION['image'])) :?>
-                    <img src="<?php echo URLROOT;?>/images/default-navbar-profile.png">
+                    <img src="<?php echo URLROOT;?>/images/official-default-avatar.svg">
                 <?php else: ?>
                     <img src="<?php echo URLROOT;?>/uploads/<?php echo ($_SESSION['image']) ?>">
                 <?php endif; ?>

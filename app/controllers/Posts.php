@@ -8,9 +8,11 @@
 
         public function single($id){
             $post = $this->postModel->singleNews($id);
+            $other = $this->postModel->otherNews($id);
 
             $data = [
                 'post' => $post,
+                'other' => $other
             ];
 
             $this->view('pages/singleNews', $data);

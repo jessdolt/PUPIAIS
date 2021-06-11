@@ -4,7 +4,7 @@
         public function __construct() {
             $this->userModel = $this->model('user');
   
-            if(getProfileID() == $_SESSION['alumni_id'] || $_SESSION['user_type'] == "Admin") {
+            if(getProfileID() == $_SESSION['alumni_id'] || $_SESSION['user_type'] == "Admin" || $_SESSION['user_type'] == "Super Admin") {
                 
             } else {
                 redirect('pages/home');
@@ -87,6 +87,7 @@
                 }
     
                 if(empty($data['file_error'])) {
+
                     if($this->userModel->editProfile($data, $isUploaded)) {
                         
                         $newData = [
@@ -109,6 +110,7 @@
                     } else {
                         die("Something went wrong");
                     }
+
                 } else {
                     $this->view('users/viewProfile/'.$_SESSION['alumni_id'], $data);
                 }
@@ -219,7 +221,7 @@
             $user = $this->userModel->singleUser($id);
             if ($user->employment == 'Employed') {
                 // If there is a record in employment
-                if($this->userModel->additionalVerify($id) == true) {
+                if($this->userModel->additionalVerify($id) == 1) {
                     redirect('profile/profileAdditionalEdit'.$id);
                 } else {
                     if($_SERVER['REQUEST_METHOD'] == 'POST'){

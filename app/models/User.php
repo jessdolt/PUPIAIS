@@ -48,6 +48,26 @@ class User {
         }
     }
 
+    public function forSessionAdmin($user) {
+        
+        $this->db->query('SELECT *
+                        FROM users
+                        LEFT JOIN user_type 
+                        ON users.user_type = user_type.id 
+                        LEFT JOIN admin
+                        ON users.user_id = admin.user_id
+                        WHERE users.email= :email');
+
+        $this->db->bind(':email', $user->email);
+
+        $row = $this->db->single();
+        if($this->db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
     public function register($data){
         $this->db->query('INSERT INTO users(name,a_id,email,password,user_type) VALUES (:name,:a_id,:email,:password,:user_type)');
 
@@ -244,6 +264,18 @@ class User {
     public function singleAcc($id) {
         $this->db->query('SELECT * FROM users WHERE a_id = :alumni_id');
         $this->db->bind(':alumni_id', $id);
+        $row = $this->db->single();
+        if($this->db->rowCount() > 0){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function userJoinUserType($user) {
+        $this->db->query('SELECT * FROM users LEFT JOIN user_type ON users.user_type = user_type.id WHERE user_id = :user_id');
+        $this->db->bind(':user_id', $user->user_id);
         $row = $this->db->single();
         if($this->db->rowCount() > 0){
             return $row;
