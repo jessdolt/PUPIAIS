@@ -52,7 +52,7 @@ class Alumni extends Controller{
         $mail->addAddress($alumniUser->email);
         $mail->Subject = 'Login Credentials for PUPIAIS (Reference No. '.$referenceNo.')';
 
-        $website = URLROOT;;
+        $website = URLROOT;
        
 
         $msg = '

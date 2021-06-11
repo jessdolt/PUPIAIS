@@ -36,7 +36,6 @@
                                     <?php foreach(json_decode($row->frm_option) as $k => $v):
                                           $progress = ((isset($data['answers'][$row->id][$k]) ? count($data['answers'][$row->id][$k]) : 0) / $data['taken']) * 100;
                                           $progress = round($progress,2);
-                                          
                                     ?>
                                         <li class="answer">
                                             <div class="flex-con">
