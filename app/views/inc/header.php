@@ -23,7 +23,7 @@
     $url= explode('/', $url);
 ?>
 
-<body id="<?php echo $_SESSION['user_type']?>">
+<body id="<?php echo ($_SESSION['user_type'] == "Alumni") ? 'Alumni' : 'Admin' ?>">
     <header class="mainHeader <?php 
                                 echo ($url[0] == 'survey_widget') ? 'userSurvey': ''; ?> <?php
                                 echo ($url[1] == 'editProfile' && $data['accInfo']->verify != "YES") ? 'userSurvey firstEdit' : ''; ?><?php 
@@ -45,14 +45,15 @@
                 <li><a href="<?php echo URLROOT; ?>/pages/home" <?php if($url[1] == "home") { echo 'class="active"'; }?>>Home</a></li>
                 <li><a href="<?php echo URLROOT; ?>/pages/news" <?php if($url[1] == "news" || $url[0] == 'posts') { echo 'class="active"'; }?>>News</a></li>
                 <li><a href="<?php echo URLROOT; ?>/pages/events" <?php if($url[1] == "events" || $url[0] == 'events') { echo 'class="active"'; }?>>Events</a></li>
-                <li><a href="<?php echo URLROOT; ?>/pages/job_portals" <?php if($url[1] == "job_portals" || $url[0] == 'job_portals') { echo 'class="active"'; }?>>Jobs</a></li>
+                <li><a href="<?php echo URLROOT; ?>/pages/jobs" <?php if($url[1] == "jobs" || $url[0] == 'job_portals') { echo 'class="active"'; }?>>Jobs</a></li>
+                <li><a href="<?php echo URLROOT; ?>/forum/index" <?php if($url[1] == "forum" || $url[0] == 'forum') { echo 'class="active"'; }?>>Forum</a></li>
             <?php endif; ?>
         </ul>
         <button type="button"><?php echo $_SESSION['name'] ?></button>
         <div class="userContainer">
             <div class="avatar">
                 <?php if (empty($_SESSION['image'])) :?>
-                    <img src="<?php echo URLROOT;?>/images/default-navbar-profile.png">
+                    <img src="<?php echo URLROOT;?>/images/official-default-avatar.svg">
                 <?php else: ?>
                     <img src="<?php echo URLROOT;?>/uploads/<?php echo ($_SESSION['image']) ?>">
                 <?php endif; ?>

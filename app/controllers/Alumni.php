@@ -15,18 +15,6 @@ class Alumni extends Controller{
         $this->view('alumni/index', $data);
     }
     
-/*     public function csv() {
-     
-        if(isset($_POST['submit'])){
-            var_dump($_FILES['csv']);
-
-            redirect('alumni');
-        }
-
-    } */
-
-    
-
     //Email specific alumni
     public function email($id){
         $this->userModel = $this->model('user');
@@ -171,12 +159,13 @@ class Alumni extends Controller{
                             // $pass = password_hash($pass, PASSWORD_DEFAULT);
                             $pass = bin2hex(openssl_random_pseudo_bytes(5));
                             if(!empty($alumni_id)){
+                                $userType = $this->alumniModel->getUserTypeIdAlumni();
                                 $newData = [
                                     'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
                                     'a_id' => $alumni_id,
                                     'email' => $data['email'],
                                     'password' => $pass,
-                                    'user_type' => 2
+                                    'user_type' => $userType->id
                                 ];
                                 if($this->userModel->register($newData)){
                                     redirect('admin/alumni');
@@ -363,8 +352,14 @@ class Alumni extends Controller{
         $classification = $this->groupModel->showClassification();
 
         $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
+<<<<<<< HEAD
 
         // $alumni = $this->alumniModel->getAlumniByClass($course_id,$batch_id);
+=======
+        $alumniCount = $this->alumniModel->showAlumni();
+
+        $alumni = $this->alumniModel->getAlumniByClass($course_id,$batch_id);
+>>>>>>> new
         $course_name = $this->alumniModel->getCourseById($course_id);
         $batch_name = $this->alumniModel->getBatchById($batch_id);
 
@@ -548,12 +543,13 @@ class Alumni extends Controller{
                     $alumni_id = $this->alumniModel->addBulkAlumni($data);
                     $pass = bin2hex(openssl_random_pseudo_bytes(5));
                     if(!empty($alumni_id)){
+                        $userType = $this->alumniModel->getUserTypeIdAlumni();
                         $newData = [
                             'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
                             'a_id' => $alumni_id,
                             'email' => $data['email'],
                             'password' => $pass,
-                            'user_type' => 2
+                            'user_type' => $userType->id
                         ];
                         $this->userModel->register($newData);
                     } 

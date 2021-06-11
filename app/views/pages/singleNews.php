@@ -33,10 +33,11 @@
                 <a href="<?php echo URLROOT; ?>/pages/news">View more news and articles...</a>
                 <h3>Other News and Articles</h3>
                 <ul>
-                    
+                    <?php foreach($data['other'] as $otherNews) : ?>
                     <li>
-                        <a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a>
+                        <a href="<?php echo URLROOT ?>/posts/single/<?php echo $otherNews->id ?>"><?php echo $otherNews->title ?></a>
                     </li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
         </section>

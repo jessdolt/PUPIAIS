@@ -28,9 +28,10 @@
                         </div>
                         
                         <div class="description">
-
                             <?php echo $data['job']->description?>
-                            
+                        </div>
+                        <div class="description">
+                        <?php echo $data['job']->others?>
                         </div>
                     </div>
                 </article>
@@ -39,7 +40,7 @@
         </section>
         <section class="moreContent">
             <div class="container additional">
-                <a href="#">View more news and articles...</a>
+                <a href="<?php echo URLROOT; ?>/pages/job_portals">View more jobs...</a>
             </div>
         </section>
     </main>

@@ -12,12 +12,11 @@
             <div class="container">
                 <div class="profile-header">
                     <?php if (empty($data['user']->image)) :?>
-                        <img src="<?php echo URLROOT;?>/images/default-profile-picture.png" id="myImg">
+                        <img src="<?php echo URLROOT;?>/images/official-default-avatar.svg" id="myImg">
                     <?php else: ?>
                         <img src="<?php echo URLROOT;?>/uploads/<?php echo ($data['user']->image) ?>" id="myImg">
                     <?php endif; ?>
                     <h1 class="alumni-name"><?php echo $data['user']->first_name . ' ' . $data['user']->middle_name . ' ' . $data['user']->last_name ?></h1>
-
                     <span class="alumni-lrn">(<?php echo $data['user']->student_no; ?>)</span>
                     <?php if($data['user']->alumni_id == $_SESSION['alumni_id']): ?>
                     <a href="<?php echo URLROOT; ?>/profile/editProfile/<?php echo $_SESSION['alumni_id'] ?>" class="editBtn">

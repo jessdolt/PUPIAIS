@@ -387,30 +387,47 @@
         }
 
         public function createUserSession($user) {
-            $newUser = $this->userModel->forSession($user);
-            $_SESSION['id'] = $newUser->user_id;
-            $_SESSION['email'] = $newUser->email;
-            $_SESSION['name'] = $newUser->name;
-            $_SESSION['student_no'] = $newUser->student_no;
-            $_SESSION['alumni_id'] = $newUser->a_id;
-            $_SESSION['user_type'] = $newUser->user_control;
-            $_SESSION['image'] = $newUser->image;
+            $check = $this->userModel->userJoinUserType($user);
             
-            if ($_SESSION['user_type'] == "Admin" || $_SESSION['user_type'] == "Content Creator") {
-                redirect('admin/dashboard');
-            } else { 
-                redirect('pages'); 
+            if($check->user_control == "Alumni") {
+                $newUser = $this->userModel->forSession($user);
+                $_SESSION['id'] = $newUser->user_id;
+                $_SESSION['email'] = $newUser->email;
+                $_SESSION['name'] = $newUser->name;
+                $_SESSION['student_no'] = $newUser->student_no;
+                $_SESSION['alumni_id'] = $newUser->a_id;
+                $_SESSION['user_type'] = $newUser->user_control;
+                $_SESSION['image'] = $newUser->image;
+            } else {
+                $newUser = $this->userModel->forSessionAdmin($user);
+                $_SESSION['id'] = $newUser->user_id;
+                $_SESSION['admin_id'] = $newUser->admin_id;
+                $_SESSION['email'] = $newUser->email;
+                $_SESSION['name'] = $newUser->name;
+                $_SESSION['user_type'] = $newUser->user_control;
+                $_SESSION['image'] = $newUser->image;
             }
 
+            if ($_SESSION['user_type'] == "Admin" || $_SESSION['user_type'] == "Super Admin") {
+                redirect('admin/dashboard');
+            }
+            elseif($_SESSION['user_type'] == "Content Creator") {
+                redirect('admin/news');
+            } 
+            else {
+                redirect('pages'); 
+            }
         }
 
         public function logout() {
             unset($_SESSION['id']);
+            unset($_SESSION['admin_id']);
             unset($_SESSION['email']);
             unset($_SESSION['name']);
             unset($_SESSION['alumni_id']);
             unset($_SESSION['student_no']);
             unset($_SESSION['user_type']);
+            unset($_SESSION['image']);
             session_destroy();
             
             redirect('users/login');
@@ -511,4 +528,5 @@
                 die("There's an error deleting this record");
             }
         }
+
     }

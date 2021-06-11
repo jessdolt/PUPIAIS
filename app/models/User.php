@@ -48,6 +48,26 @@ class User {
         }
     }
 
+    public function forSessionAdmin($user) {
+        
+        $this->db->query('SELECT *
+                        FROM users
+                        LEFT JOIN user_type 
+                        ON users.user_type = user_type.id 
+                        LEFT JOIN admin
+                        ON users.user_id = admin.user_id
+                        WHERE users.email= :email');
+
+        $this->db->bind(':email', $user->email);
+
+        $row = $this->db->single();
+        if($this->db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
     public function register($data){
         $this->db->query('INSERT INTO users(name,a_id,email,password,user_type) VALUES (:name,:a_id,:email,:password,:user_type)');
 
@@ -253,6 +273,18 @@ class User {
         }
     }
 
+    public function userJoinUserType($user) {
+        $this->db->query('SELECT * FROM users LEFT JOIN user_type ON users.user_type = user_type.id WHERE user_id = :user_id');
+        $this->db->bind(':user_id', $user->user_id);
+        $row = $this->db->single();
+        if($this->db->rowCount() > 0){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
+
     public function editProfile($data, $isUploaded){
         if($isUploaded == 1 ){
             $this->db->query('UPDATE alumni SET first_name=:first_name, middle_name=:middle_name, last_name=:last_name, gender=:gender, employment=:employment, birth_date=:birth_date, address=:address, city=:city, region=:region, postal=:postal, contact_no=:contact_no, email=:email, image=:image WHERE alumni_id = :alumni_id');
@@ -403,6 +435,7 @@ class User {
             }
         }
 
+<<<<<<< HEAD
         public function singleUserAlumniJoin($id){
             $this->db->query('SELECT * 
                             FROM alumni
@@ -418,4 +451,14 @@ class User {
                 return false;
             }
         }
+=======
+        
+        public function getUserById($id){
+            $this->db->query('SELECT * FROM users WHERE user_id = :id');
+            $this->db->bind(':id', $id);
+    
+            $row = $this->db->single();
+            return $row; 
+            }
+>>>>>>> new
 }
