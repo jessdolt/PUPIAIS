@@ -20,7 +20,6 @@
             $reply = $this->forumModel->getPostsReplies();
             $pop = $this->forumModel->getPopular();
             $my = $this->forumModel->getCurrent($_SESSION['id']);
-            $this->voteeeeeeeee = $this->model('vote_model'); 
 
            
             $data = [
