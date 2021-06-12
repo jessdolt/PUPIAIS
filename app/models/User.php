@@ -220,9 +220,9 @@ class User {
         }
     }
 
-    public function singleAlumni($stud_no){
-        $this->db->query('SELECT * from users where student_no =:stud_no');
-        $this->db->bind(':stud_no', $stud_no);
+    public function singleAlumni($alumni_id){
+        $this->db->query('SELECT * from users where a_id =:alumni_id');
+        $this->db->bind(':alumni_id', $alumni_id);
         $row  = $this->db->single();
         if($this->db->rowCount() > 0){
             return $row;
@@ -232,16 +232,7 @@ class User {
         }
     }
 
-    public function updateSend($stud_no){
-        $this->db->query('UPDATE users set isSend = 1 WHERE student_no = :student_no');
-        $this->db->bind(':student_no', $stud_no);
-        if($this->db->execute()){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+   
 
     public function singleUser($id){
         $this->db->query('SELECT * 

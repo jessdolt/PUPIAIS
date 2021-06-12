@@ -165,7 +165,7 @@
         public function getUserTypeIdAlumni() {
             $this->db->query('SELECT * FROM user_type WHERE user_control = "Alumni"');
             $row = $this->db->single();
-            if($row > 0){
+            if($this->db->rowCount() > 0){
                 return $row;
             }
         }
@@ -252,6 +252,7 @@
                     return false;
                 }
             }
+            
             
         }
 

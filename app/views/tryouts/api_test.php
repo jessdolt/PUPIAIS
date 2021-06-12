@@ -54,9 +54,7 @@
 
 <a href="<?php echo URLROOT;?>/admin/dashboard">Run it back!</a>
    
-    <h1>API TESTING GOD SSEJ ARGUX BUBU</h1>
-    <br>
-    <h3>A new era of programming, the era of the establisment of REST API</h3>
+   
 
     <button id="api-news">API NEWS</button>
     <button id="api-events">API EVENTS</button>
@@ -107,10 +105,9 @@
                 survey_title_container.textContent = survey_title;
                 
                 //chartContainer.innerHTML += chartDiv;
-                questions.map((question, index) => {
-
+                questions.forEach((question, index) => {
                     //console.log(question);
-                    if(question.type != 'textfield_s'){
+                    if(question.type !== 'textfield_s'){
                         let chartDiv = `
                             <div class="charts">
                                 <h3>${question.question}</h3>
@@ -121,21 +118,19 @@
                             `;
                     
                         chartContainer.innerHTML += chartDiv;
-                        console.log('hitted');
                         const frm_option = question.frm_option;
-                        //console.log(frm_option);
                         const answerObject = {};
                         const labelsArr = [];
 
                         if(question.type == 'radio'){
-                            answers.map(answer=> {
+                            answers.forEach(answer=> {
                                 if(question.id == answer.question_id){
                                     labelsArr.push(frm_option[answer.answer]); 
                                 }
                             })
                         }
                         else{
-                            answers.map(answer=> {
+                            answers.forEach(answer=> {
                                 if(question.id == answer.question_id){
                                     let checkAns = answer.answer;
                                     const checkAnsArr = checkAns.split(',');
@@ -155,7 +150,7 @@
                                 var localObj = {
                                     [label] : 0
                                 };
-                                answers.map(answer=> {
+                                answers.forEach(answer=> {
                                     if(question.id == answer.question_id){
                                         if(frm_option[answer.answer] == label){
                                             localObj[label]++;
@@ -171,7 +166,7 @@
                                 var localObj = {
                                     [label] : 0
                                 };
-                                answers.map(answer=> {
+                                answers.forEach(answer=> {
                                     if(question.id == answer.question_id){
                                         let checkAns = answer.answer;
                                         const checkAnsArr = checkAns.split(',');
@@ -188,8 +183,9 @@
                             // showBarChart(answerObject, `myChart${index}`, index);
                         }
                         
-                        console.log(answerObject);
-                       showChart(answerObject, `myChart${index}`);
+                        setTimeout(() => {
+                            showChart(answerObject, `myChart${index}`);
+                        });
                     }
                     else{
                         let chartDiv = `
@@ -244,6 +240,8 @@
             // var divNew = document.getElementById(chartDiv);
           
             //console.log(divNew);
+            console.log('new div');
+            console.log(document.getElementById(chartDiv));
             const labels = [];
             const data = {
                 labels: labels,
@@ -276,8 +274,6 @@
                 document.getElementById(chartDiv).getContext("2d"),
                 config
             );
-
-            console.log(myChart);
         }
 
         // function showBarChart(ansObj, chartDiv){

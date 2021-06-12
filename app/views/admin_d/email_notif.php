@@ -1,5 +1,23 @@
 <?php require APPROOT . '/views/inc/header_admin.php';?>
         
-        <a href="<?php echo URLROOT;?>/alumni/email/197">SEND EMAIL</a>
-        <a href="<?php echo URLROOT;?>/admin/passHash">Password Test</a>
+        <button id="btn_email" >SEND EMAIL TO ALL</button>
+<script>
+
+
+$(document).ready(function(){
+        $('#btn_email').click(function(){
+                $.ajax({ 
+                    url:'<?php echo URLROOT;?>/email/sendToAll',
+                    method: 'POST',
+                    type: 'POST',
+                    success:function(res){
+                        console.log(res);
+                    }, 
+                    error: function(er){
+                        console.log(er);
+                    }
+                })
+        })
+})
+</script>
 <?php require APPROOT . '/views/inc/footer.php';?>

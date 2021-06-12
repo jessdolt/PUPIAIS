@@ -1,7 +1,6 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+
 
 
 class Alumni extends Controller{
@@ -14,59 +13,6 @@ class Alumni extends Controller{
         $data = $this->alumniModel->showAlumni();
         $this->view('alumni/index', $data);
     }
-    
-    //Email specific alumni
-    public function email($id){
-        $this->userModel = $this->model('user');
-        $alumni = $this->alumniModel->getAlumniById($id);
-        $alumniUser = $this->userModel->singleAlumni($alumni->student_no);
-        $referenceNo = rand(10000,99999);
-
-        $mail = new PHPMailer();
-        $mail->SMTPDebug = 2;
-        $mail->isSMTP();
-        $mail->SMTPAuth = true;
-        $mail->Host = 'smtp.gmail.com';
-       
-        $mail->Username = 'itechpup1@gmail.com';
-        $mail->Password = 'PUPTest1';
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = '587';
-
-        $mail->isHTML();
-       
-        $mail->setFrom('itechpup1@gmail.com', 'PUP ITECH Administrator');
-
-        $mail->addAddress($alumniUser->email);
-        $mail->Subject = 'Login Credentials for PUPIAIS (Reference No. '.$referenceNo.')';
-
-        $website = URLROOT;
-       
-
-        $msg = '
-                <p>Your Username is <strong>'.$alumni->email.'</strong></p>
-                <p>Your Password is <strong>'.$alumniUser->password.'</strong></p>
-                <p>You can access Talpakan website at <strong>'. $website.'</strong></p>
-                ';
-                
-        $mail->Body = $msg;
-
-
-        $mail->Priority = 1;
-        $mail->addCustomHeader("X-MSMail-Priority: High");
-        $mail->addCustomHeader("Importance: High");
-       
-        if($mail->Send()){
-            if($this->userModel->updateSend($alumni->student_no)){
-                redirect('admin/alumni');
-            }
-        }
-        else{
-            echo $mail->ErrorInfo;
-        }
-    }
-
-
 
         //Add Alumni
     public function add(){
@@ -552,7 +498,7 @@ class Alumni extends Controller{
             }
 
             if(!empty($duplication)){
-                $this->view('alumni/duplication', $duplication);
+                redirect('group/duplicateError');
             }
             
             else{
