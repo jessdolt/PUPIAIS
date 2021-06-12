@@ -1,4 +1,3 @@
-<body id="Alumni">
 <?php require APPROOT . '/views/inc/header.php'; ?>
     <main class="alumni forum">
         <section class="heroBox">
