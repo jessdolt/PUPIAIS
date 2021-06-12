@@ -7,9 +7,9 @@
 
     //REMOTE DB (LIVE) 
     define('DB_HOST', 'us-cdbr-east-04.cleardb.com');
-    define('DB_USER', 'b014f8dc846f63');
-    define('DB_PASS', '1493f4d1');
-    define('DB_NAME', 'heroku_c03df737b159067');
+    define('DB_USER', 'b3d7520feb33b7');
+    define('DB_PASS', 'a11bcbc0');
+    define('DB_NAME', 'heroku_f88804e718336e9');
 
     //App Root
     define('APPROOT',dirname(dirname(__FILE__)));
