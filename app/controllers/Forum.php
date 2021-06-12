@@ -7,8 +7,8 @@
             }
 
             //$this->forumModel = $this->model('forum_model'); 
-            // $this->userModel = $this->model('User');
-            // $this->alumniModel = $this->model('alumni_model');
+            $this->userModel = $this->model('user');
+            $this->alumniModel = $this->model('alumni_model');
             // $this->voteModel = $this->model('vote_model');
         }
 

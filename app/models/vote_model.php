@@ -1,7 +1,7 @@
 <?php 
 
     
-    class vote_model{
+    class Vote_model{
         private $db;
         public function __construct(){
             $this->db = new Database;
