@@ -240,9 +240,20 @@
             else{
                 return false;
             }
-            
-            if(unlink(IMAGEROOT.$img)){
-                $this->db->query('DELETE FROM alumni where alumni_id= (:id)');
+            if(!empty($img)) {
+                if(unlink(IMAGEROOT.$img)){
+                    $this->db->query('DELETE FROM alumni where alumni_id= (:id)');
+                    $this->db->bind(':id', $id);
+
+                    if($this->db->execute()){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+            }  else {
+                $this->db->query('DELETE FROM alumni WHERE alumni_id = (:id)');
                 $this->db->bind(':id', $id);
 
                 if($this->db->execute()){
@@ -252,7 +263,6 @@
                     return false;
                 }
             }
-            
             
         }
 

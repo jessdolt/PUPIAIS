@@ -135,7 +135,7 @@
                 </span>
             </header>
 
-            <form action="<?php echo URLROOT; ?>/users/forgotPassword" method="POST">
+            <form action="<?php echo URLROOT; ?>/email/forgotPassword" method="POST">
                 <div class="textFieldContainer">
                     <input type="email" name="email" id="user-email" placeholder="Email" required>
                     <label class="icon" for="user-email">

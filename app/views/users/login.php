@@ -157,8 +157,7 @@
                 </div>
                 <button type="submit" value="submit">Sign in</button>
             </form>
-
-            <a href="<?php echo URLROOT; ?>/users/forgotPassword"><span>forgot password</span></a>
+            <a href="<?php echo URLROOT; ?>/email/forgotPassword"><span>forgot password</span></a>
         </div>
     </main>
 
