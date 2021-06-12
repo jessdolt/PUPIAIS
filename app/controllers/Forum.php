@@ -7,31 +7,32 @@
             }
 
             $this->forumModel = $this->model('forum_model');
-            $this->userModel = $this->model('User');
-            $this->alumniModel = $this->model('alumni_model');
-            $this->voteModel = $this->model('vote_model');
+            // $this->userModel = $this->model('User');
+            // $this->alumniModel = $this->model('alumni_model');
+            // $this->voteModel = $this->model('vote_model');
         }
 
         public function index(){
             //Get Posts
-            $category = $this->forumModel->getCategory();
-            $all = $this->forumModel->categoryCounter();
-            $posts = $this->forumModel->getPosts();
-            $reply = $this->forumModel->getPostsReplies();
-            $pop = $this->forumModel->getPopular();
-            $my = $this->forumModel->getCurrent($_SESSION['id']);
+            // $category = $this->forumModel->getCategory();
+            // $all = $this->forumModel->categoryCounter();
+            // $posts = $this->forumModel->getPosts();
+            // $reply = $this->forumModel->getPostsReplies();
+            // $pop = $this->forumModel->getPopular();
+            // $my = $this->forumModel->getCurrent($_SESSION['id']);
 
+            
 
-            $data = [
-                'post' => $posts,
-                'reply' => $reply,
-                'popular' => $pop,
-                'user_posts' => $my,
-                'category' => $category,
-                'all' => $all,
-            ];
+            // $data = [
+            //     'post' => $posts,
+            //     'reply' => $reply,
+            //     'popular' => $pop,
+            //     'user_posts' => $my,
+            //     'category' => $category,
+            //     'all' => $all,
+            // ];
 
-            $this->view('forum/index',$data);
+            // $this->view('forum/index',$data);
         }
 
         
