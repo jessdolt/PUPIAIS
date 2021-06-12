@@ -9,7 +9,7 @@
             //$this->forumModel = $this->model('forum_model'); 
             // $this->userModel = $this->model('user');
             // $this->alumniModel = $this->model('alumni_model');
-            $this->newModelqwezxc = $this->model('Vote_model'); 
+            $this->newModelqwezxc = $this->model('new_vote'); 
         }
 
         public function index(){
