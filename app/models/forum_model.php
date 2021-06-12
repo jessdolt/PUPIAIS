@@ -55,7 +55,7 @@
             count(comment_id) as comment
             FROM topic
             INNER JOIN users 
-            ON topic.topic_author = users.user_id
+            ON topic.topic_author = users.user_id 
             INNER JOIN category
             ON topic.category = category.category_id
             LEFT JOIN comment
