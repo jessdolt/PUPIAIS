@@ -6,7 +6,7 @@
                 redirect('users/login');
             }
 
-            $this->forusm = $this->model('new_forum'); 
+            $this->forumModel = $this->model('new_forum'); 
             $this->userModel = $this->model('user');
             $this->alumniModel = $this->model('alumni_model');
             $this->voteModel = $this->model('new_vote'); 
@@ -14,25 +14,25 @@
 
         public function index(){
             //Get Posts
-            // $category = $this->forumModel->getCategory();
-            // $all = $this->forumModel->categoryCounter();
-            // $posts = $this->forumModel->getPosts();
-            // $reply = $this->forumModel->getPostsReplies();
-            // $pop = $this->forumModel->getPopular();
-            // $my = $this->forumModel->getCurrent($_SESSION['id']);
-            // $this->voteeeeeeeee = $this->model('vote_model'); 
+            $category = $this->forumModel->getCategory();
+            $all = $this->forumModel->categoryCounter();
+            $posts = $this->forumModel->getPosts();
+            $reply = $this->forumModel->getPostsReplies();
+            $pop = $this->forumModel->getPopular();
+            $my = $this->forumModel->getCurrent($_SESSION['id']);
+            $this->voteeeeeeeee = $this->model('vote_model'); 
 
            
-            // $data = [
-            //     'post' => $posts,
-            //     'reply' => $reply,
-            //     'popular' => $pop,
-            //     'user_posts' => $my,
-            //     'category' => $category,
-            //     'all' => $all,
-            // ];
+            $data = [
+                'post' => $posts,
+                'reply' => $reply,
+                'popular' => $pop,
+                'user_posts' => $my,
+                'category' => $category,
+                'all' => $all,
+            ];
 
-            // $this->view('forum/index',$data);
+            $this->view('forum/index',$data);
         }
 
         
