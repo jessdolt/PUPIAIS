@@ -123,6 +123,14 @@ class Pages extends Controller{
          $this->view('pages/home', $data);
     }
 
+    public function gallery() {
+        $data = [
+
+        ];
+
+        $this->view('pages/gallery', $data);
+    }
+
     public function news() {
         $this->postModel = $this->model('post');
         $news = $this->postModel->showNewsList();

@@ -1,10 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap");
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden !important; }
+
 /* @at-root (without: media) {
     @extend %foo;
 } */
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;1,800&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -33,9 +38,12 @@ html {
 body {
   margin: 0; }
 
-html, body {
-  height: 100%;
-  width: 100%; }
+html {
+  height: 100%; }
+
+body {
+  min-height: 100vh;
+  position: relative; }
 
 /**
    * Render the `main` element consistently in IE.
@@ -322,7 +330,7 @@ template {
 
 html {
   font-size: 62.5%;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Open Sans', sans-serif; }
 
 h1, h2, h3, h4, h5, h6,
 p, a, span, li, dl,
@@ -335,15 +343,15 @@ thead, tbody, tfoot, th, pre, div {
 select {
   text-indent: -2px; }
 
-button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .pagination a, .managePage .btn-con > a, .managePage ul.btn-con .list-item, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .allUser, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"] {
-  font-weight: 500;
+button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .accountNameContainer a, .adminNav .mainCategoryList .categoryContainer, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .pagination a, .managePage .btn-con > a, .managePage ul.btn-con .list-item, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .allUser, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"], .mainContent.reportView .btnGroupContainer a {
+  font-weight: 600;
   text-transform: uppercase; }
-  button span, button a, .adminHeader a span, .mainNav button.active ~ .userContainer a:last-child span, .mainNav > a span, .adminNav .mainCategoryList .categoryContainer span, .alumni > section.behind ~ .mainContent > .container .form button span, .alumni > section.behind ~ .mainContent > .container .form a span, .alumni > section.mainContent .newsCon > a span, .alumni > section.mainContent .eventsCon > a span, .alumni > section.mainContent .jobCon > a span, .userSurvey ~ .alumni .mainContent .container .form button span, .userSurvey ~ .alumni .mainContent .container .form a span, .admin .pageSpecificHeader > div:first-child button span, .admin .pageSpecificHeader > div:first-child a span, .admin .mainContent .pagination a span, .managePage .btn-con > a span, .managePage ul.btn-con .list-item span, button span, .alertModalContainer .alertModal div a span, .users .filterNav .btnContainer .manageUsers span, .users .filterNav .allUser span, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"] span, .adminHeader a a, .mainNav button.active ~ .userContainer a:last-child a, .mainNav > a a, .adminNav .mainCategoryList .categoryContainer a, .alumni > section.behind ~ .mainContent > .container .form button a, .alumni > section.behind ~ .mainContent > .container .form a a, .alumni > section.mainContent .newsCon > a a, .alumni > section.mainContent .eventsCon > a a, .alumni > section.mainContent .jobCon > a a, .userSurvey ~ .alumni .mainContent .container .form button a, .userSurvey ~ .alumni .mainContent .container .form a a, .admin .pageSpecificHeader > div:first-child button a, .admin .pageSpecificHeader > div:first-child a a, .admin .mainContent .pagination a a, .managePage .btn-con > a a, .managePage ul.btn-con .list-item a, button a, .alertModalContainer .alertModal div a a, .users .filterNav .btnContainer .manageUsers a, .users .filterNav .allUser a, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"] a {
-    font-weight: 500; }
+  button span, button a, .adminHeader a span, .mainNav button.active ~ .userContainer a:last-child span, .mainNav > a span, .adminNav .accountNameContainer a span, .adminNav .mainCategoryList .categoryContainer span, .alumni > section.behind ~ .mainContent > .container .form button span, .alumni > section.behind ~ .mainContent > .container .form a span, .alumni > section.mainContent .newsCon > a span, .alumni > section.mainContent .eventsCon > a span, .alumni > section.mainContent .jobCon > a span, .userSurvey ~ .alumni .mainContent .container .form button span, .userSurvey ~ .alumni .mainContent .container .form a span, .admin .pageSpecificHeader > div:first-child button span, .admin .pageSpecificHeader > div:first-child a span, .admin .mainContent .pagination a span, .managePage .btn-con > a span, .managePage ul.btn-con .list-item span, button span, .alertModalContainer .alertModal div a span, .users .filterNav .btnContainer .manageUsers span, .users .filterNav .allUser span, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"] span, .mainContent.reportView .btnGroupContainer a span, .adminHeader a a, .mainNav button.active ~ .userContainer a:last-child a, .mainNav > a a, .adminNav .accountNameContainer a a, .adminNav .mainCategoryList .categoryContainer a, .alumni > section.behind ~ .mainContent > .container .form button a, .alumni > section.behind ~ .mainContent > .container .form a a, .alumni > section.mainContent .newsCon > a a, .alumni > section.mainContent .eventsCon > a a, .alumni > section.mainContent .jobCon > a a, .userSurvey ~ .alumni .mainContent .container .form button a, .userSurvey ~ .alumni .mainContent .container .form a a, .admin .pageSpecificHeader > div:first-child button a, .admin .pageSpecificHeader > div:first-child a a, .admin .mainContent .pagination a a, .managePage .btn-con > a a, .managePage ul.btn-con .list-item a, button a, .alertModalContainer .alertModal div a a, .users .filterNav .btnContainer .manageUsers a, .users .filterNav .allUser a, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"] a, .mainContent.reportView .btnGroupContainer a a {
+    font-weight: 600; }
 
-input, a, p, span, button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .pagination a, .managePage .btn-con > a, .managePage ul.btn-con .list-item, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .allUser, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"], textarea, select, option, pre, div {
+input, a, p, span, button, .adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .accountNameContainer a, .adminNav .mainCategoryList .categoryContainer, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .pagination a, .managePage .btn-con > a, .managePage ul.btn-con .list-item, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .allUser, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"], .mainContent.reportView .btnGroupContainer a, textarea, select, option, pre, div {
   font-size: 1.4rem;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Open Sans', sans-serif; }
 
 header h1 {
   font-family: 'Cinzel', serif;
@@ -376,6 +384,14 @@ table tbody {
 .mainNav h1 {
   font-size: 1.4rem; }
 
+.accountNameContainer h3 {
+  text-transform: capitalize;
+  font-weight: 600;
+  text-align: center; }
+
+.accountNameContainer a {
+  text-transform: capitalize !important; }
+
 .welcomeBox h2 {
   font-size: 1.8rem; }
   @media (min-width: 800px) {
@@ -384,7 +400,7 @@ table tbody {
 
 .card h3 {
   font-size: 1.4rem;
-  font-weight: 500; }
+  font-weight: 600; }
   @media (min-width: 800px) {
     .card h3 {
       font-size: 2.4rem;
@@ -393,19 +409,19 @@ table tbody {
 @media (min-width: 800px) {
   .card.jobs h3 {
     font-size: 1.4rem;
-    font-weight: 500; } }
+    font-weight: 600; } }
 
 .card .date-posted, .card .date-updated, .card .availablePos {
   font-size: 1.2rem;
   color: rgba(0, 0, 0, 0.6); }
 
 .card a {
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Cinzel', serif;
   font-weight: 500; }
 
 .mainContent .container h1 {
   font-size: 1.8rem;
-  font-weight: 500; }
+  font-weight: 600; }
   @media (min-width: 800px) {
     .mainContent .container h1 {
       font-size: 3.6rem; } }
@@ -428,7 +444,7 @@ table tbody {
 
 .editProfile h3 {
   font-size: 1.4rem;
-  font-weight: 500; }
+  font-weight: 600; }
   @media (min-width: 800px) {
     .editProfile h3 {
       font-size: 1.8rem; } }
@@ -440,8 +456,9 @@ table tbody {
   font-size: 2.7rem; }
 
 .answerCon li {
-  font-size: 1.4rem;
-  font-weight: 500; }
+  font-size: 1.4rem; }
+  .answerCon li .flex-con {
+    font-weight: 600; }
   .answerCon li span, .answerCon li p {
     font-size: inherit;
     font-weight: inherit; }
@@ -456,7 +473,7 @@ table tbody {
 .loginMain header .changePassHeader {
   color: #A63F3F;
   font-size: 2.4rem;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: capitalize; }
 
 .loginMain header span {
@@ -510,13 +527,17 @@ table tbody {
 .midot {
   font-size: 1.5rem; }
 
-.alumGallery h3 {
-  font-size: 1.8rem; }
+.alumGallery h3, .galCon h3 {
+  font-size: 1.4rem;
+  font-weight: 600; }
+  @media (min-width: 800px) {
+    .alumGallery h3, .galCon h3 {
+      font-size: 1.8rem; } }
 
 .fullscreen {
   width: 100%;
   height: 100%;
-  min-height: 100%;
+  min-height: inherit;
   max-height: 100%;
   overflow: hidden;
   display: flex;
@@ -744,7 +765,7 @@ table tbody {
       .mainNav button.active ~ .userContainer {
         display: flex; }
         .mainNav button.active ~ .userContainer a:last-child {
-          background-color: #FFFFFF;
+          background-color: #EEEEEE;
           color: rgba(0, 0, 0, 0.87);
           position: relative;
           min-height: 3rem !important; }
@@ -752,7 +773,7 @@ table tbody {
             position: absolute;
             left: 1.3rem; }
   .mainNav .userContainer {
-    background-color: #EEEEEE;
+    background-color: #FFFFFF;
     color: rgba(0, 0, 0, 0.87);
     position: absolute;
     top: 4.2rem;
@@ -774,7 +795,9 @@ table tbody {
         object-fit: cover;
         width: inherit;
         height: inherit;
-        border-radius: 100rem; }
+        border-radius: 100rem;
+        border: 2px solid #EEEEEE;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05); }
     .mainNav .userContainer p {
       padding-top: 1.6rem;
       text-align: center;
@@ -834,44 +857,47 @@ table tbody {
       gap: 4rem; } }
   .adminNav .accountNameContainer {
     display: none;
+    flex-flow: column;
     border-radius: 1rem;
     min-height: 10rem;
     align-self: stretch;
     background-color: #A63F3F;
     color: #FFFFFF;
+    background-image: url("../images/accNameBg.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     border-radius: 1rem;
     min-height: 10rem;
     align-self: stretch;
     align-items: center;
     gap: .8rem;
-    padding: 2rem 1.4rem 2rem 2rem; }
+    padding: 1.6rem; }
     @media (min-width: 1367px) {
       .adminNav .accountNameContainer {
         display: flex; } }
     .adminNav .accountNameContainer .imageContainer {
-      line-height: 0;
-      position: relative; }
-      .adminNav .accountNameContainer .imageContainer::after {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        content: '';
-        background-color: #15CC8A;
-        width: 1.5rem;
-        height: 1.5rem;
-        border: 3px #FFFFFF solid;
-        border-radius: 5rem; }
+      line-height: 0; }
       .adminNav .accountNameContainer .imageContainer img {
         border-radius: 5rem;
+        background-color: #FFFFFF;
+        border: 3px solid #FFFFFF;
         width: 6rem;
         height: 6rem;
         object-fit: cover; }
     .adminNav .accountNameContainer a {
-      margin-left: auto; }
+      background-color: #FFFFFF;
+      color: rgba(0, 0, 0, 0.87);
+      min-height: 2.2rem !important;
+      padding: 0 0.8rem !important;
+      border: 1px solid rgba(0, 0, 0, 0.38); }
       .adminNav .accountNameContainer a .icon {
-        fill: #FFFFFF;
-        width: 2.4rem;
-        height: 2.4rem; }
+        display: inline-flex;
+        fill: currentColor;
+        min-width: 2.1rem;
+        min-height: 2.1rem;
+        max-width: 2.1rem;
+        max-height: 2.1rem; }
   .adminNav .mainCategoryList {
     width: 100%;
     display: flex;
@@ -1109,7 +1135,7 @@ html {
       .alumni > section.heroBox .container {
         padding: 0.8rem 0; }
         .alumni > section.heroBox .container h1 {
-          font-family: 'Roboto Slab', serif;
+          font-family: 'Cinzel', serif;
           padding-left: 0.6rem;
           font-size: 2.4rem;
           line-height: 1.3;
@@ -1817,9 +1843,9 @@ html {
           margin-top: 2.4rem; } }
     .mainContent.adminForm .form:last-child .btnGroupContainer {
       margin-top: auto; }
-      .mainContent.adminForm .form:last-child .btnGroupContainer button {
+      .mainContent.adminForm .form:last-child .btnGroupContainer a, .mainContent.adminForm .form:last-child .btnGroupContainer button {
         position: relative; }
-        .mainContent.adminForm .form:last-child .btnGroupContainer button svg {
+        .mainContent.adminForm .form:last-child .btnGroupContainer a svg, .mainContent.adminForm .form:last-child .btnGroupContainer button svg {
           position: absolute;
           left: 1.3rem;
           top: 1.3rem;
@@ -1882,7 +1908,7 @@ html {
       padding-left: 4.8rem;
       padding-right: 4.8rem; }
       .managePage .card-con.specificPadding .header-con, .managePage .card-con.specificPadding form {
-        width: 51.2rem; }
+        width: 52.4rem; }
   .managePage .header-con {
     width: 44.8rem;
     text-align: center;
@@ -1950,29 +1976,30 @@ html {
   .managePage .table-form {
     border: 1px solid rgba(0, 0, 0, 0.38);
     border-radius: 1rem;
-    padding: 0.4rem 1.6rem;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF; }
-    .managePage .table-form::-webkit-scrollbar {
-      width: 0.5rem; }
-    .managePage .table-form::-webkit-scrollbar-track {
-      background-color: #FFFFFF; }
-    .managePage .table-form::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.38);
-      border-radius: 5rem; }
+    padding: 1.2rem 0em 1.2rem 1.6rem; }
   .managePage table {
     display: block;
     max-width: 100%;
-    height: 20.8rem; }
+    height: 30rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 1.6rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF; }
+    .managePage table::-webkit-scrollbar {
+      width: 0.5rem; }
+    .managePage table::-webkit-scrollbar-track {
+      background-color: #FFFFFF; }
+    .managePage table::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.38);
+      border-radius: 5rem; }
     .managePage table tbody {
       display: inherit;
       max-width: inherit; }
     .managePage table tr {
       display: flex;
       align-items: center;
-      padding: 0.6rem;
+      padding: 0.6rem 0;
       border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
       .managePage table tr > * + * {
         margin-left: 1.6rem;
@@ -1981,10 +2008,18 @@ html {
       display: inline-block;
       position: relative; }
       .managePage table td:first-of-type {
-        max-width: 2.8rem;
-        max-height: 2.8rem;
-        width: 2.8em;
-        height: 2.8rem; }
+        max-width: 5.6rem;
+        max-height: 5.6rem;
+        min-width: 5.6rem;
+        min-height: 5.6rem;
+        position: relative; }
+        .managePage table td:first-of-type svg {
+          position: absolute;
+          bottom: -3px;
+          right: -5px; }
+          .managePage table td:first-of-type svg > path:first-child {
+            stroke: #EEEEEE;
+            stroke-width: 2px; }
       .managePage table td:nth-of-type(2), .managePage table td:nth-of-type(3) {
         min-width: 18rem; }
       .managePage table td:last-of-type {
@@ -2008,8 +2043,10 @@ html {
         overflow: hidden;
         text-overflow: ellipsis; }
       .managePage table td img {
-        min-width: 2.8rem;
-        min-height: 2.8rem; }
+        min-width: 5.6rem;
+        min-height: 5.6rem;
+        border: 1px solid #EEEEEE;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05); }
   .managePage .image-con {
     position: relative;
     width: 12rem;
@@ -2258,7 +2295,7 @@ a:active {
 ul {
   list-style: none; }
 
-.adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .mainCategoryList .categoryContainer, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .pagination a, .managePage .btn-con > a, .managePage ul.btn-con .list-item, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .allUser, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"] {
+.adminHeader a, .mainNav button.active ~ .userContainer a:last-child, .mainNav > a, .adminNav .accountNameContainer a, .adminNav .mainCategoryList .categoryContainer, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .pagination a, .managePage .btn-con > a, .managePage ul.btn-con .list-item, button, .alertModalContainer .alertModal div a, .users .filterNav .btnContainer .manageUsers, .users .filterNav .allUser, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"], .mainContent.reportView .btnGroupContainer a {
   min-height: 4.4rem;
   min-width: 6.4rem;
   display: flex;
@@ -2269,10 +2306,10 @@ ul {
   transition: 200ms ease;
   cursor: pointer;
   border-radius: 2.5rem; }
-  .adminHeader a:focus, .mainNav button.active ~ .userContainer a:focus:last-child, .mainNav > a:focus, .adminNav .mainCategoryList .categoryContainer:focus, .alumni > section.behind ~ .mainContent > .container .form button:focus, .alumni > section.behind ~ .mainContent > .container .form a:focus, .alumni > section.mainContent .newsCon > a:focus, .alumni > section.mainContent .eventsCon > a:focus, .alumni > section.mainContent .jobCon > a:focus, .userSurvey ~ .alumni .mainContent .container .form button:focus, .userSurvey ~ .alumni .mainContent .container .form a:focus, .admin .pageSpecificHeader > div:first-child button:focus, .admin .pageSpecificHeader > div:first-child a:focus, .admin .mainContent .pagination a:focus, .managePage .btn-con > a:focus, .managePage ul.btn-con .list-item:focus, button:focus, .alertModalContainer .alertModal div a:focus, .users .filterNav .btnContainer .manageUsers:focus, .users .filterNav .allUser:focus, .alumGallery.adminForm .form:nth-of-type(2) :focus[for="upload-photo"], .adminHeader a:hover, .mainNav button.active ~ .userContainer a:hover:last-child, .mainNav > a:hover, .adminNav .mainCategoryList .categoryContainer:hover, .alumni > section.behind ~ .mainContent > .container .form button:hover, .alumni > section.behind ~ .mainContent > .container .form a:hover, .alumni > section.mainContent .newsCon > a:hover, .alumni > section.mainContent .eventsCon > a:hover, .alumni > section.mainContent .jobCon > a:hover, .userSurvey ~ .alumni .mainContent .container .form button:hover, .userSurvey ~ .alumni .mainContent .container .form a:hover, .admin .pageSpecificHeader > div:first-child button:hover, .admin .pageSpecificHeader > div:first-child a:hover, .admin .mainContent .pagination a:hover, .managePage .btn-con > a:hover, .managePage ul.btn-con .list-item:hover, button:hover, .alertModalContainer .alertModal div a:hover, .users .filterNav .btnContainer .manageUsers:hover, .users .filterNav .allUser:hover, .alumGallery.adminForm .form:nth-of-type(2) :hover[for="upload-photo"] {
+  .adminHeader a:focus, .mainNav button.active ~ .userContainer a:focus:last-child, .mainNav > a:focus, .adminNav .accountNameContainer a:focus, .adminNav .mainCategoryList .categoryContainer:focus, .alumni > section.behind ~ .mainContent > .container .form button:focus, .alumni > section.behind ~ .mainContent > .container .form a:focus, .alumni > section.mainContent .newsCon > a:focus, .alumni > section.mainContent .eventsCon > a:focus, .alumni > section.mainContent .jobCon > a:focus, .userSurvey ~ .alumni .mainContent .container .form button:focus, .userSurvey ~ .alumni .mainContent .container .form a:focus, .admin .pageSpecificHeader > div:first-child button:focus, .admin .pageSpecificHeader > div:first-child a:focus, .admin .mainContent .pagination a:focus, .managePage .btn-con > a:focus, .managePage ul.btn-con .list-item:focus, button:focus, .alertModalContainer .alertModal div a:focus, .users .filterNav .btnContainer .manageUsers:focus, .users .filterNav .allUser:focus, .alumGallery.adminForm .form:nth-of-type(2) :focus[for="upload-photo"], .mainContent.reportView .btnGroupContainer a:focus, .adminHeader a:hover, .mainNav button.active ~ .userContainer a:hover:last-child, .mainNav > a:hover, .adminNav .accountNameContainer a:hover, .adminNav .mainCategoryList .categoryContainer:hover, .alumni > section.behind ~ .mainContent > .container .form button:hover, .alumni > section.behind ~ .mainContent > .container .form a:hover, .alumni > section.mainContent .newsCon > a:hover, .alumni > section.mainContent .eventsCon > a:hover, .alumni > section.mainContent .jobCon > a:hover, .userSurvey ~ .alumni .mainContent .container .form button:hover, .userSurvey ~ .alumni .mainContent .container .form a:hover, .admin .pageSpecificHeader > div:first-child button:hover, .admin .pageSpecificHeader > div:first-child a:hover, .admin .mainContent .pagination a:hover, .managePage .btn-con > a:hover, .managePage ul.btn-con .list-item:hover, button:hover, .alertModalContainer .alertModal div a:hover, .users .filterNav .btnContainer .manageUsers:hover, .users .filterNav .allUser:hover, .alumGallery.adminForm .form:nth-of-type(2) :hover[for="upload-photo"], .mainContent.reportView .btnGroupContainer a:hover {
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
     outline: 0; }
-  .adminHeader a:active, .mainNav button.active ~ .userContainer a:active:last-child, .mainNav > a:active, .adminNav .mainCategoryList .categoryContainer:active, .alumni > section.behind ~ .mainContent > .container .form button:active, .alumni > section.behind ~ .mainContent > .container .form a:active, .alumni > section.mainContent .newsCon > a:active, .alumni > section.mainContent .eventsCon > a:active, .alumni > section.mainContent .jobCon > a:active, .userSurvey ~ .alumni .mainContent .container .form button:active, .userSurvey ~ .alumni .mainContent .container .form a:active, .admin .pageSpecificHeader > div:first-child button:active, .admin .pageSpecificHeader > div:first-child a:active, .admin .mainContent .pagination a:active, .managePage .btn-con > a:active, .managePage ul.btn-con .list-item:active, button:active, .alertModalContainer .alertModal div a:active, .users .filterNav .btnContainer .manageUsers:active, .users .filterNav .allUser:active, .alumGallery.adminForm .form:nth-of-type(2) :active[for="upload-photo"] {
+  .adminHeader a:active, .mainNav button.active ~ .userContainer a:active:last-child, .mainNav > a:active, .adminNav .accountNameContainer a:active, .adminNav .mainCategoryList .categoryContainer:active, .alumni > section.behind ~ .mainContent > .container .form button:active, .alumni > section.behind ~ .mainContent > .container .form a:active, .alumni > section.mainContent .newsCon > a:active, .alumni > section.mainContent .eventsCon > a:active, .alumni > section.mainContent .jobCon > a:active, .userSurvey ~ .alumni .mainContent .container .form button:active, .userSurvey ~ .alumni .mainContent .container .form a:active, .admin .pageSpecificHeader > div:first-child button:active, .admin .pageSpecificHeader > div:first-child a:active, .admin .mainContent .pagination a:active, .managePage .btn-con > a:active, .managePage ul.btn-con .list-item:active, button:active, .alertModalContainer .alertModal div a:active, .users .filterNav .btnContainer .manageUsers:active, .users .filterNav .allUser:active, .alumGallery.adminForm .form:nth-of-type(2) :active[for="upload-photo"], .mainContent.reportView .btnGroupContainer a:active {
     filter: opacity(0.88); }
 
 .adminNav .mainCategoryList .categoryContainer, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="number"], .managePage ul.btn-con .list-item, .jobPortal .mainContent .data-table .status.open, .mainHeader ~ .editProfile .mainContent input[type="number"] {
@@ -2280,7 +2317,7 @@ ul {
   border-style: solid;
   border-radius: 0.5rem; }
 
-.mainNav button, .mainNav > a, .adminNav .mainCategoryList .open .categoryContainer, .adminNav button, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .data-table .option .optionModal button, .admin .mainContent .pagination a, .admin .mainContent .pagination button, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]:checked::before, .mainContent.adminForm .form:last-child .btnGroupContainer button, .managePage .btn-con > button, .managePage .btn-con > a, .option .optionModal button, .modalContainer .modalPreview .pagination .btnContainer button, .alertModalContainer .alertModal div button, .addModalContainer .addModal .btn-opt-delete button, .addModalContainer .addModal .btnContainer button, .modalFilterNav .btnContainer button, .modalFilterNav .btnContainer a, .loginMain form button, .users .filterNav button, .users .filterNav a, .jobPortal .mainContent .data-table .status.closed, .jobPortal .mainContent .data-table .workType, .alumGallery.adminForm .album-list .option button, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"], .forum > section.mainContent .newDis button, .forum > section.mainContent .catCon a, .forum > section.mainContent .catCon button, .forum > section.mainContent .popCon a, .forum > section.mainContent .popCon button, .forum > section.mainContent .myDisCon a, .forum > section.mainContent .myDisCon button, .forum > section.forumView .optionCon > .optionModal button, .forum > section.forumView .vote-con button, .forum > section.forumView .comment-main-con .comment-con > button, .forum > section.forumView .comment-main-con .comment-list .btn-con2 button, .mainContent.questionnaire .form:first-child h2 > button, .mainHeader ~ .editProfile .mainContent input[type="radio"]:checked::before {
+.mainNav button, .mainNav > a, .adminNav .mainCategoryList .open .categoryContainer, .adminNav button, .alumni > section.behind ~ .mainContent > .container .form button, .alumni > section.behind ~ .mainContent > .container .form a, .alumni > section.mainContent .newsCon > a, .alumni > section.mainContent .eventsCon > a, .alumni > section.mainContent .jobCon > a, .userSurvey ~ .alumni .mainContent .container .form button, .userSurvey ~ .alumni .mainContent .container .form a, .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a, .admin .mainContent .data-table .option .optionModal button, .admin .mainContent .pagination a, .admin .mainContent .pagination button, .mainContent.adminForm .form:first-child .smallComponentsContainer input[type="radio"]:checked::before, .mainContent.adminForm .form:last-child .btnGroupContainer a, .mainContent.adminForm .form:last-child .btnGroupContainer button, .managePage .btn-con > button, .managePage .btn-con > a, .option .optionModal button, .modalContainer .modalPreview .pagination .btnContainer button, .alertModalContainer .alertModal div button, .addModalContainer .addModal .btn-opt-delete button, .addModalContainer .addModal .btnContainer button, .modalFilterNav .btnContainer button, .modalFilterNav .btnContainer a, .loginMain form button, .users .filterNav button, .users .filterNav a, .jobPortal .mainContent .data-table .status.closed, .jobPortal .mainContent .data-table .workType, .alumGallery.adminForm .album-list .option button, .alumGallery.adminForm .form:nth-of-type(2) [for="upload-photo"], .forum > section.mainContent .newDis button, .forum > section.mainContent .catCon a, .forum > section.mainContent .catCon button, .forum > section.mainContent .popCon a, .forum > section.mainContent .popCon button, .forum > section.mainContent .myDisCon a, .forum > section.mainContent .myDisCon button, .forum > section.forumView .optionCon > .optionModal button, .forum > section.forumView .vote-con button, .forum > section.forumView .comment-main-con .comment-con > button, .forum > section.forumView .comment-main-con .comment-list .btn-con2 button, .mainContent.questionnaire .form:first-child h2 > button, .mainContent.reportView .btnGroupContainer a, .mainContent.reportView .btnGroupContainer button, .mainHeader ~ .editProfile .mainContent input[type="radio"]:checked::before {
   border: 1px solid transparent; }
 
 .icon {
@@ -2354,19 +2391,26 @@ ul {
         width: 1.8rem;
         height: 2rem; }
 
-.modalContainer, .addModalContainer, .modalConFilterNav, .changeModalContainer {
+.modalContainer,
+.addModalContainer,
+.modalConFilterNav,
+.changeModalContainer,
+.imageViewModal {
   display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100vw;
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.38);
   z-index: 25;
   align-items: center;
   justify-content: center; }
-  .modalContainer.show, .addModalContainer.show, .modalConFilterNav.show, .changeModalContainer.show {
+  .modalContainer.show,
+  .addModalContainer.show,
+  .modalConFilterNav.show,
+  .changeModalContainer.show,
+  .imageViewModal.show {
     display: flex; }
 
 .modalContainer .hidden-form {
@@ -2860,6 +2904,88 @@ ul {
     .changeModalContainer .changeCoverModal img:hover {
       transform: scale(1.1);
       filter: brightness(1.2); }
+
+.imageViewModal {
+  transition: 200ms ease;
+  backdrop-filter: blur(5px);
+  flex-flow: column; }
+  .imageViewModal * {
+    transition: 200ms ease; }
+  .imageViewModal svg {
+    min-width: 4em;
+    cursor: pointer;
+    position: absolute;
+    min-height: 4rem;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 2; }
+    @media (min-width: 800px) {
+      .imageViewModal svg {
+        min-width: 6rem;
+        min-height: 6rem; } }
+    .imageViewModal svg:focus, .imageViewModal svg:hover {
+      filter: brightness(1.2);
+      transform: scale(0.9); }
+    .imageViewModal svg:first-of-type {
+      background-image: url("../images/close-btn.svg");
+      top: 2.4rem;
+      right: 2.4rem; }
+    .imageViewModal svg:nth-of-type(2), .imageViewModal svg:nth-of-type(3) {
+      background-image: url("../images/arrow-next.svg");
+      top: 50%;
+      transform: translateY(-50%); }
+      .imageViewModal svg:nth-of-type(2):focus, .imageViewModal svg:nth-of-type(2):hover, .imageViewModal svg:nth-of-type(3):focus, .imageViewModal svg:nth-of-type(3):hover {
+        transform: translateY(-50%) scale(0.9); }
+    .imageViewModal svg:nth-of-type(2) {
+      transform: translateY(-50%) rotate(180deg);
+      left: 0.8rem; }
+      .imageViewModal svg:nth-of-type(2):focus, .imageViewModal svg:nth-of-type(2):hover {
+        transform: translateY(-50%) scale(0.9) rotate(180deg); }
+      @media (min-width: 800px) {
+        .imageViewModal svg:nth-of-type(2) {
+          left: 2.4rem; } }
+    .imageViewModal svg:nth-of-type(3) {
+      right: 0.8rem; }
+      @media (min-width: 800px) {
+        .imageViewModal svg:nth-of-type(3) {
+          right: 2.4rem; } }
+  .imageViewModal .imageViewCon {
+    flex: 1;
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    border-radius: 1rem;
+    display: none;
+    overflow-x: hidden; }
+    @media (min-width: 800px) {
+      .imageViewModal .imageViewCon {
+        left: 10rem;
+        right: 10rem; } }
+    @media (min-width: 1367px) {
+      .imageViewModal .imageViewCon {
+        left: 16rem;
+        right: 16rem; } }
+    .imageViewModal .imageViewCon.show {
+      display: flex; }
+    .imageViewModal .imageViewCon .imgCon {
+      position: relative;
+      padding-top: 56.25%;
+      min-width: 100%;
+      height: 100%; }
+    .imageViewModal .imageViewCon img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
 
 .card {
   background-color: #EEEEEE;
@@ -3862,6 +3988,166 @@ ul {
           border-right: 1px solid #B00020 !important;
           box-shadow: none; }
 
+.gallery .mainContent {
+  padding: 0 0 4.8rem !important; }
+
+.gallery .galcon, .gallery .mainContent .container {
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
+  background-color: #FFFFFF;
+  color: rgba(0, 0, 0, 0.87); }
+
+.gallery .galCon {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
+  column-gap: 2.4rem;
+  row-gap: 3.2rem; }
+  @media (min-width: 800px) {
+    .gallery .galCon {
+      grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr)); } }
+  .gallery .galCon a > * + * {
+    margin-top: 0.8rem; }
+
+.gallery a {
+  text-align: start;
+  color: currentColor; }
+
+.gallery .image-container {
+  position: relative;
+  padding-top: 56.25%;
+  overflow: hidden; }
+  .gallery .image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    transition: 200ms ease; }
+    .gallery .image-container img:focus, .gallery .image-container img:hover {
+      transform: scale(1.025);
+      filter: brightness(1.2); }
+
+.gallery img {
+  object-fit: cover; }
+
+.gallery .pagination {
+  grid-column: 3;
+  margin-top: 1.6rem;
+  padding-bottom: 4.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem; }
+  .gallery .pagination a {
+    width: 2.4rem;
+    height: 2.4rem; }
+  .gallery .pagination svg {
+    fill: currentColor;
+    width: inherit;
+    height: inherit; }
+
+.gallery .mainContent.view {
+  padding: 2.4rem 0 4.8rem !important; }
+  .gallery .mainContent.view > a, .gallery .mainContent.view > .image-container, .gallery .mainContent.view .galCon {
+    grid-column: 1/5; }
+    @media (min-width: 800px) {
+      .gallery .mainContent.view > a, .gallery .mainContent.view > .image-container, .gallery .mainContent.view .galCon {
+        grid-column: 2/12;
+        margin-left: 1.6rem;
+        margin-right: 1.6rem; } }
+  .gallery .mainContent.view > a {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    padding-left: 2.4rem;
+    padding-right: 2.4rem; }
+  .gallery .mainContent.view > .image-container {
+    margin-top: 2.4rem;
+    margin-left: 2.4rem;
+    margin-right: 2.4rem;
+    padding-top: 0;
+    min-height: 46rem; }
+    @media (min-width: 800px) {
+      .gallery .mainContent.view > .image-container {
+        margin-left: 4rem;
+        margin-right: 4rem;
+        padding-top: 42.85%;
+        min-height: 0; } }
+    .gallery .mainContent.view > .image-container .album-cover-title {
+      background-color: rgba(0, 0, 0, 0.38);
+      color: #FFFFFF;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 2.4rem; }
+      @media (min-width: 800px) {
+        .gallery .mainContent.view > .image-container .album-cover-title {
+          padding: 0 6.4rem; } }
+      @media (min-width: 1367px) {
+        .gallery .mainContent.view > .image-container .album-cover-title {
+          padding: 0 11.2rem; } }
+      .gallery .mainContent.view > .image-container .album-cover-title h1 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        font-size: 2.4rem;
+        font-family: 'Merriweather', serif; }
+        @media (min-width: 800px) {
+          .gallery .mainContent.view > .image-container .album-cover-title h1 {
+            font-size: 4.8rem; } }
+  .gallery .mainContent.view .galCon {
+    padding-top: 0.8rem;
+    background-color: transparent;
+    color: #FFFFFF;
+    column-gap: 0.8rem;
+    row-gap: 0.8rem; }
+    @media (min-width: 800px) {
+      .gallery .mainContent.view .galCon {
+        grid-template-columns: repeat(auto-fill, minmax(60rem, 1fr)); } }
+    .gallery .mainContent.view .galCon li {
+      position: relative;
+      cursor: pointer; }
+      .gallery .mainContent.view .galCon li:nth-child(5) {
+        grid-column: 1/-1; }
+      .gallery .mainContent.view .galCon li:focus .filter, .gallery .mainContent.view .galCon li:hover .filter {
+        visibility: visible;
+        max-height: 100%; }
+      .gallery .mainContent.view .galCon li .filter {
+        transition-duration: 600ms, 250ms;
+        transition-property: max-height,visibility;
+        transition-timing-function: ease, ease-in-out;
+        transition-delay: 0, 100ms;
+        bottom: 0;
+        max-height: 0;
+        margin-top: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        visibility: hidden;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.40098) 0%, rgba(255, 255, 255, 0) 100%); }
+      .gallery .mainContent.view .galCon li h3 {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: flex-end;
+        padding: 2.4rem; }
+      .gallery .mainContent.view .galCon li img:focus, .gallery .mainContent.view .galCon li img:hover {
+        transform: none;
+        filter: brightness(1); }
+
 .forum > section.heroBox .container {
   display: flex;
   align-items: center;
@@ -4411,6 +4697,19 @@ select, input, textarea {
     border-bottom: 1px solid rgba(0, 0, 0, 0.38); }
   .mainContent.questionnaire.adminForm .form:last-child .dateInfo {
     margin-top: 0; }
+
+.mainContent.reportView .btnGroupContainer {
+  margin-left: auto;
+  flex-flow: row; }
+  .mainContent.reportView .btnGroupContainer a, .mainContent.reportView .btnGroupContainer button {
+    background-color: #EEEEEE;
+    color: rgba(0, 0, 0, 0.87);
+    position: relative; }
+    .mainContent.reportView .btnGroupContainer a svg, .mainContent.reportView .btnGroupContainer button svg {
+      left: 1.3rem;
+      top: 1.3rem;
+      width: 1.8rem;
+      height: 1.8rem; }
 
 .mainContent.reportView textarea {
   background-color: #EEEEEE;
