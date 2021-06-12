@@ -9,7 +9,7 @@
             //$this->forumModel = $this->model('forum_model'); 
             // $this->userModel = $this->model('user');
             // $this->alumniModel = $this->model('alumni_model');
-            
+            $this->newModel = $this->model('vote_model'); 
         }
 
         public function index(){
@@ -20,7 +20,7 @@
             // $reply = $this->forumModel->getPostsReplies();
             // $pop = $this->forumModel->getPopular();
             // $my = $this->forumModel->getCurrent($_SESSION['id']);
-            $this->voteeeeeeeee = $this->model('vote_model'); 
+            // $this->voteeeeeeeee = $this->model('vote_model'); 
 
 
             // $data = [

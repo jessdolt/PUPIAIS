@@ -1,5 +1,4 @@
 <?php 
-
     
     class Vote_model{
         private $db;
