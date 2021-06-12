@@ -9,7 +9,7 @@
             //$this->forumModel = $this->model('forum_model'); 
             // $this->userModel = $this->model('user');
             // $this->alumniModel = $this->model('alumni_model');
-            $this->qwe = $this->model('vote_model'); 
+            $this->voteModel = $this->model('vote_model'); 
         }
 
         public function index(){
@@ -36,266 +36,266 @@
         }
 
         
-        public function showFiltered($id){
-            $category = $this->forumModel->getCategory();
-            $all = $this->forumModel->categoryCounter();
-            $posts = $this->forumModel->getPostByCategory($id); 
-            $pop = $this->forumModel->getPopular();
-            $my = $this->forumModel->getCurrent($_SESSION['id']);
+        // public function showFiltered($id){
+        //     $category = $this->forumModel->getCategory();
+        //     $all = $this->forumModel->categoryCounter();
+        //     $posts = $this->forumModel->getPostByCategory($id); 
+        //     $pop = $this->forumModel->getPopular();
+        //     $my = $this->forumModel->getCurrent($_SESSION['id']);
 
-            $data = [
-                'posts' => $posts,
-                'popular' => $pop,
-                'user_posts' => $my,
-                'category' => $category,
-                'all' => $all,
-            ];
+        //     $data = [
+        //         'posts' => $posts,
+        //         'popular' => $pop,
+        //         'user_posts' => $my,
+        //         'category' => $category,
+        //         'all' => $all,
+        //     ];
 
-            $this->view('forum/index',$data);
-        }
+        //     $this->view('forum/index',$data);
+        // }
 
-        public function show($id){
-            $post = $this->forumModel->getPostById($id);
-            $comment = $this->forumModel->getComments();
-            $reply = $this->forumModel->getReply();
-            $user = $this->userModel->getUserByID($post->topic_author);
-            $alumni = $this->alumniModel->getAlumniByID($user->a_id);
-            $current = $this->alumniModel->getAlumniByID($_SESSION['alumni_id']);
-            $commentCounter = $this->forumModel->commentCounter($id);
-            $replyCounter = $this->forumModel->replyCounter($id);
-            $pop = $this->forumModel->getPopular();
+        // public function show($id){
+        //     $post = $this->forumModel->getPostById($id);
+        //     $comment = $this->forumModel->getComments();
+        //     $reply = $this->forumModel->getReply();
+        //     $user = $this->userModel->getUserByID($post->topic_author);
+        //     $alumni = $this->alumniModel->getAlumniByID($user->a_id);
+        //     $current = $this->alumniModel->getAlumniByID($_SESSION['alumni_id']);
+        //     $commentCounter = $this->forumModel->commentCounter($id);
+        //     $replyCounter = $this->forumModel->replyCounter($id);
+        //     $pop = $this->forumModel->getPopular();
             
-            $test = [
-                'topic_id' => $id,
-                'user_id'  => $_SESSION['id'],
-            ];
+        //     $test = [
+        //         'topic_id' => $id,
+        //         'user_id'  => $_SESSION['id'],
+        //     ];
 
-            $vote = $this->voteModel->getUserVote($test);
+        //     $vote = $this->voteModel->getUserVote($test);
 
-            $data = [
-                'post' => $post,
-                'user' => $user,
-                'comment' => $comment,
-                'reply' => $reply,
-                'alumni' => $alumni,
-                'current' => $current,
-                'popular' => $pop,
-                'vote' => $vote,
-                'comment-counter' => $commentCounter,
-                'reply-counter' => $replyCounter,
-            ];
+        //     $data = [
+        //         'post' => $post,
+        //         'user' => $user,
+        //         'comment' => $comment,
+        //         'reply' => $reply,
+        //         'alumni' => $alumni,
+        //         'current' => $current,
+        //         'popular' => $pop,
+        //         'vote' => $vote,
+        //         'comment-counter' => $commentCounter,
+        //         'reply-counter' => $replyCounter,
+        //     ];
             
             
-            $this->view('forum/view',$data);
-            $this->forumModel->viewCounter($data);
-        }
+        //     $this->view('forum/view',$data);
+        //     $this->forumModel->viewCounter($data);
+        // }
 
 
-        public function add(){
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+        // public function add(){
+        //     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        //         $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
 
-                $data = [
-                    'category' => trim($_POST['category']),
-                    'title' => trim($_POST['title']),
-                    'body' => trim($_POST['body']),
-                    'user_id' => $_SESSION['id'],
-                    'title_err' => '',
-                    'body_err' => ''
-                ];
+        //         $data = [
+        //             'category' => trim($_POST['category']),
+        //             'title' => trim($_POST['title']),
+        //             'body' => trim($_POST['body']),
+        //             'user_id' => $_SESSION['id'],
+        //             'title_err' => '',
+        //             'body_err' => ''
+        //         ];
 
 
-                if(empty($data['title'])){
-                    $data['title_err'] = 'Please enter title';
-                }
-                if(empty($data['body'])){
-                    $data['body_err'] = 'Please enter body text';
-                }
+        //         if(empty($data['title'])){
+        //             $data['title_err'] = 'Please enter title';
+        //         }
+        //         if(empty($data['body'])){
+        //             $data['body_err'] = 'Please enter body text';
+        //         }
 
-                if(empty($data['title_err']) && empty($data['body_err'])){
-                    // Validated
-                    if($this->forumModel->addPost($data)){
-                        redirect('forum/index');
-                    }
-                        else{
-                            die('Something went wrong');
-                    }
-                } 
-                else{
-                    // Load the view with errors
-                    $this->view('forum/add', $data);
-                }
+        //         if(empty($data['title_err']) && empty($data['body_err'])){
+        //             // Validated
+        //             if($this->forumModel->addPost($data)){
+        //                 redirect('forum/index');
+        //             }
+        //                 else{
+        //                     die('Something went wrong');
+        //             }
+        //         } 
+        //         else{
+        //             // Load the view with errors
+        //             $this->view('forum/add', $data);
+        //         }
 
-            } else{
-                $data = [
-                    'category' => '',
-                    'title' => '',
-                    'body' => '',
-                    'title_err' => '',
-                    'body_err' => ''
-                ];
-            }
+        //     } else{
+        //         $data = [
+        //             'category' => '',
+        //             'title' => '',
+        //             'body' => '',
+        //             'title_err' => '',
+        //             'body_err' => ''
+        //         ];
+        //     }
            
-            $this->view('forum/add',$data);
+        //     $this->view('forum/add',$data);
 
-        }
+        // }
         
-        public function comment($id){
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+        // public function comment($id){
+        //     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        //         $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
 
-                $data = [
-                    'comment_for' => $id,
-                    'comment' => trim($_POST['comment']),
-                    'comment_sender' => $_SESSION['id'],
-                ];
-
-
-                if($this->forumModel->addComment($data)){
-                    redirect('forum/show/' . $id);
-                }
-                else{
-                    die('something went wrong');
-                }
-            }
-            else {
-
-                $data = [
-                    'comment_for' => '',
-                    'comment' => '',
-                    'comment_sender' => $_SESSION['id'],
-                ];
-            }
-        }
-
-        public function reply($id,$topic){
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
-
-                $data = [
-                    'parent' => $id,
-                    'reply' => trim($_POST['reply']),
-                    'reply_for' => $topic,
-                    'reply_sender' => $_SESSION['id'],
-                ];
+        //         $data = [
+        //             'comment_for' => $id,
+        //             'comment' => trim($_POST['comment']),
+        //             'comment_sender' => $_SESSION['id'],
+        //         ];
 
 
-                if($this->forumModel->addReply($data)){
-                    redirect('forum/show/' . $topic);
-                }
-                else{
-                    die('something went wrong');
-                }
-            }
-            else {
+        //         if($this->forumModel->addComment($data)){
+        //             redirect('forum/show/' . $id);
+        //         }
+        //         else{
+        //             die('something went wrong');
+        //         }
+        //     }
+        //     else {
 
-                $data = [
-                    'parent' => $id[0],
-                    'reply' => '',
-                    'reply_sender' => $_SESSION['id'],
+        //         $data = [
+        //             'comment_for' => '',
+        //             'comment' => '',
+        //             'comment_sender' => $_SESSION['id'],
+        //         ];
+        //     }
+        // }
 
-                ];
-            }
-        }
-        public function edit($id){
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+        // public function reply($id,$topic){
+        //     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        //         $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
 
-                $data = [
-                    'title' => trim($_POST['title']),
-                    'body' => trim($_POST['body']),
-                    'user_id' => $_SESSION['id'],
-                    'id' => $id,
-                    'title_err' => '',
-                    'body_err' => ''
-                ];
+        //         $data = [
+        //             'parent' => $id,
+        //             'reply' => trim($_POST['reply']),
+        //             'reply_for' => $topic,
+        //             'reply_sender' => $_SESSION['id'],
+        //         ];
 
 
-                if(empty($data['title'])){
-                    $data['title_err'] = 'Please enter title';
-                }
-                if(empty($data['body'])){
-                    $data['body_err'] = 'Please enter body text';
-                }
+        //         if($this->forumModel->addReply($data)){
+        //             redirect('forum/show/' . $topic);
+        //         }
+        //         else{
+        //             die('something went wrong');
+        //         }
+        //     }
+        //     else {
 
-                if(empty($data['title_err']) && empty($data['body_err'])){
-                    // Validated
-                    if($this->forumModel->updatePost($data)){
+        //         $data = [
+        //             'parent' => $id[0],
+        //             'reply' => '',
+        //             'reply_sender' => $_SESSION['id'],
+
+        //         ];
+        //     }
+        // }
+        // public function edit($id){
+        //     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        //         $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+        //         $data = [
+        //             'title' => trim($_POST['title']),
+        //             'body' => trim($_POST['body']),
+        //             'user_id' => $_SESSION['id'],
+        //             'id' => $id,
+        //             'title_err' => '',
+        //             'body_err' => ''
+        //         ];
+
+
+        //         if(empty($data['title'])){
+        //             $data['title_err'] = 'Please enter title';
+        //         }
+        //         if(empty($data['body'])){
+        //             $data['body_err'] = 'Please enter body text';
+        //         }
+
+        //         if(empty($data['title_err']) && empty($data['body_err'])){
+        //             // Validated
+        //             if($this->forumModel->updatePost($data)){
                         
-                        redirect('forum/show/' .$id);
-                    }else{
-                        die('Something went wrong');
-                    }
-                } else{
-                    // Load the view with errors
+        //                 redirect('forum/show/' .$id);
+        //             }else{
+        //                 die('Something went wrong');
+        //             }
+        //         } else{
+        //             // Load the view with errors
                 
-                    $this->view('forum/edit', $data);
-                }
+        //             $this->view('forum/edit', $data);
+        //         }
 
-            } else{
-                // Check for owner
-                $post = $this->forumModel->getPostById($id);
-                if($post->topic_author != $_SESSION['id']){
-                    redirect('forum');
-                }
-                $data = [
-                    'id' => $id,
-                    'title' => $post->title,
-                    'body' => $post->body,
-                    'title_err' => '',
-                    'body_err' => '',
-                ];
-            }
+        //     } else{
+        //         // Check for owner
+        //         $post = $this->forumModel->getPostById($id);
+        //         if($post->topic_author != $_SESSION['id']){
+        //             redirect('forum');
+        //         }
+        //         $data = [
+        //             'id' => $id,
+        //             'title' => $post->title,
+        //             'body' => $post->body,
+        //             'title_err' => '',
+        //             'body_err' => '',
+        //         ];
+        //     }
            
 
-            $this->view('forum/edit',$data);
-        }
+        //     $this->view('forum/edit',$data);
+        // }
         
-        public function delete($id){
-                // Check for owner
-                $post = $this->forumModel->getPostById($id);
-                if($post->topic_author != $_SESSION['id']){
-                    redirect('forum');
-                }
+        // public function delete($id){
+        //         // Check for owner
+        //         $post = $this->forumModel->getPostById($id);
+        //         if($post->topic_author != $_SESSION['id']){
+        //             redirect('forum');
+        //         }
                 
-                if($this->forumModel->deletePost($id)){
+        //         if($this->forumModel->deletePost($id)){
                 
-                    redirect('forum/index');
-                }    
-                else{
-                    die("Something went wrong");
-                }
-            }
+        //             redirect('forum/index');
+        //         }    
+        //         else{
+        //             die("Something went wrong");
+        //         }
+        //     }
 
-        public function deleteComment($id,$for){
-            $comment = $this->forumModel->getCommentById($id);
-            if($comment->comment_sender != $_SESSION['id']){
-                redirect('forum/index');
-            }
+        // public function deleteComment($id,$for){
+        //     $comment = $this->forumModel->getCommentById($id);
+        //     if($comment->comment_sender != $_SESSION['id']){
+        //         redirect('forum/index');
+        //     }
 
-            if($this->forumModel->deleteComment($id)){
+        //     if($this->forumModel->deleteComment($id)){
                 
-                redirect('forum/show/' . $for);
-            }    
-            else{
-                die("Something went wrong");
-            }
-        }
+        //         redirect('forum/show/' . $for);
+        //     }    
+        //     else{
+        //         die("Something went wrong");
+        //     }
+        // }
 
-        public function deleteReply($id,$for){
-            $comment = $this->forumModel->getReplyById($id);
-            if($comment->comment_sender != $_SESSION['id']){
-                redirect('forum/index');
-            }
+        // public function deleteReply($id,$for){
+        //     $comment = $this->forumModel->getReplyById($id);
+        //     if($comment->comment_sender != $_SESSION['id']){
+        //         redirect('forum/index');
+        //     }
 
-            if($this->forumModel->deleteReply($id)){
+        //     if($this->forumModel->deleteReply($id)){
                 
-                redirect('forum/show/' . $for);
-            }    
-            else{
-                die("Something went wrong");
-            }
-        }
+        //         redirect('forum/show/' . $for);
+        //     }    
+        //     else{
+        //         die("Something went wrong");
+        //     }
+        // }
 
     }
 
