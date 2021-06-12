@@ -89,7 +89,7 @@
                 if(empty($data['file_error'])) {
 
                     if($this->userModel->editProfile($data, $isUploaded)) {
-                        
+                        $_SESSION['image'] = $data['file'];
                         $newData = [
                             'verify' => 'YES',
                             'alumni_id' => $_SESSION['alumni_id']

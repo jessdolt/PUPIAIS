@@ -49,7 +49,7 @@ class Email extends Controller{
         $mail->addCustomHeader("Importance: High");
        
         if($mail->Send()){
-            if($this->userModel->updateSend($alumni->alumni_id)){
+            if($this->alumniUser->updateSend($alumni->alumni_id)){
                 redirect('admin/alumni');
             }
         }
