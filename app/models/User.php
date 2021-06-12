@@ -402,6 +402,24 @@ class User {
             }
         }
 
+        public function additionalVerifyDelete($id) {
+            $this->db->query('SELECT * FROM employment WHERE alumni_id = :alumni_id');
+            $this->db->bind(':alumni_id', $id);
+            $this->db->single();
+    
+            if($this->db->rowCount() > 0) {
+                $this->db->query('DELETE FROM employment WHERE alumni_id = :alumni_id');
+                $this->db->bind(':alumni_id', $id);
+                if($this->db->execute()){
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+
         public function checkOldPassword($data) {
             $this->db->query('SELECT * FROM users WHERE email = :email');
     
