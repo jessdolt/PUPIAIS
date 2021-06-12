@@ -22,7 +22,7 @@
             // $my = $this->forumModel->getCurrent($_SESSION['id']);
             // $this->voteeeeeeeee = $this->model('vote_model'); 
 
-            $this->new_voteModal = $this->model('new_vote'); 
+            $this->new_voteModal = $this->model('vote_model'); 
             // $data = [
             //     'post' => $posts,
             //     'reply' => $reply,
