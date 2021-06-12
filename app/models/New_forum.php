@@ -1,6 +1,6 @@
 <?php 
 
-    class Forum_model{
+    class New_forum{
         private $db;
 
         public function __construct(){
@@ -316,3 +316,4 @@
             }
         }
     }
+

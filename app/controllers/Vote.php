@@ -2,7 +2,7 @@
 
 class Vote extends Controller{
     public function __construct(){
-        $this->voteModel = $this->model('vote_model');
+        $this->voteModel = $this->model('new_vote');
     }
 
 

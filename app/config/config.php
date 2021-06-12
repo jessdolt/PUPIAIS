@@ -1,15 +1,15 @@
 <?php 
-    //DB Params
+    //LOCAL DB (PHPMYADMIN)
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
     define('DB_PASS', '12345');
     define('DB_NAME', 'pupiais');
 
-    //https://remotemysql.com/login.php
+    //REMOTE DB (LIVE) 
     // define('DB_HOST', 'us-cdbr-east-04.cleardb.com');
-    // define('DB_USER', 'b9e84a4bdcd7c6');
-    // define('DB_PASS', '2891ffd3');
-    // define('DB_NAME', 'heroku_ec03275637a73ae');
+    // define('DB_USER', 'b3d7520feb33b7');
+    // define('DB_PASS', 'a11bcbc0');
+    // define('DB_NAME', 'heroku_f88804e718336e9');
 
     //App Root
     define('APPROOT',dirname(dirname(__FILE__)));

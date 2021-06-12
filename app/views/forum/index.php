@@ -1,4 +1,3 @@
-<body id="Alumni">
 <?php require APPROOT . '/views/inc/header.php'; ?>
     <main class="alumni forum">
         <section class="heroBox">
@@ -139,7 +138,7 @@
                 <ul class="category-list">
                
                     <li class="list-item">
-                    <a href="<?php echo URLROOT; ?>/forum/index">      
+                    <a href="<?php echo URLROOT;?>/forum/index">      
                             <span class="category">All Discussions</span>
                             <span class="forumCount"><?php echo $data['all'][0]->counter ?></span>
                     </a>

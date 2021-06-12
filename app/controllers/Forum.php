@@ -6,10 +6,10 @@
                 redirect('users/login');
             }
 
-            $this->forumModel = $this->model('forum_model');
-            $this->userModel = $this->model('User');
+            $this->forumModel = $this->model('new_forum'); 
+            $this->userModel = $this->model('user');
             $this->alumniModel = $this->model('alumni_model');
-            $this->voteModel = $this->model('vote_model');
+            $this->voteModel = $this->model('new_vote'); 
         }
 
         public function index(){
@@ -21,7 +21,7 @@
             $pop = $this->forumModel->getPopular();
             $my = $this->forumModel->getCurrent($_SESSION['id']);
 
-
+           
             $data = [
                 'post' => $posts,
                 'reply' => $reply,
