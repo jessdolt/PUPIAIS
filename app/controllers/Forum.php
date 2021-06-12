@@ -6,7 +6,7 @@
                 redirect('users/login');
             }
 
-            //$this->forumModel = $this->model('forum_model'); 
+            $this->forum = $this->model('forum_model'); 
             $this->userModel = $this->model('user');
             $this->alumniModel = $this->model('alumni_model');
             $this->voteModel = $this->model('new_vote'); 
