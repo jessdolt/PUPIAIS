@@ -71,7 +71,7 @@
     
                 if(in_array($fileActualExt, $allowed) && $isUploaded == 1){
                     if( $fileError === 0){
-                        if($fileSize < 1000000){        
+                        if($fileSize < 2000000){        
                             $fileNameNew = uniqid('',true).".".$fileActualExt;
                             $target = "uploads/". basename($fileNameNew);
                             move_uploaded_file($fileTmpName, $target);
@@ -89,6 +89,7 @@
                 if(empty($data['file_error'])) {
 
                     if($this->userModel->editProfile($data, $isUploaded)) {
+                        $_SESSION['image'] = $data['file'];
                         //VERIFY THE PROFILE
                         $newData = [
                             'verify' => 'YES',

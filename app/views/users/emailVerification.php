@@ -136,14 +136,16 @@
                 </span>
             </header>
 
-            <form action="<?php echo URLROOT; ?>/users/emailVerification" method ="POST">
+            <form action="<?php echo URLROOT; ?>/email/emailVerification" method ="POST">
                 <div class="textFieldContainer">
                     <input type="number" name="code" id="verification-code" placeholder="000000" maxlength = "6" required>
                     <span class="error"><?php echo $data['codeError'] ?></span>
                 </div>
                 <Button>Submit</Button>
             </form>
-
+            <form action="<?php echo URLROOT; ?>/email/resend" method ="POST">
+            <button id="submit" type="submit" value="submit">Resend Code</button>
+            </form>
         </div>
     </main>
 
