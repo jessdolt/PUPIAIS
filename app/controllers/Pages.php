@@ -155,7 +155,7 @@ class Pages extends Controller{
 
 
     public function forum() {
-        $this->forumModel = $this->model('New_forum');
+        $this->forumModel = $this->model('new_forum');
 
         $category = $this->forumModel->getCategory();
         $all = $this->forumModel->categoryCounter();
