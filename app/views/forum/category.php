@@ -18,10 +18,20 @@
         <section class="mainContent">
             <div class="container forumCon">
                 <ul class="forum-list">
-                <?php foreach($data['posts'] as $post): ?>
+                <?php $post = $data['posts']?>
+                <?php foreach($post as $post): ?>
+                    
                     <li class="list-item">
-                        <a href="<?php echo URLROOT;?>/forum/show/<?php echo $post->postId?>" class="forum-link">
-                            <span class="forum-image help"></span><!-- Help General Blog -->
+                        <a href="<?php echo URLROOT;?>/forum/show/<?php echo $post->topic_id?>" class="forum-link">
+                            <?php if($post->category == 1): ?>
+                            <span class="forum-image General" src></span><!-- Icon for General -->
+                            <?php endif; ?>
+                            <?php if($post->category == 2): ?>
+                            <span class="forum-image Help" src></span><!-- Icon for Help -->
+                            <?php endif; ?>
+                            <?php if($post->category == 3): ?>
+                            <span class="forum-image Blog" src></span><!-- Icon for Blog -->
+                            <?php endif; ?>
                             <div class="forum-details-con">
                                 <div class="forum-details">
                                     <h3><?php echo $post->title?></h3>
@@ -31,16 +41,65 @@
                                     <span class="midot">&middot</span>
                                     <span class="forum-type"><?php echo $post->category_name ?></span>
                                 </div>
+                                
                                 <span class="commentCount">
                                     <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M21 2.625C21 1.92881 20.7234 1.26113 20.2312 0.768845C19.7389 0.276562 19.0712 0 18.375 0L2.625 0C1.92881 0 1.26113 0.276562 0.768845 0.768845C0.276562 1.26113 0 1.92881 0 2.625L0 13.125C0 13.8212 0.276562 14.4889 0.768845 14.9812C1.26113 15.4734 1.92881 15.75 2.625 15.75H15.2066C15.5547 15.7501 15.8885 15.8884 16.1346 16.1346L19.8791 19.8791C19.9708 19.9711 20.0877 20.0337 20.2151 20.0592C20.3424 20.0846 20.4744 20.0718 20.5944 20.0222C20.7144 19.9725 20.817 19.8885 20.8892 19.7805C20.9614 19.6726 21 19.5457 21 19.4158V2.625ZM6.5625 7.875C6.5625 8.2231 6.42422 8.55694 6.17808 8.80308C5.93194 9.04922 5.5981 9.1875 5.25 9.1875C4.9019 9.1875 4.56806 9.04922 4.32192 8.80308C4.07578 8.55694 3.9375 8.2231 3.9375 7.875C3.9375 7.5269 4.07578 7.19306 4.32192 6.94692C4.56806 6.70078 4.9019 6.5625 5.25 6.5625C5.5981 6.5625 5.93194 6.70078 6.17808 6.94692C6.42422 7.19306 6.5625 7.5269 6.5625 7.875ZM11.8125 7.875C11.8125 8.2231 11.6742 8.55694 11.4281 8.80308C11.1819 9.04922 10.8481 9.1875 10.5 9.1875C10.1519 9.1875 9.81806 9.04922 9.57192 8.80308C9.32578 8.55694 9.1875 8.2231 9.1875 7.875C9.1875 7.5269 9.32578 7.19306 9.57192 6.94692C9.81806 6.70078 10.1519 6.5625 10.5 6.5625C10.8481 6.5625 11.1819 6.70078 11.4281 6.94692C11.6742 7.19306 11.8125 7.5269 11.8125 7.875ZM15.75 9.1875C15.4019 9.1875 15.0681 9.04922 14.8219 8.80308C14.5758 8.55694 14.4375 8.2231 14.4375 7.875C14.4375 7.5269 14.5758 7.19306 14.8219 6.94692C15.0681 6.70078 15.4019 6.5625 15.75 6.5625C16.0981 6.5625 16.4319 6.70078 16.6781 6.94692C16.9242 7.19306 17.0625 7.5269 17.0625 7.875C17.0625 8.2231 16.9242 8.55694 16.6781 8.80308C16.4319 9.04922 16.0981 9.1875 15.75 9.1875Z" fill="#A63F3F"/>
                                     </svg>
-                                       <?php echo $post->counter ?>
+                                    
+
+                                    <?php 
+                                       $replyCounter = 0;
+                                       $commentCounter = 0;
+                                       $commentChecker = 0;
+                                       $replyBoolean = 0;
+                                       $counterChecker = 0;
+                                        if($post->topic_id == $post->comment_for) {
+                                            
+                                                if(!empty($data['reply'])){
+                                                    
+                                                    if($post->comment > 0) {
+                                                        
+                                                            foreach($data['reply'] as $reply) {
+
+                                                                    if($post->topic_id == $reply->topic_id) {
+                                                                        if($reply->replies == 0) {
+                                                                            $commentCounter++;
+                                                                            $counterChecker = 0;
+                                                                        }
+                                                                        else if($reply->replies > 0) {
+                                                                            if($post->comment >= 1) {
+                                                                                $commentChecker++;
+                                                                                $replyBoolean = 1;
+                                                                                    if($replyBoolean == 1){
+                                                                                        $replyCounter = $commentChecker + $reply->replies;
+                                                                                        $counterChecker = 1; 
+                                                                                }
+                                                                            }
+                                                                    }
+                                                                       else {
+                                                                            $yes = 0;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                            }
+                                            if($counterChecker == 0){
+                                                echo $commentCounter;
+                                            }
+                                            else{
+                                                echo $replyCounter;
+                                            }
+                                    ?>
                                 </span>
+                                
                             </div>
+                            
                         </a>
-                    </li>
-                    <?php endforeach;?>
+                    </li> 
+                    <?php endforeach;?>     
+                           
                 </ul>
                 <div class="pagination">
                     <span class="currentRows">1-20 of 120</span>
@@ -79,17 +138,18 @@
                 <ul class="category-list">
                
                     <li class="list-item">
-                        <button>
+                    <a href="<?php echo URLROOT;?>/pages/forum">      
                             <span class="category">All Discussions</span>
                             <span class="forumCount"><?php echo $data['all'][0]->counter ?></span>
-                        </button>
+                    </a>
                     </li>
                 <?php foreach($data['category'] as $category):?>
                     <li class="list-item">
-                        <button>
+                    <a href="<?php echo URLROOT; ?>/forum/showFiltered/<?php echo $category->category_id?>">
                             <span class="category"><?php echo $category->category_name?></span>
                             <span class="forumCount"><?php echo $category->counter?></span>
-                        </button>
+                    </a>
+
                     </li>
                 <?php endforeach;?>
                 </ul>
@@ -121,9 +181,9 @@
                 <ul class="category-list">
                 <?php foreach($data['user_posts'] as $my): ?>
                     <li class="list-item">
-                        <button>
+                        <a href="<?php echo URLROOT;?>/forum/show/<?php echo $pop->topic_id?>">
                             <span class="forum-title"><?php echo $my->title?></span>
-                        </button>
+                        </a>
                     </li>
                     <?php endforeach; ?>
                 </ul>

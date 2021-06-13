@@ -124,11 +124,57 @@ class Pages extends Controller{
     }
 
     public function gallery() {
-        $data = [
+        $this->galleryModel = $this->model('Gallery');
 
+        $gallery = $this->galleryModel->showGalleryLimit();
+        $images  = $this->galleryModel->showImages(); 
+
+        $data = [
+            'gallery' => $gallery,
+            'images' => $images,
         ];
 
         $this->view('pages/gallery', $data);
+    }
+
+    public function singleGallery($id) {
+        $this->galleryModel = $this->model('Gallery');
+
+        $gallery = $this->galleryModel->showGalleryById($id);
+        $counter = $this->galleryModel->showGalleryCount($id);
+        $images  = $this->galleryModel->showImagesByGalId($id); 
+        
+        $data = [
+            'gallery' => $gallery,
+            'count'  => $counter,
+            'images' => $images,
+        ];
+
+        $this->view('pages/singleGallery', $data);
+    }
+
+
+    public function forum() {
+        $this->forumModel = $this->model('New_forum');
+
+        $category = $this->forumModel->getCategory();
+        $all = $this->forumModel->categoryCounter();
+        $posts = $this->forumModel->getPosts();
+        $reply = $this->forumModel->getPostsReplies();
+        $pop = $this->forumModel->getPopular();
+        $my = $this->forumModel->getCurrent($_SESSION['id']);
+
+        $data = [
+            'post' => $posts,
+            'reply' => $reply,
+            'popular' => $pop,
+            'user_posts' => $my,
+            'category' => $category,
+            'all' => $all,
+        ];
+
+        $this->view('pages/forum',$data);
+
     }
 
     public function news() {

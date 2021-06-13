@@ -138,7 +138,7 @@
                 <ul class="category-list">
                
                     <li class="list-item">
-                    <a href="<?php echo URLROOT;?>/forum/index">      
+                    <a href="<?php echo URLROOT;?>/pages/forum">      
                             <span class="category">All Discussions</span>
                             <span class="forumCount"><?php echo $data['all'][0]->counter ?></span>
                     </a>
@@ -164,7 +164,7 @@
                 <ul class="category-list">
                 <?php foreach($data['popular'] as $pop):?>
                     <li class="list-item">
-                        <a href="<?php echo URLROOT;?>/forum/show/<?php echo $pop->topic_id?>">
+                        <a href="<?php echo URLROOT;?>/forum/show/<?php echo $pop->topic_id?>" title="<?php echo $pop->title ?>">
                                 <h4 class="forum-title"><?php echo $pop->title ?></h4>
                         </a>
                     </li>
@@ -181,7 +181,7 @@
                 <ul class="category-list">
                 <?php foreach($data['user_posts'] as $my): ?>
                     <li class="list-item">
-                        <a href="<?php echo URLROOT;?>/forum/show/<?php echo $pop->topic_id?>">
+                        <a href="<?php echo URLROOT;?>/forum/show/<?php echo $pop->topic_id?>" title="<?php echo $pop->title ?>">
                             <span class="forum-title"><?php echo $my->title?></span>
                         </a>
                     </li>

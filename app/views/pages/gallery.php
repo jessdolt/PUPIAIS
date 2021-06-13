@@ -10,30 +10,22 @@
         </section>
         <section class="mainContent">
             <ul class="container galCon">
+                <?php foreach($data['gallery'] as $gallery): ?>
                 <li>
-                    <a href="#">
+                    <a href="<?php echo URLROOT;?>/pages/singleGallery/<?php echo $gallery->id?>">
                         <div class="image-container">
-                            <img src="../images/heroBoxBg.png">
+                        <?php foreach($data['images'] as $img):?>
+                        <?php if($gallery->id == $img->gallery_id):?>
+                            <?php if($img->isCover == 1):?>
+                            <img src="<?php echo URLROOT;?>/uploads/<?php echo $img->image?>">
+                            <?php endif;?>
+                        <?php endif;?>
+                        <?php endforeach;?>
                         </div>
-                        <h3 class="album-title">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenea commodo ligula eget dolor. Aenean m</h3>
+                        <h3 class="album-title"><?php echo $gallery->gallery_title?></h3>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <div class="image-container">
-                            <img src="../images/heroBoxBg.png">
-                        </div>
-                        <h3 class="album-title">PUP Itech Foundation Day</h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="image-container">
-                            <img src="../images/heroBoxBg.png">
-                        </div>
-                        <h3 class="album-title">PUP Itech Foundation Day</h3>
-                    </a>
-                </li>
+                <?php endforeach; ?>
             </ul>
             <div class="container">
                 <div class="pagination">
