@@ -6,32 +6,11 @@
                 redirect('users/login');
             }
 
-            $this->forumModel = $this->model('new_forum'); 
-            $this->userModel = $this->model('user');
+            $this->forumModel = $this->model('new_forum');
+            $this->userModel = $this->model('User');
             $this->alumniModel = $this->model('alumni_model');
-            $this->voteModel = $this->model('new_vote'); 
-        }
-
-        public function index(){
-            //Get Posts
-            $category = $this->forumModel->getCategory();
-            $all = $this->forumModel->categoryCounter();
-            $posts = $this->forumModel->getPosts();
-            $reply = $this->forumModel->getPostsReplies();
-            $pop = $this->forumModel->getPopular();
-            $my = $this->forumModel->getCurrent($_SESSION['id']);
-
-           
-            $data = [
-                'post' => $posts,
-                'reply' => $reply,
-                'popular' => $pop,
-                'user_posts' => $my,
-                'category' => $category,
-                'all' => $all,
-            ];
-
-            $this->view('forum/index',$data);
+            $this->voteModel = $this->model('vote_model');
+            $this->adminModel = $this->model('Admin_model');
         }
 
         
@@ -40,17 +19,19 @@
             $all = $this->forumModel->categoryCounter();
             $posts = $this->forumModel->getPostByCategory($id); 
             $pop = $this->forumModel->getPopular();
+            $reply = $this->forumModel->getPostsReplies();
             $my = $this->forumModel->getCurrent($_SESSION['id']);
 
             $data = [
                 'posts' => $posts,
+                'reply' => $reply,
                 'popular' => $pop,
                 'user_posts' => $my,
                 'category' => $category,
                 'all' => $all,
             ];
 
-            $this->view('forum/index',$data);
+            $this->view('forum/category',$data);
         }
 
         public function show($id){
@@ -59,17 +40,22 @@
             $reply = $this->forumModel->getReply();
             $user = $this->userModel->getUserByID($post->topic_author);
             $alumni = $this->alumniModel->getAlumniByID($user->a_id);
-            $current = $this->alumniModel->getAlumniByID($_SESSION['alumni_id']);
+            $admin = $this->adminModel->single($user->user_id);
+            if($_SESSION['user_type'] == 'Super Admin'||$_SESSION['user_type'] == 'Admin'){
+                $current = $this->adminModel->single($_SESSION['id']);
+            }
+            else{
+                $current = $this->alumniModel->getAlumniByID($_SESSION['alumni_id']);
+            }
             $commentCounter = $this->forumModel->commentCounter($id);
             $replyCounter = $this->forumModel->replyCounter($id);
             $pop = $this->forumModel->getPopular();
-            
-            $test = [
+            $voteYep = [
                 'topic_id' => $id,
                 'user_id'  => $_SESSION['id'],
             ];
 
-            $vote = $this->voteModel->getUserVote($test);
+            $vote = $this->voteModel->getUserVote($voteYep);
 
             $data = [
                 'post' => $post,
@@ -77,6 +63,7 @@
                 'comment' => $comment,
                 'reply' => $reply,
                 'alumni' => $alumni,
+                'admin'   => $admin,
                 'current' => $current,
                 'popular' => $pop,
                 'vote' => $vote,
@@ -114,7 +101,7 @@
                 if(empty($data['title_err']) && empty($data['body_err'])){
                     // Validated
                     if($this->forumModel->addPost($data)){
-                        redirect('forum/index');
+                        redirect('pages/forum');
                     }
                         else{
                             die('Something went wrong');
@@ -259,7 +246,7 @@
                 
                 if($this->forumModel->deletePost($id)){
                 
-                    redirect('forum/index');
+                    redirect('pages/forum');
                 }    
                 else{
                     die("Something went wrong");
@@ -269,7 +256,7 @@
         public function deleteComment($id,$for){
             $comment = $this->forumModel->getCommentById($id);
             if($comment->comment_sender != $_SESSION['id']){
-                redirect('forum/index');
+                redirect('pages/forum');
             }
 
             if($this->forumModel->deleteComment($id)){
@@ -284,7 +271,7 @@
         public function deleteReply($id,$for){
             $comment = $this->forumModel->getReplyById($id);
             if($comment->comment_sender != $_SESSION['id']){
-                redirect('forum/index');
+                redirect('pages/forum');
             }
 
             if($this->forumModel->deleteReply($id)){

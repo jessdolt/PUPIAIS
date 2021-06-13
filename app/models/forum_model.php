@@ -56,7 +56,7 @@
             FROM topic
             INNER JOIN users 
             ON topic.topic_author = users.user_id 
-            INNER JOIN category
+            LEFT JOIN category
             ON topic.category = category.category_id
             LEFT JOIN comment
             ON comment_for = topic.topic_id
@@ -130,11 +130,11 @@
         }
 
         public function getCategory(){
-            $this->db->query('SELECT *, COUNT(*) as counter FROM category INNER JOIN topic on topic.category = category.category_id GROUP BY category');
+            $this->db->query('SELECT *, count(topic_id) as counter FROM CATEGORY LEFT JOIN topic ON category_id = category GROUP BY category_id');
             $results = $this->db->resultSet();
             return $results;
         }
-    
+
         public function getComments(){
             $this->db->query('SELECT *,
             comment.comment_id as commentID,
