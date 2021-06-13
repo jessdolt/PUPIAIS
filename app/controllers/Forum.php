@@ -7,10 +7,10 @@
             }
 
             $this->forumModel = $this->model('new_forum');
-            $this->userModel = $this->model('User');
+            $this->userModel = $this->model('user');
             $this->alumniModel = $this->model('alumni_model');
-            $this->voteModel = $this->model('vote_model');
-            $this->adminModel = $this->model('Admin_model');
+            $this->voteModel = $this->model('new_vote');
+            $this->adminModel = $this->model('admin_model');
         }
 
         
