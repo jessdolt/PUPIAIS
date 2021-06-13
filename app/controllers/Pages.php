@@ -173,7 +173,8 @@ class Pages extends Controller{
             'all' => $all,
         ];
 
-        $this->view('pages/forum',$data);
+        array_print($data);
+       // $this->view('pages/forum',$data);
 
     }
 
