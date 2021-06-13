@@ -17,7 +17,7 @@
         */
 
         public function showJobsHome(){
-            $this->db->query('SELECT * FROM job_portal ORDER BY posted_on DESC LIMIT 3;');
+            $this->db->query('SELECT * FROM job_portal WHERE job_status = "Active" ORDER BY posted_on DESC LIMIT 3;');
                 $row = $this->db->resultSet();
                 if($row > 0){
                     return $row;
