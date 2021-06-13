@@ -70,11 +70,11 @@
                 </div>
             </div> -->
           
-            <!-- <div class="charts">
+            <div class="charts">
                 <h2>First Chart</h2>
                 <canvas id="myChart0"></canvas>
             </div> 
-            <div class="charts">
+            <!-- <div class="charts">
                 <h2>Second Chart</h2>
                 <canvas id="myChart1"></canvas>
             </div>  -->
@@ -96,7 +96,7 @@
         })
 
         apiSurvey.addEventListener('click', function(){
-            fetch('<?php echo URLROOT;?>/api/survey/read').then(res => res.json())
+            fetch('<?php echo URLROOT;?>/api/survey/read/27').then(res => res.json())
             .then(data => {
                 const survey_title = data.data[0].survey[0].title;
                 const survey_id = data.data[0].survey[0].id;
@@ -330,40 +330,45 @@
     //     showChart(test,index);
     // });
 
-    // function showChart(ansObj, index){
-    //     const labels = [
-    //     ];
+    showChart();
+    function showChart(){
+        const labels = [
+            'Jess',
+            'Angel'
+        ];
 
-    //     const data = {
-    //         labels: labels,
-    //         datasets: [{
-    //             label: 'My First dataset',
-    //             backgroundColor: 'rgb(255, 99, 132)',
-    //             borderColor: 'rgb(255, 99, 132)',
-    //             data: [],
-    //         }]
-    //     };
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [2],
+            }]
+        };
 
-    //     ansObj.labels.forEach(label => labels.push(label));
+        // ansObj.labels.forEach(label => labels.push(label));
             
-    //     ansObj.data.forEach(ans => {
-    //         for(key in ans){
-    //             var value = ans[key];
-    //             data.datasets[0].data.push(value);
-    //         }
-    //     });
+        // ansObj.data.forEach(ans => {
+        //     for(key in ans){
+        //         var value = ans[key];
+        //         data.datasets[0].data.push(value);
+        //     }
+        // });
 
-    //     const config = {
-    //         type: 'pie',
-    //         data,
-    //         options: {}
-    //     };
+        const config = {
+            type: 'bar',
+            data,
+            options: {
+                indexAxis: 'y'
+            }
+        };
 
-    //     var myChart = new Chart(
-    //         document.getElementById(`myChart${index}`).getContext('2d'),
-    //         config
-    //     );
-    // }
+        var myChart = new Chart(
+            document.getElementById(`myChart0`).getContext('2d'),
+            config
+        );
+    }
    
 </script>
 </body>

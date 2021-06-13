@@ -85,11 +85,11 @@
             }
         }
 
-        public function survey($request_type){
+        public function survey($request_type,$survey_id){
             if($request_type == 'read'){
-                $result = $this->apiModel->survey_set_read(27);
-                $resultQuestions = $this->apiModel->questions_read(27); 
-                $resultAnswers = $this->apiModel->answers_read(27);
+                $result = $this->apiModel->survey_set_read($survey_id);
+                $resultQuestions = $this->apiModel->questions_read($survey_id); 
+                $resultAnswers = $this->apiModel->answers_read($survey_id);
 
                 //array_print($result);
                 $chart_arr = array();
