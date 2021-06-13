@@ -157,24 +157,24 @@ class Pages extends Controller{
     public function forum() {
         $this->forumModel = $this->model('new_forum');
 
-    //     $category = $this->forumModel->getCategory();
-    //     $all = $this->forumModel->categoryCounter();
-    //     $posts = $this->forumModel->getPosts();
-    //     $reply = $this->forumModel->getPostsReplies();
-    //     $pop = $this->forumModel->getPopular();
-    //     $my = $this->forumModel->getCurrent($_SESSION['id']);
+        $category = $this->forumModel->getCategory();
+        $all = $this->forumModel->categoryCounter();
+        $posts = $this->forumModel->getPosts();
+        $reply = $this->forumModel->getPostsReplies();
+        $pop = $this->forumModel->getPopular();
+        $my = $this->forumModel->getCurrent($_SESSION['id']);
 
-    //     $data = [
-    //         'post' => $posts,
-    //         'reply' => $reply,
-    //         'popular' => $pop,
-    //         'user_posts' => $my,
-    //         'category' => $category,
-    //         'all' => $all,
-    //     ];
+        $data = [
+            'post' => $posts,
+            'reply' => $reply,
+            'popular' => $pop,
+            'user_posts' => $my,
+            'category' => $category,
+            'all' => $all,
+        ];
 
-    //     // array_print($data);
-    //    $this->view('pages/forum',$data);
+        // array_print($data);
+       $this->view('pages/forum',$data);
 
     }
 
