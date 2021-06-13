@@ -155,9 +155,9 @@ class Pages extends Controller{
 
 
     public function forum() {
-        $this->forumModel = $this->model('new_forum');
+        $this->qwe = $this->model('new_forum');
 
-        //$category = $this->forumModel->getCategory();
+        $category = $this->qwe->getCategory();
         // $all = $this->forumModel->categoryCounter();
         // $posts = $this->forumModel->getPosts();
         // $reply = $this->forumModel->getPostsReplies();
@@ -166,7 +166,7 @@ class Pages extends Controller{
 
         $data = [
             
-            'name' => 'Jess'
+            'name' => $category
          
         ];
 
