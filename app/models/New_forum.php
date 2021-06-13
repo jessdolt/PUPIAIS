@@ -127,7 +127,13 @@
         public function getCategory(){
             $this->db->query('SELECT *, count(topic_id) as counter FROM CATEGORY LEFT JOIN topic ON category_id = category GROUP BY category_id');
             $results = $this->db->resultSet();
-            return $results;
+            if($this->db->rowCount() > 0){
+                return $results;
+            }
+            else{
+                return false;
+            }
+          
         }
 
         public function getComments(){
