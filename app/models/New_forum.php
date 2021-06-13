@@ -51,28 +51,17 @@
 
         public function getPosts(){
             $this->db->query('SELECT *,
-            users.user_id as userId,
-            count(comment_id) as comment
-            FROM topic
-            INNER JOIN users 
-            ON topic.topic_author = users.user_id 
-            INNER JOIN category
-            ON topic.category = category.category_id
-            LEFT JOIN comment
-            ON comment_for = topic.topic_id
-            GROUP BY topic_id
-            ORDER BY topic.created_at DESC
+                              count(comment_id) as comment
+                              FROM topic
+                              INNER JOIN users 
+                              ON topic.topic_author = users.user_id 
+                              LEFT JOIN category
+                              ON topic.category = category.category_id
+                              LEFT JOIN comment
+                              ON comment_for = topic.topic_id
+                              GROUP BY topic_id
+                              ORDER BY topic.created_at DESC
             ');
-            /* $this->db->query('SELECT comment_for ,count(comment_id) as comments from comment where comment_for group by comment_for'); */
-            /* $this->db->query('SELECT reply_for ,count(reply_id)  as replies from reply where reply_for group by reply_for'); */
-            $results = $this->db->resultSet();
-            return $results;
-        }
-
-
-
-        public function getPostsReplies(){
-            $this->db->query('SELECT *, COUNT(reply_id) AS replies FROM topic LEFT JOIN comment ON comment_for = topic_id LEFT JOIN reply ON reply_for = topic_id GROUP BY comment_id');
             $results = $this->db->resultSet();
             return $results;
         }
@@ -81,7 +70,7 @@
             $this->db->query('SELECT *, topic.topic_id as postId,
                                         users.user_id as userId,
                                         topic.created_at as postCreated,
-                                        COUNT(comment_id) as counter
+                                        COUNT(comment_id) as comment
                                         FROM topic
                                         INNER JOIN users 
                                         ON topic.topic_author = users.user_id
@@ -93,6 +82,12 @@
                                         GROUP BY topic_id
                                         ORDER BY topic.created_at DESC');
             $this->db->bind('id', $id);
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
+        public function getPostsReplies(){
+            $this->db->query('SELECT *, COUNT(reply_id) AS replies FROM topic LEFT JOIN comment ON comment_for = topic_id LEFT JOIN reply ON reply_for = topic_id GROUP BY comment_id');
             $results = $this->db->resultSet();
             return $results;
         }
@@ -130,20 +125,19 @@
         }
 
         public function getCategory(){
-            $this->db->query('SELECT *, COUNT(*) as counter FROM category INNER JOIN topic on topic.category = category.category_id GROUP BY category');
+            $this->db->query('SELECT *, count(topic_id) as counter FROM CATEGORY LEFT JOIN topic ON category_id = category GROUP BY category_id');
             $results = $this->db->resultSet();
             return $results;
         }
-    
+
         public function getComments(){
-            $this->db->query('SELECT *,
-            comment.comment_id as commentID,
-            users.user_id as userId,
-            comment.commented_at as postCreated
+            $this->db->query('SELECT *,	admin.image as admin_image
             FROM comment
             INNER JOIN users 
             ON comment.comment_sender = users.user_id
-            INNER JOIN alumni
+            LEFT JOIN admin
+            ON admin.user_id = users.user_id
+            LEFT JOIN alumni
             ON users.a_id = alumni.alumni_id
             ORDER BY comment.commented_at DESC
             ');
@@ -152,11 +146,13 @@
         }
 
         public function getReply(){
-            $this->db->query('SELECT *
+            $this->db->query('SELECT *,	admin.image as admin_image
             FROM reply
             INNER JOIN users 
             ON reply.reply_sender = users.user_id
-            INNER JOIN alumni
+            LEFT JOIN admin
+            ON admin.user_id = users.user_id
+            LEFT JOIN alumni
             ON users.a_id = alumni.alumni_id
             ORDER BY reply.replied_at ASC
             ');
@@ -316,4 +312,3 @@
             }
         }
     }
-

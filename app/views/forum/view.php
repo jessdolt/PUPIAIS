@@ -3,7 +3,11 @@
         <section class="mainContent forumView">
             <div class="container forumCon">
                 <div class="forum-link">
-                    <img class="forum-image" src="<?php echo URLROOT;?>/uploads/<?php echo ($data['alumni']->image) ?>" id="myImg">
+                    <?php if($data['user']->user_type == 1||$data['user']->user_type == 2):?>
+                    <img class="forum-image" src="<?php echo URLROOT;?>/uploads/<?php echo $data['admin']->image?>" id="myImg">
+                    <?php else:?>
+                    <img class="forum-image" src="<?php echo URLROOT;?>/uploads/<?php echo $data['alumni']->image ?>" id="myImg">
+                    <?php endif;?>
                     <div class="forum-details-con">
                         <div class="forum-details">
                             <h3><?php echo $data['post']->title?></h3>
@@ -13,7 +17,7 @@
                             <span class="midot">·</span>
                             <span class="forum-type"><?php echo $data['post']->category_name ?></span>
                         </div>
-                        <?php if($data['post']->topic_author == $_SESSION['id']): ?>
+                        <?php if(($data['post']->topic_author == $_SESSION['id'])||($_SESSION['user_type'] == 'Super Admin')||($_SESSION['user_type'] == 'Admin')): ?>
                         <span class="optionCon">
                             <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3.9375 12.4688C3.41536 12.4688 2.9146 12.2613 2.54538 11.8921C2.17617 11.5229 1.96875 11.0221 1.96875 10.5C1.96875 9.97786 2.17617 9.4771 2.54538 9.10788C2.9146 8.73867 3.41536 8.53125 3.9375 8.53125C4.45965 8.53125 4.9604 8.73867 5.32962 9.10788C5.69883 9.4771 5.90625 9.97786 5.90625 10.5C5.90625 11.0221 5.69883 11.5229 5.32962 11.8921C4.9604 12.2613 4.45965 12.4688 3.9375 12.4688ZM10.5 12.4688C9.97785 12.4688 9.4771 12.2613 9.10788 11.8921C8.73867 11.5229 8.53125 11.0221 8.53125 10.5C8.53125 9.97786 8.73867 9.4771 9.10788 9.10788C9.4771 8.73867 9.97785 8.53125 10.5 8.53125C11.0221 8.53125 11.5229 8.73867 11.8921 9.10788C12.2613 9.4771 12.4688 9.97786 12.4688 10.5C12.4688 11.0221 12.2613 11.5229 11.8921 11.8921C11.5229 12.2613 11.0221 12.4688 10.5 12.4688ZM17.0625 12.4688C16.5404 12.4688 16.0396 12.2613 15.6704 11.8921C15.3012 11.5229 15.0938 11.0221 15.0938 10.5C15.0938 9.97786 15.3012 9.4771 15.6704 9.10788C16.0396 8.73867 16.5404 8.53125 17.0625 8.53125C17.5846 8.53125 18.0854 8.73867 18.4546 9.10788C18.8238 9.4771 19.0312 9.97786 19.0312 10.5C19.0312 11.0221 18.8238 11.5229 18.4546 11.8921C18.0854 12.2613 17.5846 12.4688 17.0625 12.4688Z" fill="black" fill-opacity="0.87"/>
@@ -89,7 +93,11 @@
                             <?php if($comment->comment_for == $data['post']->topic_id): ?>
                         <li class="list-item" id="<?php echo $comment->comment_id?>">
                             <form action="" class="comment-con-thread">
-                                <img src="<?php echo URLROOT;?>/uploads/<?php echo ($comment->image) ?>" width="40px" height="40px">
+                                <?php if($comment->user_type == 1||$comment->user_type == 2): ?>
+                                <img src="<?php echo URLROOT;?>/uploads/<?php echo $comment->admin_image?>" width="40px" height="40px">
+                                <?php else: ?>
+                                <img src="<?php echo URLROOT;?>/uploads/<?php echo $comment->image?>" width="40px" height="40px">
+                                <?php endif; ?>
                                 <div class="commentInfo">
                                     <span class="account-name"><?php echo $comment->name?></span>
                                     <span class="midot">·</span>
@@ -106,7 +114,7 @@
                                         </svg>
                                         Reply
                                     </button>
-                                    <?php if($comment->comment_sender == $_SESSION['id']): ?>
+                                    <?php if($comment->comment_sender == $_SESSION['id']||$_SESSION['user_type'] == 'Super Admin'||$_SESSION['user_type'] == 'Admin'): ?>
                                         <a href="<?php echo URLROOT;?>/forum/deleteComment/<?php echo $comment->comment_id?>/<?php echo $comment->comment_for?>">
                                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M15.6562 6.78125L14.8163 15.9367C14.7895 16.1952 14.6798 16.4335 14.5082 16.6065C14.3366 16.7794 14.1149 16.875 13.8853 16.875H7.11504C6.88538 16.875 6.6637 16.7794 6.49208 16.6065C6.32046 16.4335 6.21083 16.1952 6.18398 15.9367L5.34375 6.78125" stroke="black" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -129,7 +137,11 @@
                                 <?php if($reply->parent_comment == $comment->comment_id): ?>
                              <li class="list-item">
                                     <form action="<?php echo URLROOT;?>/forum/reply/<?php echo $comment->comment_id;?>/<?php echo $data['post']->topic_id ?>" method = "POST" class="comment-con-thread">
-                                        <img src="<?php echo URLROOT;?>/uploads/<?php echo ($reply->image) ?>">
+                                        <?php if ($reply->user_type == 1||$reply->user_type == 2): ?>
+                                        <img src="<?php echo URLROOT;?>/uploads/<?php echo $reply->admin_image?>" width="40px" height="40px">
+                                        <?php else: ?>
+                                        <img src="<?php echo URLROOT;?>/uploads/<?php echo $reply->image?>" width="40px" height="40px">
+                                        <?php endif; ?>
                                         <div class="commentInfo" >
                                             <span class="account-name"><?php echo $reply->name ?></span>
                                             <span class="midot">·</span>
@@ -139,7 +151,7 @@
                                             <?php echo $reply->reply?>
                                         </div>
                                         <div class="btn-con">
-                                        <?php if($reply->reply_sender == $_SESSION['id']): ?>
+                                        <?php if($reply->reply_sender == $_SESSION['id']||$_SESSION['user_type'] == 'Super Admin'||$_SESSION['user_type'] == 'Admin'): ?>
                                         <a href="<?php echo URLROOT;?>/forum/deleteReply/<?php echo $reply->reply_id?>/<?php echo $comment->comment_for?>">
                                                 <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M15.6562 6.78125L14.8163 15.9367C14.7895 16.1952 14.6798 16.4335 14.5082 16.6065C14.3366 16.7794 14.1149 16.875 13.8853 16.875H7.11504C6.88538 16.875 6.6637 16.7794 6.49208 16.6065C6.32046 16.4335 6.21083 16.1952 6.18398 15.9367L5.34375 6.78125" stroke="black" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -225,7 +237,7 @@
                 <ul class="category-list">
                 <?php foreach($data['popular'] as $pop): ?>
                     <li class="list-item">
-                        <a href="<?php echo URLROOT;?>/forum/show/<?php echo $pop->topic_id?>">
+                        <a href="<?php echo URLROOT;?>/forum/show/<?php echo $pop->topic_id?>" title="<?php echo $pop->title ?>">
  
                                 <h4 class="forum-title"><?php echo $pop->title ?></h4>
 
@@ -531,6 +543,7 @@
                 const subComment = $('<li class = "list-item active"> </li>');
                 subComment.append(replyContainer);
                 subComment.appendTo(subList);
+                
                 
 
                

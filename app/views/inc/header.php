@@ -45,8 +45,9 @@
                 <li><a href="<?php echo URLROOT; ?>/pages/home" <?php if($url[1] == "home") { echo 'class="active"'; }?>>Home</a></li>
                 <li><a href="<?php echo URLROOT; ?>/pages/news" <?php if($url[1] == "news" || $url[0] == 'posts') { echo 'class="active"'; }?>>News</a></li>
                 <li><a href="<?php echo URLROOT; ?>/pages/events" <?php if($url[1] == "events" || $url[0] == 'events') { echo 'class="active"'; }?>>Events</a></li>
-                <li><a href="<?php echo URLROOT; ?>/pages/job_portals" <?php if($url[1] == "job_portals" || $url[0] == 'job_portals') { echo 'class="active"'; }?>>Jobs</a></li>
-                <li><a href="<?php echo URLROOT; ?>/forum/index" <?php if($url[1] == "forum" || $url[0] == 'forum') { echo 'class="active"'; }?>>Forum</a></li>
+                <li><a href="<?php echo URLROOT; ?>/pages/job_portals" <?php if($url[1] == "jobs" || $url[0] == 'job_portals') { echo 'class="active"'; }?>>Jobs</a></li>
+                <li><a href="<?php echo URLROOT; ?>/pages/gallery" <?php if($url[1] == "gallery" || $url[0] == 'gallery') { echo 'class="active"'; }?>>Gallery</a></li>
+                <li><a href="<?php echo URLROOT; ?>/pages/forum" <?php if($url[1] == "forum" || $url[0] == 'forum') { echo 'class="active"'; }?>>Forum</a></li>
             <?php endif; ?>
         </ul>
         <button type="button"><?php echo $_SESSION['name'] ?></button>

@@ -43,6 +43,14 @@
             }
         }
 
+        public function showGalleryLimit(){
+            $this->db->query('SELECT * from gallery LIMIT 12');
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+
         public function changeCover($image_id, $gallery_id){
             $this->db->query('SELECT * from gallery_images WHERE isCover = 1 AND gallery_id ='. $gallery_id);
             $rowCurrentCover = $this->db->single();
@@ -94,6 +102,12 @@
             return $row;
         }
 
+        public function showGalleryCount($gid) {
+            $this->db->query('SELECT COUNT(id) as counter FROM gallery_images WHERE gallery_id = :gal_id');
+            $this->db->bind(':gal_id', $gid);
+            $row = $this->db->single();
+            return $row;
+        }
        
 
         public function showImagesByGalId($gid){
