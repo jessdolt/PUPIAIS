@@ -26,6 +26,37 @@ class User {
     }
 
 
+    public function loginCount($date) {
+        $this->db->query('UPDATE login_count SET visit_count = visit_count + :visit WHERE login_date = :date');
+        $visit = 1;
+        $this->db->bind(':date', $date);
+        $this->db->bind(':visit', $visit);
+        if($this->db->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function addLoginDate($date) {
+        $this->db->query('INSERT INTO login_count(login_date) VALUES(:date)');
+        $this->db->bind(':date', $date);
+        if($this->db->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function checkLoginDate($date) {
+        $this->db->query('SELECT login_date FROM `login_count` where login_date = :date');
+        $this->db->bind(':date', $date);
+        $row = $this->db->single();
+        return $row;
+    }
+
 
     // GET USER_CONTROL FROM TABLE USER_TYPE
     public function forSession($user) {
