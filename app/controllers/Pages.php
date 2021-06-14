@@ -61,16 +61,14 @@ class Pages extends Controller{
     function isEmployed() {
         $user = $this->userModel->singleUserAlumniJoin($_SESSION['alumni_id']);
         $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
-        if($user->employment == "Employed") {
-            if(empty($findRecord)) {
-                return true;
-                // redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
-            } else {
-                return false;
-            }
+
+        if(empty($findRecord)) {
+            return true;
+            // redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
         } else {
             return false;
         }
+
     }
 
 
