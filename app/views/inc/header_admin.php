@@ -11,6 +11,7 @@
     <script src="<?php echo URLROOT;?>/js/index.js" defer></script>
     <script src="<?php echo URLROOT;?>/js/image_render.js" defer></script>
     <script src="<?php echo URLROOT;?>/js/survey.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
     <script
      src="https://code.jquery.com/jquery-3.6.0.min.js"

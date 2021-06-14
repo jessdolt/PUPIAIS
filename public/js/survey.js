@@ -24,3 +24,7 @@ function previewChangeCover(){
         changeCoverModal.classList.remove('show');
     })
 }
+
+
+
+
