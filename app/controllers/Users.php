@@ -128,14 +128,30 @@
     
                 //Check if all errors are empty
                 if (empty($data['emailError']) && empty($data['passwordError'])) {
+                    $date = date('Y-m-j');
+                    $checker = $this->userModel->checkLoginDate($date);
                     $loggedInUser = $this->userModel->login($data['email'], $data['password']);
-    
+                    if($checker->login_date == $date){
+                        if ($loggedInUser) {
+                            $this->userModel->loginCount($date);
+                            $this->createUserSession($loggedInUser);
+                        }
+                        else {
+                            $data['passwordError'] = 'Password or email is incorrect. Please try again.';
+                        }
+                }
+                else {
+                    $this->userModel->addLoginDate($date);
                     if ($loggedInUser) {
+
+                        $this->userModel->loginCount($date);
                         $this->createUserSession($loggedInUser);
                     }
                     else {
                         $data['passwordError'] = 'Password or email is incorrect. Please try again.';
                     }
+                }
+                    
                 }
     
             } else {
