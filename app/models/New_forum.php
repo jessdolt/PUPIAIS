@@ -131,7 +131,8 @@
         }
 
         public function getComments(){
-            $this->db->query('SELECT *,	admin.image as admin_image
+            $this->db->query('SELECT *,	admin.image as admin_image,
+			users.name as user_name
             FROM comment
             INNER JOIN users 
             ON comment.comment_sender = users.user_id
@@ -146,7 +147,8 @@
         }
 
         public function getReply(){
-            $this->db->query('SELECT *,	admin.image as admin_image
+            $this->db->query('SELECT *,	admin.image as admin_image,
+                                        users.name as user_name
             FROM reply
             INNER JOIN users 
             ON reply.reply_sender = users.user_id

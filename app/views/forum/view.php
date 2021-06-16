@@ -99,7 +99,7 @@
                                 <img src="<?php echo URLROOT;?>/uploads/<?php echo $comment->image?>" width="40px" height="40px">
                                 <?php endif; ?>
                                 <div class="commentInfo">
-                                    <span class="account-name"><?php echo $comment->name?></span>
+                                    <span class="account-name"><?php echo $comment->user_name?></span>
                                     <span class="midot">·</span>
                                     <span class="date-posted"><?php echo time_elapsed_string($comment->commented_at);?></span>
                                 </div>
@@ -143,7 +143,7 @@
                                         <img src="<?php echo URLROOT;?>/uploads/<?php echo $reply->image?>" width="40px" height="40px">
                                         <?php endif; ?>
                                         <div class="commentInfo" >
-                                            <span class="account-name"><?php echo $reply->name ?></span>
+                                            <span class="account-name"><?php echo $reply->user_name?></span>
                                             <span class="midot">·</span>
                                             <span class="date-posted"><?php echo time_elapsed_string($reply->replied_at);?></span>
                                         </div>
