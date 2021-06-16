@@ -101,7 +101,7 @@
                                 <div class="commentInfo">
                                     <span class="account-name"><?php echo $comment->name?></span>
                                     <span class="midot">·</span>
-                                    <span class="date-posted"><?php echo time_elapsed_string($comment->commented_at);?></span>
+                                    <span class="date-posted"><?php echo time_elapsed_string($comment->created_at);?></span>
                                 </div>
                                 <div class="input" role="textbox" maxlength="1000" readonly>
                                    <?php echo $comment->comment?>

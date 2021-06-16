@@ -145,7 +145,7 @@
             ON admin.user_id = users.user_id
             LEFT JOIN alumni
             ON users.a_id = alumni.alumni_id
-            ORDER BY comment.commented_at DESC
+            ORDER BY comment.created_at DESC
             ');
             $results = $this->db->resultSet();
             return $results;

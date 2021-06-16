@@ -15,9 +15,9 @@ class Pages extends Controller{
                 if($this->isEmployed()) {
                     redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
                 } 
-/*                 if($this->checkSurvey()){
-                    redirect('survey_widget');
-                } */
+                //  if($this->checkSurvey()){
+                //     redirect('survey_widget');
+                // } 
             }
 
             

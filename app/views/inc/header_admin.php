@@ -105,6 +105,11 @@
                                 <a href="<?php echo URLROOT;?>/admin/notif">Send Email</a>
                             </div>
                         </li>
+                        <li class="mainCategory" >
+                            <div class="categoryContainer">
+                                <a href="<?php echo URLROOT;?>/admin/dashTest">Dashboard Test</a>
+                            </div>
+                        </li>
 
                         <li class="mainCategory" >
                             <div class="categoryContainer">

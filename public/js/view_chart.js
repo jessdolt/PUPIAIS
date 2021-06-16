@@ -26,7 +26,7 @@ function getApi(){
     const webURL = document.getElementById('url-web').value; 
     const survey_id = document.getElementById('survey-id').value;
     
-    fetch(`${webURL}/api/survey/read/${survey_id}`).then(res => res.json())
+    fetch(`${webURL}/api/survey/single/${survey_id}`).then(res => res.json())
     .then(data => {
         console.log(data)
         //const survey_title = data.data[0].survey[0].title;

@@ -26,8 +26,40 @@
         }
 
         public function dashboard(){
+
             $data = [];
             $this->view('admin_d/dashboard', $data);
+        }
+
+        public function dashTest(){
+             $this->dashBoardModel = $this->model('dashboard_model');
+            // $news = $this->dashBoardModel->showNewsCount();
+            // $events = $this->dashBoardModel->showEventsCount();
+            // $latestSurvey = $this->dashBoardModel->getLatestSurvey();
+            // $totalAlumni = $this->dashBoardModel->getAlumniCount();
+            // $taken = $this->dashBoardModel->getAlumniSurveyed($latestSurvey[0]->id);
+            // $batch = $this->dashBoardModel->getBatch();
+            // $class = $this->dashBoardModel->getClassification();
+
+            $latestTopic = $this->dashBoardModel->getTopic();
+            $latestComment = $this->dashBoardModel->getComments();
+            $latestReplies = $this->dashBoardModel->getReplies();
+
+            $data = [
+                // 'news_count' => $news[0]->news_count,
+                // 'events_count' => $events[0]->events_count,
+                // 'latestSurvey' => $latestSurvey[0],
+                // 'totalRespondets' => $totalAlumni[0]->alumniCount,
+                // 'taken' => $taken[0]->userTaken,
+                // 'batch' => $batch,
+                // 'class' => $class
+                'topic' => $latestTopic,
+                'comments' => $latestComment,
+                'replies' => $latestReplies
+            ];
+
+            // array_print($data);
+            $this->view('prac/prac_db', $data);
         }
 
         public function notif(){
