@@ -85,7 +85,7 @@
                                 <li><a href="<?php echo URLROOT;?>/admin/job_portal">Job Portal</a></li>
                             </ul>
                         </li>
-                        <li class="mainCategory <?php echo ($url[1] == 'survey_list' || $url[1] == 'survey_report' || $url[0] == 'surveys' ) ? 'open' : ' '?>" tabindex="0">
+                        <li class="mainCategory <?php echo ($url[1] == 'survey_list' || $url[1] == 'survey_report' || $url[1] == 'employment' || $url[0] == 'surveys' ) ? 'open' : ' '?>" tabindex="0">
                             <div class="categoryContainer">
                                 <span>Survey</span>
                                 <span class="icon dropArrow">
@@ -97,8 +97,10 @@
                             <ul class="subCategoryList ">
                                 <li><a href="<?php echo URLROOT;?>/admin/survey_list">Survey List</a></li>
                                 <li><a href="<?php echo URLROOT;?>/admin/survey_report">Survey Report</a></li>
+                                <li><a href="<?php echo URLROOT;?>/admin/alumni_report">Alumni Report</a></li>
                             </ul>
                         </li>
+
                         <li class="mainCategory" >
                             <div class="categoryContainer">
                                 <a href="<?php echo URLROOT;?>/admin/notif">Send Email</a>
