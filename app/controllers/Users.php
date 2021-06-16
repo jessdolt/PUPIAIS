@@ -174,6 +174,7 @@
                 $_SESSION['id'] = $newUser->user_id;
                 $_SESSION['email'] = $newUser->email;
                 $_SESSION['name'] = $newUser->name;
+                $_SESSION['first_name'] = $newUser->first_name;
                 $_SESSION['student_no'] = $newUser->student_no;
                 $_SESSION['alumni_id'] = $newUser->a_id;
                 $_SESSION['user_type'] = $newUser->user_control;

@@ -95,19 +95,13 @@
                             'alumni_id' => $_SESSION['alumni_id']
                         ];
                         $this->userModel->accVerified($newData);
-                        
-                        if ($data['employment'] == 'Unemployed') {
-                            $this->userModel->additionalVerifyDelete($_SESSION['alumni_id']);
+
+                        if ($this->userModel->additionalVerify($_SESSION['alumni_id'])) {
                             redirect('profile/viewProfile/'.$_SESSION['alumni_id']);
                         } else {
-                            if ($this->userModel->additionalVerify($_SESSION['alumni_id'])) {
-                                redirect('profile/viewProfile/'.$_SESSION['alumni_id']);
-                            } else {
-                                //ADDITIONAL INFORMATION
-                                redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
-                            }
+                            //ADDITIONAL INFORMATION
+                            redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
                         }
-
                     } else {
                         die("Something went wrong");
                     }
@@ -145,7 +139,7 @@
 
         public function changePassword($id) {
 
-        $this->accountPass();
+            $this->accountPass();
 
             $data = [
                 'alumni_id' => $id,
@@ -220,59 +214,71 @@
         public function profileAdditionalAdd($id) {
             $this->accountPass();
             $user = $this->userModel->singleUser($id);
-            if ($user->employment == 'Employed') {
                 // If there is a record in employment
                 if($this->userModel->additionalVerify($id) == 1) {
-                    redirect('profile/profileAdditionalEdit'.$id);
+                    redirect('profile/viewProfile/'.$id);
                 } else {
+
                     if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
-                        $file = $_FILES['newsImageInput'];
-        
                         $data = [
                             'alumni_id' => $_SESSION['alumni_id'],
+                            'course' => $user->course_code,
                             'gDate' => $_POST['gDate'],
+                            'status' => $_POST['cstatus'],
                             'eDate' => $_POST['eDate'],
                             'ceDate' => $_POST['ceDate'],
                             'tWork' => $_POST['tWork'],
                             'wPosition' => $_POST['wPosition'],
                             'mIncome' => $_POST['mIncome'],
-                            'ifRelated' => $_POST['ifRelated'],
+                            'ifRelated' => $_POST['related'],
                             'file' => '',
                             'file_error' => ''
         
                         ];
-        
-                        $filename = $file['name'];
-                        $fileTmpName = $file['tmp_name'];
-                        $fileSize = $file['size'];
-                        $fileError = $file['error'];
-                        $fileType = $file['type'];
-        
-                        $fileExt = explode ('.',$filename);
-                        $fileActualExt = strtolower(end($fileExt));
-                        $allowed = array('jpg','jpeg', 'png');
-        
-                        if(in_array($fileActualExt, $allowed)){
-                            if( $fileError === 0){
-                                if($fileSize < 1000000){        
-                                    $fileNameNew = uniqid('',true).".".$fileActualExt;
-                                    $target = "uploads/". basename($fileNameNew);
-                                    move_uploaded_file($fileTmpName, $target);
-                                    $data['file'] = $fileNameNew;
+                        $file = $_FILES['newsImageInput'];
+                        if(!empty($file)) {
+                            $filename = $file['name'];
+                            $fileTmpName = $file['tmp_name'];
+                            $fileSize = $file['size'];
+                            $fileError = $file['error'];
+                            $fileType = $file['type'];
+            
+                            $fileExt = explode ('.',$filename);
+                            $fileActualExt = strtolower(end($fileExt));
+                            $allowed = array('jpg','jpeg', 'png');
+            
+                            if(in_array($fileActualExt, $allowed)){
+                                if( $fileError === 0){
+                                    if($fileSize < 1000000){        
+                                        $fileNameNew = uniqid('',true).".".$fileActualExt;
+                                        $target = "uploads/". basename($fileNameNew);
+                                        move_uploaded_file($fileTmpName, $target);
+                                        $data['file'] = $fileNameNew;
+                                    }
+                                } else {
+                                    $data['file_error'] = 'File Size too big. Maximum of 1mb only';
                                 }
                             } else {
-                                $data['file_error'] = 'File Size too big. Maximum of 1mb only';
+                                $data['file_error'] = 'There was a problem in uploading the file';
                             }
-                        } else {
-                            $data['file_error'] = 'There was a problem in uploading the file';
                         }
-        
-                        if(empty($data['file_error']) && empty($data['gDate_error'])){
+
+                        if(empty($data['file_error'])){
                             if($this->userModel->profileAdditionalAdd($data)){
+
+                                if($data['status'] == "Student") {
+                                    $data['status'] = "Unemployed";
+                                }
+
+                                if($this->userModel->updateEmployment($data)) {
                                 redirect('profile/viewProfile/'.$_SESSION['alumni_id']);
+                                } else {
+                                    die("Something went wrong");
+                                }
+                        
                             }
-                            else{
+                            else {
                                 die("Something went wrong");
                             } 
                         } else{
@@ -281,7 +287,9 @@
                     }
                     else{
                         $data = [
+                            'course' => $user->course_code,
                             'gDate' => '',
+                            'status' => '',
                             'eDate' => '',
                             'ceDate' => '',
                             'tWork' => '',
@@ -295,11 +303,6 @@
                     
                     $this->view('users/additionalProfileAdd', $data);
                 }
-
-            }
-            else {
-                redirect('profile/editProfile/'.$id);
-            }
         }
 
     }
