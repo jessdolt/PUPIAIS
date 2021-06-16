@@ -10,6 +10,10 @@ class Email extends Controller{
         $this->userModel = $this->model('user');
     }
 
+    public function sendConfirmation(){
+        
+    }
+
     //Email specific alumni
     public function sendCredentials($id){
         $alumniUser = $this->emailModel->singleAlumni($id);

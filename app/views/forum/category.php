@@ -99,7 +99,6 @@
                         </a>
                     </li> 
                     <?php endforeach;?>     
-                           
                 </ul>
                 <div class="pagination">
                     <span class="currentRows">1-20 of 120</span>

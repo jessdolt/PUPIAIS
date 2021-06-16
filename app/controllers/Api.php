@@ -397,39 +397,44 @@
                 $arr1 = $resultTopic;
                 $arr2 = $resultComments;
                 $arr3 = $resultReplies;
-                $arrMerged = array_merge($arr1,$arr2, $arr3);
+
+                $forumArr = array();
+
+                if($arr2 != 0 && $arr3 != 0){
+                    $arrMerged = array_merge($arr1,$arr2, $arr3);
+                }
+                else if ($arr2 != 0 && $arr3 == 0){
+                    $arrMerged = array_merge($arr1,$arr2);
+                }
+                else {
+                    $arrMerged = $arr1;    
+                }
 
                 usort($arrMerged, function($a, $b) {
                     return strtotime($b->rCreated_at) - strtotime($a->rCreated_at);
                 });
 
-                $forumArr = array();
+                if(count($arrMerged) > 4){
+                    $arrMerged = $this->limitArray($arrMerged);
+                }
 
-                for($i = 0; $i < 4; $i++ ){
+                
+                for($i = 0; $i < count($arrMerged); $i++ ){
                     array_push($forumArr, $arrMerged[$i]);
                 } 
+
                 echo json_encode($forumArr);
-                //array_print($result);
-                // if (count($result) > 0){
-                //     $jobs_arr = array();
-                //     $jobs_arr['data'] = array();
-    
-                //     foreach($result as $job){
-                //         $job_item = array(
-                //             'activeJobs' => $job->job_active,
-                //         );
-    
-                //         array_push($jobs_arr['data'], $job_item);
-                //     }
-    
-                //     echo json_encode($jobs_arr);
-                // }
-                // else{
-                //     echo json_encode(
-                //         array('message' => 'No Events Found')
-                //     );
-                // }
+                
             }
+        }
+
+        function limitArray($arr){
+            $newArr = array();
+            for($i = 0; $i < 4; $i++){
+                array_push($newArr, $arr[$i]);
+            }
+    
+            return $newArr;
         }
       
     }

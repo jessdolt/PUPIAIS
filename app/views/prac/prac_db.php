@@ -41,22 +41,63 @@
 
 <body>
 <?php 
+    array_print($data);
     $arr1 = $data['topic'];
     $arr2 = $data['comments'];
     $arr3 = $data['replies'];
-    $arrMerged = array_merge($arr1,$arr2, $arr3);
 
-    usort($arrMerged, function($a, $b) {
-        return strtotime($b->rCreated_at) - strtotime($a->rCreated_at);
-    });
+    if($arr2 != 0 && $arr3 != 0){
+        echo 'all got entries';
+        $arrMerged = array_merge($arr1,$arr2, $arr3);
+    }
+    else if ($arr2 != 0 && $arr3 == 0){
+        echo 'only comments';
+        $arrMerged = array_merge($arr1,$arr2);
+    }
+    else {
+        echo 'only topic';
+        $arrMerged = $arr1;
+        
 
-    $forumArr = array();
+    }
+        usort($arrMerged, function($a, $b) {
+            return strtotime($b->rCreated_at) - strtotime($a->rCreated_at);
+        });
 
-    for($i = 0; $i < 4; $i++ ){
-        array_push($forumArr, $arrMerged[$i]);
-    } 
+        $forumArr = array();
 
-    array_print($forumArr);
+        
+        if(count($arrMerged) > 4){
+            $arrMerged = limitArray($arrMerged);
+
+        }
+        
+        for($i = 0; $i < count($arrMerged) ; $i++ ){
+            array_push($forumArr, $arrMerged[$i]);
+        } 
+        array_print($forumArr);
+
+    function limitArray($arr){
+        $newArr = array();
+        for($i = 0; $i < 4; $i++){
+            array_push($newArr, $arr[$i]);
+        }
+
+        return $newArr;
+    }
+    // $arrMerged = array_merge($arr1,$arr2, $arr3);
+
+    // usort($arrMerged, function($a, $b) {
+    //     return strtotime($b->rCreated_at) - strtotime($a->rCreated_at);
+    // });
+
+    // $forumArr = array();
+
+    // for($i = 0; $i < 4; $i++ ){
+    //     array_push($forumArr, $arrMerged[$i]);
+    // } 
+
+    // array_print($forumArr);
    
     
 ?>
@@ -64,36 +105,6 @@
 
 
 <script>
-
-
-    showChart();
-    function showChart(){
-        const labels = [];
-       
-        const data = {
-            labels: labels,
-            datasets: [{
-                //label: 'My First dataset',
-                backgroundColor: [ 'rgb(243,152,152)', 'rgb(205,20,20)'],
-                borderColor: ['rgb(243,152,152)','rgb(205,20,20)' ],
-                hoverOffset: 10,
-                data: [4,2]
-            }]
-        };
-
-        const config = {
-            type: 'pie',
-            data,
-            options: {
-                
-            }
-        };
-
-        var myChart = new Chart(
-            document.getElementById('latestSurvey').getContext('2d'),
-            config
-        );
-    }
 
 
 </script>

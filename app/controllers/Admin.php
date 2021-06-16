@@ -58,7 +58,7 @@
                 'replies' => $latestReplies
             ];
 
-            // array_print($data);
+            //array_print($data);
             $this->view('prac/prac_db', $data);
         }
 
@@ -423,5 +423,25 @@
             ];
 
             $this->view('admin_d/gallery' , $data);
+        }
+
+        public function alumni_report() {
+            $this->alumniRModel = $this->model('alumnir_model');
+            $alumni = $this->alumniRModel->showAll();
+            $allCount = $this->alumniRModel->allCount();
+            $batch = $this->alumniRModel->showBatch();
+            $course = $this->alumniRModel->showCourses();
+            $alumniPerBatch = $this->alumniRModel->alumniCountPerBatch();
+
+            $allCount = count($allCount);
+            $data = [
+                'allCount' => $allCount,
+                'alumni' => $alumni,
+                'batch' => $batch,
+                'course' => $course,
+                'alumniPerBatch' => $alumniPerBatch,
+            ];
+
+            $this->view('admin_d/alumni_report', $data);
         }
 }

@@ -60,6 +60,7 @@
                                     <span class="error"></span>
                                 </div>
                             </div>
+                            <?php if(!empty($data['employment'])) : ?>
                             <div>
                                 <label class="outsideLabel">Employment Status:</label>
                                 <fieldset class="radioBtnContainer">
@@ -67,6 +68,7 @@
                                     <input type="radio" class="eStatus" name="employment" id="employed-id" value="Employed" <?php echo ($data['employment'] == 'Employed') ? 'checked' : ''?>>
                                 </fieldset>
                             </div>
+                            <?php endif; ?>
                             <div>
                                 <label class="outsideLabel">Gender:</label>
                                 <fieldset class="radioBtnContainer">

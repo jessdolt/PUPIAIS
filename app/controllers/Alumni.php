@@ -103,19 +103,20 @@ class Alumni extends Controller{
                            $alumni_id = $this->alumniModel->addAlumni($data);
                             // $pass = '12345';
                             // $pass = password_hash($pass, PASSWORD_DEFAULT);
-                            $pass = bin2hex(openssl_random_pseudo_bytes(5));
+                            //$pass = bin2hex(openssl_random_pseudo_bytes(5));
                             if(!empty($alumni_id)){
-                                $userType = $this->alumniModel->getUserTypeIdAlumni();
-                                $newData = [
-                                    'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
-                                    'a_id' => $alumni_id,
-                                    'email' => $data['email'],
-                                    'password' => $pass,
-                                    'user_type' => $userType->id
-                                ];
-                                if($this->userModel->register($newData)){
-                                    redirect('admin/alumni');
-                                }
+                                // $userType = $this->alumniModel->getUserTypeIdAlumni();
+                                // $newData = [
+                                //     'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
+                                //     'a_id' => $alumni_id,
+                                //     'email' => $data['email'],
+                                //     'password' => $pass,
+                                //     'user_type' => $userType->id
+                                // ];
+                                // if($this->userModel->register($newData)){
+                                //     redirect('admin/alumni');
+                                // }
+                                redirect('admin/alumni');
                             }
                     }
                 else{
@@ -474,26 +475,29 @@ class Alumni extends Controller{
                 $data['course'] = $this->checkCourse($data['course']);
                 $data['batch'] = $this->checkBatch($data['batch']);
                 //array_print($data);
-                
+                $data['birth_date'] = $this->formatDateLocal($data['birth_date']); 
               
+
+                array_print($data);
                 if($this->alumniModel->checkAlumni($data['student_no'])){
                     array_push($duplication, $data);
                 }
-
                 else{
+
+                    //echo $data['birth_date'];
                     $alumni_id = $this->alumniModel->addBulkAlumni($data);
-                    $pass = bin2hex(openssl_random_pseudo_bytes(5));
-                    if(!empty($alumni_id)){
-                        $userType = $this->alumniModel->getUserTypeIdAlumni();
-                        $newData = [
-                            'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
-                            'a_id' => $alumni_id,
-                            'email' => $data['email'],
-                            'password' => $pass,
-                            'user_type' => $userType->id
-                        ];
-                        $this->userModel->register($newData);
-                    } 
+                    // $pass = bin2hex(openssl_random_pseudo_bytes(5));
+                    // if(!empty($alumni_id)){
+                    //     $userType = $this->alumniModel->getUserTypeIdAlumni();
+                    //     $newData = [
+                    //         'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
+                    //         'a_id' => $alumni_id,
+                    //         'email' => $data['email'],
+                    //         'password' => $pass,
+                    //         'user_type' => $userType->id
+                    //     ];
+                    //     $this->userModel->register($newData);
+                    // } 
                 }
             }
 
@@ -506,6 +510,13 @@ class Alumni extends Controller{
             }
             
         }
+    }
+
+    function formatDateLocal($date){
+        $bDate= rtrim($date,'/');
+        $bDate= explode('/', $bDate);
+
+        return date($bDate[2]. '-'. $bDate[0].'-' .$bDate[1]);
     }
 
     public function checkCourse($code){

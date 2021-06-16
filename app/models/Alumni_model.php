@@ -143,13 +143,14 @@
         }
 
         public function addBulkAlumni($data){
-            $this->db->query('INSERT INTO alumni(student_no, last_name, first_name, middle_name, gender, email, contact_no, courseID, batchID) VALUES (:student_no, :last_name, :first_name, :middle_name, :gender, :email, :contact_no, :course, :batch)');
+            $this->db->query('INSERT INTO alumni(student_no, last_name, first_name, middle_name, gender, birth_date ,email, contact_no, courseID, batchID) VALUES (:student_no, :last_name, :first_name, :middle_name, :gender, :birth_date, :email, :contact_no, :course, :batch)');
 
             $this->db->bind(':student_no', $data['student_no']);
             $this->db->bind(':last_name', $data['last_name']);
             $this->db->bind(':first_name', $data['first_name']);
             $this->db->bind(':middle_name', $data['middle_name']);
             $this->db->bind(':gender', $data['gender']);
+            $this->db->bind(':birth_date', $data['birth_date']);
             $this->db->bind(':email', $data['email']);
             $this->db->bind(':contact_no', $data['contact_no']);
             $this->db->bind(':course', $data['course']);
@@ -162,14 +163,7 @@
             }
         }
 
-        public function getUserTypeIdAlumni() {
-            $this->db->query('SELECT * FROM user_type WHERE user_control = "Alumni"');
-            $row = $this->db->single();
-            if($this->db->rowCount() > 0){
-                return $row;
-            }
-        }
-
+        
         public function addDepartment($data){
             $this->db->query('INSERT INTO department (department,departmentCode) VALUES (:department,:departmentCode)');
 

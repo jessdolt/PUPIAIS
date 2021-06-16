@@ -1,5 +1,8 @@
 <?php 
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
     class Users extends Controller{
         public function __construct(){
             $this->userModel = $this->model('user');
@@ -94,6 +97,153 @@
             $this->view('users/register',$data);
         }
 
+        public function signup(){
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+                $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+                
+                $data = [
+                    'student_no' => trim($_POST['student_no']),
+                    'last_name' => trim($_POST['lastName']),
+                    'birth_date' => trim($_POST['birthDate']),
+                    'email' => trim ($_POST['email']),
+                    'password' => trim($_POST['password']),
+                    'confirm_password' => trim($_POST['confirm_password']),
+                    'lastName_err' => '',
+                    'email_err' => '',
+                    'password_err' => '',
+                    'confirm_password_err' => '',
+                ];  
+
+                if(empty($data['last_name'])){
+                    $data['lastName_err'] = 'Please your full name.';
+                }
+
+                if(empty($data['email'])){
+                    $data['email_err'] = 'Please enter your email';
+                }
+
+                if(empty($data['password'])){
+                    $data['password_err'] = 'Please enter password';
+                } elseif (strlen($data['password']) < 3){
+                    $data['password_err'] = 'Password must be at least 3 characters';
+                }
+
+                if(empty($data['confirm_password'])){
+                    $data['confirm_password_err'] = 'Please enter confirm password';
+                }
+                else{
+                    if($data['password'] != $data['confirm_password']){
+                        $data['confirm_password_err'] = 'Passwords do not match';
+                    }
+                }
+
+                //array_print($data);
+                if(empty($data['email_err']) && empty($data['lastName_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
+                    //Hash password
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);  
+            
+                    $alumniInfo = $this->userModel->validation($data);
+                    if(!empty($alumniInfo)){
+                        sleep(3);
+                        
+                        if($this->sendConfirmation($data['email'])){
+                            $userType = $this->userModel->getUserTypeIdAlumni();
+                            $newData = [
+                                'a_id' => $alumniInfo->alumni_id,
+                                'name' => $alumniInfo->first_name . ' ' . $alumniInfo->last_name,
+                                'email'=> $data['email'],
+                                'password' => $data['password'],
+                                'user_type' => $userType->id
+                            ];
+
+                            //array_print($newData);
+                            if($this->userModel->registerAlumni($newData)){
+                                redirect('users/verified/'. $data['email']);
+                            }
+                        }
+                       
+                    }
+                    else{
+                        echo 'not validated';
+                    }
+
+                } 
+                else{
+                    $this->view('users/signup',$data);
+                }
+
+            }
+
+            else{
+                $data = [
+                    'studet_no' => '',
+                    'lastName' => '',
+                    'birthDate' => '',
+                    'email' =>'',
+                    'password' => '',
+                    'confirm_password' => '',
+                    'lastName_err' => '',
+                    'email_err' => '',
+                    'password_err' => '',
+                    'confirm_password_err' => '',
+                ];
+            }
+
+            $this->view('users/signup', $data);
+        }
+
+        public function verified($email){
+            $data = [
+                'email' => $email
+            ];
+            $this->view('users/alumni_verify', $data);
+        }
+
+        function sendConfirmation($email){
+            $referenceNo = rand(10000,99999);
+    
+            $mail = new PHPMailer();
+            $mail->SMTPDebug = 0;
+            $mail->isSMTP();
+            $mail->SMTPAuth = true;
+            $mail->Host = 'smtp.gmail.com';
+            
+            $mail->Username = 'itechpup1@gmail.com';
+            $mail->Password = 'PUPtest123';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = '587';
+    
+            $mail->isHTML();
+            
+            $mail->setFrom('itechpup1@gmail.com', 'PUP ITECH Administrator');
+    
+            $mail->addAddress($email);
+            $mail->Subject = 'PUPIAIS Account Validated';
+    
+            $website = URLROOT;
+            
+            $msg = '
+                    <p> You are now officially registed to PUPIAIS </p>
+                    <p> You can now access to our website:<strong>'. $website.'</strong></p>
+                    ';
+                    
+            $mail->Body = $msg;
+    
+            $mail->Priority = 1;
+            $mail->addCustomHeader("X-MSMail-Priority: High");
+            $mail->addCustomHeader("Importance: High");
+            
+            if($mail->Send()){
+                return true;
+            }
+            else{
+                echo $mail->ErrorInfo;
+            }
+        }
+
+
+
         public function login() {
             $data = [
                 'email' => '',
@@ -106,7 +256,7 @@
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 //Sanitize post data
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-    
+                
                 $data = [
                     'email' => trim($_POST['email']),
                     'password' => trim($_POST['password']),
@@ -128,14 +278,30 @@
     
                 //Check if all errors are empty
                 if (empty($data['emailError']) && empty($data['passwordError'])) {
+                    $date = date('Y-m-j');
+                    $checker = $this->userModel->checkLoginDate($date);
                     $loggedInUser = $this->userModel->login($data['email'], $data['password']);
-    
+                    if($checker->login_date == $date){
+                        if ($loggedInUser) {
+                            $this->userModel->loginCount($date);
+                            $this->createUserSession($loggedInUser);
+                        }
+                        else {
+                            $data['passwordError'] = 'Password or email is incorrect. Please try again.';
+                        }
+                }
+                else {
+                    $this->userModel->addLoginDate($date);
                     if ($loggedInUser) {
+
+                        $this->userModel->loginCount($date);
                         $this->createUserSession($loggedInUser);
                     }
                     else {
                         $data['passwordError'] = 'Password or email is incorrect. Please try again.';
                     }
+                }
+                    
                 }
     
             } else {
@@ -158,6 +324,7 @@
                 $_SESSION['id'] = $newUser->user_id;
                 $_SESSION['email'] = $newUser->email;
                 $_SESSION['name'] = $newUser->name;
+                $_SESSION['first_name'] = $newUser->first_name;
                 $_SESSION['student_no'] = $newUser->student_no;
                 $_SESSION['alumni_id'] = $newUser->a_id;
                 $_SESSION['user_type'] = $newUser->user_control;

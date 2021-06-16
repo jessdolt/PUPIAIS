@@ -17,7 +17,7 @@
                         <div class="hor-con">
                             <div class="card-con">
                                 <h3>Total visit count this month</h3>
-                                <span class="visit-count">420</span>
+                                <span class="visit-count">56</span>
                                 <svg width="200" height="91" viewBox="0 0 200 91" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="195" cy="33" r="3.5" stroke="#15CC8A" stroke-width="3"/>
                                     <circle cx="148" cy="51" r="3.5" stroke="#15CC8A" stroke-width="3"/>
@@ -55,7 +55,7 @@
                         
                         <div class="card-con">
                             <div class="card-header">
-                                <h3>Alumni Registered</h3>
+                                <h3>Alumni </h3>
                                 <div class="textFieldContainer">
                                     <select name="batch" id="batch_container" required>
                                       
@@ -148,6 +148,7 @@ function checkLatestSurvey(){
         const surveyData = data.latest[2].taken[0][0].userTaken;
         spanRespondents.textContent = respondents;
         spanSurveyTitle.textContent = surveyTitle;
+        console.log(respondents);
         surveyChart(surveyData,respondents);
     });
 }
@@ -211,7 +212,7 @@ function forumActivity(){
     const forumActContainer = document.getElementById('forum-act-container');
     fetch(`<?php echo URLROOT;?>/api/forum/read`).then(res=>res.json())
     .then(data => {
-      
+        console.log(data);
         data.forEach(forum => {
             let imageStr
             if(forum.image === ""){

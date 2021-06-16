@@ -25,7 +25,88 @@ class User {
         }
     }
 
+    public function validation($data){
+        $this->db->query('SELECT * FROM alumni WHERE last_name = :last_name AND student_no = :student_no AND birth_date = :birth_date');
+        $this->db->bind(':last_name', $data['last_name']);
+        $this->db->bind(':student_no', $data['student_no']);
+        $this->db->bind(':birth_date', $data['birth_date']);
+        $row = $this->db->single();
+        if($this->db->rowCount() > 0){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
 
+    public function getUserTypeIdAlumni() {
+        $this->db->query('SELECT * FROM user_type WHERE user_control = "Alumni"');
+        $row = $this->db->single();
+        if($this->db->rowCount() > 0){
+            return $row;
+        }
+    }
+
+
+    public function getAlumni($a_id){
+        $this->db->query('SELECT * FROM alumni WHERE alumni_id = :a_id');
+        $this->db->bind(':a_id', $a_id);
+        $row = $this->db->single();
+        if($this->db->rowCount() > 0){
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function registerAlumni($data) {
+        $this->db->query('INSERT INTO users(a_id,name,email, password, user_type) VALUES(:a_id,:name,:email,:password,:user_type)');
+        $this->db->bind(':a_id', $data['a_id']);
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':user_type', $data['user_type']);
+        
+        if($this->db->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+    public function loginCount($date) {
+        $this->db->query('UPDATE login_count SET visit_count = visit_count + :visit WHERE login_date = :date');
+        $visit = 1;
+        $this->db->bind(':date', $date);
+        $this->db->bind(':visit', $visit);
+        if($this->db->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function addLoginDate($date) {
+        $this->db->query('INSERT INTO login_count(login_date) VALUES(:date)');
+        $this->db->bind(':date', $date);
+        if($this->db->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function checkLoginDate($date) {
+        $this->db->query('SELECT login_date FROM `login_count` where login_date = :date');
+        $this->db->bind(':date', $date);
+        $row = $this->db->single();
+        return $row;
+    }
 
     // GET USER_CONTROL FROM TABLE USER_TYPE
     public function forSession($user) {
@@ -264,9 +345,11 @@ class User {
         }
 
         public function profileAdditionalAdd($data){
-            $this->db->query('INSERT INTO employment (alumni_id, graduation, first_employment, current_employment, type_of_work, work_position, monthly_income, if_related, company_id) VALUES (:alumni_id, :graduation, :first_employment, :current_employment, :type_of_work, :work_position, :monthly_income, :if_related, :company_id)');
+            $this->db->query('INSERT INTO employment (alumni_id, course, graduation, status, first_employment, current_employment, type_of_work, work_position, monthly_income, if_related, company_id) VALUES (:alumni_id, :course, :graduation, :status, :first_employment, :current_employment, :type_of_work, :work_position, :monthly_income, :if_related, :company_id)');
             $this->db->bind(':alumni_id', $data['alumni_id']);
+            $this->db->bind(':course', $data['course']);
             $this->db->bind(':graduation', $data['gDate']);
+            $this->db->bind(':status', $data['status']);
             $this->db->bind(':first_employment', $data['eDate']);
             $this->db->bind(':current_employment', $data['ceDate']);
             $this->db->bind(':type_of_work', $data['tWork']);
@@ -275,24 +358,6 @@ class User {
             $this->db->bind(':if_related', $data['ifRelated']);
             $this->db->bind(':company_id', $data['file']);
             
-            if($this->db->execute()){
-                return true;
-            } else{
-                return false;
-            }
-        }
-
-        public function profileAdditionalEdit($data) {
-            $this->db->query('UPDATE employment SET alumni_id=:alumni_id, graduation=:graduation, first_employmen=:first_employment, current_employment=:current_employment, type_of_work=:type_of_work, work_position=:work_position, monthly_income=:monthly_income, if_related=:if_related, company_id=:company_id WHERE alumni_id = :alumni_id');
-            $this->db->bind(':alumni_id', $data['alumni_id']);
-            $this->db->bind(':graduation', $data['gDate']);
-            $this->db->bind(':first_employment', $data['eDate']);
-            $this->db->bind(':current_employment', $data['ceDate']);
-            $this->db->bind(':type_of_work', $data['tWork']);
-            $this->db->bind(':work_position', $data['wPosition']);
-            $this->db->bind(':monthly_income', $data['mIncome']);
-            $this->db->bind(':if_related', $data['ifRelated']);
-            $this->db->bind(':company_id', $data['file']);
             if($this->db->execute()){
                 return true;
             } else{
@@ -319,24 +384,6 @@ class User {
     
             if($this->db->rowCount() > 0) {
                 return true;
-            } else {
-                return false;
-            }
-        }
-
-        public function additionalVerifyDelete($id) {
-            $this->db->query('SELECT * FROM employment WHERE alumni_id = :alumni_id');
-            $this->db->bind(':alumni_id', $id);
-            $this->db->single();
-    
-            if($this->db->rowCount() > 0) {
-                $this->db->query('DELETE FROM employment WHERE alumni_id = :alumni_id');
-                $this->db->bind(':alumni_id', $id);
-                if($this->db->execute()){
-                    return true;
-                } else {
-                    return false;
-                }
             } else {
                 return false;
             }
@@ -388,5 +435,17 @@ class User {
     
             $row = $this->db->single();
             return $row; 
+        }
+
+        public function updateEmployment($data) {
+            $this->db->query('UPDATE alumni SET employment=:employment WHERE alumni_id = :alumni_id');
+            $this->db->bind(':employment', $data['status']);
+            $this->db->bind(':alumni_id', $data['alumni_id']);
+            if($this->db->execute()){
+                return true;
             }
-}
+            else{
+                return false;
+            }
+        }
+    }

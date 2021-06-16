@@ -3,10 +3,11 @@
         <section class="mainContent forumView">
             <div class="container forumCon">
                 <div class="forum-link">
+
                     <?php if($data['user']->user_type == 1||$data['user']->user_type == 2):?>
-                    <img class="forum-image" src="<?php echo URLROOT;?>/uploads/<?php echo $data['admin']->image?>" id="myImg">
+                    <img class="forum-image" src="<?php echo (!empty($data['admin']->image) ? URLROOT. '/uploads//'.$data['admin']->image: URLROOT.'/images/official-default-avatar.svg')?>" id="myImg">
                     <?php else:?>
-                    <img class="forum-image" src="<?php echo URLROOT;?>/uploads/<?php echo $data['alumni']->image ?>" id="myImg">
+                    <img class="forum-image" src="<?php echo (!empty($data['alumni']->image) ? URLROOT. '/uploads//'.$data['alumni']->image: URLROOT.'/images/official-default-avatar.svg')?>" id="myImg">
                     <?php endif;?>
                     <div class="forum-details-con">
                         <div class="forum-details">
@@ -79,8 +80,9 @@
                         <h3 class="comment-count"><?php echo $cmt->counter + $rmt->replies?> Comments</h3>
                     <?php endif;?>
                     <!-- primary comment -->
+                 
                     <form action="<?php echo URLROOT;?>/forum/comment/<?php echo $data['post']->topic_id;?>" method="POST" class="comment-con">
-                        <img src="<?php echo URLROOT;?>/uploads/<?php echo ($data['current']->image) ?>" >
+                        <img src="<?php echo (!empty($data['current']->image) ? URLROOT. '/uploads//'.$data['current']->image: URLROOT.'/images/official-default-avatar.svg')?>" >
                         <div class="textFieldContainer">
                             <textarea name="comment" required></textarea>
                             <span class="error"></span>
@@ -93,10 +95,11 @@
                             <?php if($comment->comment_for == $data['post']->topic_id): ?>
                         <li class="list-item" id="<?php echo $comment->comment_id?>">
                             <form action="" class="comment-con-thread">
+                                
                                 <?php if($comment->user_type == 1||$comment->user_type == 2): ?>
-                                <img src="<?php echo URLROOT;?>/uploads/<?php echo $comment->admin_image?>" width="40px" height="40px">
+                                <img src="<?php echo (!empty($data['admin']->image) ? URLROOT. '/uploads//'.$data['admin']->image: URLROOT.'/images/official-default-avatar.svg')?>" width="40px" height="40px">
                                 <?php else: ?>
-                                <img src="<?php echo URLROOT;?>/uploads/<?php echo $comment->image?>" width="40px" height="40px">
+                                <img src="<?php echo (!empty($data['alumni']->image) ? URLROOT. '/uploads//'.$data['alumni']->image: URLROOT.'/images/official-default-avatar.svg')?>" width="40px" height="40px">
                                 <?php endif; ?>
                                 <div class="commentInfo">
                                     <span class="account-name"><?php echo $comment->name?></span>
