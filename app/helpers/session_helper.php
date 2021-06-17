@@ -35,3 +35,5 @@
         $url= explode('/', $url);
         return $url[2];
     }
+
+    

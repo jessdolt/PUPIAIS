@@ -26,8 +26,6 @@
                 $row = $this->db->resultSet();
                 if($this->db->rowCount() > 0) {
                     return $row;
-                } else {
-                    return false;
                 }
         }
 
@@ -129,6 +127,18 @@
             }
         }
 
+        public function selectExport($id) {
+            $this->db->query('SELECT * FROM employment 
+                            INNER JOIN alumni
+                            ON employment.alumni_id = alumni.alumni_id
+                            WHERE employment_id = :id');
+            $this->db->bind(':id', $id);
+            $row = $this->db->resultSet();
+            if($this->db->rowCount() > 0){
+                return $row;
+            }
+        }
+ 
 
     }
 

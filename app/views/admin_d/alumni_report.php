@@ -8,7 +8,7 @@
             <a href="<?php echo URLROOT?>/admin/alumni_report" class="allUser">
                 <!-- update change users to alumni -->
                 All Respondents
-                <span class="allUserCount"><?php echo ($data['allCount'])?></span>
+                <span class="allUserCount"><?php echo (!empty($data['allCount'])) ? $data['allCount'] : '0'?></span>
             </a>
             <hr>
             <ul class="department">
@@ -58,14 +58,19 @@
                         <span class="batch">Alumni Report</span>
                     </h2>
                     <div class="btnContainer">
-                        <a href="userAdd.html">
+                    <form action="<?php echo URLROOT?>/alumni_report/export" method="POST">
+                        <?php foreach($data['alumni'] as $export) : ?>
+                            <input type="hidden" name="result[]" value="<?php echo $export->employment_id?>">
+                        <?php endforeach; ?>
+                        <button>
                             Export
                             <!-- update svg -->
                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11 16H13V7H16L12 2L8 7H11V16Z" fill="black" fill-opacity="0.87"/>
                                 <path d="M5 22H19C20.103 22 21 21.103 21 20V11C21 9.897 20.103 9 19 9H15V11H19V20H5V11H9V9H5C3.897 9 3 9.897 3 11V20C3 21.103 3.897 22 5 22Z" fill="black" fill-opacity="0.87"/>
                             </svg>
-                        </a>
+                        </button>
+                    </form>
                         <a href="#">January - June</a>
                         <a href="#">July - December</a>
                     </div>
@@ -178,6 +183,7 @@
                 })
             }
     })
+
 </script>
 
 <?php require APPROOT . '/views/inc/footer.php';?>

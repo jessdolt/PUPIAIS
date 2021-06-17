@@ -400,8 +400,9 @@
             $batch = $this->alumniRModel->showBatch();
             $course = $this->alumniRModel->showCourses();
             $alumniPerBatch = $this->alumniRModel->alumniCountPerBatch();
-
-            $allCount = count($allCount);
+            if(!empty($allCount)) {
+                $allCount = count($allCount);
+            }
             $data = [
                 'allCount' => $allCount,
                 'alumni' => $alumni,
