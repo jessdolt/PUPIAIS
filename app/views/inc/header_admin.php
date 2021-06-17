@@ -86,7 +86,7 @@
                                 <li><a href="<?php echo URLROOT;?>/admin/job_portal">Job Portal</a></li>
                             </ul>
                         </li>
-                        <li class="mainCategory <?php echo ($url[1] == 'alumni_report' || $url[1] == 'survey_list' || $url[1] == 'survey_report' || $url[1] == 'employment' || $url[0] == 'surveys' ) ? 'open' : ' '?>" tabindex="0">
+                        <li class="mainCategory <?php echo ($url[1] == 'alumni_report' || $url[0] == 'alumni_report'  || $url[1] == 'survey_list' || $url[1] == 'survey_report' || $url[1] == 'employment' || $url[0] == 'surveys' ) ? 'open' : ' '?>" tabindex="0">
                             <div class="categoryContainer">
                                 <span>Survey</span>
                                 <span class="icon dropArrow">

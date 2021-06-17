@@ -427,7 +427,7 @@
 
         public function alumni_report() {
             $this->alumniRModel = $this->model('alumnir_model');
-            $alumni = $this->alumniRModel->showAll();
+            // $alumni = $this->alumniRModel->showAll();
             $allCount = $this->alumniRModel->allCount();
             $batch = $this->alumniRModel->showBatch();
             $course = $this->alumniRModel->showCourses();
@@ -435,12 +435,58 @@
             if(!empty($allCount)) {
                 $allCount = count($allCount);
             }
+
+            // Get Page # in URL
+            $page = $this->getPage();
+
+            // Limit row displayed
+            $limit = 20;
+            $start = ($page - 1) * $limit;
+
+            $alumni = $this->alumniRModel->showAlumniIndex($start, $limit);
+
+            $pagination = $this->alumniRModel->showAll();
+
+           
+            $total = count($pagination);
+            $pages = ceil($total/$limit);
+
+            // No URL bypass
+            if($pages == 0) {
+                $pages = 1;
+            }
+            if($page > $pages) {
+                redirect('admin/alumni?page='.$pages);
+            }
+
+            $startFormula = $start + 1;
+            $limitFormula = $startFormula - 1 + $limit;
+
+            if($page == $pages) {
+                if ($limitFormula >= $total) {
+                    $limitFormula = $total;
+                }
+            }
+
+            if($total == 0) {
+                $startFormula = 0;
+                $limitFormula = 0;
+            }
+            
             $data = [
                 'allCount' => $allCount,
                 'alumni' => $alumni,
                 'batch' => $batch,
                 'course' => $course,
                 'alumniPerBatch' => $alumniPerBatch,
+
+                'start' => $startFormula,
+                'limit' => $limitFormula,
+                'total' => $total,
+                'first' => '?page=1',
+                'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+                'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+                'last' => '?page=' . $pages
             ];
 
             $this->view('admin_d/alumni_report', $data);
