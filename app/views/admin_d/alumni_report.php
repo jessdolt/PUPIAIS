@@ -58,6 +58,7 @@
                         <span class="batch">Alumni Report</span>
                     </h2>
                     <div class="btnContainer">
+                    <?php if(!empty($data['alumni'])) : ?>
                     <form action="<?php echo URLROOT?>/alumni_report/export" method="POST">
                         <?php foreach($data['alumni'] as $export) : ?>
                             <input type="hidden" name="result[]" value="<?php echo $export->employment_id?>">
@@ -71,6 +72,7 @@
                             </svg>
                         </button>
                     </form>
+                    <?php endif; ?>
                         <a href="#">January - June</a>
                         <a href="#">July - December</a>
                     </div>

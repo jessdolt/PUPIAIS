@@ -68,10 +68,12 @@
         public function export() {
 
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+                $data = array();
                 $select = $_POST['result'];
                 foreach($select as $id) {
                     $newData = $this->alumniRModel->selectExport($id);
+                    $newData = json_decode(json_encode($newData), true);
+                    array_push($data, $newData[0]);
                 }
 
                 // Excel file name for download 
@@ -82,23 +84,18 @@
                 header("Content-Type: application/vnd.ms-excel");
                 
                 $flag = false; 
-                foreach($newData as $row) {
+                foreach($data as $row) {
+                    
                     if(!$flag) { 
                         // display column names as first row 
                         echo implode("\t", array_keys($row)) . "\n"; 
                         $flag = true; 
                     }
                     // filter data
-    
                     array_walk($row, array($this, 'filterData'));
                     echo implode("\t", array_values($row)) . "\n"; 
                 }
-
-
             }
-
-            
-
         }
 
         

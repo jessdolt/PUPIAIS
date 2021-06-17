@@ -128,7 +128,21 @@
         }
 
         public function selectExport($id) {
-            $this->db->query('SELECT * FROM employment 
+            $this->db->query('SELECT employment_id AS "Employment ID", 
+                            last_name AS "Last Name",
+                            first_name AS "First Name",
+                            middle_name as "Middle Name",
+                            course as "Course",
+                            graduation as "Date Graduated",
+                            status as "Status",
+                            first_employment as "First Employment Date",
+                            current_employment as "Current Employment",
+                            type_of_work as "Type of Work",
+                            work_position as "Work Position",
+                            monthly_income as "Monthly Income",
+                            if_related as "Course Related",
+                            date_responded as "Date Responded"
+                            FROM employment 
                             INNER JOIN alumni
                             ON employment.alumni_id = alumni.alumni_id
                             WHERE employment_id = :id');
