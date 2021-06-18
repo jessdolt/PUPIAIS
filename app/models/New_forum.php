@@ -49,7 +49,7 @@
 
         }
 
-        public function getPosts(){
+        public function getPosts($start, $limit){
             $this->db->query('SELECT *,
                               count(comment_id) as comment
                               FROM topic
@@ -61,9 +61,21 @@
                               ON comment_for = topic.topic_id
                               GROUP BY topic_id
                               ORDER BY topic.created_at DESC
+                              LIMIT :start, :limit
             ');
+            $this->db->bind(':start', $start);
+            $this->db->bind(':limit', $limit);
             $results = $this->db->resultSet();
             return $results;
+        }
+
+        public function NoOfResults() {
+            $this->db->query('SELECT ALL topic_id FROM topic'); 
+
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
         }
 
         public function getPostByCategory($id){

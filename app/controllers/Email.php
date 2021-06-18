@@ -117,6 +117,8 @@ class Email extends Controller{
 
     public function forgotPassword() {
 
+        unset($_SESSION['email']);
+
         $data = [
             'code' => '',
             'codeError' => '',
@@ -136,8 +138,6 @@ class Email extends Controller{
             } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                 $data['emailError'] = 'Please enter the correct format.';
             } else {
-
-                    $_SESSION['email'] = $data['email'];
 
                     //SEND EMAIL CODE
                     if ($this->emailModel->findUserByEmail($data['email'])) {
@@ -191,8 +191,9 @@ class Email extends Controller{
                         $this->emailModel->findEmailDuplicate($data['email']);
                         $this->emailModel->forgot($data);
 
-                        if($mail->Send()){
+                        if($mail->Send()) {
                             $_SESSION['token'] = $token;
+                            $_SESSION['email'] = $data['email'];
                             redirect('email/emailVerification');
                         }
                         else{
@@ -212,6 +213,7 @@ class Email extends Controller{
                 'emailError' => '',
             ];
         }
+
 
         $this->view('users/forgotPassword', $data);
     }
@@ -285,10 +287,17 @@ class Email extends Controller{
     }
 
     public function emailVerification() {
+        if(!isset($_SESSION['token']) && empty($_SESSION['token'])) {
+            redirect('email/forgotPassword');
+        }
+
+        if(!isset($_SESSION['email']) && empty($_SESSION['email'])) {
+            redirect('email/forgotPassword');
+        }
 
         $data = [
             'code' => '',
-            'token' => $_SESSION['token'],
+            'token' => '',
             'codeError' => ''
         ];
         
@@ -323,15 +332,17 @@ class Email extends Controller{
                 'codeError' => ''
             ];
         }
-
-        if(!isset($_SESSION['email'])) {
-            redirect('email/forgotPassword');
-        }
-        
         $this->view('users/emailVerification', $data);
     }
 
     public function forgotNewPassword() {
+
+        unset($_SESSION['token']);
+
+        if(!isset($_SESSION['email']) && empty($_SESSION['email'])) {
+            redirect('email/forgotPassword');
+        }
+
         $data = [
             'password' => '',
             'confirmPassword' => '',
@@ -394,10 +405,6 @@ class Email extends Controller{
                 'passwordError' => '',
                 'confirmPasswordError' => ''
             ];
-        }
-
-        if(!isset($_SESSION['email']) && !isset($_SESSION['token'])) {
-            redirect('users/forgotPassword');
         }
 
         $this->view('users/forgotNewPassword', $data);

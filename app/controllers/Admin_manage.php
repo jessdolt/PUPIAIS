@@ -188,6 +188,11 @@
         }
 
         public function addAdmin() {
+           
+            if(isset($_SESSION['noBack'])) {
+                unset($_SESSION['noBack']); 
+                redirect('admin_manage/manage');
+            }
 
             $data = [
                 'user_type' => '',
@@ -273,6 +278,7 @@
                         ];
                         if($this->adminModel->registerAdmin($newData)) {
                         //Redirect to the login page
+                        $_SESSION['noBack'] = rand();
                         redirect('admin_manage/adminAccounts');
                         } else {
                             die('Something went wrong.');
@@ -298,6 +304,11 @@
         }
 
         public function addCc() {
+
+            if(isset($_SESSION['noBack'])) {
+                unset($_SESSION['noBack']);
+                redirect('admin_manage/manage');
+            }
 
             $data = [
                 'name' => '',
@@ -379,6 +390,7 @@
                         ];
                         if($this->adminModel->registerAdmin($newData)) {
                         //Redirect to the login page
+                        $_SESSION['noBack'] = rand();
                         redirect('admin_manage/ccAccounts');
                         } else {
                             die('Something went wrong.');
