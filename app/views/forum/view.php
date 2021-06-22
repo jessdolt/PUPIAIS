@@ -99,10 +99,10 @@
                                 <?php if($comment->user_type == 1||$comment->user_type == 2): ?>
                                 <img src="<?php echo (!empty($data['admin']->image) ? URLROOT. '/uploads//'.$data['admin']->image: URLROOT.'/images/official-default-avatar.svg')?>" width="40px" height="40px">
                                 <?php else: ?>
-                                <img src="<?php echo (!empty($data['alumni']->image) ? URLROOT. '/uploads//'.$data['alumni']->image: URLROOT.'/images/official-default-avatar.svg')?>" width="40px" height="40px">
+                                <img src="<?php echo (!empty($data['alumni']->image) ? URLROOT. '/uploads//'.$comment->image: URLROOT.'/images/official-default-avatar.svg')?>" width="40px" height="40px">
                                 <?php endif; ?>
                                 <div class="commentInfo">
-                                    <span class="account-name"><?php echo $comment->name?></span>
+                                    <span class="account-name"><?php echo $comment->user_name?></span>
                                     <span class="midot">·</span>
                                     <span class="date-posted"><?php echo time_elapsed_string($comment->created_at);?></span>
                                 </div>
@@ -146,7 +146,7 @@
                                         <img src="<?php echo URLROOT;?>/uploads/<?php echo $reply->image?>" width="40px" height="40px">
                                         <?php endif; ?>
                                         <div class="commentInfo" >
-                                            <span class="account-name"><?php echo $reply->name ?></span>
+                                            <span class="account-name"><?php echo $reply->user_name?></span>
                                             <span class="midot">·</span>
                                             <span class="date-posted"><?php echo time_elapsed_string($reply->replied_at);?></span>
                                         </div>

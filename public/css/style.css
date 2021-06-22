@@ -3400,8 +3400,7 @@ ul {
   .home .welcomeBox div.container {
     display: grid;
     grid-template-columns: 4.5rem 1fr;
-    grid-template-areas: "svg header"
- "message message";
+    grid-template-areas: "svg header" "message message";
     column-gap: 0.8rem;
     row-gap: 1.6rem;
     align-items: center; }
@@ -3410,8 +3409,7 @@ ul {
         column-gap: 4.8rem;
         row-gap: 0.8rem;
         grid-template-columns: 12.7rem 1fr;
-        grid-template-areas: "svg header"
- "svg message"; } }
+        grid-template-areas: "svg header" "svg message"; } }
     .home .welcomeBox div.container svg {
       grid-area: svg; }
     .home .welcomeBox div.container h2 {
@@ -3507,7 +3505,8 @@ ul {
         border-top-right-radius: 0;
         border-bottom-left-radius: 1rem; } }
   .alumniNews > section.mainContent .card-body {
-    flex: 1; }
+    flex: 1;
+    min-width: 28rem; }
     .alumniNews > section.mainContent .card-body .caption {
       margin-top: 0;
       margin-bottom: 1.6rem; }
@@ -3935,6 +3934,8 @@ ul {
       margin: 0 auto; }
       .loginMain .registration .verify-con p {
         width: 100%; }
+        .loginMain .registration .verify-con p span {
+          color: #A63F3F; }
     .loginMain .registration .btn-con {
       display: flex; }
       .loginMain .registration .btn-con > * + * {
