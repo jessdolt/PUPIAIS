@@ -155,14 +155,14 @@
                     foreach($resultAnswers as $answer){
                     
                         $answer_item = array(
-                            'id' => $answer->id,
+                            'id' => $answer->id, //23
                             'survey_id' => $answer->survey_id,
                             'user_id' => $answer->user_id,
                             'answer'=> $answer->answer,
                             'question_id'=> $answer->question_id,
                             'date_created' => $answer->date_created
                         );
-                        
+
                         array_push($answer_arr['answer'], $answer_item);
                     }
     

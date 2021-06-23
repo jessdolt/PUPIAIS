@@ -114,4 +114,25 @@
         </div>
     </div>
 
+<?php flash('news_add_success')?>
+<?php flash('news_edit_success')?>
+<?php flash('news_delete_success')?>
+
+
+<script>
+    alertEvents();
+    function alertEvents(){
+        const alertModal = document.getElementById('alert-modal-global');
+        const insideAlertModal = document.getElementById('alert-modal-inside');
+        const okAlertModal = document.getElementById('alert-ok-btn');
+
+        okAlertModal.addEventListener('click',function(){
+            alertModal.classList.remove('show');
+            insideAlertModal.classList.remove('show');
+            
+        })
+    }
+</script>
+
+
 <?php require APPROOT . '/views/inc/footer.php';?>

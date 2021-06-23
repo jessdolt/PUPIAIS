@@ -87,6 +87,11 @@
         </div>
 
 
+
+    <?php flash('gallery_add_success')?>
+    <?php flash('gallery_edit_success')?>
+    <?php flash('gallery_delete_success')?>
+    <?php flash('gallery_cover_change_success')?>
     <script>
         $(document).ready(function(){
             $('.changePic').click(function(){
@@ -109,6 +114,25 @@
         })
     
     </script>
+   
+<script>
+    alertEvents();
+    function alertEvents(){
+        const alertModal = document.getElementById('alert-modal-global');
+        const insideAlertModal = document.getElementById('alert-modal-inside');
+        const okAlertModal = document.getElementById('alert-ok-btn');
+
+        okAlertModal.addEventListener('click',function(){
+            alertModal.classList.remove('show');
+            insideAlertModal.classList.remove('show');
+            
+        })
+    }
+</script>
+    
+
+
+
 
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

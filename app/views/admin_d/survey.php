@@ -55,7 +55,7 @@
                                     <td><div class="option icon" tabindex="0">
                                         <span class="optionSpan">&#8942</span>
                                         <div class="optionModal">
-                                            <a href="<?php echo URLROOT;?>/surveys/show_survey/<?php echo $survey->id?>">View</a>
+                                            <a href="<?php echo ($survey->s_type=='built_in') ? URLROOT.'/surveys/show_survey/'.$survey->id : $survey->google_form_link?>" <?php echo ($survey->s_type == 'google_form') ? "target='_blank'" : ''?>>View</a>
                                             <a href="<?php echo URLROOT;?>/surveys/edit_survey/<?php echo $survey->id?>">
                                                 <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M15.8233 1.67676L18.3233 4.17676L16.4175 6.08342L13.9175 3.58342L15.8233 1.67676Z" fill="black" fill-opacity="0.87"/>
@@ -112,5 +112,21 @@
         </div>
     </div>
 
+<?php flash('survey_add_success')?>
+<?php flash('survey_edit_success')?>
+<?php flash('survey_delete_success')?>
+<script>
+    alertEvents();
+    function alertEvents(){
+        const alertModal = document.getElementById('alert-modal-global');
+        const insideAlertModal = document.getElementById('alert-modal-inside');
+        const okAlertModal = document.getElementById('alert-ok-btn');
 
+        okAlertModal.addEventListener('click',function(){
+            alertModal.classList.remove('show');
+            insideAlertModal.classList.remove('show');
+            
+        })
+    }
+</script>
 <?php require APPROOT . '/views/inc/footer.php';?>

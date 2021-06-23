@@ -43,48 +43,61 @@
 <?php 
     array_print($data);
     $arr1 = $data['topic'];
-    $arr2 = $data['comments'];
-    $arr3 = $data['replies'];
 
-    if($arr2 != 0 && $arr3 != 0){
-        echo 'all got entries';
-        $arrMerged = array_merge($arr1,$arr2, $arr3);
-    }
-    else if ($arr2 != 0 && $arr3 == 0){
-        echo 'only comments';
-        $arrMerged = array_merge($arr1,$arr2);
-    }
-    else {
-        echo 'only topic';
-        $arrMerged = $arr1;
+    array_print($arr1);
+
+    // $arr2 = $data['comments'];
+    // $arr3 = $data['replies'];
+
+    // if($arr2 != 0 && $arr3 != 0){
+    //     echo 'all got entries';
+    //     $arrMerged = array_merge($arr1,$arr2, $arr3);
+    // }
+    // else if ($arr2 != 0 && $arr3 == 0){
+    //     echo 'only comments';
+    //     $arrMerged = array_merge($arr1,$arr2);
+    // }
+    // else {
+    //     echo 'only topic';
+    //     $arrMerged = $arr1;
         
 
-    }
-        usort($arrMerged, function($a, $b) {
-            return strtotime($b->rCreated_at) - strtotime($a->rCreated_at);
-        });
+    // }
+    //     usort($arrMerged, function($a, $b) {
+    //         return strtotime($b->rCreated_at) - strtotime($a->rCreated_at);
+    //     });
 
-        $forumArr = array();
+    //     $forumArr = array();
 
         
-        if(count($arrMerged) > 4){
-            $arrMerged = limitArray($arrMerged);
+    //     if(count($arrMerged) > 4){
+    //         $arrMerged = limitArray($arrMerged);
 
-        }
+    //     }
         
-        for($i = 0; $i < count($arrMerged) ; $i++ ){
-            array_push($forumArr, $arrMerged[$i]);
-        } 
-        array_print($forumArr);
+    //     for($i = 0; $i < count($arrMerged) ; $i++ ){
+    //         array_push($forumArr, $arrMerged[$i]);
+    //     } 
+    //     array_print($forumArr);
 
-    function limitArray($arr){
-        $newArr = array();
-        for($i = 0; $i < 4; $i++){
-            array_push($newArr, $arr[$i]);
-        }
+    // function limitArray($arr){
+    //     $newArr = array();
+    //     for($i = 0; $i < 4; $i++){
+    //         array_push($newArr, $arr[$i]);
+    //     }
 
-        return $newArr;
-    }
+    //     return $newArr;
+    // }
+
+
+
+
+
+
+
+
+
+
     // $arrMerged = array_merge($arr1,$arr2, $arr3);
 
     // usort($arrMerged, function($a, $b) {

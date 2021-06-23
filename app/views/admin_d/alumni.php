@@ -125,24 +125,16 @@
                                 <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="black" stroke-opacity="0.87" stroke-width="2"/>
                             </svg>
                         </a>
-                        <?php   
-                                if(!empty($url[2])):
-                        ?>
                         <!-- JessForm -->
-                        <form action="<?php echo URLROOT;?>/alumni/previeww/<?php echo $url[2]?>/<?php echo $url[3]?>" id="preview-form-hidden" method="POST" enctype="multipart/form-data">
-                        <?php  else:?>
-                        <form action="<?php echo URLROOT;?>/alumni/preview" id="preview-form-hidden" method="POST" enctype="multipart/form-data">
-                        <?php endif;?>
-
-                            <button type="button" class="importBtn">
-                                import
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 18L16 13H13V2H11V13H8L12 18Z" fill="black" fill-opacity="0.87"/>
-                                    <path d="M19 9H15V11H19V20H5V11H9V9H5C3.897 9 3 9.897 3 11V20C3 21.103 3.897 22 5 22H19C20.103 22 21 21.103 21 20V11C21 9.897 20.103 9 19 9Z" fill="black" fill-opacity="0.87"/>
-                                </svg>
-                            </button>
-                            <input type="file" class="input-file-hidden" accept=".csv" name="csv_file">
-                        </form>
+                        <button type="button" class="importBtn">
+                            import
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 18L16 13H13V2H11V13H8L12 18Z" fill="black" fill-opacity="0.87"/>
+                                <path d="M19 9H15V11H19V20H5V11H9V9H5C3.897 9 3 9.897 3 11V20C3 21.103 3.897 22 5 22H19C20.103 22 21 21.103 21 20V11C21 9.897 20.103 9 19 9Z" fill="black" fill-opacity="0.87"/>
+                            </svg>
+                        </button>
+                        <input type="file" class="input-file-hidden" accept=".csv" name="csv_file" id="csv_alumni">
+                       
                         <button>
                             print
                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -283,81 +275,8 @@
 </div>
 
 
-<div class="modalContainer" >
-        <div class="modalPreview">
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Student ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Gender</th>
-                        <th>Course</th>
-                        <th>Batch</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php if(count($data['alumniList'])):?>
-                    <?php foreach($data['alumniList'] as $alumni): ?>
-                        <tr>
-                            <td><p class="studentID"><?php echo $alumni[0]?></p></td>
-                            <td><p class="studentName"><?php echo $alumni[2] . ' '. (!empty($alumni[3]) ? substr($alumni[3],0,1) . '.' : '') . ' ' . $alumni[1] ?></p></td>
-                            <td><p class="studentEmail"><?php echo $alumni[6]?></p></td>
-                            <td><p class="gender"><?php echo $alumni[4]?></p></td>
-                            <td><p class="course"><?php echo $alumni[8]?></p></td>
-                            <td><p class="batch"><?php echo $alumni[9]?></p></td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php endif;?>
-                </tbody>
-            </table>
-            
-            <div class="pagination">
-                <h3>Import Review</h3>
-                <div class="fileNameCon">
-                    <span>From:</span>
-                    <span class="filename">
-                        <?php if(!empty($data['fileName'])): echo $data['fileName'] ?>
-                        <?php endif;?>
-                    </span>
-                </div>
-                <div class="btnContainer">
-                    <button class="cancel" id="cancelModal">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.4086 8.99915L14.7045 4.71268C14.8926 4.52453 14.9983 4.26935 14.9983 4.00326C14.9983 3.73718 14.8926 3.482 14.7045 3.29385C14.5164 3.1057 14.2612 3 13.9952 3C13.7291 3 13.474 3.1057 13.2859 3.29385L9 7.59031L4.71414 3.29385C4.52602 3.1057 4.27087 3 4.00483 3C3.73878 3 3.48363 3.1057 3.29551 3.29385C3.10739 3.482 3.0017 3.73718 3.0017 4.00326C3.0017 4.26935 3.10739 4.52453 3.29551 4.71268L7.59136 8.99915L3.29551 13.2856C3.20187 13.3785 3.12755 13.489 3.07683 13.6108C3.02611 13.7325 3 13.8631 3 13.995C3 14.1269 3.02611 14.2575 3.07683 14.3793C3.12755 14.501 3.20187 14.6116 3.29551 14.7044C3.38839 14.7981 3.49888 14.8724 3.62062 14.9232C3.74236 14.9739 3.87294 15 4.00483 15C4.13671 15 4.26729 14.9739 4.38903 14.9232C4.51077 14.8724 4.62127 14.7981 4.71414 14.7044L9 10.408L13.2859 14.7044C13.3787 14.7981 13.4892 14.8724 13.611 14.9232C13.7327 14.9739 13.8633 15 13.9952 15C14.1271 15 14.2576 14.9739 14.3794 14.9232C14.5011 14.8724 14.6116 14.7981 14.7045 14.7044C14.7981 14.6116 14.8724 14.501 14.9232 14.3793C14.9739 14.2575 15 14.1269 15 13.995C15 13.8631 14.9739 13.7325 14.9232 13.6108C14.8724 13.489 14.7981 13.3785 14.7045 13.2856L10.4086 8.99915Z"/>
-                        </svg>
-                        Cancel
-                    </button>
-                    <button class="upload" form="hidden-form-id">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13.5 11.25V13.5H4.5V11.25H3V13.5C3 14.325 3.675 15 4.5 15H13.5C14.325 15 15 14.325 15 13.5V11.25H13.5ZM5.25 6.75L6.3075 7.8075L8.25 5.8725V12H9.75V5.8725L11.6925 7.8075L12.75 6.75L9 3L5.25 6.75Z"/>
-                        </svg>
-                        Upload
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <form action="<?php echo URLROOT;?>/alumni/addBulk" class="hidden-form" id="hidden-form-id" method="POST">
-                <?php if(!empty($data['alumniList'])):?>
-                <?php foreach($data['alumniList'] as $key => $value){?>
-                        <input type="hidden" name="alumni[<?php echo $key?>][student_no]" value="<?php echo $value[0]?>">
-                        <input type="hidden" name="alumni[<?php echo $key?>][last_name]" value="<?php echo $value[1]?>">
-                        <input type="hidden" name="alumni[<?php echo $key?>][first_name]" value="<?php echo $value[2]?>">
-                        <input type="hidden" name="alumni[<?php echo $key?>][middle_name]" value="<?php echo $value[3]?>">
-                        <input type="hidden" name="alumni[<?php echo $key?>][gender]" value="<?php echo $value[4]?>">
-                        <input type="hidden" name="alumni[<?php echo $key?>][birth_date]" value="<?php echo $value[5]?>">
-                        <input type="hidden" name="alumni[<?php echo $key?>][email]" value="<?php echo $value[6]?>">
-                        <input type="hidden" name="alumni[<?php echo $key?>][contact_no]" value="<?php echo $value[7]?>">
-                        <input type="hidden" name="alumni[<?php echo $key?>][course]" value="<?php echo $value[8]?>">
-                        <input type="hidden" name="alumni[<?php echo $key?>][batch]" value="<?php echo $value[9]?>">
-                <?php }?>
-                <?php endif; ?>
-        </form>
-</div>
-    <input type="hidden" value="<?php echo $data['isPreview']?>" id="isPreview">
     
-
+    
     <div class="modalConFilterNav" id="manageModal">
         <!-- addNewDept -->
         <form action="<?php echo URLROOT;?>/group/new_dept" class="modalFilterNav newDept" method="POST">
@@ -432,10 +351,106 @@
         <!-- editBatch -->
         
     </div>
-        
-        
+    
+
+    <div id="modal-preview">
+    </div>
+
+
+    <?php if(!empty($data['duplicateStudent'])):?>
+        <div class="modalContainer show">
+        <div class="modalPreview">
+            <table class="data-table">
+                <thead class="bigger">
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Course</th>
+                        <th>Batch</th>
+                    </tr>
+                </thead>
+                <?php if(count($data['duplicateStudent'])):?>
+                    <?php foreach($data['duplicateStudent'] as $alumni): ?>
+                        <tr>
+                            <td><p class="studentID"><?php echo $alumni['student_no']?></p></td>
+                            <td><p class="studentName"><?php echo $alumni['last_name'] . ' '. (!empty($alumni['middle_name']) ? substr($alumni['middle_name'],0,1) . '.' : '') . ' ' . $alumni['first_name'] ?></p></td>
+                            <td><p class="studentEmail"><?php echo $alumni['email']?></p></td>
+                            <td><p class="gender"><?php echo $alumni['gender']?></p></td>
+                            <td><p class="course"><?php echo $alumni['course']?></p></td>
+                            <td><p class="batch"><?php echo $alumni['batch']?></p></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif;?>
+                </tbody>
+            </table>
+            
+            <div class="pagination v2">
+                <h3 class="">Alumni Successfully Imported: 3</h3>
+                <div class="warningCon">
+                    <span class="warning">This list shows duplicate entries that are not imported</span>
+                </div>
+                <div class="btnContainer">
+                    <button id="okay-btn">OK</button>
+                </div>
+            </div>
+        </div>
+        <form action="" class="hidden-form" id="hidden-form-id">
+
+        </form>
+    </div>
+    <?php endif;?>
+
+
+    <?php flash('alumni_one_success'); ?>
+    <?php flash('alumni_edit_success'); ?>
+    <?php flash('alumni_delete_success'); ?>
+    <?php flash('alumni_import_success'); ?>
+    
+    <?php flash('courseError'); ?>
+
+    <?php flash('department_duplicate'); ?>
+    <?php flash('course_code_duplicate'); ?>
+    <?php flash('batch_duplicate'); ?>
+
+
 <script>
     $(document).ready(function(){
+            $('#okay-btn').click(function(){
+                $('.modalContainer').removeClass('show');
+            })
+
+            $('.importBtn').click(function(){
+                $('#csv_alumni').click();
+            })
+
+            $('#csv_alumni').change(function(e){
+                const files = event.target.files;
+                const newFData = new FormData();
+                newFData.append('csv_file', files[0]);
+                $.ajax({ 
+                    url:'<?php echo URLROOT;?>/alumni/preview',
+                    data: newFData, 
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    method: 'POST',
+                    type: 'POST',
+                    success:function(res){
+                        $('#modal-preview').append(res);
+                        $('.cancelModal').click(function(){
+                            $('.modalContainer').removeClass('show');
+                        })
+                    }, 
+                    error: function(er){
+                        console.log(er);
+                    }
+                })
+
+                $('#csv_alumni').val(null);
+            })
+
            $('.settings').click(function(){
                var cName = $(this.parentNode);
                cName = getFirstWord(cName.attr('class'));
@@ -512,28 +527,22 @@
 
 </script>
 
+<script>
+    alertEvents();
+    function alertEvents(){
+        const alertModal = document.getElementById('alert-modal-global');
+        const insideAlertModal = document.getElementById('alert-modal-inside');
+        const okAlertModal = document.getElementById('alert-ok-btn');
+
+        okAlertModal.addEventListener('click',function(){
+            alertModal.classList.remove('show');
+            insideAlertModal.classList.remove('show');
+            
+        })
+    }
+</script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function(){
-        let isPrev = document.getElementById('isPreview').value;
-        const alumniModal = document.querySelector('.modalContainer');
-        const cancelModal = document.getElementById('cancelModal');
-        if(isPrev == 1){
-            console.log('hey');
-            alumniModal.classList.add('show');
-        }
-        
-        cancelModal.addEventListener('click', function(){
-            isPrev = 0;
-            console.log(isPrev);
-            <?php if(!empty($url[2])):?>
-            window.location.replace('<?php echo URLROOT;?>/alumni/show/<?php echo $url[2]?>/<?php echo $url[3]?>')
-            <?php else: ?>
-            window.location.replace('<?php echo URLROOT;?>/admin/alumni');
-            
-            <?php endif; ?>
-        })
-    })
 
         manageGroup();
 
@@ -541,47 +550,13 @@
             const btnAddDept = document.getElementById('btn-add-dept');
             const btnAddCourse = document.getElementById('btn-add-course');
             const btnAddBatch = document.getElementById('btn-add-batch');
-            //const btnSettings = document.querySelectorAll('.settings');
             const manageModal = document.querySelector('.modalConFilterNav');
 
             const formDept = document.querySelector('.newDept');
             const formCourse = document.querySelector('.newCourse');
             const formBatch = document.querySelector('.newBatch');
-            // const formEditDept = document.querySelector('.editDept');
-            // const formEditCourse = document.querySelector('.editCourse');
-            // const formEditBatch = document.querySelector('.editBatch');
 
             let btnCancels = document.querySelectorAll('.btn-form-cancel');
-
-            // btnSettings.forEach(setting => setting.addEventListener('click', function(){
-            //     let cName = setting.parentNode.className;
-            //     cName = getFirstWord(cName);
-            //     // let qwe = setting.parentNode.parentNode;
-            //     // console.log(qwe);
-            //     // console.log(qwe.dataset.dept_id);
-            //     // console.log(qwe.dataset.dept_name);
-            //     if(cName == 'icon'){
-            //         // const dept = setting.parentNode.parentNode;
-            //         // const id = dept.dataset.dept_id;
-            //         // const name = dept.dataset.dept_name;
-            //         //console.log(formEditDept.child);
-            //         manageModal.classList.add('show');
-            //         formEditDept.classList.add('show');
-                    
-            //     }
-            //     else if(cName == 'groupHeader'){
-            //         manageModal.classList.add('show');
-            //         formEditCourse.classList.add('show');
-            //     }
-            //     else if(cName == 'subGroup'){
-            //         manageModal.classList.add('show');
-            //         formEditBatch.classList.add('show');
-            //     }
-
-            //     //icon  == department
-            //     //groupdHeadere == course
-            //     //subGroup == batch
-            // }))
 
             btnAddDept.addEventListener('click', function(){
                 manageModal.classList.add('show');
