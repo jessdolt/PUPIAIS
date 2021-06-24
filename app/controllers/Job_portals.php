@@ -73,6 +73,7 @@
                 
                 if(empty($data['avail_pos_err']) && empty($data['company_name_err']) && empty($data['job_title_err']) && empty($data['company_logo_err'])){
                      if($this->jobModel->addJob($data)){
+                         flash('job_portal_add_success', 'Job successfully addeed');
                          redirect('admin/job_portal');
                      }
                      else{
@@ -168,6 +169,7 @@
                 
                 if(empty($data['avail_pos_err']) && empty($data['company_name_err']) && empty($data['job_title_err']) && empty($data['company_logo_err'])){
                      if($this->jobModel->editJob($data)){
+                           flash('job_portal_edit_success', 'Job successfully edited');
                            redirect('admin/job_portal');
                       }
                       else{
@@ -220,6 +222,7 @@
                 foreach ($todelete as $id) {
     
                     if ($this->jobModel->deleteJob($id)){
+                        flash('job_portal_delete_success', 'Job successfully deleted');
                         redirect('admin/job_portal');
                     }
                     else {
@@ -232,6 +235,7 @@
 
         public function deleteRow($id){
             if($this->jobModel->deleteJob($id)){
+                flash('job_portal_delete_success', 'Job successfully deleted');
                 redirect('admin/job_portal');
             }
             else{

@@ -6,6 +6,11 @@
            
         }
 
+        public function search($keyword) {
+
+            $this->view('posts/search', $data);
+        }
+
         public function single($id){
             $post = $this->postModel->singleNews($id);
             $other = $this->postModel->otherNews($id);
@@ -43,7 +48,7 @@
 
                 $fileExt = explode ('.',$filename);
                 $fileActualExt = strtolower(end($fileExt));
-                $allowed = array('jpg','jpeg', 'png');
+                $allowed = array('jpg','jpeg', 'png','jfif');
 
                 if(in_array($fileActualExt, $allowed)){
                     if( $fileError === 0){
@@ -74,8 +79,11 @@
                     $data['description_error'] = 'Please enter a description';
                 }
             
+                array_print($data);
                 if(empty($data['title_error']) && empty($data['author_error']) && empty($data['description_error']) && empty($data['file_error'])){
+                    //array_print($data);
                     if($this->postModel->addNews($data)){
+                        flash('news_add_success', 'News successfully added', 'successAlert');
                         redirect('admin/news');
                     }
                     else{
@@ -167,6 +175,7 @@
             
                 if(empty($data['title_error']) && empty($data['author_error']) && empty($data['description_error']) && empty($data['file_error'])){
                     if($this->postModel->editNews($data, $isUploaded)){
+                        flash('news_edit_success', 'News successfully edited', 'successAlert');
                         redirect('admin/news');
                     }
                     else{
@@ -199,12 +208,10 @@
         // FOR CHECKBOX
         public function delete() {
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
                 $todelete = $_POST['checkbox'];
-
                 foreach ($todelete as $id) {
-    
                     if ($this->postModel->deleteNews($id)){
+                        flash('news_delete_success', 'News successfully deleted', 'successAlert');
                         redirect('admin/news');
                     }
                     else {
@@ -218,6 +225,7 @@
         public function deleteRow($id) {
 
             if ($this->postModel->deleteNews($id)){
+                flash('news_delete_success', 'News successfully deleted', 'successAlert');
                 redirect('admin/news');
             }
             else {

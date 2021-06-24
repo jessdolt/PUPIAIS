@@ -43,8 +43,19 @@
             }
         }
 
-        public function showGalleryLimit(){
-            $this->db->query('SELECT * from gallery LIMIT 12');
+        public function showGalleryLimit($start, $limit){
+            $this->db->query('SELECT * from gallery LIMIT :start, :limit');
+            $this->db->bind(':start', $start);
+            $this->db->bind(':limit', $limit);
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+
+        public function NoOfResults() {
+            $this->db->query('SELECT ALL id FROM gallery'); 
+            
             $row = $this->db->resultSet();
             if($row > 0){
                 return $row;

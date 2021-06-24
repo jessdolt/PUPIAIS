@@ -39,9 +39,29 @@
                                             </div>
                                         </div>
                                         <div>
+                                            <label for="auxiliary-name" class="outsideLabel">Auxiliary Name:</label>
+                                            <div class="textFieldContainer">
+                                                <input type="text" name="auxiliary" id="auxiliaryname" value="<?php echo($data['auxiliary_name'])?>">
+                                                <span class="error"></span>
+                                            </div>
+                                        </div>
+                                        <div>
                                             <label for="birth-date" class="outsideLabel">Birth Date:</label>
                                             <div class="textFieldContainer">
                                                 <input type="date" name="birth_date" value="<?php echo($data['birth_date'])?>" id="birth-date">
+                                                <span class="error"></span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label for="civil-status" class="outsideLabel">Civil Status:</label>
+                                            <div class="textFieldContainer">
+                                                <select name="civilStat" id="civil-status" required>
+                                                    <option value="Single" <?php echo ($data['civil'] == 'Single') ? 'selected' : ''?>>Single</option>
+                                                    <option value="Married" <?php echo ($data['civil'] == 'Married') ? 'selected' : ''?>>Married</option>
+                                                    <option value="Widowed" <?php echo ($data['civil'] == 'Widowed') ? 'selected' : ''?>>Widowed</option>
+                                                    <option value="Separated" <?php echo ($data['civil'] == 'Separated') ? 'selected' : ''?>>Separated</option>
+                                                    <option value="Divorced" <?php echo ($data['civil'] == 'Divorced') ? 'selected' : ''?>>Divorced</option>
+                                                </select>
                                                 <span class="error"></span>
                                             </div>
                                         </div>

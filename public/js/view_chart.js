@@ -1,10 +1,9 @@
-
-
 const btnChart = document.getElementById('view-chart');
 btnChart.addEventListener('click', function(){
     viewChart()
     getApi()
     changeButton()
+    // checkOnly()
 })
 
 function changeButton(){
@@ -19,6 +18,10 @@ function viewChart(){
 }
 
 
+function checkOnly(){
+    const survey_id = document.getElementById('survey-id').value;
+    console.log(survey_id);
+}
 
 
 function getApi(){
@@ -26,7 +29,7 @@ function getApi(){
     const webURL = document.getElementById('url-web').value; 
     const survey_id = document.getElementById('survey-id').value;
     
-    fetch(`${webURL}/api/survey/single/${survey_id}`).then(res => res.json())
+    fetch(`${webURL}/api/single/survey/${survey_id}`).then(res => res.json())
     .then(data => {
         console.log(data)
         //const survey_title = data.data[0].survey[0].title;
@@ -243,6 +246,16 @@ function showPieChart(ansObj, chartDiv){
                 labels:{
                     fontColor: '#000'
                 }
+            },
+            plugins:{
+                legend:{
+                    display:true,
+                    position: 'right'
+                },
+                title:{
+                    display: true,
+                    
+                }
             }
         }
     };
@@ -268,6 +281,7 @@ function showBarChart(ansObj, chartDiv){
             backgroundColor: [],
             borderColor: [],
             data: [],
+            barThickness: 55,
         }]
     };
 

@@ -33,29 +33,53 @@
 
         public function save_survey(){
             extract($_POST);
+            //array_print($_POST);
             if(empty($sid)){
                 $data = [
                     'user_id' => $user_id,
                     'title' => $title,
                     'start_date' => $start_date ,
                     'end_date' => $end_date,
-                    'description' => $s_description
+                    'description' => $s_description,
+                    's_type' => $survey_type,
+                    'form_link' => '',
+                    'form_editor_link' => ''
                ];
+
+               if($survey_type === 'google_form'){
+                  $data ['form_link'] = $google_form_link;
+                  $data ['form_editor_link'] = $google_form_editor_link;
+               }
+
+               //array_print($data);
                if($this->surveyModel->addSurvey($data)){
-                echo '1';
+                    flash('survey_add_success', 'Survey successfully added');
+                    echo '1';
                 }
-            }else{
+            }
+            else{
                 $data = [
                     'sid' => $sid,
                     'user_id' => $user_id,
                     'title' => $title,
                     'start_date' => $start_date ,
                     'end_date' => $end_date,
-                    'description' => $s_description
+                    'description' => $s_description,
+                    's_type' => $survey_type,
+                    'form_link' => '',
+                    'form_editor_link' => ''
+                    
                ];
+
+               if($survey_type === 'google_form'){
+                    $data ['form_link'] = $google_form_link;
+                    $data ['form_editor_link'] = $google_form_editor_link;
+               }
+
                if($this->surveyModel->updateSurvey($data)){
-                echo '1';
-                }
+                    flash('survey_edit_success', 'Survey successfully edited');
+                    echo '1';
+               }
             }
         }
 
@@ -78,6 +102,7 @@
             }
             else{
                 if($this->surveyModel->deleteSurvey($id)){
+                    flash('survey_delete_success', 'Survey successfully deleted');
                     redirect('admin/survey_list');
                 }
                 else{
@@ -95,6 +120,7 @@
                 foreach ($todelete as $id) {
     
                     if ($this->surveyModel->deleteSurvey($id)){
+                        flash('survey_delete_success', 'Survey successfully deleted');
                         redirect('admin/survey_list');
                     }
                     else {

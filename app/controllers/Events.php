@@ -75,6 +75,7 @@
             
                 if(empty($data['title_err']) && empty($data['description_err']) && empty($data['file_err'])){
                      if($this->eventModel->addEvent($data)){
+                         flash('events_add_success', 'Event successfully added', 'successAlert');
                          redirect('admin/events');
                      }
                      else{
@@ -154,6 +155,7 @@
             
                 if(empty($data['title_err']) && empty($data['description_err']) && empty($data['file_err'])){
                     if($this->eventModel->editEvent($data,$isUploaded)){
+                        flash('events_edit_success', 'Event successfully edited', 'successAlert');
                         redirect('admin/events');
                     }
                     else{
@@ -189,6 +191,7 @@
                 foreach ($todelete as $id) {
     
                     if ($this->eventModel->deleteEvent($id)){
+                        flash('events_delete_success', 'Event successfully deleted', 'successAlert');
                         redirect('admin/events');
                     }
                     else {
@@ -200,12 +203,19 @@
 
         public function deleteRow($id){
             if($this->eventModel->deleteEvent($id)){
+                flash('events_delete_success', 'Event successfully deleted', 'successAlert');
                 redirect('admin/events');
             }
             else{
                 die("There's an error deleting this record");
             }
         }   
+
+        public function search(){
+            extract($_POST);
+            $events = $this->eventModel->searchEvents($searchChar);
+            echo json_encode($events);
+        }
         
     
     }

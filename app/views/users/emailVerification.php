@@ -144,7 +144,7 @@
                 <Button>Submit</Button>
             </form>
             <form action="<?php echo URLROOT; ?>/email/resend" method ="POST">
-            <button id="submit" type="submit" value="submit">Resend Code</button>
+            <button class="resend" id="submit" type="submit" value="submit">Resend Code</button>
             </form>
         </div>
     </main>

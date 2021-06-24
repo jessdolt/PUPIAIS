@@ -17,7 +17,7 @@
                         <div class="hor-con">
                             <div class="card-con">
                                 <h3>Total visit count this month</h3>
-                                <span class="visit-count">56</span>
+                                <span class="visit-count" id="visit-count">0</span>
                                 <svg width="200" height="91" viewBox="0 0 200 91" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="195" cy="33" r="3.5" stroke="#15CC8A" stroke-width="3"/>
                                     <circle cx="148" cy="51" r="3.5" stroke="#15CC8A" stroke-width="3"/>
@@ -30,9 +30,9 @@
                                     <line x1="151.473" y1="49.5955" x2="191.473" y2="34.5955" stroke="#15CC8A" stroke-width="3"/>
                                 </svg>
                                 <div class="card-footer">
-                                    <button>D</button>
-                                    <button>M</button>
-                                    <button>Y</button>
+                                    <button id="btn_daily" class="active">D</button>
+                                    <button id="btn_monthly">M</button>
+                                    <button id="btn_yearly">Y</button>
                                 </div>
                             </div>
                             <div class="card-con">
@@ -123,8 +123,43 @@
 <script src="<?php echo URLROOT;?>/js/dashboard.js" defer></script>
 
 <script>
+filterDateCount();
+function filterDateCount(){
+    const btnDaily = document.getElementById('btn_daily');
+    const btnMonthly = document.getElementById('btn_monthly');
+    const btnYearly = document.getElementById('btn_yearly');
 
+    btnDaily.addEventListener('click', function(){
+        getLoginCount('Daily');
+        btnDaily.classList.add('active');
+        btnMonthly.classList.remove('active');
+        btnYearly.classList.remove('active');
+    })
 
+    btnMonthly.addEventListener('click', function(){
+        getLoginCount('Monthly');
+        btnMonthly.classList.add('active');
+        btnYearly.classList.remove('active');
+
+        btnDaily.classList.remove('active');
+    })
+
+    btnYearly.addEventListener('click', function(){
+        getLoginCount('Yearly');
+        btnYearly.classList.add('active');
+        btnMonthly.classList.remove('active');
+        btnDaily.classList.remove('active');
+    })
+}
+
+getLoginCount('Daily');
+function getLoginCount(filter){
+    const spanVisitCount = document.getElementById('visit-count');
+    fetch(`<?php echo URLROOT;?>/api/login_count/${filter}`).then(res => res.json())
+    .then(data => {
+        spanVisitCount.textContent = data;
+    });
+}
 
 checkJob();
 function checkJob(){

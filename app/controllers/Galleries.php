@@ -38,6 +38,7 @@
             $image_id = $_POST['image_id'];
             $gallery_id = $_POST['gallery_id'];
             if($this->galleryModel->changeCover($image_id, $gallery_id)){
+                flash('gallery_cover_change_success', 'Cover photo successfully changed', 'successAlert');
                 echo "1";
             }   
         }
@@ -71,6 +72,7 @@
         public function deleteGallery($gal_id){
             if($this->galleryModel->deleteGallery($gal_id)){
                 if($this->galleryModel->deleteImagesByGalId($gal_id)){
+                    flash('gallery_delete_success', 'Gallery successfully deleted', 'successAlert');
                     redirect('admin/gallery');
                 }
             }
@@ -101,6 +103,7 @@
                 //array_print($data);
 
                 if($this->galleryModel->editGallery($data)){
+                    flash('gallery_edit_success', 'Gallery successfully edited', 'successAlert');
                     if($this->imageUpload($data)){
                         echo "1";
                     }
@@ -115,6 +118,7 @@
                 ];
                 
                 if($this->galleryModel->editGallery($data)){
+                    flash('gallery_edit_success', 'Gallery successfully edited', 'successAlert');
                     echo "1";
                 }
             }
@@ -124,9 +128,7 @@
 
 
         public function multi_add(){
-             
-            // array_print(json_decode($_POST['descriptions']));
-           
+            // array_print(json_decode($_POST['descriptions']));s
             // array_print($_FILES);
             // array_print($_POST);
           
@@ -140,8 +142,9 @@
                 ];
 
                 $gid = $this->galleryModel->addGallery($data);
-                $data['gallery_id'] = $gid;
                
+                $data['gallery_id'] = $gid;
+                flash('gallery_add_success', 'Gallery successfully added', 'successAlert');
                 if($this->imageUpload($data)){
                     echo "1";
                 }
@@ -154,6 +157,7 @@
 
             
                 if($this->galleryModel->addGallery($data)){
+                    flash('gallery_add_success', 'Gallery successfully added', 'successAlert');
                     echo '1';
                 }
             }

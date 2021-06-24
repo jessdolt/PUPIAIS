@@ -20,6 +20,15 @@
                                  <input type="hidden" name="sid" value="<?php echo $data['survey']->id?>">
                                 <div class="smallComponentsContainer">
                                     <div>
+                                        <label for="survey-type" class="outsideLabel">Type:</label>
+                                        <div class="textFieldContainer">
+                                            <select name="survey_type" id="survey_type">
+                                                <option value="built_in" <?php echo ($data['survey']->s_type== 'built_in') ?  'selected':  'disabled'?>>Built-in Survey</option>
+                                                <option value="google_form" <?php echo ($data['survey']->s_type== 'google_form') ?  'selected':  'disabled'?>>Google Form Survey</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
                                         <label for="survey-title" class="outsideLabel">Survey Title:</label>
                                         <div class="textFieldContainer">
                                             <input type="text" name="title" id="survey-title" value="<?php echo $data['survey']->title?>"required>
@@ -33,7 +42,15 @@
                                             <span class="error"></span>
                                         </div>
                                     </div>
-                                    
+                                     <?php if($data['survey']->s_type == 'google_form'):?>
+                                        <div id="gform_textfield">        
+                                            <label for="description-id" class="outsideLabel">Google Form Link:</label>
+                                            <div class="textFieldContainer">
+                                                <input type="text" name="google_form_link" value="<?php echo $data['survey']->google_form_link?>">
+                                                <span class="error"></span>
+                                            </div>
+                                        </div>
+                                     <?php endif; ?>
                                 </div>
                             </div>
                         </section>
@@ -101,6 +118,7 @@
                 method: 'POST',
                 type: 'POST',
                 success:function(res){
+                    console.log(res);
                     if(res == 1){
                         location.replace('<?php echo URLROOT;?>/admin/survey_list');
                     }

@@ -17,7 +17,17 @@
                             <h3>Primary Details</h3>
                             <div class="infoSubCon">
                                  <input type="hidden" name="user_id" value="<?php echo $_SESSION['id']?>" style="position:absolute">
-                                <div class="smallComponentsContainer">
+                                <div class="smallComponentsContainer" id="upper_container">
+                                    
+                                    <div>
+                                        <label for="survey-type" class="outsideLabel">Type:</label>
+                                        <div class="textFieldContainer">
+                                        <select name="survey_type" id="survey_type">
+                                            <option value="built_in">Built-in Survey</option>
+                                            <option value="google_form">Google Form Survey</option>
+                                        </select>
+                                        </div>
+                                    </div>
                                     <div>
                                         <label for="survey-title" class="outsideLabel">Survey Title:</label>
                                         <div class="textFieldContainer">
@@ -108,7 +118,36 @@
                     console.log(er);
                 }
             })
-        })
+        });
+
+        $('#survey_type').change(function(){
+            const dropValue = $(this).val();
+            if(dropValue === 'built_in'){
+                $('#gform_textfield').remove();
+                $('#gform_editor_textfield').remove();
+            }
+            else{
+                let opt = `
+                         <div id="gform_textfield">        
+                            <label for="description-id" class="outsideLabel">Google Form Link:</label>
+                            <div class="textFieldContainer">
+                                <input type="text" name="google_form_link" autocomplete="off">
+                                <span class="error"></span>
+                            </div>
+                        </div> 
+                        <div id="gform_editor_textfield">        
+                            <label for="description-id" class="outsideLabel">Google Form Editor Link:</label>
+                            <div class="textFieldContainer">
+                                <input type="text" name="google_form_editor_link" autocomplete="off">
+                                <span class="error"></span>
+                            </div>
+                        </div> 
+                        `;
+                $('#upper_container').append(opt);
+            }
+        });
     });
+
+
 </script>
     

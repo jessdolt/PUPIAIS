@@ -32,7 +32,9 @@ class Alumni extends Controller{
                     'first_name' => ($_POST['first_name']),
                     'last_name' => ($_POST['last_name']),
                     'middle_name' => ($_POST['middle_name']),
+                    'auxiliary' => ($_POST['auxiliary']),
                     'gender' => ($_POST['gender']),
+                    'civil' => ($_POST['civilStat']),
                     'birth_date' => ($_POST['birth_date']),
                     'address' => ($_POST['address']),
                     'city' => ($_POST['city']),
@@ -116,6 +118,7 @@ class Alumni extends Controller{
                                 // if($this->userModel->register($newData)){
                                 //     redirect('admin/alumni');
                                 // }
+                                flash('alumni_one_success', 'Alumni successfully added', 'successAlert');
                                 redirect('admin/alumni');
                             }
                     }
@@ -132,7 +135,9 @@ class Alumni extends Controller{
                 'first_name' => '',
                 'last_name' => '',
                 'middle_initial' => '',
+                'auxiliary' => '',
                 'gender' => '',
+                'civil' => '',
                 'birth_date' => '',
                 'address' => '',
                 'city' => '',
@@ -181,7 +186,9 @@ class Alumni extends Controller{
                 'first_name' => ($_POST['first_name']),
                 'last_name' => ($_POST['last_name']),
                 'middle_name' => ($_POST['middle_name']),
+                'auxiliary' => ($_POST['auxiliary']),
                 'gender' => ($_POST['gender']),
+                'civil' => ($_POST['civilStat']),
                 'birth_date' => ($_POST['birth_date']),
                 'address' => ($_POST['address']),
                 'city' => ($_POST['city']),
@@ -197,6 +204,7 @@ class Alumni extends Controller{
 
             print_r($data);
             if($this->alumniModel->editAlumni($data)){
+                flash('alumni_edit_success', 'Alumni successfully edited', 'successAlert');
                 redirect('admin/alumni');
             }
             else{
@@ -213,7 +221,9 @@ class Alumni extends Controller{
                 'first_name' => $alumni->first_name,
                 'last_name' => $alumni->last_name,
                 'middle_name' => $alumni->middle_name,
+                'auxiliary_name' => $alumni->auxiliary_name,
                 'gender' => $alumni->gender,
+                'civil' => $alumni->civil,
                 'birth_date' => $alumni->birth_date,
                 'address' => $alumni->address,
                 'city' => $alumni->city,
@@ -252,6 +262,7 @@ class Alumni extends Controller{
 
             foreach($todelete as $alumni_id){
                 if($this->alumniModel->deleteAlumni($alumni_id)){
+                    flash('alumni_delete_success', 'Alumni successfully deleted', 'successAlert');
                     redirect('admin/alumni');     
                 }
                 else{
@@ -274,6 +285,7 @@ class Alumni extends Controller{
         $this->userModel = $this->model('user');
 
         if($this->alumniModel->deleteAlumni($id)){
+                flash('alumni_delete_success', 'Alumni successfully deleted', 'successAlert');
                 redirect('admin/alumni');   
         }
     }
@@ -357,108 +369,139 @@ class Alumni extends Controller{
     }
     
 
-    public function preview(){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $this->groupModel = $this->model('group_model');
-            $alumniCount = $this->alumniModel->showAlumni();
-            $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
-            $department = $this->alumniModel->showDepartment();
-            $courses = $this->alumniModel->showCourses();
-            $classification = $this->groupModel->showClassification();
+    // public function preview(){
+    //     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    //         $this->groupModel = $this->model('group_model');
+    //         $alumniCount = $this->alumniModel->showAlumni();
+    //         $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
+    //         $department = $this->alumniModel->showDepartment();
+    //         $courses = $this->alumniModel->showCourses();
+    //         $classification = $this->groupModel->showClassification();
             
-           $file = $_FILES['csv_file'];
-           $fileRealName = $file['name'];
-           $fileName = $file['tmp_name'];
-           $fileSize = $file['size'];
-           $alumniList = array();
+    //        $file = $_FILES['csv_file'];
+    //        $fileRealName = $file['name'];
+    //        $fileName = $file['tmp_name'];
+    //        $fileSize = $file['size'];
+    //        $alumniList = array();
 
-           if ($fileSize > 0){
-               $openFile = fopen($fileName, "r");
-               $column_header = true;
-               while(($column = fgetcsv($openFile, 10000, ",")) !== FALSE){
-                   if($column_header){
-                       $column_header = false;
-                   }
-                   else{
-                       array_push($alumniList, $column);
-                   }
-               }
-               fclose($openFile);
-           }
+    //        if ($fileSize > 0){
+    //            $openFile = fopen($fileName, "r");
+    //            $column_header = true;
+    //            while(($column = fgetcsv($openFile, 10000, ",")) !== FALSE){
+    //                if($column_header){
+    //                    $column_header = false;
+    //                }
+    //                else{
+    //                    array_push($alumniList, $column);
+    //                }
+    //            }
+    //            fclose($openFile);
+    //        }
             
-            $data= [
-                'alumni' => [],
-                'courses' => $courses,
-                'department' => $department,
-                'classification' => $classification,
-                'alumniList' => $alumniList,
-                'isPreview' => 1,
-                'fileName' => $fileRealName,
-                'title' => 'All Alumni',
-                'batch' => '',
-                'alumniCount' => count($alumniCount),
-                'alumniPerCourse' => $alumniCountPerCourse
-            ];
+    //         $data= [
+    //             'alumni' => [],
+    //             'courses' => $courses,
+    //             'department' => $department,
+    //             'classification' => $classification,
+    //             'alumniList' => $alumniList,
+    //             'isPreview' => 1,
+    //             'fileName' => $fileRealName,
+    //             'title' => 'All Alumni',
+    //             'batch' => '',
+    //             'alumniCount' => count($alumniCount),
+    //             'alumniPerCourse' => $alumniCountPerCourse
+    //         ];
 
-          $this->view('admin_d/alumni', $data);
-        }        
-    }
+    //       $this->view('admin_d/alumni', $data);
+    //     }        
+    // }
 
 
-    public function previeww($course_id,$batch_id){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $this->groupModel = $this->model('group_model');
+    // public function previeww($course_id,$batch_id){
+    //     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    //         $this->groupModel = $this->model('group_model');
 
-            $alumniCount = $this->alumniModel->showAlumni();
-            $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
-            $department = $this->alumniModel->showDepartment();
-            $classification = $this->groupModel->showClassification();
-            $courses = $this->alumniModel->showCourses();
-           $course_name = $this->alumniModel->getCourseById($course_id);
-           $batch_name = $this->alumniModel->getBatchById($batch_id);
+    //         $alumniCount = $this->alumniModel->showAlumni();
+    //         $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
+    //         $department = $this->alumniModel->showDepartment();
+    //         $classification = $this->groupModel->showClassification();
+    //         $courses = $this->alumniModel->showCourses();
+    //        $course_name = $this->alumniModel->getCourseById($course_id);
+    //        $batch_name = $this->alumniModel->getBatchById($batch_id);
 
  
-           $file = $_FILES['csv_file'];
-           $fileRealName = $file['name'];
-           $fileName = $file['tmp_name'];
-           $fileSize = $file['size'];
-           $alumniList = array();
+    //        $file = $_FILES['csv_file'];
+    //        $fileRealName = $file['name'];
+    //        $fileName = $file['tmp_name'];
+    //        $fileSize = $file['size'];
+    //        $alumniList = array();
 
-           if ($fileSize > 0){
-               $openFile = fopen($fileName, "r");
-               $column_header = true;
-               while(($column = fgetcsv($openFile, 10000, ",")) !== FALSE){
-                   if($column_header){
-                       $column_header = false;
-                   }
-                   else{
-                       array_push($alumniList, $column);
-                   }
-               }
-               fclose($openFile);
-           }
+    //        if ($fileSize > 0){
+    //            $openFile = fopen($fileName, "r");
+    //            $column_header = true;
+    //            while(($column = fgetcsv($openFile, 10000, ",")) !== FALSE){
+    //                if($column_header){
+    //                    $column_header = false;
+    //                }
+    //                else{
+    //                    array_push($alumniList, $column);
+    //                }
+    //            }
+    //            fclose($openFile);
+    //        }
             
-            $data= [
-                'alumni' => [],
-                'department' => $department,
-                'courses' => $courses,
-                'classification' => $classification,
-                'alumniList' => $alumniList,
-                'isPreview' => 1,
-                'fileName' => $fileRealName,
-                'title' => $course_name->course_code,
-                'batch' => $batch_name->year,
-                'alumniCount' => count($alumniCount),
-                'alumniPerCourse' => $alumniCountPerCourse   
-            ];
+    //         $data= [
+    //             'alumni' => [],
+    //             'department' => $department,
+    //             'courses' => $courses,
+    //             'classification' => $classification,
+    //             'alumniList' => $alumniList,
+    //             'isPreview' => 1,
+    //             'fileName' => $fileRealName,
+    //             'title' => $course_name->course_code,
+    //             'batch' => $batch_name->year,
+    //             'alumniCount' => count($alumniCount),
+    //             'alumniPerCourse' => $alumniCountPerCourse   
+    //         ];
 
-          $this->view('admin_d/alumni', $data);
-        }        
+    //       $this->view('admin_d/alumni', $data);
+    //     }        
         
+    // }
+    
+    public function preview(){
+        
+        $file = $_FILES['csv_file'];
+        $fileRealName = $file['name'];
+        $fileName = $file['tmp_name'];
+        $fileSize = $file['size'];
+        $alumniList = array();
+
+        if ($fileSize > 0){
+            $openFile = fopen($fileName, "r");
+            $column_header = true;
+            while(($column = fgetcsv($openFile, 10000, ",")) !== FALSE){
+                if($column_header){
+                    $column_header = false;
+                }
+                else{
+                    array_push($alumniList, $column);
+                }
+            }
+            fclose($openFile);
+        }
+
+        $data = [
+            'fileName' => $fileRealName,
+            'alumniList' => $alumniList
+        ];
+
+        $this->view('admin_d/alumni_preview', $data);
     }
 
     public function addBulk(){
         $this->userModel = $this->model('user');
+        // array_print($_POST);
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             //array_print($_POST['alumni']);
             
@@ -468,48 +511,129 @@ class Alumni extends Controller{
             // $alumni[0]['department'] = checkDept($alumni[0]['department']);
             // $alumni[0]['batch'] = checkBatch($alumni[0]['batch']);
             // array_print($alumni[0]);
-
             $duplication = array();
-
             foreach($alumni as $data){
-                $data['course'] = $this->checkCourse($data['course']);
-                $data['batch'] = $this->checkBatch($data['batch']);
                 //array_print($data);
-                $data['birth_date'] = $this->formatDateLocal($data['birth_date']); 
-              
-
-                array_print($data);
                 if($this->alumniModel->checkAlumni($data['student_no'])){
                     array_push($duplication, $data);
                 }
                 else{
-
-                    //echo $data['birth_date'];
-                    $alumni_id = $this->alumniModel->addBulkAlumni($data);
-                    // $pass = bin2hex(openssl_random_pseudo_bytes(5));
-                    // if(!empty($alumni_id)){
-                    //     $userType = $this->alumniModel->getUserTypeIdAlumni();
-                    //     $newData = [
-                    //         'name' => $data['first_name'] . ' ' . substr($data['middle_name'], 0 ,1) . ' ' . $data['last_name'],
-                    //         'a_id' => $alumni_id,
-                    //         'email' => $data['email'],
-                    //         'password' => $pass,
-                    //         'user_type' => $userType->id
-                    //     ];
-                    //     $this->userModel->register($newData);
-                    // } 
+                    $data['course'] = $this->checkCourse($data['course']);
+                    $data['batch'] = $this->checkBatch($data['batch']);
+                    $data['birth_date'] = $this->formatDateLocal($data['birth_date']); 
+                    
+                    // array_print($data);
+                     $alumni_id = $this->alumniModel->addBulkAlumni($data);
+                    
                 }
             }
-
             if(!empty($duplication)){
-                redirect('group/duplicateError');
-            }
-            
+                $this->duplicationError($duplication);
+                // array_print($duplication);
+            }   
             else{
+                flash('alumni_import_success', 'All alumni has been successfully imported', 'successAlert');
                 redirect('admin/alumni');
-            }
-            
+            }    
         }
+    }
+
+    public function duplicationError($arr){
+        $this->groupModel = $this->model('group_model');
+
+        // Get Page # in URL
+        $page = $this->getPage();
+
+        // Limit row displayed
+        $limit = 20;
+        $start = ($page - 1) * $limit;
+        
+        $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
+        // $alumni = $this->alumniModel->showAlumni();
+        $department = $this->alumniModel->showDepartment();
+        $courses = $this->alumniModel->showCourses();
+        $classification = $this->groupModel->showClassification();
+
+        $alumni = $this->alumniModel->showAlumniIndex($start, $limit);
+
+        $pagination = $this->alumniModel->showAlumni();
+
+        $total = count($pagination);
+        $pages = ceil($total/$limit);
+
+        // No URL bypass
+        if($pages == 0) {
+            $pages = 1;
+        }
+        if($page > $pages) {
+            redirect('admin/alumni?page='.$pages);
+        }
+
+        $startFormula = $start + 1;
+        $limitFormula = $startFormula - 1 + $limit;
+
+        if($page == $pages) {
+            if ($limitFormula >= $total) {
+                $limitFormula = $total;
+            }
+        }
+
+        if($total == 0) {
+            $startFormula = 0;
+            $limitFormula = 0;
+        }
+        
+        $data = [
+            'duplicateStudent' => '',
+            'duplicateGroup' => '',
+            'alumni' => $alumni,
+            'department' =>  $department,
+            'courses' => $courses,
+            'classification' => $classification,
+            'isPreview' => 0,
+            'title' => 'All Alumni',
+            'batch' => '',
+            'alumniCount' => count($alumni),
+            'alumniPerCourse' => $alumniCountPerCourse,
+            'start' => $startFormula,
+            'limit' => $limitFormula,
+            'total' => $total,
+            'first' => '?page=1',
+            'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+            'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+            'last' => '?page=' . $pages
+        ];
+
+        if(is_array($arr)){
+
+            $data['duplicateStudent'] = $arr;
+        }
+        else{
+            $data['duplicateGroup'] = $arr;
+        }
+
+      
+
+        // echo 'this is the array_print';
+        // array_print($data);
+        
+        $this->view('admin_d/alumni', $data);
+    }
+
+    
+    public function getPage() {
+
+        // Get Page # in URL
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        } elseif($_GET['page'] == 0) {
+            $page = 1;
+        } else {
+            $page = $_GET['page'];
+        }
+
+        return $page;
+
     }
 
     function formatDateLocal($date){
@@ -521,7 +645,13 @@ class Alumni extends Controller{
 
     public function checkCourse($code){
         $course_code = $this->alumniModel->getCourseByCode($code);
-        return $course_code->id;
+        if(!empty($course_code)){
+            return $course_code->id;
+        }
+        else{
+            flash('courseError',''.$code.' is not yet in database','errorAlert');
+            redirect('group/courseError/'. $code); 
+        }
     }
 
     public function checkBatch($batch){
@@ -529,4 +659,7 @@ class Alumni extends Controller{
         return $batch_year->id;
     }
 
+
+
+    
 }

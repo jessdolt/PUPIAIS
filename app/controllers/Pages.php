@@ -15,9 +15,15 @@ class Pages extends Controller{
                 if($this->isEmployed()) {
                     redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
                 } 
+<<<<<<< HEAD
                   if($this->checkSurvey()){
                      redirect('survey_widget');
                  } 
+=======
+                 if($this->checkSurvey()){
+                    redirect('survey_widget');
+                } 
+>>>>>>> df7b20513ed6b4edbba550276c29102144329319
             }
 
             
@@ -124,12 +130,55 @@ class Pages extends Controller{
     public function gallery() {
         $this->galleryModel = $this->model('Gallery');
 
-        $gallery = $this->galleryModel->showGalleryLimit();
+        // $gallery = $this->galleryModel->showGalleryLimit();
         $images  = $this->galleryModel->showImages(); 
+
+        // Get Page # in URL
+        $page = $this->getPage();
+                
+        // Limit row displayed
+        $limit = 12;
+        $start = ($page - 1) * $limit;
+
+        $gallery = $this->galleryModel->showGalleryLimit($start, $limit);
+
+        $pagination = $this->galleryModel->NoOfResults();
+        $total = count($pagination);
+        $pages = ceil($total/$limit);
+
+        // No URL bypass
+        if($pages == 0) {
+            $pages = 1;
+        }
+        if($page > $pages) {
+            redirect('pages/gallery?page='.$pages);
+        }
+
+        $startFormula = $start + 1;
+        $limitFormula = $startFormula - 1 + $limit;
+
+        if($page == $pages) {
+            if ($limitFormula >= $total) {
+                $limitFormula = $total;
+            }
+        }
+
+        if($total == 0) {
+            $startFormula = 0;
+            $limitFormula = 0;
+        }
 
         $data = [
             'gallery' => $gallery,
             'images' => $images,
+
+            'start' => $startFormula,
+            'limit' => $limitFormula,
+            'total' => $total,
+            'first' => '?page=1',
+            'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+            'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+            'last' => '?page=' . $pages
         ];
 
         $this->view('pages/gallery', $data);
@@ -157,10 +206,46 @@ class Pages extends Controller{
 
         $category = $this->forumModel->getCategory();
         $all = $this->forumModel->categoryCounter();
-        $posts = $this->forumModel->getPosts();
+        // $posts = $this->forumModel->getPosts();
         $reply = $this->forumModel->getPostsReplies();
         $pop = $this->forumModel->getPopular();
         $my = $this->forumModel->getCurrent($_SESSION['id']);
+
+        // Get Page # in URL
+        $page = $this->getPage();
+                
+        // Limit row displayed
+        $limit = 12;
+        $start = ($page - 1) * $limit;
+
+        $posts = $this->forumModel->getPosts($start, $limit);
+
+        $pagination = $this->forumModel->NoOfResults();
+        $total = count($pagination);
+        $pages = ceil($total/$limit);
+
+        // No URL bypass
+        if($pages == 0) {
+            $pages = 1;
+        }
+        if($page > $pages) {
+            redirect('pages/forum?page='.$pages);
+        }
+
+        $startFormula = $start + 1;
+        $limitFormula = $startFormula - 1 + $limit;
+
+        if($page == $pages) {
+            if ($limitFormula >= $total) {
+                $limitFormula = $total;
+            }
+        }
+
+        if($total == 0) {
+            $startFormula = 0;
+            $limitFormula = 0;
+        }
+
 
         $data = [
             'post' => $posts,
@@ -169,6 +254,14 @@ class Pages extends Controller{
             'user_posts' => $my,
             'category' => $category,
             'all' => $all,
+
+            'start' => $startFormula,
+            'limit' => $limitFormula,
+            'total' => $total,
+            'first' => '?page=1',
+            'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+            'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+            'last' => '?page=' . $pages
         ];
 
         // array_print($data);

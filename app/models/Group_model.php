@@ -40,7 +40,8 @@
                 // $msgData = [
                 //     'errorMsg' => 'Batch '. $data['batch'] . ' is already in Database'
                 // ];
-                redirect('group/duplicateError');
+                flash('department_duplicate', ''.$data['dept_name'].' is already existed', 'errorAlert');
+                redirect('alumni/duplicationError/'. $data['dept_name']);
             }
         }
         
@@ -57,7 +58,8 @@
                 }
             }
             catch (PDOException $e){
-                redirect('group/duplicateError');
+                flash('course_code_duplicate', ''.$data['course_code'].' is already existed', 'errorAlert');
+                redirect('alumni/duplicationError/'. $data['course_code']);
             }
         }
         
@@ -70,7 +72,8 @@
                 }
             }
             catch (PDOException $e){
-                redirect('group/duplicateError');
+                flash('batch_duplicate', 'Batch '.$data['batch'].' is already existed', 'errorAlert');
+                redirect('alumni/duplicationError/'. $data['batch']);
             } 
         }
 

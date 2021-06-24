@@ -155,14 +155,14 @@
                     foreach($resultAnswers as $answer){
                     
                         $answer_item = array(
-                            'id' => $answer->id,
+                            'id' => $answer->id, //23
                             'survey_id' => $answer->survey_id,
                             'user_id' => $answer->user_id,
                             'answer'=> $answer->answer,
                             'question_id'=> $answer->question_id,
                             'date_created' => $answer->date_created
                         );
-                        
+
                         array_push($answer_arr['answer'], $answer_item);
                     }
     
@@ -224,6 +224,55 @@
                 echo json_encode(array(
                     'messsage' => 'Inavlid Request'
                 ));
+            }
+        }
+
+        public function login_count($request_type){
+            if($request_type == 'Daily'){
+                $result = $this->apiModel->getDailyCount();
+                $count_arr = array();
+
+                if(!empty($result)){
+                    array_push($count_arr, $result->visit_count);
+                }
+                else{
+                    echo json_encode(
+                        array('Count' => 0)
+                    );
+                }
+
+                echo json_encode($count_arr);
+            }
+            else if($request_type == 'Monthly'){
+                $result = $this->apiModel->getMonthlyCount();
+                $count_arr = array();
+
+                if(!empty($result)){
+                    array_push($count_arr, $result[0]->visit_count);
+                }
+                else{
+                    echo json_encode(
+                        array('Count' => 0)
+                    );
+                }
+
+                echo json_encode($count_arr);
+
+            }
+            else if($request_type == 'Yearly'){
+                $result = $this->apiModel->getYearlyCount();
+                $count_arr = array();
+
+                if(!empty($result)){
+                    array_push($count_arr, $result[0]->visit_count);
+                }
+                else{
+                    echo json_encode(
+                        array('Count' => 0)
+                    );
+                }
+
+                echo json_encode($count_arr);
             }
         }
 
@@ -436,5 +485,7 @@
     
             return $newArr;
         }
+
+    
       
     }

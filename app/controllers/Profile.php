@@ -4,7 +4,7 @@
         public function __construct() {
             $this->userModel = $this->model('user');
   
-            if(getProfileID() == $_SESSION['alumni_id'] || $_SESSION['user_type'] == "Admin" || $_SESSION['user_type'] == "Super Admin") {
+            if($_SESSION['user_type'] == "Admin" || $_SESSION['user_type'] == "Super Admin" || getProfileID() == $_SESSION['alumni_id']) {
                 
             } else {
                 redirect('pages/home');
@@ -39,15 +39,12 @@
     
                 $file = $_FILES['fileUpload'];
                 $isUploaded = $_POST['isUploaded'];
-    
+
                 $data = [
                     'alumni_id' => $id,
                     'file' => $user->image,
-                    'first_name' => ($_POST['first_name']),
-                    'last_name' => ($_POST['last_name']),
-                    'middle_name' => ($_POST['middle_name']),
-                    'gender' => ($_POST['gender']),
-                    'birth_date' => ($_POST['birth_date']),
+                    'civil' => ($_POST['civilStat']),
+                    'auxiliary' => ($_POST['auxiliary']),
                     'address' => ($_POST['address']),
                     'city' => ($_POST['city']),
                     'region' => ($_POST['region']),
@@ -85,8 +82,13 @@
                 } elseif($isUploaded == 1){
                     $data['file_error'] = 'There was a problem in uploading the file';
                 }
-    
+                
                 if(empty($data['file_error'])) {
+
+                    if(isset($_POST['removePhoto'])) {
+                        $data['file'] = NULL;
+                        $this->userModel->deletePhoto($data['alumni_id']);
+                    }
 
                     if($this->userModel->editProfile($data, $isUploaded)) {
                         $_SESSION['image'] = $data['file'];
@@ -118,8 +120,10 @@
                     'first_name' => $user->first_name,
                     'last_name' => $user->last_name,
                     'middle_name' => $user->middle_name,
+                    'auxiliary' => $user->auxiliary_name,
                     'gender' => $user->gender,
                     'birth_date' => $user->birth_date,
+                    'civil' => $user->civil,
                     'address' => $user->address,
                     'city' => $user->city,
                     'region' => $user->region,
@@ -264,6 +268,14 @@
                             }
                         }
 
+                        if(empty($data['eDate'])) {
+                            $data['eDate'] = NULL;
+                        }
+
+                        if(empty($data['ceDate'])) {
+                            $data['ceDate'] = NULL;
+                        }
+
                         if(empty($data['file_error'])){
                             if($this->userModel->profileAdditionalAdd($data)){
 
@@ -280,7 +292,7 @@
                             }
                             else {
                                 die("Something went wrong");
-                            } 
+                            }
                         } else{
                             $this->view('users/additionalProfileAdd', $data);
                         }
