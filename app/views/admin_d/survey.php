@@ -37,6 +37,7 @@
                             <thead>
                                 <tr>
                                     <th></th>
+                                    <th></th>
                                     <th>Title</th>
                                     <th>Description</th>
                                     <th>Start Date</th>
@@ -48,6 +49,7 @@
                                 <?php foreach($data['survey'] as $survey):?>
                                 <tr>
                                     <td><input type="checkbox" name="checkbox[]" value="<?php echo $survey->id;?>"></td>
+                                    <td></td>
                                     <td><p class="title"><?php  echo $survey->title?></p></td>
                                     <td><p class="Description"><?php echo $survey->description?></p></td>
                                     <td><time datetime="0000-09-02"><?php echo $survey->start_date?></time></td>
@@ -55,7 +57,7 @@
                                     <td><div class="option icon" tabindex="0">
                                         <span class="optionSpan">&#8942</span>
                                         <div class="optionModal">
-                                            <a href="<?php echo ($survey->s_type=='built_in') ? URLROOT.'/surveys/show_survey/'.$survey->id : $survey->google_form_link?>" <?php echo ($survey->s_type == 'google_form') ? "target='_blank'" : ''?>>View</a>
+                                            <a href="<?php echo ($survey->s_type=='built_in') ? URLROOT.'/surveys/show_survey/'.$survey->id : $survey->google_form_editor_link?>" <?php echo ($survey->s_type == 'google_form') ? "target='_blank'" : ''?>>View</a>
                                             <a href="<?php echo URLROOT;?>/surveys/edit_survey/<?php echo $survey->id?>">
                                                 <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M15.8233 1.67676L18.3233 4.17676L16.4175 6.08342L13.9175 3.58342L15.8233 1.67676Z" fill="black" fill-opacity="0.87"/>

@@ -78,4 +78,22 @@
                 echo 1;
             }
         }
+
+
+        public function googleFormDone(){
+            extract($_POST);
+
+            $data= [
+                'sid' => $googleFormId,
+                'user_id' => $_SESSION['id']
+            ];
+            
+            if($this->surveyListModel->markAsDone($data)){
+                echo '1';
+            }
+            else{
+                return false;
+            }
+
+        }
     }

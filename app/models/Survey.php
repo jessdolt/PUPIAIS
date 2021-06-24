@@ -28,7 +28,7 @@
         }
 
         public function addSurvey($data){
-            $this->db->query('INSERT INTO survey_set(title,description,user_id,start_date,end_date, s_type, google_form_link) VALUES (:title,:description,:user_id,:start_date,:end_date,:s_type, :form_link)');
+            $this->db->query('INSERT INTO survey_set(title,description,user_id,start_date,end_date, s_type, google_form_link,google_form_editor_link) VALUES (:title,:description,:user_id,:start_date,:end_date,:s_type, :form_link, :form_editor_link)');
 
             $this->db->bind(':title', $data['title']);
             $this->db->bind(':description', $data['description']);
@@ -37,6 +37,7 @@
             $this->db->bind(':end_date', $data['end_date']);
             $this->db->bind(':s_type', $data['s_type']);
             $this->db->bind(':form_link', $data['form_link']);
+            $this->db->bind(':form_editor_link', $data['form_editor_link']);
             if($this->db->execute()){
                 return true;
             } else{
@@ -65,7 +66,7 @@
         }
 
         public function updateSurvey($data){      
-            $this->db->query('UPDATE survey_set set title=:title, description=:description, user_id=:user_id, start_date=:start_date, end_date=:end_date , s_type = :s_type, google_form_link = :form_link  WHERE id =:id');
+            $this->db->query('UPDATE survey_set set title=:title, description=:description, user_id=:user_id, start_date=:start_date, end_date=:end_date , s_type = :s_type, google_form_link = :form_link, google_form_editor_link = :form_editor_link WHERE id =:id');
             $this->db->bind(':title', $data['title']);
             $this->db->bind(':description', $data['description']);
             $this->db->bind(':user_id', $data['user_id']);
@@ -73,6 +74,7 @@
             $this->db->bind(':end_date', $data['end_date']);
             $this->db->bind(':s_type', $data['s_type']);
             $this->db->bind(':form_link', $data['form_link']);
+            $this->db->bind(':form_editor_link', $data['form_editor_link']);
             $this->db->bind(':id', $data['sid']);
             if($this->db->execute()){
                 return true;

@@ -42,11 +42,13 @@
                     'end_date' => $end_date,
                     'description' => $s_description,
                     's_type' => $survey_type,
-                    'form_link' => ''
+                    'form_link' => '',
+                    'form_editor_link' => ''
                ];
 
                if($survey_type === 'google_form'){
                   $data ['form_link'] = $google_form_link;
+                  $data ['form_editor_link'] = $google_form_editor_link;
                }
 
                //array_print($data);
@@ -64,11 +66,14 @@
                     'end_date' => $end_date,
                     'description' => $s_description,
                     's_type' => $survey_type,
-                    'form_link' => ''
+                    'form_link' => '',
+                    'form_editor_link' => ''
+                    
                ];
 
                if($survey_type === 'google_form'){
                     $data ['form_link'] = $google_form_link;
+                    $data ['form_editor_link'] = $google_form_editor_link;
                }
 
                if($this->surveyModel->updateSurvey($data)){

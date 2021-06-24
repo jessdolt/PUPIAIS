@@ -72,6 +72,17 @@
             }
         }
 
+        public function markAsDone($data){      
+            $this->db->query('INSERT INTO answers(user_id, survey_id) VALUES (:user_id, :sid)');
+            $this->db->bind(':user_id', $data['user_id']);
+            $this->db->bind(':sid', $data['sid']);
+            if($this->db->execute()){
+                return true;
+            } else{
+                return false;
+            }
+        }
+
 
         // QUESTION DATABASE INTERACTION 
 

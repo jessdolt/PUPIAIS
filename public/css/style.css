@@ -1058,7 +1058,7 @@ table tbody {
 .adminNav {
   min-width: 9.2rem;
   max-width: 9.2rem;
-  max-height: 100%;
+  max-height: calc(100vh - 6rem);
   box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
   display: flex;
   flex-flow: column;
@@ -1088,7 +1088,7 @@ table tbody {
     display: none;
     flex-flow: column;
     border-radius: 1rem;
-    min-height: 10rem;
+    min-height: 12.1rem;
     align-self: stretch;
     background-color: #A63F3F;
     color: #FFFFFF;
@@ -1097,7 +1097,6 @@ table tbody {
     background-position: center;
     background-size: cover;
     border-radius: 1rem;
-    min-height: 10rem;
     align-self: stretch;
     align-items: center;
     gap: .8rem;
@@ -1393,15 +1392,13 @@ html {
     .alumni > section.behind {
       height: 36rem;
       width: 100%;
-      position: absolute;
-      z-index: -1; }
+      position: absolute; }
       .alumni > section.behind ~ .mainContent {
         background-color: initial; }
       .alumni > section.behind ~ .mainContent > .container {
         /* use longhand margin property 
                 because there is a shorthand declaration 
                 of margin for all .container class */
-        margin: 0.8rem 1.6rem;
         box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
         border-radius: 1rem;
         padding: 0 1.6rem 4.8rem;
@@ -1501,9 +1498,8 @@ html {
 .userSurvey .hamburgerIcon {
   display: none; }
 
-.userSurvey ~ .alumni .mainContent {
-  width: 100%;
-  z-index: 24; }
+.userSurvey ~ .alumni .mainContent .container {
+  z-index: 2; }
   .userSurvey ~ .alumni .mainContent .container .form {
     gap: 2.4rem; }
     .userSurvey ~ .alumni .mainContent .container .form h1, .userSurvey ~ .alumni .mainContent .container .form h2 {
@@ -1519,7 +1515,33 @@ html {
       max-width: 65.6rem;
       width: 100%;
       margin: 0 auto;
-      padding: 2.4rem 4.8rem; }
+      padding: 1.6rem 2.4rem; }
+      @media (min-width: 800px) {
+        .userSurvey ~ .alumni .mainContent .container .form .surveyCard {
+          padding: 2.4rem 4.8rem; } }
+      .userSurvey ~ .alumni .mainContent .container .form .surveyCard.googleForm {
+        border-left-color: #7248BC;
+        background-image: url("../images/google-forms-icon.svg");
+        background-repeat: no-repeat;
+        background-position: right 1.8rem top 2.4rem;
+        background-size: 7.4rem 2.7rem; }
+        @media (min-width: 800px) {
+          .userSurvey ~ .alumni .mainContent .container .form .surveyCard.googleForm {
+            background-size: initial;
+            background-position: right 4.8rem top 2.4rem; } }
+        .userSurvey ~ .alumni .mainContent .container .form .surveyCard.googleForm > button {
+          display: none;
+          align-self: center;
+          width: 16rem; }
+      .userSurvey ~ .alumni .mainContent .container .form .surveyCard h3 {
+        max-width: 80%; }
+      .userSurvey ~ .alumni .mainContent .container .form .surveyCard .check-con {
+        display: flex;
+        align-items: center; }
+        .userSurvey ~ .alumni .mainContent .container .form .surveyCard .check-con > * + * {
+          margin-left: 0.8rem; }
+        .userSurvey ~ .alumni .mainContent .container .form .surveyCard .check-con [type="checkbox"]:checked::before {
+          background-image: url("../images/check-success-icon.svg"); }
       .userSurvey ~ .alumni .mainContent .container .form .surveyCard p {
         color: rgba(0, 0, 0, 0.6);
         margin-top: 0.8rem;
@@ -1536,18 +1558,21 @@ html {
       @media (min-width: 800px) {
         .userSurvey ~ .alumni .mainContent .container .form button {
           align-self: flex-end; } }
-  .userSurvey ~ .alumni .mainContent .textFieldContainer {
-    min-width: 26rem; }
-  .userSurvey ~ .alumni .mainContent label {
-    color: rgba(0, 0, 0, 0.6); }
-  .userSurvey ~ .alumni .mainContent input[type="text"], .userSurvey ~ .alumni .mainContent input[type="date"], .userSurvey ~ .alumni .mainContent input[type="tel"], .userSurvey ~ .alumni .mainContent input[type="email"], .userSurvey ~ .alumni .mainContent select, .userSurvey ~ .alumni .mainContent textarea {
-    border-radius: 0.5rem;
-    border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
-    min-width: 0rem;
-    padding-right: 1.6rem;
-    padding-left: 1.6rem; }
-    .userSurvey ~ .alumni .mainContent input[type="text"]:focus, .userSurvey ~ .alumni .mainContent input[type="date"]:focus, .userSurvey ~ .alumni .mainContent input[type="tel"]:focus, .userSurvey ~ .alumni .mainContent input[type="email"]:focus, .userSurvey ~ .alumni .mainContent select:focus, .userSurvey ~ .alumni .mainContent textarea:focus {
-      border-right: 1px rgba(0, 0, 0, 0.6) solid !important; }
+
+.userSurvey ~ .alumni .mainContent .textFieldContainer {
+  min-width: 26rem; }
+
+.userSurvey ~ .alumni .mainContent label {
+  color: rgba(0, 0, 0, 0.6); }
+
+.userSurvey ~ .alumni .mainContent input[type="text"], .userSurvey ~ .alumni .mainContent input[type="date"], .userSurvey ~ .alumni .mainContent input[type="tel"], .userSurvey ~ .alumni .mainContent input[type="email"], .userSurvey ~ .alumni .mainContent select, .userSurvey ~ .alumni .mainContent textarea {
+  border-radius: 0.5rem;
+  border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
+  min-width: 0rem;
+  padding-right: 1.6rem;
+  padding-left: 1.6rem; }
+  .userSurvey ~ .alumni .mainContent input[type="text"]:focus, .userSurvey ~ .alumni .mainContent input[type="date"]:focus, .userSurvey ~ .alumni .mainContent input[type="tel"]:focus, .userSurvey ~ .alumni .mainContent input[type="email"]:focus, .userSurvey ~ .alumni .mainContent select:focus, .userSurvey ~ .alumni .mainContent textarea:focus {
+    border-right: 1px rgba(0, 0, 0, 0.6) solid !important; }
 
 .admin {
   position: relative;
@@ -1608,7 +1633,12 @@ html {
         .admin .pageSpecificHeader > div:first-child h2 span {
           font-size: inherit; }
     .admin .pageSpecificHeader > div:last-child {
-      align-self: flex-end; }
+      display: flex;
+      flex-flow: column;
+      align-self: flex-end;
+      align-items: flex-end; }
+      .admin .pageSpecificHeader > div:last-child > * + * {
+        margin-top: 4.7rem; }
       .admin .pageSpecificHeader > div:last-child .textFieldContainer {
         border-radius: 5rem;
         width: 30rem; }
@@ -1916,8 +1946,9 @@ html {
     .mainContent.adminForm .form:first-child .smallComponentsContainer {
       display: flex;
       flex-flow: wrap;
-      justify-content: space-between;
-      gap: 2rem; }
+      justify-content: space-between; }
+      .mainContent.adminForm .form:first-child .smallComponentsContainer > * {
+        margin-top: 1.6rem; }
       .mainContent.adminForm .form:first-child .smallComponentsContainer fieldset {
         border: none;
         display: flex;
@@ -2439,6 +2470,11 @@ input, textarea {
 .questionnaire [readonly] {
   background-color: #EEEEEE !important;
   color: rgba(0, 0, 0, 0.38) !important; }
+  .questionnaire [readonly]:hover {
+    cursor: not-allowed; }
+
+:disabled:hover {
+  cursor: not-allowed; }
 
 .textFieldContainer {
   position: relative;
@@ -2748,7 +2784,7 @@ ul {
       background-color: #A63F3F;
       color: #FFFFFF; }
       .modalContainer .modalPreview .data-table thead.bigger {
-        height: 8rem; }
+        height: 7rem; }
       .modalContainer .modalPreview .data-table thead tr {
         width: 100%; }
     .modalContainer .modalPreview .data-table tbody {
@@ -2847,15 +2883,18 @@ ul {
 
 .alertModalContainer, .notifModalContainer {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 25; }
+  z-index: 25;
+  transition: opacity 2s ease;
+  opacity: 0; }
   .alertModalContainer.show, .notifModalContainer.show {
+    opacity: 1;
     display: block; }
   .alertModalContainer .alertModal, .notifModalContainer .alertModal {
     position: absolute;
@@ -2865,13 +2904,16 @@ ul {
     display: none;
     flex-flow: column;
     align-items: center;
-    padding: 7rem 2.4rem 2.4rem 2.4rem;
+    padding: 5.2rem 1.4rem 2.4rem;
     border-radius: 1rem;
     background-color: transparent;
     background-image: url("../images/alertContainer.png");
     background-position: top 1px center;
     background-repeat: no-repeat;
     /* box-shadow: $elevate24dp; */ }
+    @media (min-width: 800px) {
+      .alertModalContainer .alertModal, .notifModalContainer .alertModal {
+        padding: 7rem 2.4rem 2.4rem 2.4rem; } }
     .alertModalContainer .alertModal.logoutAlert.show, .notifModalContainer .alertModal.logoutAlert.show {
       display: flex; }
       .alertModalContainer .alertModal.logoutAlert.show svg, .notifModalContainer .alertModal.logoutAlert.show svg {
@@ -2894,12 +2936,17 @@ ul {
         background-color: #B61734;
         color: #FFFFFF; }
     .alertModalContainer .alertModal.notify, .notifModalContainer .alertModal.notify {
-      padding: 7rem 7.2rem 2.4rem; }
-      .alertModalContainer .alertModal.notify button, .notifModalContainer .alertModal.notify button {
-        min-width: 24.8rem; }
+      padding: 5.2rem 3.2rem 2.4rem; }
+      @media (min-width: 800px) {
+        .alertModalContainer .alertModal.notify, .notifModalContainer .alertModal.notify {
+          padding: 7rem 7.2rem 2.4rem; } }
+      .alertModalContainer .alertModal.notify button, .alertModalContainer .alertModal.notify a, .notifModalContainer .alertModal.notify button, .notifModalContainer .alertModal.notify a {
+        min-width: 24.8rem;
+        background-color: #EEEEEE;
+        color: rgba(0, 0, 0, 0.87); }
       .alertModalContainer .alertModal.notify svg, .notifModalContainer .alertModal.notify svg {
         position: absolute;
-        transform: translateY(-84%); }
+        top: -75px; }
     .alertModalContainer .alertModal.successAlert.show, .notifModalContainer .alertModal.successAlert.show {
       display: flex; }
       .alertModalContainer .alertModal.successAlert.show svg, .notifModalContainer .alertModal.successAlert.show svg {
@@ -2920,15 +2967,11 @@ ul {
       font-size: 2.4rem; }
     .alertModalContainer .alertModal svg, .notifModalContainer .alertModal svg {
       position: absolute;
-      transform: translateY(-88%);
+      top: -75px;
       background-position: center;
-      background-repeat: no-repeat;
-      width: 19.6rem;
-      height: 19.8rem; }
+      background-repeat: no-repeat; }
     .alertModalContainer .alertModal h2, .alertModalContainer .alertModal p, .notifModalContainer .alertModal h2, .notifModalContainer .alertModal p {
       text-align: center; }
-    .alertModalContainer .alertModal h2, .notifModalContainer .alertModal h2 {
-      font-weight: 600; }
     .alertModalContainer .alertModal p, .notifModalContainer .alertModal p {
       margin-top: 2.4rem;
       max-width: 25.2rem; }
@@ -2937,7 +2980,10 @@ ul {
       display: flex;
       gap: 2.4rem; }
       .alertModalContainer .alertModal div a, .alertModalContainer .alertModal div button, .notifModalContainer .alertModal div a, .notifModalContainer .alertModal div button {
-        min-width: 16rem; }
+        min-width: 14rem; }
+        @media (min-width: 800px) {
+          .alertModalContainer .alertModal div a, .alertModalContainer .alertModal div button, .notifModalContainer .alertModal div a, .notifModalContainer .alertModal div button {
+            min-width: 16rem; } }
       .alertModalContainer .alertModal div button, .notifModalContainer .alertModal div button {
         background-color: #EEEEEE;
         color: rgba(0, 0, 0, 0.87); }
@@ -2957,6 +3003,67 @@ ul {
       padding-left: 1.6rem; }
       .alertModalContainer .alertModal input[type="password"]:focus, .notifModalContainer .alertModal input[type="password"]:focus {
         border-right: 1px rgba(0, 0, 0, 0.6) solid !important; }
+  .alertModalContainer .successAlert, .notifModalContainer .successAlert {
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.87);
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    display: none;
+    align-items: center;
+    padding: 1.2rem 1.6rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #15CC8A;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    animation: slideIn 400ms ease; }
+    .alertModalContainer .successAlert.show, .notifModalContainer .successAlert.show {
+      display: flex; }
+    .alertModalContainer .successAlert > *, .notifModalContainer .successAlert > * {
+      opacity: 0; }
+    .alertModalContainer .successAlert > * + *, .notifModalContainer .successAlert > * + * {
+      margin-left: 0.8rem; }
+    .alertModalContainer .successAlert .success-icon, .notifModalContainer .successAlert .success-icon {
+      fill: #15CC8A;
+      animation: scale 1.2s ease-in-out 400ms forwards; }
+    .alertModalContainer .successAlert .notif-message-con, .notifModalContainer .successAlert .notif-message-con {
+      max-width: 24.8rem;
+      animation: pop 600ms ease-in-out 400ms forwards; }
+      @media (min-width: 800px) {
+        .alertModalContainer .successAlert .notif-message-con, .notifModalContainer .successAlert .notif-message-con {
+          max-width: 32.8rem; } }
+    .alertModalContainer .successAlert h2, .notifModalContainer .successAlert h2 {
+      font-size: 1.8rem; }
+    .alertModalContainer .successAlert p, .notifModalContainer .successAlert p {
+      animation-delay: 400ms; }
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%); }
+  to {
+    opacity: 1;
+    transform: translateX(0%); } }
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(-20%); }
+  to {
+    opacity: 1;
+    transform: translateY(0%); } }
+
+@keyframes scale {
+  0% {
+    opacity: 0;
+    transform: scale(0); }
+  80% {
+    opacity: 1;
+    transform: scale(1.2); }
+  100% {
+    opacity: 1;
+    transform: scale(1); } }
+  .alertModalContainer h2, .notifModalContainer h2 {
+    font-weight: 600; }
 
 .addModalContainer .addModal {
   display: flex;
@@ -5247,6 +5354,17 @@ ul {
         .forum > section.forumView .comment-main-con .comment-list .btn-con2 button.submit-reply {
           background-color: #A63F3F;
           color: #FFFFFF; }
+    .forum > section.forumView .comment-main-con .sub-comment-list {
+      display: flex;
+      flex-flow: column;
+      align-items: center; }
+      .forum > section.forumView .comment-main-con .sub-comment-list .see-more {
+        background-color: transparent;
+        border: 0;
+        font-weight: 600; }
+        .forum > section.forumView .comment-main-con .sub-comment-list .see-more:focus, .forum > section.forumView .comment-main-con .sub-comment-list .see-more:hover {
+          box-shadow: none;
+          text-decoration: underline; }
   .forum > section.forumView .catCon .list-item {
     display: flex;
     align-items: center;
@@ -5285,14 +5403,24 @@ select, input, textarea {
     cursor: pointer; }
 
 .survey .mainContent .data-table th:nth-child(2), .survey .mainContent .data-table td:nth-child(2) {
+  min-width: 2.8rem;
+  height: 2.8rem; }
+
+.survey .mainContent .data-table th:nth-child(3), .survey .mainContent .data-table td:nth-child(3) {
   min-width: 13.6rem;
   flex: 1; }
 
-.survey .mainContent .data-table th:nth-child(3), .survey .mainContent .data-table td:nth-child(3) {
+.survey .mainContent .data-table th:nth-child(4), .survey .mainContent .data-table td:nth-child(4) {
   flex: 2; }
 
-.survey .mainContent .data-table th:nth-child(4), .survey .mainContent .data-table th:nth-child(5), .survey .mainContent .data-table td:nth-child(4), .survey .mainContent .data-table td:nth-child(5) {
+.survey .mainContent .data-table th:nth-child(5), .survey .mainContent .data-table th:nth-child(6), .survey .mainContent .data-table td:nth-child(5), .survey .mainContent .data-table td:nth-child(6) {
   min-width: 12.6rem; }
+
+.survey .mainContent .data-table td:nth-child(2) {
+  height: 2.8rem;
+  background-image: url("../images/google-forms-icon-only.svg");
+  background-repeat: no-repeat;
+  background-position: center; }
 
 .dashboard {
   scrollbar-width: thin;
@@ -5433,6 +5561,15 @@ select, input, textarea {
           .dashboard .mainContent .container .card-con .card-footer a {
             display: flex;
             align-items: center; }
+      .dashboard .mainContent .container input[type="text"], .dashboard .mainContent .container input[type="date"], .dashboard .mainContent .container input[type="tel"], .dashboard .mainContent .container input[type="email"], .dashboard .mainContent .container select, .dashboard .mainContent .container textarea {
+        border-radius: 0.5rem;
+        border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
+        padding-right: 1.6rem; }
+        .dashboard .mainContent .container input[type="text"]:focus, .dashboard .mainContent .container input[type="date"]:focus, .dashboard .mainContent .container input[type="tel"]:focus, .dashboard .mainContent .container input[type="email"]:focus, .dashboard .mainContent .container select:focus, .dashboard .mainContent .container textarea:focus {
+          border-right: 1px rgba(0, 0, 0, 0.6) solid !important; }
+
+.userAdd .mainContent.adminForm .form .infoCon .smallComponentsContainer {
+  column-gap: 3.2rem; }
 
 .userAdd .mainContent.adminForm .form .infoCon:nth-of-type(1) .smallComponentsContainer > div {
   min-width: 30rem; }
@@ -5449,11 +5586,15 @@ select, input, textarea {
 .userAdd .mainContent.adminForm .form .infoCon:nth-of-type(3) .smallComponentsContainer > div:last-child {
   flex: 2; }
 
-.surveyAdd .mainContent.adminForm .form .infoCon:nth-of-type(1) .smallComponentsContainer > div:nth-child(1) {
-  min-width: 100%; }
+.surveyAdd .mainContent.adminForm .form .infoCon .smallComponentsContainer {
+  column-gap: 3.2rem; }
 
-.surveyAdd .mainContent.adminForm .form .infoCon:nth-of-type(1) .smallComponentsContainer > div textarea {
-  height: 12rem; }
+.surveyAdd .mainContent.adminForm .form .infoCon:nth-of-type(1) .smallComponentsContainer > div {
+  min-width: 100%; }
+  .surveyAdd .mainContent.adminForm .form .infoCon:nth-of-type(1) .smallComponentsContainer > div .outsideLabel {
+    margin-top: 0; }
+  .surveyAdd .mainContent.adminForm .form .infoCon:nth-of-type(1) .smallComponentsContainer > div textarea {
+    height: 12rem; }
 
 .surveyAdd .mainContent.adminForm .form .infoCon:nth-of-type(2) .smallComponentsContainer > div {
   flex: 1; }
@@ -5677,6 +5818,17 @@ select, input, textarea {
       -webkit-line-clamp: 5;
       overflow: hidden;
       text-overflow: ellipsis; }
+    .report .mainContent .survey-card.google-form .survey-footer {
+      position: relative; }
+      .report .mainContent .survey-card.google-form .survey-footer .google-form-icon {
+        position: absolute;
+        right: 0.8rem;
+        top: 0;
+        width: 11.8rem;
+        height: 4.6rem;
+        background-image: url("../images/google-forms-icon2.svg");
+        background-repeat: no-repeat;
+        background-position: center; }
   .report .mainContent .card-svg {
     border-radius: 1rem;
     position: absolute;
@@ -5702,9 +5854,9 @@ select, input, textarea {
   color: rgba(0, 0, 0, 0.87);
   width: 100%;
   height: 4rem;
-  position: fixed;
-  top: 0;
-  left: 0rem;
+  position: absolute;
+  top: -4rem;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5715,19 +5867,25 @@ select, input, textarea {
   font-weight: 500; }
   @media (min-width: 800px) {
     .userSurvey.firstEdit::after {
-      height: 6rem; } }
+      height: 6rem;
+      top: -6rem; } }
 
 .userSurvey.firstEdit, .userSurvey.firstEdit ~ .headerShadow {
   top: 4rem; }
   @media (min-width: 800px) {
     .userSurvey.firstEdit, .userSurvey.firstEdit ~ .headerShadow {
       top: 6rem; } }
+  .userSurvey.firstEdit.move, .userSurvey.firstEdit ~ .headerShadow.move {
+    transition: 600ms ease 600ms;
+    transform: translateY(-200px); }
 
 .userSurvey.firstEdit ~ .mainNav {
   top: 10rem; }
   @media (min-width: 800px) {
     .userSurvey.firstEdit ~ .mainNav {
       top: 12rem; } }
+  .userSurvey.firstEdit ~ .mainNav.move {
+    transform: translateY(-200px); }
 
 .userSurvey.firstEdit ~ .editProfile, .userSurvey.firstEdit ~ .mainFooter {
   top: 10rem; }
@@ -5740,103 +5898,143 @@ select, input, textarea {
             @extend %outline;
             color: $mediumEmphasis;
         } */ }
-  .mainHeader ~ .editProfile .mainContent .container .form .questionCon {
-    padding: 1.6rem 2.4rem;
-    box-shadow: none;
-    border: 1px solid rgba(0, 0, 0, 0.38); }
-    @media (min-width: 800px) {
-      .mainHeader ~ .editProfile .mainContent .container .form .questionCon {
-        padding: 1.6rem 4.8rem;
-        gap: 4.8rem; } }
-    @media (min-width: 800px) {
-      .mainHeader ~ .editProfile .mainContent .container .form .questionCon.changePass {
-        max-width: 51rem;
-        align-self: center; } }
-    .mainHeader ~ .editProfile .mainContent .container .form .questionCon.changePass ~ button {
-      align-self: center; }
-  .mainHeader ~ .editProfile .mainContent .container .form .addInfo {
-    flex-flow: row wrap;
-    align-items: flex-start; }
-  .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer {
-    flex: 1; }
-  .mainHeader ~ .editProfile .mainContent .container .form h1, .mainHeader ~ .editProfile .mainContent .container .form h2 {
-    text-align: center;
-    border-bottom: none;
-    padding-top: 2.4rem;
-    padding-bottom: 0.8rem; }
-  .mainHeader ~ .editProfile .mainContent .container .form h3 {
-    color: #A63F3F; }
-  .mainHeader ~ .editProfile .mainContent .container .form p {
-    margin-bottom: 0;
-    text-align: center; }
-  .mainHeader ~ .editProfile .mainContent .container .form button {
-    background-color: #A63F3F;
-    color: #FFFFFF;
-    position: relative;
-    width: 22rem; }
-    .mainHeader ~ .editProfile .mainContent .container .form button svg {
-      position: absolute;
-      left: 1.3rem; }
-  .mainHeader ~ .editProfile .mainContent .container .form .profilePic {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 10rem;
-    height: 10rem;
-    border-radius: 10rem;
-    border: none; }
-    @media (min-width: 415px) {
-      .mainHeader ~ .editProfile .mainContent .container .form .profilePic {
-        width: 16rem;
-        height: 16rem; } }
-  .mainHeader ~ .editProfile .mainContent .container .form #profile-pic-btn {
-    width: 0; }
-  .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"] {
-    transition: 200ms ease;
-    cursor: pointer;
-    position: absolute;
-    top: 65%;
-    right: 0px;
-    width: 2.7rem;
-    height: 2.7rem; }
-    @media (min-width: 415px) {
-      .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"] {
-        width: 4.3rem;
-        height: 4.3rem; } }
-    .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"]:focus, .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"]:hover {
-      filter: brightness(1.1); }
-  .mainHeader ~ .editProfile .mainContent .container .form .avatar {
-    position: relative;
-    align-self: center;
-    cursor: pointer;
-    width: 10rem;
-    height: 10rem; }
-    @media (min-width: 415px) {
-      .mainHeader ~ .editProfile .mainContent .container .form .avatar {
-        width: 16rem;
-        height: 16rem; } }
-  .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer {
-    display: flex;
-    flex-flow: column wrap;
-    gap: 1.6rem; }
-    @media (min-width: 800px) {
-      .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer {
-        flex-flow: row wrap; } }
-    .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer > div {
-      flex: 1; }
+  .mainHeader ~ .editProfile .mainContent .container {
+    z-index: 2; }
+    .mainHeader ~ .editProfile .mainContent .container .form .questionCon {
+      padding: 1.6rem 2.4rem;
+      box-shadow: none;
+      border: 1px solid rgba(0, 0, 0, 0.38); }
       @media (min-width: 800px) {
-        .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer > div {
-          min-width: 32rem; } }
-  .mainHeader ~ .editProfile .mainContent .container .form .questionCon .textFieldContainer {
-    min-width: 0; }
-  .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(1) {
-    min-width: 100%; }
-  @media (min-width: 800px) {
-    .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(2) {
-      min-width: 46.4rem; } }
-  .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(3), .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(4) {
-    min-width: 18.3rem; }
+        .mainHeader ~ .editProfile .mainContent .container .form .questionCon {
+          padding: 1.6rem 4.8rem;
+          gap: 4.8rem; } }
+      @media (min-width: 800px) {
+        .mainHeader ~ .editProfile .mainContent .container .form .questionCon.changePass {
+          max-width: 51rem;
+          align-self: center; } }
+      .mainHeader ~ .editProfile .mainContent .container .form .questionCon.changePass ~ button {
+        align-self: center; }
+    .mainHeader ~ .editProfile .mainContent .container .form .addInfo {
+      flex-flow: row wrap;
+      align-items: flex-start; }
+    .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer {
+      flex: 1; }
+    .mainHeader ~ .editProfile .mainContent .container .form h1, .mainHeader ~ .editProfile .mainContent .container .form h2 {
+      text-align: center;
+      border-bottom: none;
+      padding-top: 2.4rem;
+      padding-bottom: 0.8rem; }
+    .mainHeader ~ .editProfile .mainContent .container .form h3 {
+      color: #A63F3F; }
+    .mainHeader ~ .editProfile .mainContent .container .form p {
+      margin-bottom: 0;
+      text-align: center; }
+    .mainHeader ~ .editProfile .mainContent .container .form button {
+      background-color: #A63F3F;
+      color: #FFFFFF;
+      position: relative;
+      width: 22rem; }
+      .mainHeader ~ .editProfile .mainContent .container .form button svg {
+        position: absolute;
+        left: 1.3rem; }
+    .mainHeader ~ .editProfile .mainContent .container .form .profilePic {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10rem;
+      height: 10rem;
+      object-fit: cover;
+      border-radius: 10rem;
+      border: none; }
+      @media (min-width: 415px) {
+        .mainHeader ~ .editProfile .mainContent .container .form .profilePic {
+          width: 16rem;
+          height: 16rem; } }
+    .mainHeader ~ .editProfile .mainContent .container .form #profile-pic-btn {
+      width: 0; }
+    .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"] {
+      transition: 200ms ease;
+      cursor: pointer;
+      position: absolute;
+      top: 65%;
+      right: 0px;
+      width: 2.7rem;
+      height: 2.7rem; }
+      @media (min-width: 415px) {
+        .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"] {
+          width: 4.3rem;
+          height: 4.3rem; } }
+      .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"]:focus, .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"]:hover {
+        filter: brightness(1.1); }
+    .mainHeader ~ .editProfile .mainContent .container .form .avatar {
+      position: relative;
+      align-self: center;
+      cursor: pointer;
+      width: 10rem;
+      height: 10rem; }
+      @media (min-width: 415px) {
+        .mainHeader ~ .editProfile .mainContent .container .form .avatar {
+          width: 16rem;
+          height: 16rem; } }
+      .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal {
+        visibility: hidden;
+        opacity: 0;
+        transition: 200ms ease;
+        position: absolute;
+        top: 7.4rem;
+        right: 5rem;
+        background-color: #FFFFFF;
+        color: rgba(0, 0, 0, 0.87);
+        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+        border-radius: 1rem;
+        padding: 1.6rem;
+        z-index: 4; }
+        .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal.show {
+          visibility: visible;
+          opacity: 1; }
+        .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal > * {
+          transition: 0ms ease;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #FFFFFF;
+          color: rgba(0, 0, 0, 0.87);
+          font-weight: 400;
+          text-transform: capitalize;
+          padding: 0;
+          min-height: initial;
+          width: 14.5rem; }
+          .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal > *:focus, .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal > *:hover {
+            box-shadow: none;
+            text-decoration: underline; }
+          .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal > * > svg {
+            position: absolute;
+            left: 0; }
+          .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal > * + * {
+            margin-top: 1.6rem; }
+    .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer {
+      display: flex;
+      flex-flow: column wrap;
+      gap: 1.6rem; }
+      @media (min-width: 800px) {
+        .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer {
+          flex-flow: row wrap; } }
+      .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer > div {
+        flex: 1; }
+        @media (min-width: 800px) {
+          .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer > div {
+            min-width: 32rem; } }
+    .mainHeader ~ .editProfile .mainContent .container .form .questionCon .textFieldContainer {
+      min-width: 0; }
+    .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(1) {
+      min-width: 100%; }
+    @media (min-width: 800px) {
+      .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(2) {
+        min-width: 46.4rem; } }
+    .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(3), .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(4) {
+      min-width: 18.3rem; }
   .mainHeader ~ .editProfile .mainContent .imageInputContainer {
     display: flex;
     flex-flow: column;
@@ -5944,6 +6142,7 @@ select, input, textarea {
       content: "No"; }
 
 .profile .container {
+  z-index: 2;
   padding: 0 0 2.4rem !important; }
 
 .profile .profile-header {

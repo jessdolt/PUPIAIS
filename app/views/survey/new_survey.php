@@ -124,16 +124,25 @@
             const dropValue = $(this).val();
             if(dropValue === 'built_in'){
                 $('#gform_textfield').remove();
+                $('#gform_editor_textfield').remove();
             }
             else{
                 let opt = `
                          <div id="gform_textfield">        
                             <label for="description-id" class="outsideLabel">Google Form Link:</label>
                             <div class="textFieldContainer">
-                                <input type="text" name="google_form_link">
+                                <input type="text" name="google_form_link" autocomplete="off">
                                 <span class="error"></span>
                             </div>
-                        </div> `;
+                        </div> 
+                        <div id="gform_editor_textfield">        
+                            <label for="description-id" class="outsideLabel">Google Form Editor Link:</label>
+                            <div class="textFieldContainer">
+                                <input type="text" name="google_form_editor_link" autocomplete="off">
+                                <span class="error"></span>
+                            </div>
+                        </div> 
+                        `;
                 $('#upper_container').append(opt);
             }
         });
