@@ -164,7 +164,8 @@
                         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
     
                         $this->userModel->newPassword($data);
-                        redirect('admin/adminProfile');
+                        redirect('admin_manage/manage');
+
                         
                     } else {
                         $data['oldPassword_error'] = 'Your old password does not match';
