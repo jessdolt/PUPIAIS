@@ -153,55 +153,71 @@
 
         public function news() {
             $this->postModel = $this->model('post');
+            extract($_POST);
+
+            if(!isset($isSearch)){
            
-            // Get Page # in URL
-            $page = $this->getPage();
-                
-            // Limit row displayed
-            $limit = 10;
-            $start = ($page - 1) * $limit;
+                // Get Page # in URL
+                $page = $this->getPage();
+                    
+                // Limit row displayed
+                $limit = 10;
+                $start = ($page - 1) * $limit;
 
-            $posts = $this->postModel->showNewsIndex($start, $limit);
+                $posts = $this->postModel->showNewsIndex($start, $limit);
 
-            $pagination = $this->postModel->NoOfResults();
+                $pagination = $this->postModel->NoOfResults();
 
-            $total = count($pagination);
-            $pages = ceil($total/$limit);
+                $total = count($pagination);
+                $pages = ceil($total/$limit);
 
-            // No URL bypass
-            if($pages == 0) {
-                $pages = 1;
-            }
-            if($page > $pages) {
-                redirect('admin/news?page='.$pages);
-            }
-
-            $startFormula = $start + 1;
-            $limitFormula = $startFormula - 1 + $limit;
-
-            if($page == $pages) {
-                if ($limitFormula >= $total) {
-                    $limitFormula = $total;
+                // No URL bypass
+                if($pages == 0) {
+                    $pages = 1;
                 }
-            }
+                if($page > $pages) {
+                    redirect('admin/news?page='.$pages);
+                }
 
-            if($total == 0) {
-                $startFormula = 0;
-                $limitFormula = 0;
-            }
+                $startFormula = $start + 1;
+                $limitFormula = $startFormula - 1 + $limit;
 
-            $data = [
-                'news' => $posts,
-                'start' => $startFormula,
-                'limit' => $limitFormula,
-                'total' => $total,
-                'first' => '?page=1',
-                'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
-                'next' => '?page='. ($page == $pages ? $pages : $page + 1),
-                'last' => '?page=' . $pages
-            ];
-        
-            $this->view('admin_d/news', $data);
+                if($page == $pages) {
+                    if ($limitFormula >= $total) {
+                        $limitFormula = $total;
+                    }
+                }
+
+                if($total == 0) {
+                    $startFormula = 0;
+                    $limitFormula = 0;
+                }
+
+                $data = [
+                    'news' => $posts,
+                    'start' => $startFormula,
+                    'limit' => $limitFormula,
+                    'total' => $total,
+                    'first' => '?page=1',
+                    'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+                    'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+                    'last' => '?page=' . $pages
+                ];
+            
+                $this->view('admin_d/news', $data);
+            } else{
+                $posts = $this->postModel->searchNews($searchKey);
+                //array_print($events);
+                if(!empty($posts)){
+                    $data = ['news'=> $posts];
+                }
+                else{
+                    $data = ['news' => ''];
+                }
+          
+                
+                $this->view('search/news', $data);
+            }
         }
 
         public function events(){
@@ -277,61 +293,76 @@
 
         public function job_portal() {
             $this->jobModel = $this->model('job_portal');
+            extract($_POST);
 
-            // Get Page # in URL
-            if (!isset($_GET['page'])) {
-                $page = 1;
-            } elseif($_GET['page'] == 0) {
-                $page = 1;
-            } else {
-                $page = $_GET['page'];
-            }
-                
-            // Limit row displayed
-            $limit = 20;
-            $start = ($page - 1) * $limit;
-
-            $jobs = $this->jobModel->showJobsIndex($start, $limit);
-
-            $pagination = $this->jobModel->NoOfResults();
-
-            $total = count($pagination);
-            $pages = ceil($total/$limit);
-
-            // No URL bypass
-            if($pages == 0) {
-                $pages = 1;
-            }
-            if($page > $pages) {
-                redirect('admin/job_portal?page='.$pages);
-            }
-
-            $startFormula = $start + 1;
-            $limitFormula = $startFormula - 1 + $limit;
-
-            if($page == $pages) {
-                if ($limitFormula >= $total) {
-                    $limitFormula = $total;
+            if(!isset($isSearch)){
+                // Get Page # in URL
+                if (!isset($_GET['page'])) {
+                    $page = 1;
+                } elseif($_GET['page'] == 0) {
+                    $page = 1;
+                } else {
+                    $page = $_GET['page'];
                 }
-            }
+                    
+                // Limit row displayed
+                $limit = 20;
+                $start = ($page - 1) * $limit;
 
-            if($total == 0) {
-                $startFormula = 0;
-                $limitFormula = 0;
-            }
+                $jobs = $this->jobModel->showJobsIndex($start, $limit);
 
-            $data = [
-                'jobs' => $jobs,
-                'start' => $startFormula,
-                'limit' => $limitFormula,
-                'total' => $total,
-                'first' => '?page=1',
-                'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
-                'next' => '?page='. ($page == $pages ? $pages : $page + 1),
-                'last' => '?page=' . $pages
-            ];
-        
-            $this->view('admin_d/job_portal', $data);
+                $pagination = $this->jobModel->NoOfResults();
+
+                $total = count($pagination);
+                $pages = ceil($total/$limit);
+
+                // No URL bypass
+                if($pages == 0) {
+                    $pages = 1;
+                }
+                if($page > $pages) {
+                    redirect('admin/job_portal?page='.$pages);
+                }
+
+                $startFormula = $start + 1;
+                $limitFormula = $startFormula - 1 + $limit;
+
+                if($page == $pages) {
+                    if ($limitFormula >= $total) {
+                        $limitFormula = $total;
+                    }
+                }
+
+                if($total == 0) {
+                    $startFormula = 0;
+                    $limitFormula = 0;
+                }
+
+                $data = [
+                    'jobs' => $jobs,
+                    'start' => $startFormula,
+                    'limit' => $limitFormula,
+                    'total' => $total,
+                    'first' => '?page=1',
+                    'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+                    'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+                    'last' => '?page=' . $pages
+                ];
+            
+                $this->view('admin_d/job_portal', $data);
+            } else {
+                $jobs = $this->jobModel->searchJobs($searchKey);
+                //array_print($events);
+                if(!empty($jobs)){
+                    $data = ['jobs'=> $jobs];
+                }
+                else{
+                    $data = ['jobs' => ''];
+                }
+          
+                
+                $this->view('search/job_portal', $data);
+            }
 
         }
 

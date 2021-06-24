@@ -6,9 +6,10 @@
            
         }
 
-        public function search($keyword) {
-
-            $this->view('posts/search', $data);
+        public function search(){
+            extract($_POST);
+            $posts = $this->postModel->searchNews($searchChar);
+            echo json_encode($posts);
         }
 
         public function single($id){

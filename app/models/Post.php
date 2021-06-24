@@ -170,4 +170,16 @@
             }
 
         }
+
+        public function searchNews($char){
+            $this->db->query("SELECT * from posts WHERE title like CONCAT('%', :test, '%') ORDER BY created_at desc");
+            $this->db->bind(':test' , $char);
+            $row = $this->db->resultSet();
+            if($this->db->rowCount() > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
     }
