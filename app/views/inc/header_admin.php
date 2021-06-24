@@ -133,6 +133,7 @@
                             <ul class="subCategoryList">
                                 <li><a href="<?php echo URLROOT;?>/admin/news">News</a></li>
                                 <li><a href="<?php echo URLROOT;?>/admin/events">Events</a></li>
+                                <li><a href="<?php echo URLROOT;?>/admin/gallery">Gallery</a></li>
                                 <li><a href="<?php echo URLROOT;?>/admin/job_portal">Job Portal</a></li>
                             </ul>
                         </li>

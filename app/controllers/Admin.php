@@ -422,45 +422,74 @@
             } else {
                 $survey = $this->surveyModel->searchSurvey($searchKey);
                 //array_print($events);
-                if(!empty($jobs)){
+                if(!empty($survey)){
                     $data = ['survey'=> $survey];
                 }
                 else{
                     $data = ['survey' => ''];
                 }
           
-                $this->view('admin_d/survey', $data);
+                $this->view('search/survey_list', $data);
             }
         }
     
 
         public function survey_report(){
             $this->surveyReportModel = $this->model('s_report');
-            $surveys = $this->surveyReportModel->showSurvey();
-            
-            foreach($surveys as $survey){
-                $survey->{'respondents'} = $this->surveyReportModel->surveyTaken($survey->id);
-            }
+            extract($_POST);
 
-            $currentDate = date('Y-m-d');
-            $activeSurvey = array();
-            $pastSurvey = array();
+            if(!isset($isSearch)){
+                $surveys = $this->surveyReportModel->showSurvey();
+                
+                foreach($surveys as $survey){
+                    $survey->{'respondents'} = $this->surveyReportModel->surveyTaken($survey->id);
+                }
 
-            foreach($surveys as $survey){
-                if($survey->end_date >= $currentDate){
-                    array_push($activeSurvey,$survey);
+                $currentDate = date('Y-m-d');
+                $activeSurvey = array();
+                $pastSurvey = array();
+
+                foreach($surveys as $survey){
+                    if($survey->end_date >= $currentDate){
+                        array_push($activeSurvey,$survey);
+                    }
+                    else{
+                        array_push($pastSurvey,$survey);
+                    }
+                }
+
+                $data = [
+                    'activeSurvey' => $activeSurvey,
+                    'pastSurvey' => $pastSurvey
+                ];
+
+                $this->view('admin_d/survey_report', $data);
+            } else {
+                $surveys = $this->surveyReportModel->searchSurvey($searchKey);
+                
+                foreach($surveys as $survey){
+                    $survey->{'respondents'} = $this->surveyReportModel->surveyTaken($survey->id);
+                }
+
+                $currentDate = date('Y-m-d');
+                $activeSurvey = array();
+
+                foreach($surveys as $survey){
+                    if($survey->end_date >= $currentDate){
+                        array_push($activeSurvey,$survey);
+                    }
+                }
+
+                //array_print($events);
+                if(!empty($survey)){
+                    $data = ['activeSurvey'=> $surveys];
                 }
                 else{
-                    array_push($pastSurvey,$survey);
+                    $data = ['activeSurvey' => ''];
                 }
+          
+                $this->view('search/survey_report', $data);
             }
-
-            $data = [
-                'activeSurvey' => $activeSurvey,
-                'pastSurvey' => $pastSurvey
-            ];
-
-            $this->view('admin_d/survey_report', $data);
         }
 
         public function getPage() {
@@ -492,6 +521,7 @@
 
         public function alumni_report() {
             $this->alumniRModel = $this->model('alumnir_model');
+
             // $alumni = $this->alumniRModel->showAll();
             $allCount = $this->alumniRModel->allCount();
             $batch = $this->alumniRModel->showBatch();
@@ -501,15 +531,13 @@
                 $allCount = count($allCount);
             }
 
-           
-
             // Get Page # in URL
             $page = $this->getPage();
 
             // Limit row displayed
             $limit = 20;
             $start = ($page - 1) * $limit;
-     
+    
             $newData = [
                 'start' => $start,
                 'limit' => $limit,
@@ -540,7 +568,7 @@
 
             $pagination = $this->alumniRModel->NoOfResults();
 
-           
+        
             $total = count($pagination);
             $pages = ceil($total/$limit);
 
