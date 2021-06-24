@@ -284,20 +284,27 @@
         
         getVoteCount()
         selected()
-        reply()
-        
+        replyHide()
 
-/*         function reply(){
+        function replyHide(){
             let container = $('.sub-comment-list');
             console.log(container);
             container.each(function(count, list){
                 
                     if(list.children.length > 2){
-                       
-                        console.log('if work');
+                        $(list).children().hide();
+                        $(list).children().last().show();
+                        const show = $('<p class = "show-more" id ="show-more">Show more</p>');
+                        show.appendTo(list);
+                        $('.show-more').click(function(){
+                            $(list).children().show();
+                            $(this).remove();
+                            }); 
                     }
             });
-        } */
+        }
+
+
 
         function getVoteCount(){
             $.ajax({ 
@@ -505,7 +512,8 @@
         });
 
         $('.btn-reply').click(function() {
-
+            let show = $('#show-more');
+            show.toggle ();
             var parentContainer = $(this.parentNode.parentNode.parentNode)
             var commentID = parentContainer[0].attributes[1].value
             console.log(parentContainer[0].childNodes[3].children.length)
@@ -514,7 +522,6 @@
             console.log(subList.children)
             var test = $('#reply-con');
             console.log(test); 
-
             if(subLength == 0){
 
                 let replyContainer = `  
@@ -560,8 +567,6 @@
                 const subComment = $('<li class = "list-item active"> </li>');
                 subComment.append(replyContainer);
                 subComment.appendTo(subList);
-
-               
             }
             else {
                 
@@ -618,6 +623,7 @@
                 finder.remove();
                 }
             }
+           
         });
     });
 
