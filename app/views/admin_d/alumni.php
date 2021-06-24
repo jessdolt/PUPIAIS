@@ -145,12 +145,14 @@
                 </div>
                 <div class="container">
                     <div class="textFieldContainer">
-                        <input type="search" name="searchNews" id="search-news" placeholder="Search">
+                    <?php if($url[1] == 'alumni'):?>
+                        <input type="search" name="searchNews" id="search-alumni" placeholder="Search">
                         <label class="icon" for="search-news">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15.5001 13.9999H14.7101L14.4301 13.7299C15.6301 12.3299 16.2501 10.4199 15.9101 8.38989C15.4401 5.60989 13.1201 3.38989 10.3201 3.04989C6.09014 2.52989 2.53014 6.08989 3.05014 10.3199C3.39014 13.1199 5.61014 15.4399 8.39014 15.9099C10.4201 16.2499 12.3301 15.6299 13.7301 14.4299L14.0001 14.7099V15.4999L18.2501 19.7499C18.6601 20.1599 19.3301 20.1599 19.7401 19.7499C20.1501 19.3399 20.1501 18.6699 19.7401 18.2599L15.5001 13.9999ZM9.50014 13.9999C7.01014 13.9999 5.00014 11.9899 5.00014 9.49989C5.00014 7.00989 7.01014 4.99989 9.50014 4.99989C11.9901 4.99989 14.0001 7.00989 14.0001 9.49989C14.0001 11.9899 11.9901 13.9999 9.50014 13.9999Z" fill="black" fill-opacity="0.6"/>
                             </svg>
                         </label>
+                    <?php endif;?>
                     </div>
                 </div>
             </section>
@@ -169,7 +171,7 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="search-insert-alumni">
                     <?php if(count($data['alumni']) > 0) :?>
                     <?php foreach($data['alumni'] as $alumni):?>
                             <tr>
@@ -202,7 +204,7 @@
                                     </div>
                                 </div></td>
                             </tr>
-                            <?php endforeach; ?>
+                        <?php endforeach; ?>
                         <?php endif;?>
                     </tbody>
                 </table>
@@ -407,7 +409,18 @@
     <?php flash('alumni_edit_success'); ?>
     <?php flash('alumni_delete_success'); ?>
     <?php flash('alumni_import_success'); ?>
-    
+
+
+    <?php flash('department_add_success')?>
+    <?php flash('course_add_success')?>
+    <?php flash('batch_add_success')?>
+    <?php flash('department_edit_success')?>
+    <?php flash('course_edit_success')?>
+    <?php flash('batch_edit_success')?>
+    <?php flash('department_delete_success')?>
+    <?php flash('course_delete_success')?>
+    <?php flash('batch_delete_success')?>
+
     <?php flash('courseError'); ?>
 
     <?php flash('department_duplicate'); ?>
@@ -518,12 +531,32 @@
                     });
                }
            })
+
     })
  
     function getFirstWord($str){
         return $str.split(" ")[0];
     }
 
+    $(document).on('input', '#search-alumni', function(){
+        const searchChar = $(this).val();
+        $.ajax({ 
+                url:'<?php echo URLROOT;?>/admin/alumni',
+                data: { searchKey : searchChar, isSearch : 1},
+                method: 'POST',
+                type: 'POST',
+                success:function(res){
+                    // var newObj = jQuery.parseJSON(res);
+                    // console.log(newObj[0].title);
+                    //console.log(res);
+                    $('#search-insert-alumni').html(res);
+                    //console.log(res);   
+                }, 
+                error: function(er){
+                    console.log(er);
+                }
+        });
+    })
 
 </script>
 

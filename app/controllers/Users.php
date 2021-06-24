@@ -170,7 +170,7 @@ use PHPMailer\PHPMailer\Exception;
                        
                     }
                     else{
-                        echo 'not validated';
+                        redirect('users/signup_failed');
                     }
 
                 } 
@@ -203,6 +203,11 @@ use PHPMailer\PHPMailer\Exception;
                 'email' => $email
             ];
             $this->view('users/alumni_verify', $data);
+        }
+
+        public function signup_failed(){
+            $data = [];
+            $this->view('users/alumni_failed', $data);
         }
 
         function sendConfirmation($email){
@@ -288,8 +293,10 @@ use PHPMailer\PHPMailer\Exception;
                     $loggedInUser = $this->userModel->login($data['email'], $data['password']);
                     if($checker->login_date == $date){
                         if ($loggedInUser) {
-                            $this->userModel->loginCount($date);
                             $this->createUserSession($loggedInUser);
+                            if(userType() == 'Alumni'){
+                                $this->userModel->loginCount($date);
+                            }
                         }
                         else {
                             $data['passwordError'] = 'Password or email is incorrect. Please try again.';
