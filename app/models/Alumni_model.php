@@ -110,15 +110,17 @@
 
 
         public function addAlumni($data){
-            $this->db->query('INSERT INTO alumni (student_no,last_name,first_name,middle_name,gender,birth_date,address,city,region,postal,contact_no,email,courseID,batchID
-            ) VALUES (:student_no,:last_name,:first_name,:middle_name,:gender,:birth_date,:address,:city,:region,:postal,:contact_no,:email,:course,:batch)');
+            $this->db->query('INSERT INTO alumni (student_no,last_name,first_name,middle_name,auxiliary_name,gender,civil,birth_date,address,city,region,postal,contact_no,email,courseID,batchID
+            ) VALUES (:student_no,:last_name,:first_name,:middle_name,:auxiliary_name,:gender,:civil, :birth_date,:address,:city,:region,:postal,:contact_no,:email,:course,:batch)');
             
             
             $this->db->bind(':student_no', $data['student_no']);
             $this->db->bind(':last_name', $data['last_name']);
             $this->db->bind(':first_name', $data['first_name']);
             $this->db->bind(':middle_name', $data['middle_name']);
+            $this->db->bind(':auxiliary_name', $data['auxiliary']);
             $this->db->bind(':gender', $data['gender']);
+            $this->db->bind(':civil', $data['civil']);
             $this->db->bind(':birth_date', $data['birth_date']);
             $this->db->bind(':address', $data['address']);
             $this->db->bind(':city', $data['city']);
@@ -191,12 +193,14 @@
 
 
         public function editAlumni($data){
-            $this->db->query('UPDATE alumni SET first_name = :first_name , last_name =:last_name, middle_name= :middle_name, birth_date = :birth_date, gender = :gender, address = :address, city = :city, region = :region, postal = :postal,contact_no = :contact_no, email = :email, courseID = :course, batchID = :batch WHERE alumni_id =:id');
+            $this->db->query('UPDATE alumni SET first_name = :first_name , last_name =:last_name, middle_name= :middle_name, auxiliary_name=:auxiliary_name, birth_date = :birth_date, civil=:civil, gender = :gender, address = :address, city = :city, region = :region, postal = :postal,contact_no = :contact_no, email = :email, courseID = :course, batchID = :batch WHERE alumni_id =:id');
         
         $this->db->bind(':first_name', $data['first_name']);
         $this->db->bind(':last_name', $data['last_name']);
         $this->db->bind(':middle_name', $data['middle_name']);
+        $this->db->bind(':auxiliary_name', $data['auxiliary']);
         $this->db->bind(':birth_date', $data['birth_date']);
+        $this->db->bind(':civil', $data['civil']);
         $this->db->bind(':gender', $data['gender']);
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':city', $data['city']);

@@ -12,7 +12,7 @@
             </a>
             <hr>
             <ul class="department">
-                <?php foreach($data['batch'] as $batch) : ?>
+                <?php foreach($data['batch'] as $batch) : ?>    
                 <li>
 
                     <a href="<?php echo URLROOT?>/alumni_report/showBatch/<?php echo $batch->id?>" class="deptHead <?php echo ($url[2] == $batch->id) ? 'active' : ''?>">
@@ -73,8 +73,21 @@
                         </button>
                     </form>
                     <?php endif; ?>
-                        <a href="#">January - June</a>
-                        <a href="#">July - December</a>
+                    <a href="<?php if($url[1] == "showBatch" || $url[1] == "showBatch_1st_half" || $url[1] == "showBatch_2nd_half") {
+                        echo URLROOT.'/alumni_report/showBatch_1st_half/'.$url[2];
+                    } elseif ($url[1] == "showCourse" || $url[1] == "showCourse_1st_half" || $url[1] == "showCourse_2nd_half") {
+                        echo URLROOT.'/alumni_report/showCourse_1st_half/'.$url[2].'/'.$url[3];
+                    } else {
+                        echo URLROOT.'/admin/alumni_report_1st_half';
+                    }?>">January - June</a>
+                    <a href="<?php if($url[1] == "showBatch" || $url[1] == "showBatch_1st_half" || $url[1] == "showBatch_2nd_half") {
+                        echo URLROOT.'/alumni_report/showBatch_2nd_half/'.$url[2];
+                    } elseif ($url[1] == "showCourse" || $url[1] == "showCourse_1st_half" || $url[1] == "showCourse_2nd_half") {
+                        echo URLROOT.'/alumni_report/showCourse_2nd_half/'.$url[2].'/'.$url[3];
+                    } else {
+                        echo URLROOT.'/admin/alumni_report_2nd_half';
+                    }?>">July - December</a>
+                        
                     </div>
                 </div>
                 <div class="container">
@@ -131,6 +144,14 @@
                             echo URLROOT .'/alumni_report/showBatch/'. $url[2] . $data['first'];
                         } elseif($url[1] == 'showCourse') {
                             echo URLROOT .'/alumni_report/showCourse/'.$url[2]."/".$url[3] . $data['first'];
+                        } elseif($url[1] == 'alumni_report_1st_half') {
+                            echo URLROOT .'/alumni_report/alumni_report_1st_half' . $data['first'];
+                        } elseif($url[1] == 'alumni_report_2nd_half') {
+                            echo URLROOT .'/alumni_report/alumni_report_2nd_half' . $data['first'];
+                        } elseif($url[1] == 'showBatch_1st_half') {
+                            echo URLROOT .'/alumni_report/showBatch_1st_half/'. $url[2] . $data['first'];
+                        } elseif($url[1] == 'showBatch_2nd_half') {
+                            echo URLROOT .'/alumni_report/showBatch_2nd_half/'. $url[2] . $data['first'];
                         } else {
                             echo URLROOT .'/admin/alumni_report' . $data['first'];
                         }
@@ -144,7 +165,15 @@
                             echo URLROOT .'/alumni_report/showBatch/'. $url[2] . $data['previous'];
                         } elseif($url[1] == 'showCourse') {
                             echo URLROOT .'/alumni_report/showCourse/'.$url[2]."/".$url[3] . $data['previous'];
-                        } else {
+                        } elseif($url[1]== 'alumni_report_1st_half') {
+                            echo URLROOT .'/alumni_report/alumni_report_1st_half'. $data['first'];
+                        } elseif($url[1]== 'alumni_report_2nd_half') {
+                            echo URLROOT .'/alumni_report/alumni_report_2nd_half'. $data['first'];
+                        } elseif($url[1]== 'showBatch_1st_half') {
+                            echo URLROOT .'/alumni_report/showBatch_1st_half/'. $url[2] . $data['first'];
+                        } elseif($url[1]== 'showBatch_2nd_half') {
+                            echo URLROOT .'/alumni_report/showBatch_2nd_half/'. $url[2] . $data['first'];
+                        }  else {
                             echo URLROOT .'/admin/alumni_report' . $data['previous'];
                         }
                         ?>" class="previous">
@@ -157,7 +186,15 @@
                             echo URLROOT .'/alumni_report/showBatch/'. $url[2] . $data['next'];
                         } elseif($url[1] == 'showCourse') {
                             echo URLROOT .'/alumni_report/showCourse/'.$url[2]."/".$url[3] . $data['next'];
-                        } else {
+                        } elseif($url[1]== 'alumni_report_1st_half') {
+                            echo URLROOT .'/alumni_report/alumni_report_1st_half' . $data['first'];
+                        } elseif($url[1]== 'alumni_report_2nd_half') {
+                            echo URLROOT .'/alumni_report/alumni_report_2nd_half' . $data['first'];
+                        } elseif($url[1]== 'showBatch_1st_half') {
+                            echo URLROOT .'/alumni_report/showBatch_1st_half/'. $url[2] . $data['first'];
+                        } elseif($url[1]== 'showBatch_2nd_half') {
+                            echo URLROOT .'/alumni_report/showBatch_2nd_half/'. $url[2] . $data['first'];
+                        }  else {
                             echo URLROOT .'/admin/alumni_report' . $data['next'];
                         }
                         ?>" class="next">
@@ -170,7 +207,15 @@
                             echo URLROOT .'/alumni_report/showBatch/'. $url[2] . $data['last'];
                         } elseif($url[1] == 'showCourse') {
                             echo URLROOT .'/alumni_report/showCourse/'.$url[2]."/".$url[3] . $data['last'];
-                        } else {
+                        } elseif($url[1]== 'alumni_report_1st_half') {
+                            echo URLROOT .'/alumni_report/alumni_report_1st_half' . $data['first'];
+                        } elseif($url[1]== 'alumni_report_2nd_half') {
+                            echo URLROOT .'/alumni_report/alumni_report_2nd_half' . $data['first'];
+                        } elseif($url[1]== 'showBatch_1st_half') {
+                            echo URLROOT .'/alumni_report/showBatch_1st_half/'. $url[2] . $data['first'];
+                        } elseif($url[1]== 'showBatch_2nd_half') {
+                            echo URLROOT .'/alumni_report/showBatch_2nd_half/'. $url[2] . $data['first'];
+                        }  else {
                             echo URLROOT .'/admin/alumni_report' . $data['last'];
                         }
                         ?>" class="end">

@@ -127,7 +127,7 @@
                             <div>
                                 <label for="first-emp-date" class="outsideLabel" read>Date of 1st Employment(if applicable):</label>
                                 <div class="textFieldContainer">
-                                    <input type="date" name="eDate" id="first-emp-date" value="<?php echo $data['eDate']?>" required>
+                                    <input type="date" name="eDate" id="first-emp-date" value="<?php echo $data['eDate']?>">
                                     <span class="error"></span>
                                 </div>
                             </div>

@@ -6,6 +6,11 @@
            
         }
 
+        public function search($keyword) {
+
+            $this->view('posts/search', $data);
+        }
+
         public function single($id){
             $post = $this->postModel->singleNews($id);
             $other = $this->postModel->otherNews($id);
