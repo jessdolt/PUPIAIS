@@ -17,10 +17,51 @@
         public function showFiltered($id){
             $category = $this->forumModel->getCategory();
             $all = $this->forumModel->categoryCounter();
-            $posts = $this->forumModel->getPostByCategory($id); 
+            // $posts = $this->forumModel->getPostByCategory($id); 
             $pop = $this->forumModel->getPopular();
             $reply = $this->forumModel->getPostsReplies();
             $my = $this->forumModel->getCurrent($_SESSION['id']);
+
+            // Get Page # in URL
+            $page = $this->getPage();
+                    
+            // Limit row displayed
+            $limit = 12;
+            $start = ($page - 1) * $limit;
+
+            $newData = [
+                'id' => $id,
+                'start' => $start,
+                'limit' => $limit
+            ];
+
+            $posts = $this->forumModel->getPostByCategory($newData);
+
+            $pagination = $this->forumModel->NoOfResultsByCategory($id);
+            $total = count($pagination);
+            $pages = ceil($total/$limit);
+
+            // No URL bypass
+            if($pages == 0) {
+                $pages = 1;
+            }
+            if($page > $pages) {
+                redirect('pages/forum?page='.$pages);
+            }
+
+            $startFormula = $start + 1;
+            $limitFormula = $startFormula - 1 + $limit;
+
+            if($page == $pages) {
+                if ($limitFormula >= $total) {
+                    $limitFormula = $total;
+                }
+            }
+
+            if($total == 0) {
+                $startFormula = 0;
+                $limitFormula = 0;
+            }
 
             $data = [
                 'posts' => $posts,
@@ -29,6 +70,14 @@
                 'user_posts' => $my,
                 'category' => $category,
                 'all' => $all,
+
+                'start' => $startFormula,
+                'limit' => $limitFormula,
+                'total' => $total,
+                'first' => '?page=1',
+                'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+                'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+                'last' => '?page=' . $pages
             ];
 
             $this->view('forum/category',$data);
@@ -281,6 +330,21 @@
             else{
                 die("Something went wrong");
             }
+        }
+
+        public function getPage() {
+
+            // Get Page # in URL
+            if (!isset($_GET['page'])) {
+                $page = 1;
+            } elseif($_GET['page'] == 0) {
+                $page = 1;
+            } else {
+                $page = $_GET['page'];
+            }
+    
+            return $page;
+    
         }
 
     }

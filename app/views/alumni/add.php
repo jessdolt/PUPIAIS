@@ -40,9 +40,29 @@
                                             </div>
                                         </div>
                                         <div>
+                                            <label for="auxiliary-name" class="outsideLabel">Auxiliary Name:</label>
+                                            <div class="textFieldContainer">
+                                                <input type="text" name="auxiliary" id="auxiliaryname">
+                                                <span class="error"></span>
+                                            </div>
+                                        </div>
+                                        <div>
                                             <label for="birth-date" class="outsideLabel">Birth Date:</label>
                                             <div class="textFieldContainer">
-                                                <input type="date" name="birth_date" id="birth-date"required>
+                                                <input type="date" name="birth_date" id="birth-date" required>
+                                                <span class="error"></span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label for="civil-status" class="outsideLabel">Civil Status:</label>
+                                            <div class="textFieldContainer">
+                                                <select name="civilStat" id="civil-status" required>
+                                                    <option value="Single">Single</option>
+                                                    <option value="Married">Married</option>
+                                                    <option value="Widowed">Widowed</option>
+                                                    <option value="Separated">Separated</option>
+                                                    <option value="Divorced">Divorced</option>
+                                                </select>
                                                 <span class="error"></span>
                                             </div>
                                         </div>

@@ -16,8 +16,9 @@
                     <?php else: ?>
                         <img src="<?php echo URLROOT;?>/uploads/<?php echo ($data['user']->image) ?>" id="myImg">
                     <?php endif; ?>
-                    <h1 class="alumni-name"><?php echo $data['user']->first_name . ' ' . $data['user']->middle_name . ' ' . $data['user']->last_name ?></h1>
+                    <h1 class="alumni-name"><?php echo $data['user']->first_name . ' ' . $data['user']->middle_name . ' ' . $data['user']->last_name . ' ' . $data['user']->auxiliary_name?></h1>
                     <span class="alumni-lrn">(<?php echo $data['user']->student_no; ?>)</span>
+                    <?php if (userType() == "Alumni") :?>
                     <?php if($data['user']->alumni_id == $_SESSION['alumni_id']): ?>
                     <a href="<?php echo URLROOT; ?>/profile/editProfile/<?php echo $_SESSION['alumni_id'] ?>" class="editBtn">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,6 +28,7 @@
                         </svg>
                         <span>Edit Profile</span>
                     </a>
+                    <?php endif; ?>
                     <?php endif; ?>
                 </div>
                 <div class="profile-body">

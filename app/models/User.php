@@ -280,15 +280,12 @@ class User {
     }
 
     public function editProfile($data, $isUploaded){
-        if($isUploaded == 1 ){
-            $this->db->query('UPDATE alumni SET first_name=:first_name, middle_name=:middle_name, last_name=:last_name, gender=:gender, employment=:employment, birth_date=:birth_date, address=:address, city=:city, region=:region, postal=:postal, contact_no=:contact_no, email=:email, image=:image WHERE alumni_id = :alumni_id');
-
-            $this->db->bind(':first_name', $data['first_name']);
-            $this->db->bind(':middle_name', $data['middle_name']);
-            $this->db->bind(':last_name', $data['last_name']);
-            $this->db->bind(':gender', $data['gender']);
+        if($isUploaded == 1){
+            $this->db->query('UPDATE alumni SET civil=:civil, auxiliary_name=:auxiliary_name, employment=:employment, address=:address, city=:city, region=:region, postal=:postal, contact_no=:contact_no, email=:email, image=:image WHERE alumni_id = :alumni_id');
+            
+            $this->db->bind(':civil', $data['civil']);
+            $this->db->bind(':auxiliary_name', $data['auxiliary']);
             $this->db->bind(':employment', $data['employment']);
-            $this->db->bind(':birth_date', $data['birth_date']);
             $this->db->bind(':address', $data['address']);
             $this->db->bind(':city', $data['city']);
             $this->db->bind(':region', $data['region']);
@@ -304,14 +301,34 @@ class User {
             else{
                 return false;
             }
-        } else{
-            $this->db->query('UPDATE alumni SET first_name=:first_name, middle_name=:middle_name, last_name=:last_name, gender=:gender, employment=:employment, birth_date=:birth_date, address=:address, city=:city, region=:region, postal=:postal, contact_no=:contact_no, email=:email WHERE alumni_id = :alumni_id');
-            $this->db->bind(':first_name', $data['first_name']);
-            $this->db->bind(':middle_name', $data['middle_name']);
-            $this->db->bind(':last_name', $data['last_name']);
-            $this->db->bind(':gender', $data['gender']);
+
+        } elseif(is_null($data['file'])) {
+            $this->db->query('UPDATE alumni SET civil=:civil, auxiliary_name=:auxiliary_name, employment=:employment, address=:address, city=:city, region=:region, postal=:postal, contact_no=:contact_no, email=:email, image=:image WHERE alumni_id = :alumni_id');
+            
+            $this->db->bind(':civil', $data['civil']);
+            $this->db->bind(':auxiliary_name', $data['auxiliary']);
             $this->db->bind(':employment', $data['employment']);
-            $this->db->bind(':birth_date', $data['birth_date']);
+            $this->db->bind(':address', $data['address']);
+            $this->db->bind(':city', $data['city']);
+            $this->db->bind(':region', $data['region']);
+            $this->db->bind(':postal', $data['postal']);
+            $this->db->bind(':contact_no', $data['contact_no']);
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':image', $data['file']);
+            $this->db->bind(':alumni_id', $data['alumni_id']);
+            
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } else {
+            $this->db->query('UPDATE alumni SET civil=:civil, auxiliary_name=:auxiliary_name, employment=:employment, address=:address, city=:city, region=:region, postal=:postal, contact_no=:contact_no, email=:email WHERE alumni_id = :alumni_id');
+            
+            $this->db->bind(':civil', $data['civil']);
+            $this->db->bind(':auxiliary_name', $data['auxiliary']);
+            $this->db->bind(':employment', $data['employment']);
             $this->db->bind(':address', $data['address']);
             $this->db->bind(':city', $data['city']);
             $this->db->bind(':region', $data['region']);
@@ -328,6 +345,19 @@ class User {
             }
         }
        
+    }
+
+    public function deletePhoto($id) {
+        $this->db->query('SELECT * FROM alumni where alumni_id= (:id)');
+            $this->db->bind(':id', $id);
+            $row = $this->db->single();
+            if($this->db->rowCount() > 0 ){
+               $img = $row->image;
+               unlink(IMAGEROOT.$img);
+            }
+            else{
+                return false;
+            }
     }
 
         //Insert into USERS IF first editProfile is DONE

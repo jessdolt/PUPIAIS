@@ -78,7 +78,20 @@
             }
         }
 
-        public function getPostByCategory($id){
+        public function NoOfResultsByCategory($id) {
+            $this->db->query('SELECT ALL topic_id FROM topic 
+                            INNER JOIN category
+                            ON topic.category = category.category_id
+                            WHERE category = :id
+                            '); 
+            $this->db->bind('id', $id);
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+
+        public function getPostByCategory($newData){
             $this->db->query('SELECT *, topic.topic_id as postId,
                                         users.user_id as userId,
                                         topic.created_at as postCreated,
@@ -92,8 +105,12 @@
                                         ON comment_for = topic.topic_id
                                         WHERE category = :id
                                         GROUP BY topic_id
-                                        ORDER BY topic.created_at DESC');
-            $this->db->bind('id', $id);
+                                        ORDER BY topic.created_at DESC
+                                        LIMIT :start, :limit
+                                        ');
+            $this->db->bind('id', $newData['id']);
+            $this->db->bind('start', $newData['start']);
+            $this->db->bind('limit', $newData['limit']);
             $results = $this->db->resultSet();
             return $results;
         }
