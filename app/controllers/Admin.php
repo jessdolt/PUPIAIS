@@ -368,55 +368,69 @@
 
         public function survey_list() {
             $this->surveyModel = $this->model('survey');
+            extract($_POST);
 
-            // Get Page # in URL
-            $page = $this->getPage();
-                
-            // Limit row displayed
-            $limit = 10;
-            $start = ($page - 1) * $limit;
+            if(!isset($isSearch)){
+                // Get Page # in URL
+                $page = $this->getPage();
+                    
+                // Limit row displayed
+                $limit = 10;
+                $start = ($page - 1) * $limit;
 
-            $survey = $this->surveyModel->showSurveyIndex($start, $limit);
+                $survey = $this->surveyModel->showSurveyIndex($start, $limit);
 
-            $pagination = $this->surveyModel->NoOfResults();
+                $pagination = $this->surveyModel->NoOfResults();
 
-            $total = count($pagination);
-            $pages = ceil($total/$limit);
+                $total = count($pagination);
+                $pages = ceil($total/$limit);
 
-            // No URL bypass
-            if($pages == 0) {
-                $pages = 1;
-            }
-            if($page > $pages) {
-                redirect('admin/survey_list?page='.$pages);
-            }
-
-            $startFormula = $start + 1;
-            $limitFormula = $startFormula - 1 + $limit;
-
-            if($page == $pages) {
-                if ($limitFormula >= $total) {
-                    $limitFormula = $total;
+                // No URL bypass
+                if($pages == 0) {
+                    $pages = 1;
                 }
-            }
+                if($page > $pages) {
+                    redirect('admin/survey_list?page='.$pages);
+                }
 
-            if($total == 0) {
-                $startFormula = 0;
-                $limitFormula = 0;
-            }
+                $startFormula = $start + 1;
+                $limitFormula = $startFormula - 1 + $limit;
 
-            $data = [
-                'survey' => $survey,
-                'start' => $startFormula,
-                'limit' => $limitFormula,
-                'total' => $total,
-                'first' => '?page=1',
-                'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
-                'next' => '?page='. ($page == $pages ? $pages : $page + 1),
-                'last' => '?page=' . $pages
-            ];
-        
-            $this->view('admin_d/survey', $data);
+                if($page == $pages) {
+                    if ($limitFormula >= $total) {
+                        $limitFormula = $total;
+                    }
+                }
+
+                if($total == 0) {
+                    $startFormula = 0;
+                    $limitFormula = 0;
+                }
+
+                $data = [
+                    'survey' => $survey,
+                    'start' => $startFormula,
+                    'limit' => $limitFormula,
+                    'total' => $total,
+                    'first' => '?page=1',
+                    'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+                    'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+                    'last' => '?page=' . $pages
+                ];
+            
+                $this->view('admin_d/survey', $data);
+            } else {
+                $survey = $this->surveyModel->searchSurvey($searchKey);
+                //array_print($events);
+                if(!empty($jobs)){
+                    $data = ['survey'=> $survey];
+                }
+                else{
+                    $data = ['survey' => ''];
+                }
+          
+                $this->view('admin_d/survey', $data);
+            }
         }
     
 
