@@ -92,7 +92,7 @@
                 $start = ($page - 1) * $limit;
                 
                 $alumniCountPerCourse = $this->alumniModel->alumniCountPerCourse();
-                // $alumni = $this->alumniModel->showAlumni();
+                 $allAlumni = $this->alumniModel->showAlumni();
                 $department = $this->alumniModel->showDepartment();
                 $courses = $this->alumniModel->showCourses();
                 $classification = $this->groupModel->showClassification();
@@ -134,7 +134,7 @@
                     'isPreview' => 0,
                     'title' => 'All Alumni',
                     'batch' => '',
-                    'alumniCount' => count($alumni),
+                    'alumniCount' => count($allAlumni ),
                     'alumniPerCourse' => $alumniCountPerCourse,
                     
                     'start' => $startFormula,

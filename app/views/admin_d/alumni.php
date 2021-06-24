@@ -409,7 +409,18 @@
     <?php flash('alumni_edit_success'); ?>
     <?php flash('alumni_delete_success'); ?>
     <?php flash('alumni_import_success'); ?>
-    
+
+
+    <?php flash('department_add_success')?>
+    <?php flash('course_add_success')?>
+    <?php flash('batch_add_success')?>
+    <?php flash('department_edit_success')?>
+    <?php flash('course_edit_success')?>
+    <?php flash('batch_edit_success')?>
+    <?php flash('department_delete_success')?>
+    <?php flash('course_delete_success')?>
+    <?php flash('batch_delete_success')?>
+
     <?php flash('courseError'); ?>
 
     <?php flash('department_duplicate'); ?>

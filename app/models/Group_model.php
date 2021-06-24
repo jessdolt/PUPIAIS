@@ -33,6 +33,7 @@
             $this->db->bind(':dept_name', $data['dept_name']);
             try{
                 if($this->db->execute()){
+                    flash('department_add_success', 'Department successfully added');
                     redirect('admin/alumni');
                 }
             }
@@ -95,6 +96,7 @@
             }
 
             if($count === count($rowCourse)){
+                flash('course_add_success', 'Course successfully added');
                 redirect('admin/alumni');
             }
 
@@ -119,6 +121,7 @@
             }
 
             if($count === count($rowBatch)){
+                flash('batch_add_success', 'Batch successfully added');
                 redirect('admin/alumni');
             }
         }

@@ -16,7 +16,6 @@
                     'dept_name' => $_POST['department_name'],
                 ];
                 $this->groupModel->addDepartment($data);
-                
             }
         }
     
@@ -60,6 +59,7 @@
                 'dept_name' => $_POST['department_name']
             ];
             if($this->groupModel->updateDepartment($data)){
+                flash('department_edit_success', 'Department successfully edited');
                 redirect('admin/alumni');
             }   
             else{
@@ -89,6 +89,7 @@
             ];
 
             if($this->groupModel->updateCourse($data)){
+                flash('course_edit_success', 'Course successfully edited');
                 redirect('admin/alumni');
             }   
             else{
@@ -111,6 +112,7 @@
                 'year' => $_POST['year']
             ];
             if($this->groupModel->updateBatch($data)){
+                flash('batch_edit_success', 'Batch successfully edited');
                 redirect('admin/alumni');
             }   
             else{
@@ -122,6 +124,7 @@
         //delete functions 
         public function deleteDept($dept_id){
             if($this->groupModel->deleteDept($dept_id)){
+                flash('department_delete_success', 'Department successfully deleted');
                 redirect('admin/alumni');
             }
             else{
@@ -131,6 +134,7 @@
 
         public function deleteCourse($course_id){
             if($this->groupModel->deleteCourse($course_id)){
+                flash('course_delete_success', 'Course successfully deleted');
                 redirect('admin/alumni');
             }
             else{
@@ -140,6 +144,7 @@
 
         public function deleteBatch($batch_id){
             if($this->groupModel->deleteBatch($batch_id)){
+                flash('batch_delete_success', 'Batch successfully deleted');
                 redirect('admin/alumni');
             }
             else{
