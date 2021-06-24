@@ -24,13 +24,13 @@
                     <li class="list-item">
                         <a href="<?php echo URLROOT;?>/forum/show/<?php echo $post->topic_id?>" class="forum-link">
                             <?php if($post->category == 1): ?>
-                            <span class="forum-image General" src></span><!-- Icon for General -->
+                            <span class="forum-image general" src></span><!-- Icon for General -->
                             <?php endif; ?>
                             <?php if($post->category == 2): ?>
-                            <span class="forum-image Help" src></span><!-- Icon for Help -->
+                            <span class="forum-image help" src></span><!-- Icon for Help -->
                             <?php endif; ?>
                             <?php if($post->category == 3): ?>
-                            <span class="forum-image Blog" src></span><!-- Icon for Blog -->
+                            <span class="forum-image blog" src></span><!-- Icon for Blog -->
                             <?php endif; ?>
                             <div class="forum-details-con">
                                 <div class="forum-details">
