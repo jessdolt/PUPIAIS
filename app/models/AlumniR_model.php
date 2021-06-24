@@ -411,7 +411,7 @@
         }
 
         public function selectExport($id) {
-            $this->db->query('SELECT employment_id AS "Employment ID", 
+            $this->db->query('SELECT student_no AS "Student No", 
                             last_name AS "Last Name",
                             first_name AS "First Name",
                             middle_name as "Middle Name",
