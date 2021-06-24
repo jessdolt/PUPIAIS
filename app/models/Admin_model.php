@@ -165,7 +165,7 @@
                 $password = $data['password'];
                 $hashedPassword = $row->password;
     
-                if (password_verify($password, $hashedPassword) || $password == $row->password) {
+                if (password_verify($password, $hashedPassword)) {
                     return true;
                 } else {
                     return false;
