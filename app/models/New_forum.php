@@ -23,7 +23,7 @@
         //comment counter
         
         public function forumIndex() {
-            $this->db->query('SELECT * FROM `topic` ORDER BY created_at DESC LIMIT 3 ');
+            $this->db->query('SELECT * FROM `topic` ORDER BY created_at DESC LIMIT 5');
             $row = $this->db->resultSet();
             if($row > 0){
                 return $row;
