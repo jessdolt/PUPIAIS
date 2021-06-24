@@ -90,7 +90,7 @@
             $user = $this->userModel->getUserByID($post->topic_author);
             $alumni = $this->alumniModel->getAlumniByID($user->a_id);
             $admin = $this->adminModel->single($user->user_id);
-            if($_SESSION['user_type'] == 'Super Admin'||$_SESSION['user_type'] == 'Admin'){
+            if($_SESSION['user_type'] == 'Super Admin'|| $_SESSION['user_type'] == 'Admin' || $_SESSION['user_type'] == 'Content Creator'){
                 $current = $this->adminModel->single($_SESSION['id']);
             }
             else{
