@@ -51,7 +51,7 @@
                         </div>
                         <div>
                             <label class="outsideLabel">Available Positions:</label>
-                            <input type="number" name="avail_pos" id="available-position" placeholder="000"min="0" value="<?php echo $data['avail_pos']?>">
+                            <input type="number" name="avail_pos" id="available-position" value="<?php echo $data['avail_pos']?>">
                         </div>
                     </div>
                     <h3>full details:</h3>

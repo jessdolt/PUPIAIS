@@ -43,7 +43,7 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="search_insert">
                         
                         <?php foreach($data['news'] as $post): ?>
                             <tr>
@@ -118,6 +118,27 @@
 <?php flash('news_edit_success')?>
 <?php flash('news_delete_success')?>
 
+<script>
+    $(document).on('input', '#search-news', function(){
+            const searchChar = $(this).val();
+            $.ajax({ 
+                    url:'<?php echo URLROOT;?>/admin/news',
+                    data: { searchKey : searchChar, isSearch : 1},
+                    method: 'POST',
+                    type: 'POST',
+                    success:function(res){
+                        // var newObj = jQuery.parseJSON(res);
+                        // console.log(newObj[0].title);
+                        // console.log(res);
+                        $('#search_insert').html(res);
+                        //console.log(res);   
+                    }, 
+                    error: function(er){
+                        console.log(er);
+                    }
+            });
+    })
+</script>
 
 <script>
     alertEvents();

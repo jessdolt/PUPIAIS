@@ -107,12 +107,13 @@
         public function edit($id){
             $job = $this->jobModel->getJobById($id);
             if($_SERVER['REQUEST_METHOD'] == "POST"){
+                
                 $data = [
                     'id' => $id,
                     'company_logo' => $job->company_logo,
                     'work_status' => trim($_POST['work_status']),
                     'job_status' => trim($_POST['job_status']),
-                    'avail_pos' => trim($_POST['avail_pos']),
+                    'avail_pos' => $_POST['avail_pos'],
                     'company_name' => trim($_POST['company_name']),
                     'job_title' => trim($_POST['job_title']),
                     'job_description' => $_POST['job_description'],
@@ -120,10 +121,10 @@
                     'avail_pos_err' => '',
                     'company_name_err' => '',
                     'job_title_err' => '',   
+                    'posted_on' => $job->posted_on,
                     'company_logo_err'=> '',
                     'isUploaded' => trim($_POST['isUploaded'])
                 ];
-               
 
                 if($_FILES['fileUpload']['error'] == 0){
                     $file = $_FILES['fileUpload'];

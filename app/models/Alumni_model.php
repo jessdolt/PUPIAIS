@@ -20,6 +20,26 @@
             }
         }
 
+        public function searchAlumni($char) {
+            $this->db->query("SELECT * 
+                            FROM alumni
+                            INNER JOIN courses
+                            ON alumni.courseID = courses.id
+                            INNER JOIN batch
+                            ON alumni.batchID = batch.id
+                            WHERE first_name like CONCAT('%', :test, '%') OR last_name like CONCAT('%', :test, '%')
+                            OR student_no like CONCAT('%', :test, '%')
+                            ");
+            $this->db->bind(':test',$char);
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
         public function showAlumniIndex($page, $rowsperpage) {
             $this->db->query('SELECT * 
                             FROM alumni

@@ -161,5 +161,17 @@
 
         }
 
+        public function searchJobs($char){
+            $this->db->query("SELECT * from job_portal WHERE job_title like CONCAT('%', :test, '%') ORDER BY posted_on desc");
+            $this->db->bind(':test' , $char);
+            $row = $this->db->resultSet();
+            if($this->db->rowCount() > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
         
     }
