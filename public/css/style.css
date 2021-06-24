@@ -764,22 +764,26 @@ table tbody {
   padding: .8rem 2.4rem;
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  /* gap: 1.6rem; */
   background-color: #FFFFFF;
   color: rgba(0, 0, 0, 0.87);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
   z-index: 24; }
+  .adminHeader > * + * {
+    margin-left: 1.6rem; }
   .adminHeader .hamburgerAdmin {
     width: 2.2rem;
     display: flex;
     flex-flow: column;
-    gap: 0.4rem;
+    /* gap: 0.4rem; */
     cursor: pointer;
     margin-left: 1.1rem;
     margin-right: 1.9rem; }
     @media (min-width: 1367px) {
       .adminHeader .hamburgerAdmin {
         display: none; } }
+    .adminHeader .hamburgerAdmin > * + * {
+      margin-top: 0.4rem; }
     .adminHeader .hamburgerAdmin span {
       border-radius: 5rem;
       background-color: #A63F3F;
@@ -851,7 +855,7 @@ table tbody {
       flex-flow: row;
       align-items: center;
       justify-content: space-between;
-      gap: .8rem;
+      /* gap: .8rem; */
       top: 6rem;
       left: 0;
       background-color: #d4d4d4;
@@ -860,7 +864,9 @@ table tbody {
       height: 4.6rem;
       padding: 0 2.4rem;
       z-index: 18;
-      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12); } }
+      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12); }
+      .mainNav > * + * {
+        margin-left: 0.8rem; } }
   .mainNav.move {
     transform: translateY(-110px); }
   .mainNav.show {
@@ -890,10 +896,12 @@ table tbody {
   .mainNav ul {
     flex: 1;
     display: flex;
-    gap: .8rem;
+    /* gap: .8rem; */
     flex-flow: column;
     align-items: center;
     margin-top: 16.8rem; }
+    .mainNav ul > * + * {
+      margin-left: 0.8rem; }
     @media (min-width: 800px) {
       .mainNav ul {
         margin-top: 0;
@@ -987,7 +995,7 @@ table tbody {
     color: rgba(0, 0, 0, 0.87);
     display: none;
     flex-flow: column;
-    gap: 1.6rem;
+    /* gap: 1.6rem; */
     border-radius: 1rem;
     min-width: 1.8rem;
     padding: 1.6rem;
@@ -995,13 +1003,17 @@ table tbody {
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
     top: 5rem;
     right: 1.5rem; }
+    .mainNav .userContainer > *:nth-child(3) {
+      margin-top: 1.6rem; }
     @media (min-width: 800px) {
       .mainNav .userContainer {
         top: 4.2rem;
         right: 12.8rem;
         padding: 1.6rem 2.4rem;
         min-width: 20rem;
-        box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12); } }
+        box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12); }
+        .mainNav .userContainer > * + * {
+          margin-top: 1.6rem; } }
     .mainNav .userContainer .avatar {
       display: none;
       position: relative;
@@ -1027,10 +1039,12 @@ table tbody {
     .mainNav .userContainer a {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      /* gap: 0.4rem; */
       text-align: left;
       color: rgba(0, 0, 0, 0.87);
       font-weight: 400; }
+      .mainNav .userContainer a > * {
+        margin-right: 0.4rem; }
       @media (min-width: 800px) {
         .mainNav .userContainer a:first-of-type {
           padding-top: 1.6rem;
@@ -1082,7 +1096,9 @@ table tbody {
       min-width: 31.6rem;
       max-width: 31.6rem;
       padding: 2.4rem 2.4rem 4.8rem;
-      gap: 4rem; } }
+      /* gap: 4rem; */ }
+      .adminNav > * + * {
+        margin-top: 4rem; } }
   .adminNav .accountNameContainer {
     position: relative;
     display: none;
@@ -1099,8 +1115,12 @@ table tbody {
     border-radius: 1rem;
     align-self: stretch;
     align-items: center;
-    gap: .8rem;
+    /* gap: .8rem; */
     padding: 1.6rem; }
+    .adminNav .accountNameContainer > * + * {
+      margin-top: 0.8rem; }
+    .adminNav .accountNameContainer > a {
+      margin-top: 0; }
     @media (min-width: 1367px) {
       .adminNav .accountNameContainer {
         display: flex; } }
@@ -1139,8 +1159,10 @@ table tbody {
       .adminNav .mainCategoryList {
         min-height: 25.2rem;
         width: 22rem;
-        gap: .8rem;
-        margin-bottom: 2rem; } }
+        /* gap: .8rem; */
+        margin-bottom: 2rem; }
+        .adminNav .mainCategoryList > * + * {
+          margin-top: 0.8rem; } }
     .adminNav .mainCategoryList .mainCategory {
       background-color: #EEEEEE; }
       @media (min-width: 1367px) {
@@ -1210,7 +1232,9 @@ table tbody {
       transition: 200ms ease, visibility 100ms ease;
       display: flex;
       flex-flow: column;
-      gap: 0.8rem; }
+      /* gap: 0.8rem; */ }
+      .adminNav .mainCategoryList .subCategoryList > * + * {
+        margin-top: 0.8rem; }
     .adminNav .mainCategoryList .open:nth-child(1) .categoryContainer {
       background-image: url("../images/dashboardActive-icon.svg"); }
     .adminNav .mainCategoryList .open:nth-child(2) .categoryContainer {
@@ -1260,13 +1284,17 @@ table tbody {
     min-width: 31.6rem;
     max-width: 31.6rem;
     padding: 2.4rem 2.4rem 4.8rem;
-    gap: 4rem; }
+    /* gap: 4rem; */ }
+    .adminNav.navOpen > * + * {
+      margin-top: 4rem; }
     .adminNav.navOpen .accountNameContainer {
       display: flex; }
     .adminNav.navOpen .mainCategoryList {
       min-height: 25.2rem;
       width: 22rem;
-      gap: .8rem; }
+      /* gap: .8rem; */ }
+      .adminNav.navOpen .mainCategoryList > * + * {
+        margin-top: 0.8rem; }
       .adminNav.navOpen .mainCategoryList .mainCategory {
         border-radius: 2.5rem; }
       .adminNav.navOpen .mainCategoryList .categoryContainer {
@@ -1312,7 +1340,9 @@ html {
     @media (min-width: 800px) {
       .alumni > section {
         grid-template-columns: repeat(12, 1fr);
-        column-gap: 2.4rem; } }
+        column-gap: 2.4rem; }
+        .alumni > section > * + * {
+          margin-left: 2.4rem; } }
     .alumni > section .container {
       margin: 0 1.6rem;
       grid-column: 1/5; }
@@ -1501,7 +1531,9 @@ html {
 .userSurvey ~ .alumni .mainContent .container {
   z-index: 2; }
   .userSurvey ~ .alumni .mainContent .container .form {
-    gap: 2.4rem; }
+    /* gap: 2.4rem; */ }
+    .userSurvey ~ .alumni .mainContent .container .form > * + * {
+      margin-top: 2.4rem !important; }
     .userSurvey ~ .alumni .mainContent .container .form h1, .userSurvey ~ .alumni .mainContent .container .form h2 {
       padding: 2.4rem 0;
       border-bottom: 1px solid rgba(0, 0, 0, 0.38); }
@@ -1617,12 +1649,16 @@ html {
       .admin .pageSpecificHeader > div:first-child .btnContainer {
         margin-top: auto;
         display: flex;
-        gap: 2.4rem; }
+        /* gap: 2.4rem; */ }
+        .admin .pageSpecificHeader > div:first-child .btnContainer > * + * {
+          margin-left: 2.4rem; }
       .admin .pageSpecificHeader > div:first-child button, .admin .pageSpecificHeader > div:first-child a {
         background-color: #FFFFFF;
         color: rgba(0, 0, 0, 0.87);
         padding: 0 1rem 0 2rem;
-        gap: .8rem; }
+        /* gap: .8rem; */ }
+        .admin .pageSpecificHeader > div:first-child button > *, .admin .pageSpecificHeader > div:first-child a > * {
+          margin-left: 0.8rem; }
         .admin .pageSpecificHeader > div:first-child button svg, .admin .pageSpecificHeader > div:first-child a svg {
           width: 2.4rem;
           height: 2.4rem;
@@ -1796,11 +1832,12 @@ html {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 0.8rem;
           box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 3px 3px -2px rgba(0, 0, 0, 0.12);
           transition: all 200ms ease;
           background-color: #EEEEEE;
           color: rgba(0, 0, 0, 0.87); }
+          .admin .mainContent .data-table .option .optionModal > * + * {
+            margin-left: 0.8rem; }
           .admin .mainContent .data-table .option .optionModal button {
             background-color: #B61734;
             color: #FFFFFF; }
@@ -1826,10 +1863,12 @@ html {
     .admin .mainContent .pagination {
       height: 7.8rem;
       display: flex;
-      gap: 0.8rem;
+      /* gap: 0.8rem; */
       padding: 2.4rem;
       border-bottom-left-radius: 1rem;
       border-bottom-right-radius: 1rem; }
+      .admin .mainContent .pagination > * + * {
+        margin-left: 0.8rem; }
       .admin .mainContent .pagination a, .admin .mainContent .pagination button {
         font-weight: 400;
         min-height: 3rem !important;
@@ -2222,6 +2261,14 @@ html {
       color: rgba(0, 0, 0, 0.6); }
     .managePage form .small-con {
       min-width: 18.3rem; }
+    .managePage form select {
+      border-radius: 0.5rem;
+      border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
+      min-width: 0rem;
+      padding-right: 1.6rem;
+      padding-left: 1.6rem; }
+      .managePage form select:focus {
+        border-right: 1px rgba(0, 0, 0, 0.6) solid !important; }
   .managePage .btn-con {
     margin-top: 3.2rem;
     width: 100%;
@@ -2691,11 +2738,12 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.8rem;
     box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 3px 3px -2px rgba(0, 0, 0, 0.12);
     transition: all 200ms ease;
     background-color: #EEEEEE;
     color: rgba(0, 0, 0, 0.87); }
+    .option .optionModal > * + * {
+      margin-left: 0.8rem; }
     .option .optionModal button {
       background-color: #FFFFFF;
       color: rgba(0, 0, 0, 0.87); }
@@ -3716,8 +3764,10 @@ ul {
     .home Section.mainContent > div > h2 {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      /* gap: 0.8rem; */
       border: none !important; }
+      .home Section.mainContent > div > h2 > * {
+        margin-right: 0.8rem; }
     .home Section.mainContent hr {
       color: rgba(0, 0, 0, 0.38); }
       @media (min-width: 800px) {
@@ -3779,7 +3829,7 @@ ul {
   display: flex;
   align-items: center;
   flex-flow: wrap;
-  gap: 1.6rem;
+  /* gap: 1.6rem; */
   /* padding: 0.8rem 0 1.6rem; */
   /* .textFieldContainer{
                     display: none;
@@ -3905,8 +3955,10 @@ ul {
     .alumniNews > section.moreContent .additional ul {
       display: flex;
       flex-flow: column;
-      row-gap: 0.8rem;
+      /* row-gap: 0.8rem; */
       padding: 0 0.8rem; }
+      .alumniNews > section.moreContent .additional ul > * + * {
+        margin-top: 0.8rem; }
       @media (min-width: 800px) {
         .alumniNews > section.moreContent .additional ul {
           padding: 0 4rem; } }
@@ -3917,7 +3969,9 @@ ul {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.8rem; }
+      /* gap: 0.8rem; */ }
+      .alumniNews > section.moreContent .additional .pagination > * + * {
+        margin-left: 0.8rem; }
       .alumniNews > section.moreContent .additional .pagination a {
         width: 2.4rem;
         height: 2.4rem; }
@@ -3940,7 +3994,8 @@ ul {
     margin: 0 !important; }
     @media (min-width: 800px) {
       .jobPost section.mainContent .jobCon {
-        padding: 2.4rem 4rem; }
+        padding: 2.4rem 4rem;
+        margin-top: 2.4rem !important; }
         .jobPost section.mainContent .jobCon > * + * {
           margin-right: 1.8rem; }
         .jobPost section.mainContent .jobCon > a:nth-of-type(3n) {
@@ -3949,6 +4004,9 @@ ul {
       border-radius: 0.5rem !important; }
     .jobPost section.mainContent .jobCon:nth-of-type(1) {
       border-radius: 0; }
+      @media (min-width: 800px) {
+        .jobPost section.mainContent .jobCon:nth-of-type(1) {
+          border-radius: 1rem; } }
     .jobPost section.mainContent .jobCon:nth-of-type(2) {
       overflow-y: hidden;
       max-height: 62.1rem;
@@ -3962,6 +4020,9 @@ ul {
       .jobPost section.mainContent .jobCon:nth-of-type(2)::-webkit-scrollbar-thumb {
         background-color: rgba(0, 0, 0, 0.38);
         border-radius: 5rem; }
+      @media (min-width: 800px) {
+        .jobPost section.mainContent .jobCon:nth-of-type(2) {
+          margin: 0 !important; } }
     .jobPost section.mainContent .jobCon .card-filter.active {
       top: 0;
       height: 0;
@@ -4039,7 +4100,9 @@ ul {
     .jobPost section.mainContent.jobView .card-title {
       align-items: flex-end;
       justify-content: stretch;
-      column-gap: 1.6rem; }
+      /* column-gap: 1.6rem; */ }
+      .jobPost section.mainContent.jobView .card-title > * + * {
+        margin-left: 1.6rem; }
       .jobPost section.mainContent.jobView .card-title h3 {
         color: #A63F3F; }
         @media (min-width: 800px) {
@@ -4049,8 +4112,10 @@ ul {
         margin-left: auto; }
     .jobPost section.mainContent.jobView .flex-row {
       display: flex;
-      gap: 2.4rem;
+      /* gap: 2.4rem; */
       margin-bottom: 2.4rem; }
+      .jobPost section.mainContent.jobView .flex-row > * + * {
+        margin-left: 2.4rem; }
       .jobPost section.mainContent.jobView .flex-row.justify-start {
         align-items: center; }
 
@@ -4130,7 +4195,9 @@ ul {
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    gap: 1.6rem; }
+    /* gap: 1.6rem; */ }
+    .loginMain > div > * + * {
+      margin-top: 1.6rem; }
     .loginMain > div::before {
       position: absolute;
       top: -4rem;
@@ -4167,7 +4234,9 @@ ul {
           visibility: hidden; } }
     @media (min-width: 1367px) {
       .loginMain > div {
-        gap: 2.4rem; } }
+        /* gap: 2.4rem; */ }
+        .loginMain > div > * + * {
+          margin-top: 2.4rem; } }
   .loginMain header {
     text-align: center;
     display: flex;
@@ -4180,7 +4249,9 @@ ul {
     @media (min-width: 800px) {
       .loginMain header {
         position: relative;
-        gap: 0.8rem; }
+        /* gap: 0.8rem; */ }
+        .loginMain header > * + * {
+          margin-top: 0.8rem; }
         .loginMain header::before {
           position: absolute;
           top: -2.4rem;
@@ -4428,7 +4499,9 @@ ul {
   .users .filterNav .department, .users .filterNav .groupList {
     display: flex;
     flex-flow: column;
-    gap: 0.8rem; }
+    /* gap: 0.8rem; */ }
+    .users .filterNav .department > * + *, .users .filterNav .groupList > * + * {
+      margin-top: 0.8rem; }
   .users .filterNav .department {
     margin: 3.2rem 0; }
     .users .filterNav .department > li > .deptHead {
@@ -4487,7 +4560,9 @@ ul {
         display: flex;
         margin-top: 0.8rem;
         flex-flow: column;
-        gap: 0.8rem; }
+        /* gap: 0.8rem; */ }
+        .users .filterNav .department .groupList .subGroupList > * + * {
+          margin-top: 0.8rem; }
         .users .filterNav .department .groupList .subGroupList .subGroup {
           display: flex;
           padding: 0 1.6rem;
@@ -4871,7 +4946,9 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.8rem; }
+  /* gap: 0.8rem; */ }
+  .gallery .pagination > * + * {
+    margin-left: 0.8rem; }
   .gallery .pagination a {
     width: 2.4rem;
     height: 2.4rem; }
@@ -5036,15 +5113,19 @@ ul {
     background-color: #FFFFFF;
     color: rgba(0, 0, 0, 0.87);
     display: flex;
-    gap: 0.8rem;
+    /* gap: 0.8rem; */
     text-decoration: none;
     padding-top: 0.8rem;
     transition: 200ms ease;
     border-radius: 1rem; }
+    .forum > section.mainContent .forum-link > * + * {
+      margin-left: 0.8rem; }
     @media (min-width: 800px) {
       .forum > section.mainContent .forum-link {
         padding: 0.8rem 1.6rem 0;
-        gap: 1.6rem; } }
+        /* gap: 1.6rem; */ }
+        .forum > section.mainContent .forum-link > * + * {
+          margin-left: 1.6rem; } }
     .forum > section.mainContent .forum-link:focus, .forum > section.mainContent .forum-link:hover {
       box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); }
   .forum > section.mainContent .forum-image {
@@ -5074,7 +5155,9 @@ ul {
     flex-flow: wrap;
     padding-bottom: 0.8rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.38);
-    row-gap: 0.4rem; }
+    /* row-gap: 0.4rem; */ }
+    .forum > section.mainContent .forum-details-con > * + * {
+      margin-top: 0.4rem; }
     .forum > section.mainContent .forum-details-con .forum-details {
       text-align: start;
       min-width: 100%; }
@@ -5087,8 +5170,10 @@ ul {
   .forum > section.mainContent .commentCount {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    /* gap: 0.4rem; */
     color: rgba(0, 0, 0, 0.6); }
+    .forum > section.mainContent .commentCount > * {
+      margin-right: 0.4rem; }
   .forum > section.mainContent .pagination, .forum > section.mainContent a {
     display: flex;
     align-items: center; }
@@ -5099,7 +5184,9 @@ ul {
     padding-top: 2.4rem;
     justify-content: flex-end;
     margin-top: auto;
-    gap: 0.8rem; }
+    /* gap: 0.8rem; */ }
+    .forum > section.mainContent .pagination > * + * {
+      margin-left: 0.8rem; }
     .forum > section.mainContent .pagination a {
       transition: 200ms ease;
       justify-content: center;
@@ -5121,8 +5208,10 @@ ul {
     .forum > section.mainContent .catCon ul, .forum > section.mainContent .popCon ul, .forum > section.mainContent .myDisCon ul {
       display: flex;
       flex-flow: column;
-      gap: 0.8rem;
+      /* gap: 0.8rem; */
       padding-top: 1.6rem; }
+      .forum > section.mainContent .catCon ul > * + *, .forum > section.mainContent .popCon ul > * + *, .forum > section.mainContent .myDisCon ul > * + * {
+        margin-top: 0.8rem; }
     .forum > section.mainContent .catCon a, .forum > section.mainContent .catCon button, .forum > section.mainContent .popCon a, .forum > section.mainContent .popCon button, .forum > section.mainContent .myDisCon a, .forum > section.mainContent .myDisCon button {
       background-color: #FFFFFF;
       color: rgba(0, 0, 0, 0.87);
@@ -5150,11 +5239,16 @@ ul {
       white-space: nowrap; }
   .forum > section.mainContent .popCon a, .forum > section.mainContent .popCon button {
     justify-content: flex-start;
-    column-gap: 0.4rem; }
+    /* column-gap: 0.4rem; */ }
+    .forum > section.mainContent .popCon a > * + *, .forum > section.mainContent .popCon button > * + * {
+      margin-left: 0.4rem; }
 
 .forum > section.forumView {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  /* .catCon,.popCon{
+                margin: 0 1.6rem;
+            } */ }
   @media (min-width: 800px) {
     .forum > section.forumView {
       padding: 2.4rem 0; } }
@@ -5207,9 +5301,11 @@ ul {
       top: 3rem;
       left: -5.1rem;
       padding: 0.8rem;
-      gap: 0.8rem;
+      /* gap: 0.8rem; */
       border-radius: 0.5rem;
       box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 3px 3px -2px rgba(0, 0, 0, 0.12); }
+      .forum > section.forumView .optionCon > .optionModal > * + * {
+        margin-left: 0.8rem; }
       .forum > section.forumView .optionCon > .optionModal button {
         width: 3rem;
         height: 3rem;
@@ -5236,8 +5332,10 @@ ul {
     left: 4.4rem;
     display: flex;
     flex-flow: column;
-    gap: 0.8rem;
+    /* gap: 0.8rem; */
     justify-content: center; }
+    .forum > section.forumView .vote-con > * + * {
+      margin-top: 0.8rem; }
     .forum > section.forumView .vote-con button {
       background-color: transparent;
       color: #FFFFFF;
@@ -5290,7 +5388,11 @@ ul {
       display: flex;
       align-items: flex-start;
       flex-flow: wrap;
-      gap: 0.8rem; }
+      /* gap: 0.8rem; */ }
+      .forum > section.forumView .comment-main-con .comment-con > * + * {
+        margin-left: 0.8rem; }
+      .forum > section.forumView .comment-main-con .comment-con > *:last-child {
+        margin-top: 0.8rem; }
       .forum > section.forumView .comment-main-con .comment-con .textFieldContainer {
         flex: 1;
         min-width: 80%; }
@@ -5332,12 +5434,18 @@ ul {
       display: flex;
       flex-flow: column;
       row-gap: 0.8rem; }
+      .forum > section.forumView .comment-main-con .comment-list .comment-con-thread > *:nth-child(2) {
+        margin-top: 0; }
+      .forum > section.forumView .comment-main-con .comment-list .comment-con-thread > * + * {
+        margin-top: 0.8rem; }
     .forum > section.forumView .comment-main-con .comment-list .account-name {
       font-weight: 500; }
     .forum > section.forumView .comment-main-con .comment-list .btn-con, .forum > section.forumView .comment-main-con .comment-list .btn-con2 {
       display: flex;
-      gap: 0.8rem;
+      /* gap: 0.8rem; */
       margin-bottom: 1.6rem; }
+      .forum > section.forumView .comment-main-con .comment-list .btn-con > * + *, .forum > section.forumView .comment-main-con .comment-list .btn-con2 > * + * {
+        margin-left: 0.8rem; }
     .forum > section.forumView .comment-main-con .comment-list .btn-con button, .forum > section.forumView .comment-main-con .comment-list .btn-con a {
       min-height: 2.1rem;
       border: none;
@@ -5363,8 +5471,7 @@ ul {
           color: #FFFFFF; }
     .forum > section.forumView .comment-main-con .sub-comment-list {
       display: flex;
-      flex-flow: column;
-      align-items: center; }
+      flex-flow: column; }
       .forum > section.forumView .comment-main-con .sub-comment-list .see-more {
         background-color: transparent;
         border: 0;
@@ -5376,7 +5483,9 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3rem; }
+    /* gap: 3rem; */ }
+    .forum > section.forumView .catCon .list-item > * + * {
+      margin-left: 3rem; }
     .forum > section.forumView .catCon .list-item > div {
       display: flex;
       align-items: center;
@@ -5576,22 +5685,35 @@ select, input, textarea {
           border-right: 1px rgba(0, 0, 0, 0.6) solid !important; }
 
 .userAdd .mainContent.adminForm .form .infoCon .smallComponentsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   column-gap: 3.2rem; }
 
-.userAdd .mainContent.adminForm .form .infoCon:nth-of-type(1) .smallComponentsContainer > div {
-  min-width: 30rem; }
+.userAdd .mainContent.adminForm .form .infoCon:nth-of-type(1) .smallComponentsContainer {
+  /* & > div{
+                                min-width: 30rem;
+                            } */ }
 
-.userAdd .mainContent.adminForm .form .infoCon:nth-of-type(2) .smallComponentsContainer > div:nth-child(1) {
-  min-width: 100%; }
+.userAdd .mainContent.adminForm .form .infoCon:nth-of-type(2) .smallComponentsContainer {
+  /* & > div{
+                                &:nth-child(1){
+                                    min-width: 100%;
+                                }
+                                &:nth-child(2){
+                                    flex: 2;
+                                }
+                                &:nth-child(5){
+                                    max-width: 31.9rem;
+                                }
+                            } */ }
 
-.userAdd .mainContent.adminForm .form .infoCon:nth-of-type(2) .smallComponentsContainer > div:nth-child(2) {
-  flex: 2; }
-
-.userAdd .mainContent.adminForm .form .infoCon:nth-of-type(2) .smallComponentsContainer > div:nth-child(5) {
-  max-width: 31.9rem; }
-
-.userAdd .mainContent.adminForm .form .infoCon:nth-of-type(3) .smallComponentsContainer > div:last-child {
-  flex: 2; }
+.userAdd .mainContent.adminForm .form .infoCon:nth-of-type(3) .smallComponentsContainer {
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  column-gap: 3.2rem; }
+  .userAdd .mainContent.adminForm .form .infoCon:nth-of-type(3) .smallComponentsContainer > div {
+    /* &:last-child(){
+                                    flex: 2;
+                                } */ }
 
 .surveyAdd .mainContent.adminForm .form .infoCon .smallComponentsContainer {
   column-gap: 3.2rem; }
@@ -5603,8 +5725,12 @@ select, input, textarea {
   .surveyAdd .mainContent.adminForm .form .infoCon:nth-of-type(1) .smallComponentsContainer > div textarea {
     height: 12rem; }
 
-.surveyAdd .mainContent.adminForm .form .infoCon:nth-of-type(2) .smallComponentsContainer > div {
-  flex: 1; }
+.surveyAdd .mainContent.adminForm .form .infoCon:nth-of-type(2) .smallComponentsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  /* & > div{
+                                flex: 1;
+                            } */ }
 
 .admin.dataInput .reportView .answerCon {
   padding-right: 0.8rem;
@@ -5619,7 +5745,9 @@ select, input, textarea {
 .mainContent.questionnaire .form:first-child {
   display: flex;
   flex-flow: column;
-  gap: 3.2rem; }
+  /* gap: 3.2rem; */ }
+  .mainContent.questionnaire .form:first-child > * + * {
+    margin-top: 3.2rem; }
   .mainContent.questionnaire .form:first-child h2 > button {
     background-color: #A63F3F;
     color: #FFFFFF;
@@ -5629,11 +5757,13 @@ select, input, textarea {
     color: rgba(0, 0, 0, 0.87);
     display: flex;
     flex-flow: column;
-    gap: 1.6rem;
+    /* gap: 1.6rem; */
     border-left: 4px solid #A63F3F;
     border-radius: 0.5rem;
     padding: 1.6rem 3.2rem;
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12); }
+    .mainContent.questionnaire .form:first-child .questionCon > * + * {
+      margin-top: 1.6rem; }
   .mainContent.questionnaire .form:first-child .questionHeader {
     display: flex;
     align-items: center;
@@ -5654,7 +5784,7 @@ select, input, textarea {
     scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF;
     display: flex;
     flex-flow: column;
-    gap: 0.8rem; }
+    /* gap: 0.8rem; */ }
     .mainContent.questionnaire .form:first-child .answerCon::-webkit-scrollbar {
       width: 0.5rem; }
     .mainContent.questionnaire .form:first-child .answerCon::-webkit-scrollbar-track {
@@ -5662,9 +5792,13 @@ select, input, textarea {
     .mainContent.questionnaire .form:first-child .answerCon::-webkit-scrollbar-thumb {
       background-color: rgba(0, 0, 0, 0.38);
       border-radius: 5rem; }
+    .mainContent.questionnaire .form:first-child .answerCon > * + * {
+      margin-top: 0.8rem; }
     .mainContent.questionnaire .form:first-child .answerCon div, .mainContent.questionnaire .form:first-child .answerCon ul {
       display: flex;
-      gap: 0.8rem; }
+      /* gap: 0.8rem; */ }
+      .mainContent.questionnaire .form:first-child .answerCon div > * + *, .mainContent.questionnaire .form:first-child .answerCon ul > * + * {
+        margin-left: 0.8rem; }
     .mainContent.questionnaire .form:first-child .answerCon ul {
       list-style: disc;
       flex-flow: column; }
@@ -5686,15 +5820,21 @@ select, input, textarea {
     border-radius: 10rem; }
 
 .mainContent.questionnaire.adminForm .form:last-child {
-  gap: 4rem;
+  /* gap: 4rem; */
   padding-left: 4.8rem;
   padding-right: 4.8rem; }
+  .mainContent.questionnaire.adminForm .form:last-child > *:nth-child(2) {
+    margin-top: 0 !important; }
+  .mainContent.questionnaire.adminForm .form:last-child > * + * {
+    margin-top: 4rem !important; }
   .mainContent.questionnaire.adminForm .form:last-child .surveyInfoCon {
     display: flex;
     flex-flow: column;
-    gap: 0.8rem;
+    /* gap: 0.8rem; */
     padding-bottom: 2.4rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.38); }
+    .mainContent.questionnaire.adminForm .form:last-child .surveyInfoCon > * + * {
+      margin-top: 0.8rem; }
   .mainContent.questionnaire.adminForm .form:last-child .dateInfo {
     margin-top: 0; }
 
@@ -5722,7 +5862,9 @@ select, input, textarea {
   display: flex;
   align-items: center;
   flex-flow: wrap;
-  gap: 1.6rem; }
+  /* gap: 1.6rem; */ }
+  .mainContent.reportView .answer-list .flex-con > * + * {
+    margin-top: 1.6rem; }
 
 .mainContent.reportView .answer-list p {
   min-width: 100%; }
@@ -5752,7 +5894,7 @@ select, input, textarea {
   padding: 2.4rem 7.2rem;
   display: flex;
   flex-flow: column;
-  gap: 4.8rem;
+  /* gap: 4.8rem; */
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.38) #FFFFFF;
   flex-flow: column;
@@ -5760,6 +5902,8 @@ select, input, textarea {
   box-shadow: none;
   overflow: auto;
   max-height: none; }
+  .report .mainContent > * + * {
+    margin-top: 4.8rem; }
   .report .mainContent::-webkit-scrollbar {
     width: 0.5rem; }
   .report .mainContent::-webkit-scrollbar-track {
@@ -5778,8 +5922,9 @@ select, input, textarea {
     height: 13.2rem;
     overflow: hidden; }
   .report .mainContent .card-list {
-    display: flex;
-    flex-flow: wrap;
+    display: grid;
+    /* flex-flow: wrap; */
+    grid-template-columns: repeat(auto-fill, minmax(34rem, 1fr));
     column-gap: 2.4rem;
     row-gap: 4.8rem; }
   .report .mainContent .survey-card {
@@ -5796,7 +5941,12 @@ select, input, textarea {
     z-index: 24;
     display: flex;
     flex-flow: column;
-    gap: 1.6rem; }
+    /* gap: 1.6rem; */ }
+    .report .mainContent .survey-card > *:nth-child(2),
+    .report .mainContent .survey-card > *:nth-child(3) {
+      margin-top: 0 !important; }
+    .report .mainContent .survey-card > * + * {
+      margin-top: 1.6rem !important; }
     .report .mainContent .survey-card > * {
       margin: 0 3.2rem 0 3.2rem; }
     .report .mainContent .survey-card:focus .card-link, .report .mainContent .survey-card:hover .card-link {
@@ -5855,8 +6005,10 @@ select, input, textarea {
     margin: 0;
     margin-top: auto;
     display: flex;
-    gap: 0.4rem;
+    /* gap: 0.4rem; */
     padding: 1.2rem 3.2rem; }
+    .report .mainContent .survey-footer > * + * {
+      margin-left: 0.4rem; }
 
 .userSurvey.firstEdit::after {
   content: 'Please Update your profile information!';
@@ -5903,253 +6055,261 @@ select, input, textarea {
     .userSurvey.firstEdit ~ .editProfile, .userSurvey.firstEdit ~ .mainFooter {
       top: 16.6rem; } }
 
-.mainHeader ~ .editProfile .mainContent {
-  /* input[type="number"]{
+.mainHeader ~ .editProfile {
+  overflow-x: hidden; }
+  .mainHeader ~ .editProfile .mainContent {
+    /* input[type="number"]{
             @extend %outline;
             color: $mediumEmphasis;
         } */ }
-  .mainHeader ~ .editProfile .mainContent .container {
-    z-index: 2; }
-    .mainHeader ~ .editProfile .mainContent .container .form .questionCon {
-      padding: 1.6rem 2.4rem;
-      box-shadow: none;
-      border: 1px solid rgba(0, 0, 0, 0.38); }
-      @media (min-width: 800px) {
-        .mainHeader ~ .editProfile .mainContent .container .form .questionCon {
-          padding: 1.6rem 4.8rem;
-          gap: 4.8rem; } }
-      @media (min-width: 800px) {
-        .mainHeader ~ .editProfile .mainContent .container .form .questionCon.changePass {
-          max-width: 51rem;
-          align-self: center; } }
-      .mainHeader ~ .editProfile .mainContent .container .form .questionCon.changePass ~ button {
-        align-self: center; }
-    .mainHeader ~ .editProfile .mainContent .container .form .addInfo {
-      flex-flow: row wrap;
-      align-items: flex-start; }
-    .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer {
-      flex: 1; }
-    .mainHeader ~ .editProfile .mainContent .container .form h1, .mainHeader ~ .editProfile .mainContent .container .form h2 {
-      text-align: center;
-      border-bottom: none;
-      padding-top: 2.4rem;
-      padding-bottom: 0.8rem; }
-    .mainHeader ~ .editProfile .mainContent .container .form h3 {
-      color: #A63F3F; }
-    .mainHeader ~ .editProfile .mainContent .container .form p {
-      margin-bottom: 0;
-      text-align: center; }
-    .mainHeader ~ .editProfile .mainContent .container .form button {
-      background-color: #A63F3F;
-      color: #FFFFFF;
-      position: relative;
-      width: 22rem; }
-      .mainHeader ~ .editProfile .mainContent .container .form button svg {
+    .mainHeader ~ .editProfile .mainContent .container {
+      z-index: 2; }
+      .mainHeader ~ .editProfile .mainContent .container .form .questionCon {
+        padding: 1.6rem 2.4rem;
+        box-shadow: none;
+        border: 1px solid rgba(0, 0, 0, 0.38); }
+        @media (min-width: 800px) {
+          .mainHeader ~ .editProfile .mainContent .container .form .questionCon {
+            padding: 1.6rem 4.8rem;
+            /* gap: 4.8rem; */
+            gap: 0; }
+            .mainHeader ~ .editProfile .mainContent .container .form .questionCon > * + * {
+              margin-top: 4.8rem; } }
+        @media (min-width: 800px) {
+          .mainHeader ~ .editProfile .mainContent .container .form .questionCon.changePass {
+            max-width: 51rem;
+            align-self: center; } }
+        .mainHeader ~ .editProfile .mainContent .container .form .questionCon.changePass ~ button {
+          align-self: center; }
+      .mainHeader ~ .editProfile .mainContent .container .form .addInfo {
+        flex-flow: row wrap;
+        align-items: flex-start; }
+      .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer {
+        flex: 1; }
+      .mainHeader ~ .editProfile .mainContent .container .form h1, .mainHeader ~ .editProfile .mainContent .container .form h2 {
+        text-align: center;
+        border-bottom: none;
+        padding-top: 2.4rem;
+        padding-bottom: 0.8rem; }
+      .mainHeader ~ .editProfile .mainContent .container .form h3 {
+        color: #A63F3F; }
+      .mainHeader ~ .editProfile .mainContent .container .form p {
+        margin-bottom: 0;
+        text-align: center; }
+      .mainHeader ~ .editProfile .mainContent .container .form button {
+        background-color: #A63F3F;
+        color: #FFFFFF;
+        position: relative;
+        width: 22rem; }
+        .mainHeader ~ .editProfile .mainContent .container .form button svg {
+          position: absolute;
+          left: 1.3rem; }
+      .mainHeader ~ .editProfile .mainContent .container .form .profilePic {
         position: absolute;
-        left: 1.3rem; }
-    .mainHeader ~ .editProfile .mainContent .container .form .profilePic {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 10rem;
-      height: 10rem;
-      object-fit: cover;
-      border-radius: 10rem;
-      border: none; }
-      @media (min-width: 415px) {
-        .mainHeader ~ .editProfile .mainContent .container .form .profilePic {
-          width: 16rem;
-          height: 16rem; } }
-    .mainHeader ~ .editProfile .mainContent .container .form #profile-pic-btn {
-      width: 0; }
-    .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"] {
-      transition: 200ms ease;
-      cursor: pointer;
-      position: absolute;
-      top: 65%;
-      right: 0px;
-      width: 2.7rem;
-      height: 2.7rem; }
-      @media (min-width: 415px) {
-        .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"] {
-          width: 4.3rem;
-          height: 4.3rem; } }
-      .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"]:focus, .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"]:hover {
-        filter: brightness(1.1); }
-    .mainHeader ~ .editProfile .mainContent .container .form .avatar {
-      position: relative;
-      align-self: center;
-      cursor: pointer;
-      width: 10rem;
-      height: 10rem; }
-      @media (min-width: 415px) {
-        .mainHeader ~ .editProfile .mainContent .container .form .avatar {
-          width: 16rem;
-          height: 16rem; } }
-      .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal {
-        visibility: hidden;
-        opacity: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10rem;
+        height: 10rem;
+        object-fit: cover;
+        border-radius: 10rem;
+        border: none; }
+        @media (min-width: 415px) {
+          .mainHeader ~ .editProfile .mainContent .container .form .profilePic {
+            width: 16rem;
+            height: 16rem; } }
+      .mainHeader ~ .editProfile .mainContent .container .form #profile-pic-btn {
+        width: 0; }
+      .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"] {
         transition: 200ms ease;
+        cursor: pointer;
         position: absolute;
-        top: 7.4rem;
-        right: 5rem;
-        background-color: #FFFFFF;
-        color: rgba(0, 0, 0, 0.87);
-        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-        border-radius: 1rem;
-        padding: 1.6rem;
-        z-index: 4; }
-        .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal.show {
-          visibility: visible;
-          opacity: 1; }
-        .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal > * {
-          transition: 0ms ease;
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+        top: 65%;
+        right: 0px;
+        width: 2.7rem;
+        height: 2.7rem; }
+        @media (min-width: 415px) {
+          .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"] {
+            width: 4.3rem;
+            height: 4.3rem; } }
+        .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"]:focus, .mainHeader ~ .editProfile .mainContent .container .form [for="profile-pic-btn"]:hover {
+          filter: brightness(1.1); }
+      .mainHeader ~ .editProfile .mainContent .container .form .avatar {
+        position: relative;
+        align-self: center;
+        cursor: pointer;
+        width: 10rem;
+        height: 10rem; }
+        @media (min-width: 415px) {
+          .mainHeader ~ .editProfile .mainContent .container .form .avatar {
+            width: 16rem;
+            height: 16rem; } }
+        .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal {
+          visibility: hidden;
+          opacity: 0;
+          transition: 200ms ease;
+          position: absolute;
+          top: 7.4rem;
+          right: 5rem;
           background-color: #FFFFFF;
           color: rgba(0, 0, 0, 0.87);
-          font-weight: 400;
-          text-transform: capitalize;
-          padding: 0;
-          min-height: initial;
-          width: 14.5rem; }
-          .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal > *:focus, .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal > *:hover {
-            box-shadow: none;
-            text-decoration: underline; }
-          .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal > * > svg {
-            position: absolute;
-            left: 0; }
-          .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal > * + * {
-            margin-top: 1.6rem; }
-    .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer {
-      display: flex;
-      flex-flow: column wrap;
-      gap: 1.6rem; }
-      @media (min-width: 800px) {
-        .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer {
-          flex-flow: row wrap; } }
-      .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer > div {
-        flex: 1; }
+          box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+          border-radius: 1rem;
+          padding: 1.6rem;
+          z-index: 4; }
+          .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal.show {
+            visibility: visible;
+            opacity: 1; }
+          .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal > * {
+            transition: 0ms ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #FFFFFF;
+            color: rgba(0, 0, 0, 0.87);
+            font-weight: 400;
+            text-transform: capitalize;
+            padding: 0;
+            min-height: initial;
+            width: 14.5rem; }
+            .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal > *:focus, .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal > *:hover {
+              box-shadow: none;
+              text-decoration: underline; }
+            .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal > * > svg {
+              position: absolute;
+              left: 0; }
+            .mainHeader ~ .editProfile .mainContent .container .form .avatar .edit-pic-modal > * + * {
+              margin-top: 1.6rem; }
+      .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer {
+        display: grid;
+        /* flex-flow: column wrap; */
+        grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+        gap: 1.6rem; }
         @media (min-width: 800px) {
-          .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer > div {
-            min-width: 32rem; } }
-    .mainHeader ~ .editProfile .mainContent .container .form .questionCon .textFieldContainer {
-      min-width: 0; }
-    .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(1) {
-      min-width: 100%; }
-    @media (min-width: 800px) {
-      .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(2) {
-        min-width: 46.4rem; } }
-    .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(3), .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(4) {
-      min-width: 18.3rem; }
-  .mainHeader ~ .editProfile .mainContent .imageInputContainer {
-    display: flex;
-    flex-flow: column;
-    gap: 0.8rem;
-    position: relative;
-    min-width: 26.4rem;
-    min-height: 15.2rem;
-    width: 100%;
-    gap: 0; }
-    @media (min-width: 1367px) {
-      .mainHeader ~ .editProfile .mainContent .imageInputContainer {
-        min-height: 23.7rem;
-        flex: 1; } }
-    .mainHeader ~ .editProfile .mainContent .imageInputContainer .image-con {
+          .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer {
+            /* flex-flow: row wrap; */
+            grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr)); } }
+        .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer > div {
+          flex: 1; }
+          @media (min-width: 800px) {
+            .mainHeader ~ .editProfile .mainContent .container .form .smallComponentsContainer > div {
+              /* min-width: 32rem; */ } }
+      .mainHeader ~ .editProfile .mainContent .container .form .questionCon .textFieldContainer {
+        min-width: 0; }
+      .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(1) {
+        min-width: 100%; }
+      @media (min-width: 800px) {
+        .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(2) {
+          min-width: 46.4rem; } }
+      .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(3), .mainHeader ~ .editProfile .mainContent .container .form .questionCon:nth-of-type(3) .smallComponentsContainer > div:nth-child(4) {
+        min-width: 18.3rem; }
+    .mainHeader ~ .editProfile .mainContent .imageInputContainer {
+      display: flex;
+      flex-flow: column;
+      gap: 0.8rem;
       position: relative;
-      padding-top: 56.25%;
-      flex: 1; }
-    .mainHeader ~ .editProfile .mainContent .imageInputContainer img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      min-width: 26.4rem;
+      min-height: 15.2rem;
       width: 100%;
-      height: 100%;
-      border: 1px solid rgba(0, 0, 0, 0.38);
-      border-top-left-radius: 0.5rem;
-      border-top-right-radius: 0.5rem;
-      appearance: none;
-      flex: 1;
-      object-fit: cover;
-      background-image: url("../images/imgInputPlaceHolder.svg");
-      background-repeat: no-repeat;
-      background-position: center; }
-    .mainHeader ~ .editProfile .mainContent .imageInputContainer .fileUploadBtn {
-      background-color: rgba(0, 0, 0, 0.6);
-      color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      padding: 0.4rem 0; }
-      .mainHeader ~ .editProfile .mainContent .imageInputContainer .fileUploadBtn svg {
-        width: 1.8rem;
-        height: 1.8rem; }
-  .mainHeader ~ .editProfile .mainContent input[type="text"], .mainHeader ~ .editProfile .mainContent input[type="password"], .mainHeader ~ .editProfile .mainContent input[type="date"], .mainHeader ~ .editProfile .mainContent input[type="tel"], .mainHeader ~ .editProfile .mainContent input[type="email"], .mainHeader ~ .editProfile .mainContent input[type="number"], .mainHeader ~ .editProfile .mainContent select, .mainHeader ~ .editProfile .mainContent textarea {
-    border-radius: 0.5rem;
-    border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
-    min-width: 0rem;
-    padding-right: 1.6rem;
-    padding-left: 1.6rem; }
-    .mainHeader ~ .editProfile .mainContent input[type="text"]:focus, .mainHeader ~ .editProfile .mainContent input[type="password"]:focus, .mainHeader ~ .editProfile .mainContent input[type="date"]:focus, .mainHeader ~ .editProfile .mainContent input[type="tel"]:focus, .mainHeader ~ .editProfile .mainContent input[type="email"]:focus, .mainHeader ~ .editProfile .mainContent input[type="number"]:focus, .mainHeader ~ .editProfile .mainContent select:focus, .mainHeader ~ .editProfile .mainContent textarea:focus {
-      border-right: 1px rgba(0, 0, 0, 0.6) solid !important; }
-  .mainHeader ~ .editProfile .mainContent fieldset {
-    border: none;
-    display: flex;
-    gap: 2.4rem;
-    padding: 0;
-    display: flex;
-    flex-flow: wrap; }
-  .mainHeader ~ .editProfile .mainContent input[type="radio"] {
-    width: 15rem;
-    height: 4rem;
-    border: none; }
-    .mainHeader ~ .editProfile .mainContent input[type="radio"]::before {
-      position: static;
-      transform: translate(0);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      width: 100%;
-      color: #A63F3F;
-      border-color: currentColor;
-      border: 1px solid;
+      gap: 0; }
+      @media (min-width: 1367px) {
+        .mainHeader ~ .editProfile .mainContent .imageInputContainer {
+          min-height: 23.7rem;
+          flex: 1; } }
+      .mainHeader ~ .editProfile .mainContent .imageInputContainer .image-con {
+        position: relative;
+        padding-top: 56.25%;
+        flex: 1; }
+      .mainHeader ~ .editProfile .mainContent .imageInputContainer img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.38);
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        appearance: none;
+        flex: 1;
+        object-fit: cover;
+        background-image: url("../images/imgInputPlaceHolder.svg");
+        background-repeat: no-repeat;
+        background-position: center; }
+      .mainHeader ~ .editProfile .mainContent .imageInputContainer .fileUploadBtn {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        padding: 0.4rem 0; }
+        .mainHeader ~ .editProfile .mainContent .imageInputContainer .fileUploadBtn svg {
+          width: 1.8rem;
+          height: 1.8rem; }
+    .mainHeader ~ .editProfile .mainContent input[type="text"], .mainHeader ~ .editProfile .mainContent input[type="password"], .mainHeader ~ .editProfile .mainContent input[type="date"], .mainHeader ~ .editProfile .mainContent input[type="tel"], .mainHeader ~ .editProfile .mainContent input[type="email"], .mainHeader ~ .editProfile .mainContent input[type="number"], .mainHeader ~ .editProfile .mainContent select, .mainHeader ~ .editProfile .mainContent textarea {
       border-radius: 0.5rem;
-      background-repeat: no-repeat;
-      background-position: left 1.2rem center;
-      transition: 200ms ease;
-      background-image: url("../images/radioDefaultIcon.svg"); }
-    .mainHeader ~ .editProfile .mainContent input[type="radio"]:checked::before {
-      background-color: #A63F3F;
-      color: #FFFFFF;
-      background-image: url("../images/workTypeActiveIcon.svg"); }
-    .mainHeader ~ .editProfile .mainContent input[type="radio"]#full-time::before {
-      content: "Full-Time"; }
-    .mainHeader ~ .editProfile .mainContent input[type="radio"]#part-time::before {
-      content: "Part-Time"; }
-    .mainHeader ~ .editProfile .mainContent input[type="radio"]#open-status::before {
-      content: "Active"; }
-    .mainHeader ~ .editProfile .mainContent input[type="radio"]#closed-status::before {
-      content: "Archived"; }
-    .mainHeader ~ .editProfile .mainContent input[type="radio"]#male-id::before {
-      content: "Male"; }
-    .mainHeader ~ .editProfile .mainContent input[type="radio"]#female-id::before {
-      content: "Female"; }
-    .mainHeader ~ .editProfile .mainContent input[type="radio"]#employed-id::before {
-      content: "Employed"; }
-    .mainHeader ~ .editProfile .mainContent input[type="radio"]#unemployed-id::before {
-      content: "Unemployed"; }
-    .mainHeader ~ .editProfile .mainContent input[type="radio"]#yes-id::before {
-      content: "Yes"; }
-    .mainHeader ~ .editProfile .mainContent input[type="radio"]#no-id::before {
-      content: "No"; }
+      border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
+      min-width: 0rem;
+      padding-right: 1.6rem;
+      padding-left: 1.6rem; }
+      .mainHeader ~ .editProfile .mainContent input[type="text"]:focus, .mainHeader ~ .editProfile .mainContent input[type="password"]:focus, .mainHeader ~ .editProfile .mainContent input[type="date"]:focus, .mainHeader ~ .editProfile .mainContent input[type="tel"]:focus, .mainHeader ~ .editProfile .mainContent input[type="email"]:focus, .mainHeader ~ .editProfile .mainContent input[type="number"]:focus, .mainHeader ~ .editProfile .mainContent select:focus, .mainHeader ~ .editProfile .mainContent textarea:focus {
+        border-right: 1px rgba(0, 0, 0, 0.6) solid !important; }
+    .mainHeader ~ .editProfile .mainContent fieldset {
+      border: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 2.4rem;
+      padding: 0;
+      display: flex;
+      flex-flow: wrap; }
+    .mainHeader ~ .editProfile .mainContent input[type="radio"] {
+      width: 15rem;
+      height: 4rem;
+      border: none; }
+      .mainHeader ~ .editProfile .mainContent input[type="radio"]::before {
+        position: static;
+        transform: translate(0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        color: #A63F3F;
+        border-color: currentColor;
+        border: 1px solid;
+        border-radius: 0.5rem;
+        background-repeat: no-repeat;
+        background-position: left 1.2rem center;
+        transition: 200ms ease;
+        background-image: url("../images/radioDefaultIcon.svg"); }
+      .mainHeader ~ .editProfile .mainContent input[type="radio"]:checked::before {
+        background-color: #A63F3F;
+        color: #FFFFFF;
+        background-image: url("../images/workTypeActiveIcon.svg"); }
+      .mainHeader ~ .editProfile .mainContent input[type="radio"]#full-time::before {
+        content: "Full-Time"; }
+      .mainHeader ~ .editProfile .mainContent input[type="radio"]#part-time::before {
+        content: "Part-Time"; }
+      .mainHeader ~ .editProfile .mainContent input[type="radio"]#open-status::before {
+        content: "Active"; }
+      .mainHeader ~ .editProfile .mainContent input[type="radio"]#closed-status::before {
+        content: "Archived"; }
+      .mainHeader ~ .editProfile .mainContent input[type="radio"]#male-id::before {
+        content: "Male"; }
+      .mainHeader ~ .editProfile .mainContent input[type="radio"]#female-id::before {
+        content: "Female"; }
+      .mainHeader ~ .editProfile .mainContent input[type="radio"]#employed-id::before {
+        content: "Employed"; }
+      .mainHeader ~ .editProfile .mainContent input[type="radio"]#unemployed-id::before {
+        content: "Unemployed"; }
+      .mainHeader ~ .editProfile .mainContent input[type="radio"]#yes-id::before {
+        content: "Yes"; }
+      .mainHeader ~ .editProfile .mainContent input[type="radio"]#no-id::before {
+        content: "No"; }
 
 .profile .container {
   z-index: 2;
@@ -6195,12 +6355,14 @@ select, input, textarea {
     top: 1.6rem;
     right: 2.4rem;
     display: flex;
-    gap: 0.2rem;
+    /* gap: 0.2rem; */
     align-items: center;
     justify-content: center;
     padding: 0.6rem;
     border-radius: 5rem;
     transition: 200ms ease; }
+    .profile .profile-header .editBtn > * + * {
+      margin-left: 0.2rem; }
     .profile .profile-header .editBtn:focus, .profile .profile-header .editBtn:hover {
       opacity: 0.93; }
     .profile .profile-header .editBtn:active {
@@ -6228,15 +6390,21 @@ select, input, textarea {
   display: flex;
   flex-flow: column;
   padding: 3.2rem 1.6rem 2.4rem;
-  gap: 2.4rem; }
+  /* gap: 2.4rem; */ }
+  .profile .profile-body > * + * {
+    margin-top: 2.4rem; }
   @media (min-width: 800px) {
     .profile .profile-body {
       padding: 8.4rem 5rem 4.8rem;
-      gap: 4rem; } }
+      /* gap: 4rem; */ }
+      .profile .profile-body > * + * {
+        margin-top: 4rem; } }
   @media (min-width: 1367px) {
     .profile .profile-body {
       padding: 8.4rem 10rem 4.8rem;
-      gap: 4rem; } }
+      /* gap: 4rem; */ }
+      .profile .profile-body > * + * {
+        margin-top: 4rem; } }
   .profile .profile-body > section {
     border-radius: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.38);

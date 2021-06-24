@@ -533,96 +533,110 @@
 
         public function alumni_report() {
             $this->alumniRModel = $this->model('alumnir_model');
+            extract($_POST);
 
-            // $alumni = $this->alumniRModel->showAll();
-            $allCount = $this->alumniRModel->allCount();
-            $batch = $this->alumniRModel->showBatch();
-            $course = $this->alumniRModel->showCourses();
-            $alumniPerBatch = $this->alumniRModel->alumniCountPerBatch();
-            if(!empty($allCount)) {
-                $allCount = count($allCount);
-            }
-
-            // Get Page # in URL
-            $page = $this->getPage();
-
-            // Limit row displayed
-            $limit = 20;
-            $start = ($page - 1) * $limit;
-    
-            $newData = [
-                'start' => $start,
-                'limit' => $limit,
-            ];
-
-            if(isset($_POST['dateFilter'])) {
-                if($_POST['dateFilter'] == 1) {
-                    $startDate = date('Y')."-01-01";
-                    $endDate = date('Y')."-06-31";
-                } 
-
-                if ($_POST['dateFilter'] == 2) {
-                    $startDate = date('Y')."-07-01";
-                    $endDate = date('Y')."-12-31";
+            if(!isset($isSearch)) {
+                // $alumni = $this->alumniRModel->showAll();
+                $allCount = $this->alumniRModel->allCount();
+                $batch = $this->alumniRModel->showBatch();
+                $course = $this->alumniRModel->showCourses();
+                $alumniPerBatch = $this->alumniRModel->alumniCountPerBatch();
+                if(!empty($allCount)) {
+                    $allCount = count($allCount);
                 }
 
+                // Get Page # in URL
+                $page = $this->getPage();
+
+                // Limit row displayed
+                $limit = 20;
+                $start = ($page - 1) * $limit;
+        
                 $newData = [
                     'start' => $start,
                     'limit' => $limit,
-                    'date' => $_POST['dateFilter'],
-                    'startDate' => $startDate,
-                    'endDate' => $endDate
-                ];    
-            }
+                ];
 
-            $alumni = $this->alumniRModel->showAlumniIndex($newData);
-            
+                if(isset($_POST['dateFilter'])) {
+                    if($_POST['dateFilter'] == 1) {
+                        $startDate = date('Y')."-01-01";
+                        $endDate = date('Y')."-06-31";
+                    } 
 
-            $pagination = $this->alumniRModel->NoOfResults();
+                    if ($_POST['dateFilter'] == 2) {
+                        $startDate = date('Y')."-07-01";
+                        $endDate = date('Y')."-12-31";
+                    }
 
-        
-            $total = count($pagination);
-            $pages = ceil($total/$limit);
-
-            // No URL bypass
-            if($pages == 0) {
-                $pages = 1;
-            }
-            if($page > $pages) {
-                redirect('admin/alumni_report?page='.$pages);
-            }
-
-            $startFormula = $start + 1;
-            $limitFormula = $startFormula - 1 + $limit;
-
-            if($page == $pages) {
-                if ($limitFormula >= $total) {
-                    $limitFormula = $total;
+                    $newData = [
+                        'start' => $start,
+                        'limit' => $limit,
+                        'date' => $_POST['dateFilter'],
+                        'startDate' => $startDate,
+                        'endDate' => $endDate
+                    ];    
                 }
-            }
 
-            if($total == 0) {
-                $startFormula = 0;
-                $limitFormula = 0;
-            }
+                $alumni = $this->alumniRModel->showAlumniIndex($newData);
+                
+
+                $pagination = $this->alumniRModel->NoOfResults();
+
             
-            $data = [
-                'allCount' => $allCount,
-                'alumni' => $alumni,
-                'batch' => $batch,
-                'course' => $course,
-                'alumniPerBatch' => $alumniPerBatch,
+                $total = count($pagination);
+                $pages = ceil($total/$limit);
 
-                'start' => $startFormula,
-                'limit' => $limitFormula,
-                'total' => $total,
-                'first' => '?page=1',
-                'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
-                'next' => '?page='. ($page == $pages ? $pages : $page + 1),
-                'last' => '?page=' . $pages
-            ];
+                // No URL bypass
+                if($pages == 0) {
+                    $pages = 1;
+                }
+                if($page > $pages) {
+                    redirect('admin/alumni_report?page='.$pages);
+                }
 
-            $this->view('admin_d/alumni_report', $data);
+                $startFormula = $start + 1;
+                $limitFormula = $startFormula - 1 + $limit;
+
+                if($page == $pages) {
+                    if ($limitFormula >= $total) {
+                        $limitFormula = $total;
+                    }
+                }
+
+                if($total == 0) {
+                    $startFormula = 0;
+                    $limitFormula = 0;
+                }
+                
+                $data = [
+                    'allCount' => $allCount,
+                    'alumni' => $alumni,
+                    'batch' => $batch,
+                    'course' => $course,
+                    'alumniPerBatch' => $alumniPerBatch,
+
+                    'start' => $startFormula,
+                    'limit' => $limitFormula,
+                    'total' => $total,
+                    'first' => '?page=1',
+                    'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+                    'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+                    'last' => '?page=' . $pages
+                ];
+
+                $this->view('admin_d/alumni_report', $data);
+            } else {
+                $alumni = $this->alumniRModel->searchAlumniReport($searchKey);
+                //array_print($events);
+                if(!empty($alumni)){
+                    $data = ['alumni'=> $alumni];
+                }
+                else{
+                    $data = ['alumni' => ''];
+                }
+          
+                $this->view('search/alumni_report', $data);
+            }
         }
 
         public function alumni_report_1st_half() {

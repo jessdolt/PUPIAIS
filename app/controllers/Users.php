@@ -299,7 +299,7 @@ use PHPMailer\PHPMailer\Exception;
                             }
                         }
                         else {
-                            $data['passwordError'] = 'Password or email is incorrect. Please try again.';
+                            $data['passwordError'] = 'Password or email is incorrect.';
                         }
                 }
                 else {
@@ -310,7 +310,7 @@ use PHPMailer\PHPMailer\Exception;
                         $this->createUserSession($loggedInUser);
                     }
                     else {
-                        $data['passwordError'] = 'Password or email is incorrect. Please try again.';
+                        $data['passwordError'] = 'Password or email is incorrect.';
                     }
                 }
                     
