@@ -138,7 +138,8 @@
 
         public function getComments(){
             $this->db->query('SELECT *,	admin.image as admin_image,
-			users.name as user_name
+			users.name as user_name,
+            comment.created_at as commented_at
             FROM comment
             INNER JOIN users 
             ON comment.comment_sender = users.user_id
@@ -147,6 +148,7 @@
             LEFT JOIN alumni
             ON users.a_id = alumni.alumni_id
             ORDER BY comment.created_at DESC
+           
             ');
             $results = $this->db->resultSet();
             return $results;
@@ -162,7 +164,7 @@
             ON admin.user_id = users.user_id
             LEFT JOIN alumni
             ON users.a_id = alumni.alumni_id
-            ORDER BY reply.replied_at ASC
+            ORDER BY reply.replied_at DESC
             ');
             $results = $this->db->resultSet();
             return $results;
