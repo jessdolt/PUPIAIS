@@ -115,6 +115,8 @@ use PHPMailer\PHPMailer\Exception;
                     'confirm_password_err' => '',
                 ];  
 
+                $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
+
                 if(empty($data['last_name'])){
                     $data['lastName_err'] = 'Please your full name.';
                 }
@@ -123,18 +125,21 @@ use PHPMailer\PHPMailer\Exception;
                     $data['email_err'] = 'Please enter your email';
                 }
 
+                // Validate password on length, numeric values,
                 if(empty($data['password'])){
-                    $data['password_err'] = 'Please enter password';
-                } elseif (strlen($data['password']) < 3){
-                    $data['password_err'] = 'Password must be at least 3 characters';
+                    $data['password_error'] = 'Please enter password.';
+                } elseif(strlen($data['password']) < 7){
+                    $data['password_error'] = 'Password must be at least 8 characters';
+                } elseif (preg_match($passwordValidation, $data['password'])) {
+                    $data['password_error'] = 'Password must be have at least one numeric value.';
                 }
-
-                if(empty($data['confirm_password'])){
-                    $data['confirm_password_err'] = 'Please enter confirm password';
-                }
-                else{
-                    if($data['password'] != $data['confirm_password']){
-                        $data['confirm_password_err'] = 'Passwords do not match';
+    
+                //Validate confirm password
+                if (empty($data['confirm_password'])) {
+                    $data['confirmPassword_error'] = 'Please enter password.';
+                } else {
+                    if ($data['password'] != $data['confirmPassword']) {
+                    $data['confirmPassword_error'] = 'Passwords do not match, please try again.';
                     }
                 }
 
@@ -294,7 +299,7 @@ use PHPMailer\PHPMailer\Exception;
                             }
                         }
                         else {
-                            $data['passwordError'] = 'Password or email is incorrect. Please try again.';
+                            $data['passwordError'] = 'Password or email is incorrect.';
                         }
                 }
                 else {
@@ -305,7 +310,7 @@ use PHPMailer\PHPMailer\Exception;
                         $this->createUserSession($loggedInUser);
                     }
                     else {
-                        $data['passwordError'] = 'Password or email is incorrect. Please try again.';
+                        $data['passwordError'] = 'Password or email is incorrect.';
                     }
                 }
                     

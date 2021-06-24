@@ -380,85 +380,128 @@
 
         public function survey_list() {
             $this->surveyModel = $this->model('survey');
+            extract($_POST);
 
-            // Get Page # in URL
-            $page = $this->getPage();
-                
-            // Limit row displayed
-            $limit = 10;
-            $start = ($page - 1) * $limit;
+            if(!isset($isSearch)){
+                // Get Page # in URL
+                $page = $this->getPage();
+                    
+                // Limit row displayed
+                $limit = 10;
+                $start = ($page - 1) * $limit;
 
-            $survey = $this->surveyModel->showSurveyIndex($start, $limit);
+                $survey = $this->surveyModel->showSurveyIndex($start, $limit);
 
-            $pagination = $this->surveyModel->NoOfResults();
+                $pagination = $this->surveyModel->NoOfResults();
 
-            $total = count($pagination);
-            $pages = ceil($total/$limit);
+                $total = count($pagination);
+                $pages = ceil($total/$limit);
 
-            // No URL bypass
-            if($pages == 0) {
-                $pages = 1;
-            }
-            if($page > $pages) {
-                redirect('admin/survey_list?page='.$pages);
-            }
-
-            $startFormula = $start + 1;
-            $limitFormula = $startFormula - 1 + $limit;
-
-            if($page == $pages) {
-                if ($limitFormula >= $total) {
-                    $limitFormula = $total;
+                // No URL bypass
+                if($pages == 0) {
+                    $pages = 1;
                 }
-            }
+                if($page > $pages) {
+                    redirect('admin/survey_list?page='.$pages);
+                }
 
-            if($total == 0) {
-                $startFormula = 0;
-                $limitFormula = 0;
-            }
+                $startFormula = $start + 1;
+                $limitFormula = $startFormula - 1 + $limit;
 
-            $data = [
-                'survey' => $survey,
-                'start' => $startFormula,
-                'limit' => $limitFormula,
-                'total' => $total,
-                'first' => '?page=1',
-                'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
-                'next' => '?page='. ($page == $pages ? $pages : $page + 1),
-                'last' => '?page=' . $pages
-            ];
-        
-            $this->view('admin_d/survey', $data);
+                if($page == $pages) {
+                    if ($limitFormula >= $total) {
+                        $limitFormula = $total;
+                    }
+                }
+
+                if($total == 0) {
+                    $startFormula = 0;
+                    $limitFormula = 0;
+                }
+
+                $data = [
+                    'survey' => $survey,
+                    'start' => $startFormula,
+                    'limit' => $limitFormula,
+                    'total' => $total,
+                    'first' => '?page=1',
+                    'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+                    'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+                    'last' => '?page=' . $pages
+                ];
+            
+                $this->view('admin_d/survey', $data);
+            } else {
+                $survey = $this->surveyModel->searchSurvey($searchKey);
+                //array_print($events);
+                if(!empty($survey)){
+                    $data = ['survey'=> $survey];
+                }
+                else{
+                    $data = ['survey' => ''];
+                }
+          
+                $this->view('search/survey_list', $data);
+            }
         }
     
 
         public function survey_report(){
             $this->surveyReportModel = $this->model('s_report');
-            $surveys = $this->surveyReportModel->showSurvey();
-            
-            foreach($surveys as $survey){
-                $survey->{'respondents'} = $this->surveyReportModel->surveyTaken($survey->id);
-            }
+            extract($_POST);
 
-            $currentDate = date('Y-m-d');
-            $activeSurvey = array();
-            $pastSurvey = array();
+            if(!isset($isSearch)){
+                $surveys = $this->surveyReportModel->showSurvey();
+                
+                foreach($surveys as $survey){
+                    $survey->{'respondents'} = $this->surveyReportModel->surveyTaken($survey->id);
+                }
 
-            foreach($surveys as $survey){
-                if($survey->end_date >= $currentDate){
-                    array_push($activeSurvey,$survey);
+                $currentDate = date('Y-m-d');
+                $activeSurvey = array();
+                $pastSurvey = array();
+
+                foreach($surveys as $survey){
+                    if($survey->end_date >= $currentDate){
+                        array_push($activeSurvey,$survey);
+                    }
+                    else{
+                        array_push($pastSurvey,$survey);
+                    }
+                }
+
+                $data = [
+                    'activeSurvey' => $activeSurvey,
+                    'pastSurvey' => $pastSurvey
+                ];
+
+                $this->view('admin_d/survey_report', $data);
+            } else {
+                $surveys = $this->surveyReportModel->searchSurvey($searchKey);
+                
+                foreach($surveys as $survey){
+                    $survey->{'respondents'} = $this->surveyReportModel->surveyTaken($survey->id);
+                }
+
+                $currentDate = date('Y-m-d');
+                $activeSurvey = array();
+
+                foreach($surveys as $survey){
+                    if($survey->end_date >= $currentDate){
+                        array_push($activeSurvey,$survey);
+                    }
+                }
+
+                //array_print($events);
+                if(!empty($survey)){
+                    $data = ['activeSurvey'=> $surveys];
                 }
                 else{
-                    array_push($pastSurvey,$survey);
+                    $data = ['activeSurvey' => ''];
                 }
+          
+                $this->view('search/survey_report', $data);
             }
-
-            $data = [
-                'activeSurvey' => $activeSurvey,
-                'pastSurvey' => $pastSurvey
-            ];
-
-            $this->view('admin_d/survey_report', $data);
         }
 
         public function getPage() {
@@ -490,97 +533,110 @@
 
         public function alumni_report() {
             $this->alumniRModel = $this->model('alumnir_model');
-            // $alumni = $this->alumniRModel->showAll();
-            $allCount = $this->alumniRModel->allCount();
-            $batch = $this->alumniRModel->showBatch();
-            $course = $this->alumniRModel->showCourses();
-            $alumniPerBatch = $this->alumniRModel->alumniCountPerBatch();
-            if(!empty($allCount)) {
-                $allCount = count($allCount);
-            }
+            extract($_POST);
 
-           
-
-            // Get Page # in URL
-            $page = $this->getPage();
-
-            // Limit row displayed
-            $limit = 20;
-            $start = ($page - 1) * $limit;
-     
-            $newData = [
-                'start' => $start,
-                'limit' => $limit,
-            ];
-
-            if(isset($_POST['dateFilter'])) {
-                if($_POST['dateFilter'] == 1) {
-                    $startDate = date('Y')."-01-01";
-                    $endDate = date('Y')."-06-31";
-                } 
-
-                if ($_POST['dateFilter'] == 2) {
-                    $startDate = date('Y')."-07-01";
-                    $endDate = date('Y')."-12-31";
+            if(!isset($isSearch)) {
+                // $alumni = $this->alumniRModel->showAll();
+                $allCount = $this->alumniRModel->allCount();
+                $batch = $this->alumniRModel->showBatch();
+                $course = $this->alumniRModel->showCourses();
+                $alumniPerBatch = $this->alumniRModel->alumniCountPerBatch();
+                if(!empty($allCount)) {
+                    $allCount = count($allCount);
                 }
 
+                // Get Page # in URL
+                $page = $this->getPage();
+
+                // Limit row displayed
+                $limit = 20;
+                $start = ($page - 1) * $limit;
+        
                 $newData = [
                     'start' => $start,
                     'limit' => $limit,
-                    'date' => $_POST['dateFilter'],
-                    'startDate' => $startDate,
-                    'endDate' => $endDate
-                ];    
-            }
+                ];
 
-            $alumni = $this->alumniRModel->showAlumniIndex($newData);
-            
+                if(isset($_POST['dateFilter'])) {
+                    if($_POST['dateFilter'] == 1) {
+                        $startDate = date('Y')."-01-01";
+                        $endDate = date('Y')."-06-31";
+                    } 
 
-            $pagination = $this->alumniRModel->NoOfResults();
+                    if ($_POST['dateFilter'] == 2) {
+                        $startDate = date('Y')."-07-01";
+                        $endDate = date('Y')."-12-31";
+                    }
 
-           
-            $total = count($pagination);
-            $pages = ceil($total/$limit);
-
-            // No URL bypass
-            if($pages == 0) {
-                $pages = 1;
-            }
-            if($page > $pages) {
-                redirect('admin/alumni_report?page='.$pages);
-            }
-
-            $startFormula = $start + 1;
-            $limitFormula = $startFormula - 1 + $limit;
-
-            if($page == $pages) {
-                if ($limitFormula >= $total) {
-                    $limitFormula = $total;
+                    $newData = [
+                        'start' => $start,
+                        'limit' => $limit,
+                        'date' => $_POST['dateFilter'],
+                        'startDate' => $startDate,
+                        'endDate' => $endDate
+                    ];    
                 }
-            }
 
-            if($total == 0) {
-                $startFormula = 0;
-                $limitFormula = 0;
-            }
+                $alumni = $this->alumniRModel->showAlumniIndex($newData);
+                
+
+                $pagination = $this->alumniRModel->NoOfResults();
+
             
-            $data = [
-                'allCount' => $allCount,
-                'alumni' => $alumni,
-                'batch' => $batch,
-                'course' => $course,
-                'alumniPerBatch' => $alumniPerBatch,
+                $total = count($pagination);
+                $pages = ceil($total/$limit);
 
-                'start' => $startFormula,
-                'limit' => $limitFormula,
-                'total' => $total,
-                'first' => '?page=1',
-                'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
-                'next' => '?page='. ($page == $pages ? $pages : $page + 1),
-                'last' => '?page=' . $pages
-            ];
+                // No URL bypass
+                if($pages == 0) {
+                    $pages = 1;
+                }
+                if($page > $pages) {
+                    redirect('admin/alumni_report?page='.$pages);
+                }
 
-            $this->view('admin_d/alumni_report', $data);
+                $startFormula = $start + 1;
+                $limitFormula = $startFormula - 1 + $limit;
+
+                if($page == $pages) {
+                    if ($limitFormula >= $total) {
+                        $limitFormula = $total;
+                    }
+                }
+
+                if($total == 0) {
+                    $startFormula = 0;
+                    $limitFormula = 0;
+                }
+                
+                $data = [
+                    'allCount' => $allCount,
+                    'alumni' => $alumni,
+                    'batch' => $batch,
+                    'course' => $course,
+                    'alumniPerBatch' => $alumniPerBatch,
+
+                    'start' => $startFormula,
+                    'limit' => $limitFormula,
+                    'total' => $total,
+                    'first' => '?page=1',
+                    'previous' => '?page=' . ($page == 1 ? '1' : $page - 1),
+                    'next' => '?page='. ($page == $pages ? $pages : $page + 1),
+                    'last' => '?page=' . $pages
+                ];
+
+                $this->view('admin_d/alumni_report', $data);
+            } else {
+                $alumni = $this->alumniRModel->searchAlumniReport($searchKey);
+                //array_print($events);
+                if(!empty($alumni)){
+                    $data = ['alumni'=> $alumni];
+                }
+                else{
+                    $data = ['alumni' => ''];
+                }
+          
+                $this->view('search/alumni_report', $data);
+            }
         }
 
         public function alumni_report_1st_half() {

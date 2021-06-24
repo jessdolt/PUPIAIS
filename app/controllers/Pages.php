@@ -107,15 +107,17 @@ class Pages extends Controller{
         $this->postModel = $this->model('post');
         $this->eventModel = $this->model('event');
         $this->jobModel = $this->model('job_portal');
+        $this->forumModel = $this->model('new_forum');
 
         $news = $this->postModel->showNewsHome();
         $events = $this->eventModel->showEventHome();
         $job_portal = $this->jobModel->showJobsHome();
-
+        $forum = $this->forumModel->forumIndex();
         $data = [
             'news' => $news,
             'events' => $events,
-            'job_portals' => $job_portal
+            'job_portals' => $job_portal,
+            'forum' => $forum
         ];
 
          $this->view('pages/home', $data);

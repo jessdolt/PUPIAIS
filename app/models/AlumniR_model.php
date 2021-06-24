@@ -23,6 +23,26 @@
             }
         }
 
+        public function searchAlumniReport($char){
+            $this->db->query("SELECT * from employment 
+                            INNER JOIN alumni
+                            ON employment.alumni_id = alumni.alumni_id
+                            INNER JOIN batch
+                            ON alumni.batchID = batch.id
+                            WHERE first_name like CONCAT('%', :test, '%') 
+                            OR last_name like CONCAT('%', :test, '%')
+                            OR student_no like CONCAT('%', :test, '%')
+                            ");
+            $this->db->bind(':test' , $char);
+            $row = $this->db->resultSet();
+            if($this->db->rowCount() > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
         public function showAlumniFiltered($newData) {
             $this->db->query('SELECT * FROM employment 
                             INNER JOIN alumni
@@ -411,7 +431,7 @@
         }
 
         public function selectExport($id) {
-            $this->db->query('SELECT employment_id AS "Employment ID", 
+            $this->db->query('SELECT student_no AS "Student No", 
                             last_name AS "Last Name",
                             first_name AS "First Name",
                             middle_name as "Middle Name",

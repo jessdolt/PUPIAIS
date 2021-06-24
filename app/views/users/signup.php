@@ -167,14 +167,14 @@
                         <label for="password" class="outsideLabel">Password:</label>
                         <div class="textFieldContainer">
                             <input type="password" name="password" id="password"required>
-                            <span class="error"></span>
+                            <span class="error"><?php echo $data['password_error']?></span>
                         </div>
                     </div>
                     <div> 
                         <label for="confirm-password" class="outsideLabel">Confirm Password:</label>
                         <div class="textFieldContainer">
                             <input type="password" name="confirm_password" id="confirm-password"required>
-                            <span class="error"></span>
+                            <span class="error"><?php echo $data['confirmPassword_error']?></span>
                         </div>
                     </div>
 
