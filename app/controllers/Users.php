@@ -165,7 +165,7 @@ use PHPMailer\PHPMailer\Exception;
                        
                     }
                     else{
-                        echo 'not validated';
+                        redirect('users/signup_failed');
                     }
 
                 } 
@@ -198,6 +198,11 @@ use PHPMailer\PHPMailer\Exception;
                 'email' => $email
             ];
             $this->view('users/alumni_verify', $data);
+        }
+
+        public function signup_failed(){
+            $data = [];
+            $this->view('users/alumni_failed', $data);
         }
 
         function sendConfirmation($email){
