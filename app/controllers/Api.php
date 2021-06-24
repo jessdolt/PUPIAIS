@@ -227,6 +227,55 @@
             }
         }
 
+        public function login_count($request_type){
+            if($request_type == 'Daily'){
+                $result = $this->apiModel->getDailyCount();
+                $count_arr = array();
+
+                if(!empty($result)){
+                    array_push($count_arr, $result->visit_count);
+                }
+                else{
+                    echo json_encode(
+                        array('Count' => 0)
+                    );
+                }
+
+                echo json_encode($count_arr);
+            }
+            else if($request_type == 'Monthly'){
+                $result = $this->apiModel->getMonthlyCount();
+                $count_arr = array();
+
+                if(!empty($result)){
+                    array_push($count_arr, $result[0]->visit_count);
+                }
+                else{
+                    echo json_encode(
+                        array('Count' => 0)
+                    );
+                }
+
+                echo json_encode($count_arr);
+
+            }
+            else if($request_type == 'Yearly'){
+                $result = $this->apiModel->getYearlyCount();
+                $count_arr = array();
+
+                if(!empty($result)){
+                    array_push($count_arr, $result[0]->visit_count);
+                }
+                else{
+                    echo json_encode(
+                        array('Count' => 0)
+                    );
+                }
+
+                echo json_encode($count_arr);
+            }
+        }
+
         public function survey($request_type){
             if($request_type == 'latest'){
                 $result = $this->apiModel->latestSurvey_read();
@@ -436,5 +485,7 @@
     
             return $newArr;
         }
+
+    
       
     }

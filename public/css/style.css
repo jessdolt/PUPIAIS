@@ -1688,11 +1688,12 @@ html {
         border-top-right-radius: 1rem; }
       .admin .mainContent .data-table tr {
         display: flex;
-        gap: 3.2rem;
         align-items: center;
         justify-content: center;
         padding: 0.8rem 1.6rem;
         border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+        .admin .mainContent .data-table tr > * + * {
+          margin-left: 3.2rem; }
       .admin .mainContent .data-table thead {
         height: 4.3rem;
         border-top-left-radius: 1rem;
@@ -2891,7 +2892,7 @@ ul {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 25;
-  transition: opacity 2s ease;
+  transition: opacity 300ms ease;
   opacity: 0; }
   .alertModalContainer.show, .notifModalContainer.show {
     opacity: 1;
@@ -2965,6 +2966,8 @@ ul {
         background-image: url("../images/errorIcon.svg"); }
     .alertModalContainer .alertModal.manage h2, .notifModalContainer .alertModal.manage h2 {
       font-size: 2.4rem; }
+    .alertModalContainer .alertModal.manage form > div, .notifModalContainer .alertModal.manage form > div {
+      margin-top: 2.4rem; }
     .alertModalContainer .alertModal svg, .notifModalContainer .alertModal svg {
       position: absolute;
       top: -75px;
@@ -3685,7 +3688,8 @@ ul {
     .home .welcomeBox div.container {
       display: grid;
       grid-template-columns: 4.5rem 1fr;
-      grid-template-areas: "svg header" "message message";
+      grid-template-areas: "svg header"
+ "message message";
       column-gap: 0.8rem;
       row-gap: 1.6rem;
       align-items: center; }
@@ -3694,7 +3698,8 @@ ul {
           column-gap: 2.4rem;
           row-gap: 0.8rem;
           grid-template-columns: 12.7rem 1fr;
-          grid-template-areas: "svg header" "svg message"; } }
+          grid-template-areas: "svg header"
+ "svg message"; } }
       .home .welcomeBox div.container svg {
         grid-area: svg; }
       .home .welcomeBox div.container h2 {
@@ -5408,7 +5413,8 @@ select, input, textarea {
 
 .survey .mainContent .data-table th:nth-child(3), .survey .mainContent .data-table td:nth-child(3) {
   min-width: 13.6rem;
-  flex: 1; }
+  flex: 1;
+  margin-left: 1.2rem; }
 
 .survey .mainContent .data-table th:nth-child(4), .survey .mainContent .data-table td:nth-child(4) {
   flex: 2; }
@@ -5416,8 +5422,7 @@ select, input, textarea {
 .survey .mainContent .data-table th:nth-child(5), .survey .mainContent .data-table th:nth-child(6), .survey .mainContent .data-table td:nth-child(5), .survey .mainContent .data-table td:nth-child(6) {
   min-width: 12.6rem; }
 
-.survey .mainContent .data-table td:nth-child(2) {
-  height: 2.8rem;
+.survey .mainContent .data-table td:nth-child(2).google-form {
   background-image: url("../images/google-forms-icon-only.svg");
   background-repeat: no-repeat;
   background-position: center; }
@@ -5555,7 +5560,7 @@ select, input, textarea {
             border-radius: 10rem;
             background-color: #EEEEEE;
             color: rgba(0, 0, 0, 0.87); }
-            .dashboard .mainContent .container .card-con .card-footer button:nth-child(2) {
+            .dashboard .mainContent .container .card-con .card-footer button.active {
               background-color: #A63F3F;
               color: #FFFFFF; }
           .dashboard .mainContent .container .card-con .card-footer a {
@@ -5604,7 +5609,10 @@ select, input, textarea {
   max-height: 34.4rem;
   overflow: auto; }
   .admin.dataInput .reportView .answerCon canvas {
-    max-height: 100%; }
+    align-self: center;
+    min-height: 34.4rem;
+    max-height: 100%;
+    max-width: 80%; }
 
 .mainContent.questionnaire .form:first-child {
   display: flex;

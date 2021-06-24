@@ -2,7 +2,6 @@
             <main class="admin events">
                 <section class="pageSpecificHeader">
                     <div>
-                
                         <h2>Content 
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.47246 19.0139C9.23881 19.0143 9.01237 18.9329 8.83246 18.7839C8.7312 18.6999 8.6475 18.5968 8.58615 18.4805C8.5248 18.3641 8.487 18.2368 8.47493 18.1058C8.46285 17.9749 8.47673 17.8428 8.51578 17.7172C8.55482 17.5916 8.61826 17.4749 8.70246 17.3739L13.1825 12.0139L8.86246 6.64386C8.7794 6.54157 8.71737 6.42387 8.67993 6.29753C8.6425 6.17119 8.63041 6.0387 8.64435 5.90767C8.65829 5.77665 8.69798 5.64966 8.76116 5.53403C8.82433 5.41839 8.90974 5.31638 9.01246 5.23386C9.11593 5.14282 9.23709 5.07415 9.36836 5.03216C9.49962 4.99017 9.63814 4.97577 9.77524 4.98986C9.91233 5.00394 10.045 5.04621 10.165 5.11401C10.285 5.18181 10.3897 5.27368 10.4725 5.38386L15.3025 11.3839C15.4495 11.5628 15.53 11.7872 15.53 12.0189C15.53 12.2505 15.4495 12.4749 15.3025 12.6539L10.3025 18.6539C10.2021 18.7749 10.0747 18.8705 9.9305 18.9331C9.78629 18.9956 9.62937 19.0233 9.47246 19.0139Z" fill="white"/>
@@ -20,7 +19,7 @@
                     </div>
                     <div class="container">
                         <div class="textFieldContainer">
-                            <input type="search" name="searchNews" id="search-news" placeholder="Search">
+                            <input type="search" name="searchNews" id="search-events" placeholder="Search">
                             <label class="icon" for="search-news">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M15.5001 13.9999H14.7101L14.4301 13.7299C15.6301 12.3299 16.2501 10.4199 15.9101 8.38989C15.4401 5.60989 13.1201 3.38989 10.3201 3.04989C6.09014 2.52989 2.53014 6.08989 3.05014 10.3199C3.39014 13.1199 5.61014 15.4399 8.39014 15.9099C10.4201 16.2499 12.3301 15.6299 13.7301 14.4299L14.0001 14.7099V15.4999L18.2501 19.7499C18.6601 20.1599 19.3301 20.1599 19.7401 19.7499C20.1501 19.3399 20.1501 18.6699 19.7401 18.2599L15.5001 13.9999ZM9.50014 13.9999C7.01014 13.9999 5.00014 11.9899 5.00014 9.49989C5.00014 7.00989 7.01014 4.99989 9.50014 4.99989C11.9901 4.99989 14.0001 7.00989 14.0001 9.49989C14.0001 11.9899 11.9901 13.9999 9.50014 13.9999Z" fill="black" fill-opacity="0.6"/>
@@ -29,9 +28,9 @@
                         </div>
                     </div>
                 </section>
-                <section class="mainContent">
+                <section class="mainContent" >
                 <form class="table-form" id="page-form" action="<?php echo URLROOT;?>/events/delete" method="POST">
-                    <table class="data-table">
+                    <table class="data-table" >
                         <thead>
                             <tr>
                                 <th></th>
@@ -42,8 +41,8 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php foreach($data['event'] as $event){?>
+                        <tbody id="search_insert">
+                            <?php foreach($data['events'] as $event){?>
                             <tr>
                                 <td><input type="checkbox" name="checkbox[]" value="<?php echo $event->id; ?>"></td>
                                 <td><img src="<?php echo URLROOT;?>/uploads/<?php echo $event->image?>"></td>
@@ -113,6 +112,28 @@
 <?php flash('events_add_success')?>
 <?php flash('events_edit_success')?>
 <?php flash('events_delete_success')?>
+
+<script>
+    $(document).on('input', '#search-events', function(){
+            const searchChar = $(this).val();
+            $.ajax({ 
+                    url:'<?php echo URLROOT;?>/admin/events',
+                    data: { searchKey : searchChar, isSearch : 1},
+                    method: 'POST',
+                    type: 'POST',
+                    success:function(res){
+                        // var newObj = jQuery.parseJSON(res);
+                        // console.log(newObj[0].title);
+                        //console.log(res);
+                        $('#search_insert').html(res);
+                        //console.log(res);   
+                    }, 
+                    error: function(er){
+                        console.log(er);
+                    }
+            });
+    })
+</script>
 
 <script>
     alertEvents();

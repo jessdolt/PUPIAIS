@@ -170,6 +170,47 @@
                 return 0;
             }
         }
+
+        public function getDailyCount(){
+            $currentDay = date('Y-m-d');
+           $this->db->query("SELECT visit_count FROM login_count WHERE login_date = :dayToday ");
+           $this->db->bind(':dayToday', $currentDay);
+           $row = $this->db->single();
+           if($this->db->rowCount() > 0){
+               return $row;
+           }
+           else{
+               return false;
+           }
+        }
+
+       public function getMonthlyCount(){
+           $monthAndFirstDay = date('Y-m-1');
+           $monthAndLastDay = date('Y-m-t');
+           $this->db->query('SELECT SUM(visit_count) as visit_count from login_count WHERE login_date BETWEEN :start_month AND :end_month ');
+           $this->db->bind(':start_month', $monthAndFirstDay);
+           $this->db->bind(':end_month', $monthAndLastDay);
+           $row = $this->db->resultSet();
+           if($this->db->rowCount() > 0){
+               return $row;
+           }
+           else{
+               return false;
+           }
+        }
+
+       public function getYearlyCount(){
+           $currentYear = date('Y');
+           $this->db->query('SELECT SUM(visit_count) as visit_count from login_count WHERE YEAR(login_date) = :current_year');
+           $this->db->bind(':current_year', $currentYear);
+           $row = $this->db->resultSet();
+           if($this->db->rowCount() > 0){
+               return $row;
+           }
+           else{
+               return false;
+           }
+       }
         
         // public function survey_list_read(){
         //     $this->db->query('SELECT * from events');

@@ -41,10 +41,12 @@
 
 <body>
 <?php 
-    array_print($data);
-    $arr1 = $data['topic'];
 
-    array_print($arr1);
+    array_print($data);
+    // array_print($data);
+    // $arr1 = $data['topic'];
+
+    // array_print($arr1);
 
     // $arr2 = $data['comments'];
     // $arr3 = $data['replies'];

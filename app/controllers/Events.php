@@ -210,6 +210,12 @@
                 die("There's an error deleting this record");
             }
         }   
+
+        public function search(){
+            extract($_POST);
+            $events = $this->eventModel->searchEvents($searchChar);
+            echo json_encode($events);
+        }
         
     
     }

@@ -49,7 +49,7 @@
                                 <?php foreach($data['survey'] as $survey):?>
                                 <tr>
                                     <td><input type="checkbox" name="checkbox[]" value="<?php echo $survey->id;?>"></td>
-                                    <td></td>
+                                    <td <?php echo ($survey->s_type == "google_form") ? 'class="google-form"' :''?>></td>
                                     <td><p class="title"><?php  echo $survey->title?></p></td>
                                     <td><p class="Description"><?php echo $survey->description?></p></td>
                                     <td><time datetime="0000-09-02"><?php echo $survey->start_date?></time></td>
