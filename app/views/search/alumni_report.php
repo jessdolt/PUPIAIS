@@ -19,5 +19,33 @@
     <?php endforeach;?>
     <?php else:?>     
     <?php endif;?>
-
+<script>
+    $(document).ready(function(){
+           $('.viewAlumni').click(function(){
+                var employment_id = $(this).attr('data-employment_id');
+                // console.log(employment_id);
+                $.ajax({
+                    url:'<?php echo URLROOT;?>/alumni_report/report',
+                    data: { id : employment_id},
+                    method: 'POST',
+                    type: 'POST',
+                    success:function(res){
+                        // console.log(res);
+                        $('#manageModal').html(res);
+                        $('#manageModal').addClass('show');
+                        closeModal();
+                    }, 
+                    error: function(er){
+                        console.log(er);
+                    }
+                });
+            })  
+            
+            function closeModal() {
+                $('.close-btn').click(function() {
+                    $('#manageModal').removeClass('show');
+                })
+            }
+    })
+</script>
 <script src="<?php echo URLROOT;?>/js/index.js" defer></script>
