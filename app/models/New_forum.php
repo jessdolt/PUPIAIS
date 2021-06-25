@@ -202,7 +202,7 @@
             ON admin.user_id = users.user_id
             LEFT JOIN alumni
             ON users.a_id = alumni.alumni_id
-            ORDER BY reply.replied_at DESC
+            ORDER BY reply.replied_at ASC
             ');
             $results = $this->db->resultSet();
             return $results;
