@@ -1,15 +1,15 @@
 <?php 
     //LOCAL DB (PHPMYADMIN)
-    // define('DB_HOST', 'localhost');
-    // define('DB_USER', 'root');
-    // define('DB_PASS', '12345');
-    // define('DB_NAME', 'pupiais');
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '12345');
+    define('DB_NAME', 'pupiais');
 
     //REMOTE DB (LIVE) 
-    define('DB_HOST', 'us-cdbr-east-04.cleardb.com');
-    define('DB_USER', 'b5ff9e87820ed4');
-    define('DB_PASS', 'cfda578d');
-    define('DB_NAME', 'heroku_94e582ab40677b7');
+    // define('DB_HOST', 'us-cdbr-east-04.cleardb.com');
+    // define('DB_USER', 'b5ff9e87820ed4');
+    // define('DB_PASS', 'cfda578d');
+    // define('DB_NAME', 'heroku_94e582ab40677b7');
 
     //REmote mysql phpmyadmin
     // define('DB_HOST', 'remotemysql.com');
