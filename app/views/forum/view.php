@@ -89,16 +89,12 @@
                     </form>
                     <!-- direct comment -->
                     <ul class="comment-list" >
-                        <?php foreach($data['comment'] as $comment): ?>
+                    <?php foreach($data['comment'] as $comment): ?>
                             <?php if($comment->comment_for == $data['post']->topic_id): ?>
                         <li class="list-item" id="<?php echo $comment->comment_id?>">
                             <form action="" class="comment-con-thread">
-<<<<<<< HEAD
                                 
                                 <?php if($comment->user_type == 1||$comment->user_type == 2||$comment->user_type == 3): ?>
-=======
-                                <?php if($comment->user_type == 1||$comment->user_type == 2): ?>
->>>>>>> yes
                                 <img src="<?php echo URLROOT;?>/uploads/<?php echo $comment->admin_image?>" width="40px" height="40px">
                                 <?php else: ?>
                                 <img src="<?php echo URLROOT;?>/uploads/<?php echo $comment->image?>" width="40px" height="40px">
