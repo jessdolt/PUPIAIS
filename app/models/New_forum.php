@@ -21,6 +21,15 @@
             }
         }
         //comment counter
+        
+        public function forumIndex() {
+            $this->db->query('SELECT * FROM `topic` ORDER BY created_at DESC LIMIT 5');
+            $row = $this->db->resultSet();
+            if($row > 0){
+                return $row;
+            }
+        }
+        
 
         public function commentCounter($id){
             $this->db->query('SELECT *, COUNT(comment_id) as counter FROM `topic`  LEFT JOIN `comment` ON comment.comment_for = topic.topic_id WHERE comment_for = :id');

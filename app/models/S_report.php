@@ -18,6 +18,18 @@
             }
         }
 
+        public function searchSurvey($char){
+            $this->db->query("SELECT * from survey_set WHERE title like CONCAT('%', :test, '%') ORDER BY date_created DESC");
+            $this->db->bind(':test' , $char);
+            $row = $this->db->resultSet();
+            if($this->db->rowCount() > 0){
+                return $row;
+            }
+            else{
+                return false;
+            }
+        }
+
        
 
 
