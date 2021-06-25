@@ -1157,7 +1157,7 @@ table tbody {
     color: #A63F3F; }
     @media (min-width: 1367px) {
       .adminNav .mainCategoryList {
-        min-height: 25.2rem;
+        /* min-height: 25.2rem; */
         width: 22rem;
         /* gap: .8rem; */
         margin-bottom: 2rem; }
@@ -1290,8 +1290,9 @@ table tbody {
     .adminNav.navOpen .accountNameContainer {
       display: flex; }
     .adminNav.navOpen .mainCategoryList {
-      min-height: 25.2rem;
+      /* min-height: 25.2rem; */
       width: 22rem;
+      margin-bottom: 2rem;
       /* gap: .8rem; */ }
       .adminNav.navOpen .mainCategoryList > * + * {
         margin-top: 0.8rem; }
@@ -1310,7 +1311,8 @@ table tbody {
       .adminNav.navOpen .mainCategoryList .dropArrow {
         display: block; }
     .adminNav.navOpen button {
-      display: block; }
+      display: block;
+      margin-top: auto !important; }
 
 .users .adminNav {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); }
@@ -6003,7 +6005,7 @@ select, input, textarea {
     border-radius: 0 0 1rem 1rem;
     filter: opacity(0.9);
     margin: 0;
-    margin-top: auto;
+    margin-top: auto !important;
     display: flex;
     /* gap: 0.4rem; */
     padding: 1.2rem 3.2rem; }

@@ -93,9 +93,9 @@
             if($_SESSION['user_type'] == 'Super Admin'|| $_SESSION['user_type'] == 'Admin' || $_SESSION['user_type'] == 'Content Creator'){
                 $current = $this->adminModel->single($_SESSION['id']);
             } 
-         /*    else{ */
+             else{ 
                 $current = $this->alumniModel->getAlumniByID($_SESSION['alumni_id']);
-           /*  } */
+            } 
             $commentCounter = $this->forumModel->commentCounter($id);
             $replyCounter = $this->forumModel->replyCounter($id);
             $pop = $this->forumModel->getPopular();

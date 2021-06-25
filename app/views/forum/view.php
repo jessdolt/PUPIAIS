@@ -96,8 +96,8 @@
                         <li class="list-item" id="<?php echo $comment->comment_id?>">
                             <form action="" class="comment-con-thread">
                                 
-                                <?php if($comment->user_type == 1||$comment->user_type == 2): ?>
-                                <img src="<?php echo (!empty($data['admin']->image) ? URLROOT. '/uploads//'.$data['admin']->image: URLROOT.'/images/official-default-avatar.svg')?>" width="40px" height="40px">
+                                <?php if($comment->user_type == 1||$comment->user_type == 2||$comment->user_type == 3): ?>
+                                <img src="<?php echo URLROOT;?>/uploads/<?php echo $comment->admin_image?>" width="40px" height="40px">
                                 <?php else: ?>
                                 <img src="<?php echo (!empty($data['alumni']->image) ? URLROOT. '/uploads//'.$comment->image: URLROOT.'/images/official-default-avatar.svg')?>" width="40px" height="40px">
                                 <?php endif; ?>
@@ -140,7 +140,7 @@
                                 <?php if($reply->parent_comment == $comment->comment_id): ?>
                              <li class="list-item">
                                     <form action="<?php echo URLROOT;?>/forum/reply/<?php echo $comment->comment_id;?>/<?php echo $data['post']->topic_id ?>" method = "POST" class="comment-con-thread">
-                                        <?php if ($reply->user_type == 1||$reply->user_type == 2): ?>
+                                        <?php if ($reply->user_type == 1||$reply->user_type == 2||$reply->user_type == 3): ?>
                                         <img src="<?php echo URLROOT;?>/uploads/<?php echo $reply->admin_image?>" width="40px" height="40px">
                                         <?php else: ?>
                                         <img src="<?php echo URLROOT;?>/uploads/<?php echo $reply->image?>" width="40px" height="40px">
