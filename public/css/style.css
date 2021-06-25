@@ -1078,7 +1078,7 @@ table tbody {
   flex-flow: column;
   align-items: center;
   z-index: 22;
-  transition: 200ms ease;
+  transition: min-width 200ms ease;
   background-color: #FFFFFF;
   overflow-x: hidden;
   overflow-y: auto;
@@ -3742,7 +3742,8 @@ ul {
     .home .welcomeBox div.container {
       display: grid;
       grid-template-columns: 4.5rem 1fr;
-      grid-template-areas: "svg header" "message message";
+      grid-template-areas: "svg header"
+ "message message";
       column-gap: 0.8rem;
       row-gap: 1.6rem;
       align-items: center; }
@@ -3751,7 +3752,8 @@ ul {
           column-gap: 2.4rem;
           row-gap: 0.8rem;
           grid-template-columns: 12.7rem 1fr;
-          grid-template-areas: "svg header" "svg message"; } }
+          grid-template-areas: "svg header"
+ "svg message"; } }
       .home .welcomeBox div.container svg {
         grid-area: svg; }
       .home .welcomeBox div.container h2 {
