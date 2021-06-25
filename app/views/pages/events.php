@@ -4,7 +4,7 @@
         <section class="heroBox">
             <div class="tint">
                 <div class="container">
-                    <h1 class="heroBoxText">University News and Articles</h1>
+                    <h1 class="heroBoxText">University Events</h1>
                     <div class="textFieldContainer">
                         <input type="search" name="searchNews" id="search-news" placeholder="Search">
                         <label class="icon" for="search-news">

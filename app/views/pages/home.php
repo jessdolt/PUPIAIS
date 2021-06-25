@@ -54,13 +54,13 @@
         </section>
         <section class="mainContent">
             <div class="container newsCon">
-                <h3>
+                <h2>
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M25.2001 9.00005H18.0001V12.6H25.2001V9.00005ZM25.2001 14.4H18.0001V16.2H25.2001V14.4ZM16.2001 9.00005H10.8001V16.2H16.2001V9.00005ZM16.2001 19.8H25.2001V18H16.2001V19.8ZM21.6001 23.4H25.2001V21.6H21.6001V23.4ZM25.2001 25.2001H10.8001V27H25.2001V25.2001ZM19.8001 21.6H10.8001V23.4H19.8001V21.6ZM14.4001 18H10.8001V19.8H14.4001V18ZM30.6001 1.80005H5.4001C4.92271 1.80005 4.46487 1.98969 4.12731 2.32726C3.78974 2.66482 3.6001 3.12266 3.6001 3.60005V32.4C3.6001 32.8774 3.78974 33.3353 4.12731 33.6728C4.46487 34.0104 4.92271 34.2001 5.4001 34.2001H30.6001C31.0775 34.2001 31.5353 34.0104 31.8729 33.6728C32.2105 33.3353 32.4001 32.8774 32.4001 32.4V3.60005C32.4001 3.12266 32.2105 2.66482 31.8729 2.32726C31.5353 1.98969 31.0775 1.80005 30.6001 1.80005ZM28.8001 30.6H7.2001V5.40005H28.8001V30.6Z" fill="black" fill-opacity="0.87"/>
                     </svg>
                     University News
                   
-                </h3>
+                </h2>
                 <?php foreach($data['news'] as $post) : ?>
                 <article class="card news">
                     <img class="card-img" src="<?php echo URLROOT; ?>/uploads/<?php echo($post->image); ?>" alt="">
@@ -72,7 +72,7 @@
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15.75 14.3572V3.85718C15.75 3.02993 15.0773 2.35718 14.25 2.35718H12.75V0.857178H11.25V2.35718H6.75V0.857178H5.25V2.35718H3.75C2.92275 2.35718 2.25 3.02993 2.25 3.85718V14.3572C2.25 15.1844 2.92275 15.8572 3.75 15.8572H14.25C15.0773 15.8572 15.75 15.1844 15.75 14.3572ZM6.75 12.8572H5.25V11.3572H6.75V12.8572ZM6.75 9.85718H5.25V8.35718H6.75V9.85718ZM9.75 12.8572H8.25V11.3572H9.75V12.8572ZM9.75 9.85718H8.25V8.35718H9.75V9.85718ZM12.75 12.8572H11.25V11.3572H12.75V12.8572ZM12.75 9.85718H11.25V8.35718H12.75V9.85718ZM14.25 6.10718H3.75V4.60718H14.25V6.10718Z" fill="black" fill-opacity="0.6"/>
                                 </svg>
-                                Posted <?php echo time_elapsed_string($post->created_at); ?>
+                                <span> Posted <?php echo time_elapsed_string($post->created_at); ?></span>
                             </span>
                         </div>
                         <p class="description">
@@ -106,13 +106,13 @@
                 <hr>
             </div>
             <div class="container eventsCon">
-                <h3>
+                <h2>
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14.7492 21.2025L13.9832 25.5427L18 23.4936L22.0168 25.5427L21.2492 21.2025L24.5 18.1265L20.0092 17.4928L18 13.5427L15.9908 17.4928L11.5 18.1265L14.7492 21.2025Z" fill="black" fill-opacity="0.87"/>
                         <path d="M28.5 5H25.5V2H22.5V5H13.5V2H10.5V5H7.5C5.8455 5 4.5 6.3455 4.5 8V29C4.5 30.6545 5.8455 32 7.5 32H28.5C30.1545 32 31.5 30.6545 31.5 29V8C31.5 6.3455 30.1545 5 28.5 5ZM28.503 29H7.5V11H28.5L28.503 29Z" fill="black" fill-opacity="0.87"/>
                     </svg>
                     Events
-                </h3>
+                </h2>
 
                 <?php foreach($data['events'] as $events): ?>
                 <article class="card events">
@@ -124,7 +124,7 @@
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15.75 14.3572V3.85718C15.75 3.02993 15.0773 2.35718 14.25 2.35718H12.75V0.857178H11.25V2.35718H6.75V0.857178H5.25V2.35718H3.75C2.92275 2.35718 2.25 3.02993 2.25 3.85718V14.3572C2.25 15.1844 2.92275 15.8572 3.75 15.8572H14.25C15.0773 15.8572 15.75 15.1844 15.75 14.3572ZM6.75 12.8572H5.25V11.3572H6.75V12.8572ZM6.75 9.85718H5.25V8.35718H6.75V9.85718ZM9.75 12.8572H8.25V11.3572H9.75V12.8572ZM9.75 9.85718H8.25V8.35718H9.75V9.85718ZM12.75 12.8572H11.25V11.3572H12.75V12.8572ZM12.75 9.85718H11.25V8.35718H12.75V9.85718ZM14.25 6.10718H3.75V4.60718H14.25V6.10718Z"/>
                                 </svg>
-                                Posted <?php echo date('F j' .','. ' Y ', strtotime($events->created_at)); ?>
+                                <span>Posted <?php echo date('F j' .','. ' Y ', strtotime($events->created_at)); ?></span>
                             </span>
                         </div>
                         <a href="<?php echo URLROOT ?>/events/single/<?php echo $events->id?>">Read more 
@@ -143,12 +143,12 @@
                 </a>
             </div>
             <div class="container jobCon">
-                <h3>
+                <h2>
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M30 8H25.5V5C25.5 3.3455 24.1545 2 22.5 2H13.5C11.8455 2 10.5 3.3455 10.5 5V8H6C4.3455 8 3 9.3455 3 11V17H10.5V14H13.5V17H22.5V14H25.5V17H33V11C33 9.3455 31.6545 8 30 8ZM13.5 5H22.5V8H13.5V5ZM25.5 21.5H22.5V18.5H13.5V21.5H10.5V18.5H3V27.5C3 29.1545 4.3455 30.5 6 30.5H30C31.6545 30.5 33 29.1545 33 27.5V18.5H25.5V21.5Z" fill="black" fill-opacity="0.87"/>
                     </svg>
                     Active Job Post
-                </h3>
+                </h2>
                 <?php foreach($data['job_portals'] as $job) : ?>
                 <a href="<?php echo URLROOT ?>/job_portals/single/<?php echo $job->id?>" class="card jobs">
                     <div class="card-body">
@@ -163,7 +163,7 @@
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15.75 14.3572V3.85718C15.75 3.02993 15.0773 2.35718 14.25 2.35718H12.75V0.857178H11.25V2.35718H6.75V0.857178H5.25V2.35718H3.75C2.92275 2.35718 2.25 3.02993 2.25 3.85718V14.3572C2.25 15.1844 2.92275 15.8572 3.75 15.8572H14.25C15.0773 15.8572 15.75 15.1844 15.75 14.3572ZM6.75 12.8572H5.25V11.3572H6.75V12.8572ZM6.75 9.85718H5.25V8.35718H6.75V9.85718ZM9.75 12.8572H8.25V11.3572H9.75V12.8572ZM9.75 9.85718H8.25V8.35718H9.75V9.85718ZM12.75 12.8572H11.25V11.3572H12.75V12.8572ZM12.75 9.85718H11.25V8.35718H12.75V9.85718ZM14.25 6.10718H3.75V4.60718H14.25V6.10718Z"/>
                             </svg>
-                            Posted <?php echo time_elapsed_string($job->posted_on); ?>
+                            <span>Posted <?php echo time_elapsed_string($job->posted_on); ?></span>
                         </span>
                     </div>
                 </a>
