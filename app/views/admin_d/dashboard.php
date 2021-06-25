@@ -16,7 +16,7 @@
                     <div class="container">
                         <div class="hor-con">
                             <div class="card-con">
-                                <h3>Total visit count this month</h3>
+                                <h3 id="spanTimeframe"></h3>
                                 <span class="visit-count" id="visit-count">0</span>
                                 <svg width="200" height="91" viewBox="0 0 200 91" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="195" cy="33" r="3.5" stroke="#15CC8A" stroke-width="3"/>
@@ -123,17 +123,21 @@
 <script src="<?php echo URLROOT;?>/js/dashboard.js" defer></script>
 
 <script>
+
+
+
 filterDateCount();
 function filterDateCount(){
     const btnDaily = document.getElementById('btn_daily');
     const btnMonthly = document.getElementById('btn_monthly');
     const btnYearly = document.getElementById('btn_yearly');
-
+    const spanTimeframe = document.getElementById('spanTimeframe');
     btnDaily.addEventListener('click', function(){
         getLoginCount('Daily');
         btnDaily.classList.add('active');
         btnMonthly.classList.remove('active');
         btnYearly.classList.remove('active');
+        spanTimeframe.textContent = 'Total visit count today';
     })
 
     btnMonthly.addEventListener('click', function(){
@@ -142,6 +146,7 @@ function filterDateCount(){
         btnYearly.classList.remove('active');
 
         btnDaily.classList.remove('active');
+        spanTimeframe.textContent = 'Total visit count this month';
     })
 
     btnYearly.addEventListener('click', function(){
@@ -149,10 +154,16 @@ function filterDateCount(){
         btnYearly.classList.add('active');
         btnMonthly.classList.remove('active');
         btnDaily.classList.remove('active');
+        spanTimeframe.textContent = 'Total visit count this year';
     })
 }
 
 getLoginCount('Daily');
+changeText();
+function changeText(){
+    const spanTimeframe = document.getElementById('spanTimeframe');
+    spanTimeframe.textContent = 'Total visit count today';
+}
 function getLoginCount(filter){
     const spanVisitCount = document.getElementById('visit-count');
     fetch(`<?php echo URLROOT;?>/api/login_count/${filter}`).then(res => res.json())
