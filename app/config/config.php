@@ -7,9 +7,9 @@
 
     //REMOTE DB (LIVE) 
     // define('DB_HOST', 'us-cdbr-east-04.cleardb.com');
-    // define('DB_USER', 'be4fadc3ea6fc6');
-    // define('DB_PASS', '6973398d');
-    // define('DB_NAME', 'heroku_80a9cf61497bef5');
+    // define('DB_USER', 'b5ff9e87820ed4');
+    // define('DB_PASS', 'cfda578d');
+    // define('DB_NAME', 'heroku_94e582ab40677b7');
 
     //REmote mysql phpmyadmin
     // define('DB_HOST', 'remotemysql.com');

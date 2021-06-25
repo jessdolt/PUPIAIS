@@ -96,7 +96,7 @@
             }
 
             if($count === count($rowCourse)){
-                flash('course_add_success', 'Course successfully added');
+                flash('batch_add_success', 'Batch successfully added');
                 redirect('admin/alumni');
             }
 
@@ -121,7 +121,7 @@
             }
 
             if($count === count($rowBatch)){
-                flash('batch_add_success', 'Batch successfully added');
+                flash('course_add_success', 'Course successfully added');
                 redirect('admin/alumni');
             }
         }

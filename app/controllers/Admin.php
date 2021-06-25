@@ -539,7 +539,7 @@
         }
 
         public function alumni_report() {
-            $this->alumniRModel = $this->model('alumnir_model');
+            $this->alumniRModel = $this->model('alumniR_model');
             extract($_POST);
 
             if(!isset($isSearch)) {
@@ -647,7 +647,7 @@
         }
 
         public function alumni_report_1st_half() {
-            $this->alumniRModel = $this->model('alumnir_model');
+            $this->alumniRModel = $this->model('alumniR_model');
             $allCount = $this->alumniRModel->allCount();
             $batch = $this->alumniRModel->showBatch();
             $course = $this->alumniRModel->showCourses();
@@ -724,7 +724,7 @@
         }
 
         public function alumni_report_2nd_half() {
-            $this->alumniRModel = $this->model('alumnir_model');
+            $this->alumniRModel = $this->model('alumniR_model');
             $allCount = $this->alumniRModel->allCount();
             $batch = $this->alumniRModel->showBatch();
             $course = $this->alumniRModel->showCourses();

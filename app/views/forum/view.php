@@ -3,11 +3,10 @@
         <section class="mainContent forumView">
             <div class="container forumCon">
                 <div class="forum-link">
-
                     <?php if($data['user']->user_type == 1||$data['user']->user_type == 2):?>
-                    <img class="forum-image" src="<?php echo (!empty($data['admin']->image) ? URLROOT. '/uploads//'.$data['admin']->image: URLROOT.'/images/official-default-avatar.svg')?>" id="myImg">
+                    <img class="forum-image" src="<?php echo URLROOT;?>/uploads/<?php echo $data['admin']->image?>" id="myImg">
                     <?php else:?>
-                    <img class="forum-image" src="<?php echo (!empty($data['alumni']->image) ? URLROOT. '/uploads//'.$data['alumni']->image: URLROOT.'/images/official-default-avatar.svg')?>" id="myImg">
+                    <img class="forum-image" src="<?php echo URLROOT;?>/uploads/<?php echo $data['alumni']->image ?>" id="myImg">
                     <?php endif;?>
                     <div class="forum-details-con">
                         <div class="forum-details">
@@ -80,9 +79,8 @@
                         <h3 class="comment-count"><?php echo $cmt->counter + $rmt->replies?> Comments</h3>
                     <?php endif;?>
                     <!-- primary comment -->
-                 
                     <form action="<?php echo URLROOT;?>/forum/comment/<?php echo $data['post']->topic_id;?>" method="POST" class="comment-con">
-                        <img src="<?php echo (!empty($data['current']->image) ? URLROOT. '/uploads//'.$data['current']->image: URLROOT.'/images/official-default-avatar.svg')?>" >
+                        <img src="<?php echo URLROOT;?>/uploads/<?php echo ($data['current']->image) ?>" >
                         <div class="textFieldContainer">
                             <textarea name="comment" required></textarea>
                             <span class="error"></span>
@@ -91,32 +89,32 @@
                     </form>
                     <!-- direct comment -->
                     <ul class="comment-list" >
-                        <?php foreach($data['comment'] as $comment): ?>
+                    <?php foreach($data['comment'] as $comment): ?>
                             <?php if($comment->comment_for == $data['post']->topic_id): ?>
                         <li class="list-item" id="<?php echo $comment->comment_id?>">
                             <form action="" class="comment-con-thread">
                                 
-                                <?php if($comment->user_type == 1||$comment->user_type == 2): ?>
-                                <img src="<?php echo (!empty($data['admin']->image) ? URLROOT. '/uploads//'.$data['admin']->image: URLROOT.'/images/official-default-avatar.svg')?>" width="40px" height="40px">
+                                <?php if($comment->user_type == 1||$comment->user_type == 2||$comment->user_type == 3): ?>
+                                <img src="<?php echo URLROOT;?>/uploads/<?php echo $comment->admin_image?>" width="40px" height="40px">
                                 <?php else: ?>
-                                <img src="<?php echo (!empty($data['alumni']->image) ? URLROOT. '/uploads//'.$data['alumni']->image: URLROOT.'/images/official-default-avatar.svg')?>" width="40px" height="40px">
+                                <img src="<?php echo URLROOT;?>/uploads/<?php echo $comment->image?>" width="40px" height="40px">
                                 <?php endif; ?>
                                 <div class="commentInfo">
-                                    <span class="account-name"><?php echo $comment->name?></span>
+                                    <span class="account-name"><?php echo $comment->user_name?></span>
                                     <span class="midot">·</span>
-                                    <span class="date-posted"><?php echo time_elapsed_string($comment->created_at);?></span>
+                                    <span class="date-posted"><?php echo time_elapsed_string($comment->commented_at);?></span>
                                 </div>
                                 <div class="input" role="textbox" maxlength="1000" readonly>
                                    <?php echo $comment->comment?>
                                 </div>
                                 <div class="btn-con">
-                                    <button type="button" name="btn-reply" class="btn-reply">
+                                    <a href="#reply-con" name="btn-reply" class="btn-reply">
                                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M4.84032 3.92016C4.59628 3.92016 4.36223 4.01711 4.18967 4.18967C4.01711 4.36223 3.92016 4.59628 3.92016 4.84032V12.2016C3.92016 12.4457 4.01711 12.6797 4.18967 12.8523C4.36223 13.0248 4.59628 13.1218 4.84032 13.1218H13.661C14.149 13.1219 14.617 13.3158 14.9621 13.661L16.8024 15.5013V4.84032C16.8024 4.59628 16.7055 4.36223 16.5329 4.18967C16.3603 4.01711 16.1263 3.92016 15.8823 3.92016H4.84032ZM15.8823 3C16.3703 3 16.8384 3.19389 17.1836 3.53902C17.5287 3.88415 17.7226 4.35224 17.7226 4.84032V16.6119C17.7226 16.703 17.6955 16.792 17.6449 16.8676C17.5943 16.9433 17.5224 17.0023 17.4382 17.037C17.3541 17.0718 17.2616 17.0808 17.1723 17.063C17.083 17.0451 17.001 17.0012 16.9368 16.9368L14.3115 14.3115C14.139 14.139 13.905 14.042 13.661 14.0419H4.84032C4.35224 14.0419 3.88415 13.848 3.53902 13.5029C3.19389 13.1578 3 12.6897 3 12.2016V4.84032C3 4.35224 3.19389 3.88415 3.53902 3.53902C3.88415 3.19389 4.35224 3 4.84032 3H15.8823Z" fill="black" fill-opacity="0.6"/>
                                         <path d="M7.60204 8.52099C7.60204 8.76503 7.5051 8.99908 7.33253 9.17164C7.15997 9.34421 6.92592 9.44115 6.68188 9.44115C6.43784 9.44115 6.20379 9.34421 6.03123 9.17164C5.85866 8.99908 5.76172 8.76503 5.76172 8.52099C5.76172 8.27695 5.85866 8.0429 6.03123 7.87034C6.20379 7.69778 6.43784 7.60083 6.68188 7.60083C6.92592 7.60083 7.15997 7.69778 7.33253 7.87034C7.5051 8.0429 7.60204 8.27695 7.60204 8.52099V8.52099ZM11.2827 8.52099C11.2827 8.76503 11.1857 8.99908 11.0132 9.17164C10.8406 9.34421 10.6066 9.44115 10.3625 9.44115C10.1185 9.44115 9.88444 9.34421 9.71187 9.17164C9.53931 8.99908 9.44236 8.76503 9.44236 8.52099C9.44236 8.27695 9.53931 8.0429 9.71187 7.87034C9.88444 7.69778 10.1185 7.60083 10.3625 7.60083C10.6066 7.60083 10.8406 7.69778 11.0132 7.87034C11.1857 8.0429 11.2827 8.27695 11.2827 8.52099ZM14.9633 8.52099C14.9633 8.76503 14.8664 8.99908 14.6938 9.17164C14.5213 9.34421 14.2872 9.44115 14.0432 9.44115C13.7991 9.44115 13.5651 9.34421 13.3925 9.17164C13.22 8.99908 13.123 8.76503 13.123 8.52099C13.123 8.27695 13.22 8.0429 13.3925 7.87034C13.5651 7.69778 13.7991 7.60083 14.0432 7.60083C14.2872 7.60083 14.5213 7.69778 14.6938 7.87034C14.8664 8.0429 14.9633 8.27695 14.9633 8.52099Z" fill="black" fill-opacity="0.6"/>
                                         </svg>
                                         Reply
-                                    </button>
+                                    </a>
                                     <?php if($comment->comment_sender == $_SESSION['id']||$_SESSION['user_type'] == 'Super Admin'||$_SESSION['user_type'] == 'Admin'): ?>
                                         <a href="<?php echo URLROOT;?>/forum/deleteComment/<?php echo $comment->comment_id?>/<?php echo $comment->comment_for?>">
                                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -140,13 +138,13 @@
                                 <?php if($reply->parent_comment == $comment->comment_id): ?>
                              <li class="list-item">
                                     <form action="<?php echo URLROOT;?>/forum/reply/<?php echo $comment->comment_id;?>/<?php echo $data['post']->topic_id ?>" method = "POST" class="comment-con-thread">
-                                        <?php if ($reply->user_type == 1||$reply->user_type == 2): ?>
+                                        <?php if ($reply->user_type == 1||$reply->user_type == 2||$reply->user_type == 3): ?>
                                         <img src="<?php echo URLROOT;?>/uploads/<?php echo $reply->admin_image?>" width="40px" height="40px">
                                         <?php else: ?>
                                         <img src="<?php echo URLROOT;?>/uploads/<?php echo $reply->image?>" width="40px" height="40px">
                                         <?php endif; ?>
                                         <div class="commentInfo" >
-                                            <span class="account-name"><?php echo $reply->name ?></span>
+                                            <span class="account-name"><?php echo $reply->user_name?></span>
                                             <span class="midot">·</span>
                                             <span class="date-posted"><?php echo time_elapsed_string($reply->replied_at);?></span>
                                         </div>
@@ -285,7 +283,28 @@
         
         getVoteCount()
         selected()
-        
+        replyHide()
+
+        function replyHide(){
+            let container = $('.sub-comment-list');
+            console.log(container);
+            container.each(function(count, list){
+                
+                    if(list.children.length > 2){
+                        $(list).children().hide();
+                        $(list).children().last().show();
+                        const show = $('<p class = "show-more" id ="show-more">Show more</p>');
+                        show.appendTo(list);
+                        $('.show-more').click(function(){
+                            $(list).children().show();
+                            $(this).remove();
+                            }); 
+                    }
+            });
+        }
+
+
+
         function getVoteCount(){
             $.ajax({ 
                 url:'<?php echo URLROOT;?>/vote/getVote',
@@ -492,13 +511,16 @@
         });
 
         $('.btn-reply').click(function() {
-
+            let show = $('#show-more');
+            show.toggle ();
             var parentContainer = $(this.parentNode.parentNode.parentNode)
             var commentID = parentContainer[0].attributes[1].value
             console.log(parentContainer[0].childNodes[3].children.length)
             let subList = parentContainer[0].childNodes[3]
             let subLength = subList.children.length
             console.log(subList.children)
+            var test = $('#reply-con');
+            console.log(test); 
             if(subLength == 0){
 
                 let replyContainer = `  
@@ -510,8 +532,8 @@
                         <span class="midot">·</span>
                         <span class="date-posted">September 00,0000</span>
                     </div>
-                    <div class="textFieldContainer">
-                        <textarea name="reply" class="active" id="reply-con" required></textarea>
+                    <div class="textFieldContainer" id="reply-con">
+                        <textarea name="reply" class="active"  required></textarea>
                         <span class="error"></span>
                     </div>
                     <div class="btn-con">
@@ -544,10 +566,6 @@
                 const subComment = $('<li class = "list-item active"> </li>');
                 subComment.append(replyContainer);
                 subComment.appendTo(subList);
-                
-                
-
-               
             }
             else {
                 
@@ -563,8 +581,8 @@
                         <span class="midot">·</span>
                         <span class="date-posted">September 00,0000</span>
                     </div>
-                    <div class="textFieldContainer">
-                        <textarea name="reply" class="active"  id="reply-con" required></textarea>
+                    <div class="textFieldContainer" id="reply-con">
+                        <textarea name="reply" class="active"   required></textarea>
                         <span class="error"></span>
                     </div>
                     <div class="btn-con">
@@ -597,13 +615,14 @@
                 const subComment = $('<li class = "list-item active"> </li>');
                 subComment.append(replyContainer);
                 subComment.appendTo(subList);
-
+                
                 }
                 else {
                 let finder = parentContainer.find('li.active');
                 finder.remove();
                 }
             }
+           
         });
     });
 
