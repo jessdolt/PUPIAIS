@@ -181,7 +181,7 @@
                 </div>
             </form>
             <div class="btn-con">
-                <a href="">Cancel</a>
+                <a href="<?php echo URLROOT?>/users/login">Cancel</a>
                 <Button class="primary" form="changeThisNiel">Submit</Button>
             </div>
         </div>

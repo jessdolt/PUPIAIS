@@ -99,8 +99,8 @@ use PHPMailer\PHPMailer\Exception;
             else{
                 $data = [
                     'student_no' => '',
-                    'lastName' => '',
-                    'birthDate' => '',
+                    'last_name' => '',
+                    'birth_date' => '',
                     'email' =>'',
                     'password' => '',
                     'confirm_password' => '',
