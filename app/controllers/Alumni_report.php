@@ -2,7 +2,7 @@
     class Alumni_report extends Controller {
         private $db;
         public function __construct() {
-            $this->alumniRModel = $this->model('alumnir_model');
+            $this->alumniRModel = $this->model('alumniR_model');
         }
 
         public function getPage() {
