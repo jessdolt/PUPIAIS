@@ -153,7 +153,7 @@
                     $data['confirmPassword_error'] = 'Please enter password.';
                 } else {
                     if ($data['password'] != $data['confirmPassword']) {
-                    $data['confirmPassword_error'] = 'Passwords do not match, please try again.';
+                    $data['confirmPassword_error'] = 'Passwords do not match.';
                     }
                 }
     
