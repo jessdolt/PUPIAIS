@@ -13,90 +13,6 @@ use PHPMailer\PHPMailer\Exception;
             $this->view('users/index', $data);
         }
 
-        public function register(){
-            $user_types = $this->userModel->getUserTypes();
-
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
-                $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
-                
-                $data = [
-                    'fName' => trim($_POST['fName']),
-                    'email' => trim ($_POST['email']),
-                    'password' => trim($_POST['password']),
-                    'confirm_password' => trim($_POST['confirm_password']),
-                    'user_type' => $_POST['user_type'],
-                    'fName_err' => '',
-                    'email_err' => '',
-                    'password_err' => '',
-                    'confirm_password_err' => '',
-                    'user_type_err' => ''
-                ];  
-
-                if(empty($data['fName'])){
-                    $data['fName_err'] = 'Please your full name.';
-                }
-
-                if(empty($data['email'])){
-                    $data['email_err'] = 'Please enter your email';
-                }
-                else{
-
-                }
-
-
-                if(empty($data['password'])){
-                    $data['password_err'] = 'Please enter password';
-                } elseif (strlen($data['password']) < 3){
-                    $data['password_err'] = 'Password must be at least 3 characters';
-                }
-
-                if(empty($data['confirm_password'])){
-                    $data['confirm_password_err'] = 'Please enter confirm password';
-                }
-                else{
-                    if($data['password'] != $data['confirm_password']){
-                        $data['confirm_password_err'] = 'Passwords do not match';
-                    }
-                }
-
-                if(empty($data['email_err']) && empty($data['fName_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['user_type_err'])){
-                    //Hash password
-                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);  
-            
-                     if($this->userModel->register($data)){
-                        redirect('users/index');
-                     }
-                     else{
-                         die('Something went wrong!');
-                     }
-                } 
-
-                else{
-                    $data['user_type'] = $user_types;
-                    $this->view('users/register',$data);
-                }
-
-            }
-
-            else{
-                $data = [
-                    'fName' => '',
-                    'email' =>'',
-                    'password' => '',
-                    'confirm_password' => '',
-                    'user_type' => $user_types,
-                    'fName_err' => '',
-                    'email_err' => '',
-                    'password_err' => '',
-                    'confirm_password_err' => '',
-                    'user_type_err' => ''
-                ];
-            }
-
-            $this->view('users/register',$data);
-        }
-
         public function signup(){
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
@@ -127,19 +43,19 @@ use PHPMailer\PHPMailer\Exception;
 
                 // Validate password on length, numeric values,
                 if(empty($data['password'])){
-                    $data['password_error'] = 'Please enter password.';
+                    $data['password_err'] = 'Please enter password.';
                 } elseif(strlen($data['password']) < 7){
-                    $data['password_error'] = 'Password must be at least 8 characters';
+                    $data['password_err'] = 'Password must be at least 8 characters';
                 } elseif (preg_match($passwordValidation, $data['password'])) {
-                    $data['password_error'] = 'Password must be have at least one numeric value.';
+                    $data['password_err'] = 'Password must be have at least one numeric value.';
                 }
-    
-                //Validate confirm password
-                if (empty($data['confirm_password'])) {
-                    $data['confirmPassword_error'] = 'Please enter password.';
+
+                 //Validate confirm password
+                 if (empty($data['confirm_password'])) {
+                    $data['confirm_password_err'] = 'Please enter password.';
                 } else {
-                    if ($data['password'] != $data['confirmPassword']) {
-                    $data['confirmPassword_error'] = 'Passwords do not match, please try again.';
+                    if ($data['password'] != $data['confirm_password']) {
+                    $data['confirm_password_err'] = 'Passwords do not match.';
                     }
                 }
 
@@ -182,9 +98,9 @@ use PHPMailer\PHPMailer\Exception;
 
             else{
                 $data = [
-                    'studet_no' => '',
-                    'lastName' => '',
-                    'birthDate' => '',
+                    'student_no' => '',
+                    'last_name' => '',
+                    'birth_date' => '',
                     'email' =>'',
                     'password' => '',
                     'confirm_password' => '',
