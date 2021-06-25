@@ -24,6 +24,7 @@
                 <section class="mainContent">
                     <h2>Active Surveys</h2>
                     <ul class="card-list" id="search_insert">
+                        <?php if(!empty($data['activeSurvey'])) :?>   
                         <?php foreach($data['activeSurvey'] as $survey):?>
                         <li class="survey-card <?php echo ($survey->s_type == 'google_form') ? 'google-form' : '' ?>">
 
@@ -49,10 +50,13 @@
                             </div>
                         </li>
                         <?php endforeach;?>
+                        <?php else: ?>
+                        <?php endif;?>
                     </ul>
 
                     <h2>Past Surveys</h2>
                     <ul class="card-list">
+                        <?php if(!empty($data['pastSurvey'])) :?>
                         <?php foreach($data['pastSurvey'] as $survey): ?>
                         <li class="survey-card <?php echo ($survey->s_type == 'google_form') ? 'google-form' : '' ?>">
                             <a class="card-link"href=""<?php echo ($survey->s_type=='built_in') ? URLROOT.'/survey_report/view_report/'.$survey->id : $survey->google_form_editor_link.'#responses'?>" <?php echo ($survey->s_type == 'google_form') ? "target='_blank'" : ''?>>View</a>
@@ -76,6 +80,8 @@
                             </div>
                         </li>
                         <?php endforeach;?>
+                        <?php else: ?>
+                        <?php endif;?>
                     </ul>
                 
                 </section>

@@ -450,50 +450,57 @@
             $this->surveyReportModel = $this->model('s_report');
             extract($_POST);
 
-            if(!isset($isSearch)){
+            if(!isset($isSearch)){  
                 $surveys = $this->surveyReportModel->showSurvey();
                 
-                foreach($surveys as $survey){
-                    $survey->{'respondents'} = $this->surveyReportModel->surveyTaken($survey->id);
-                }
-
-                $currentDate = date('Y-m-d');
-                $activeSurvey = array();
-                $pastSurvey = array();
-
-                foreach($surveys as $survey){
-                    if($survey->end_date >= $currentDate){
-                        array_push($activeSurvey,$survey);
+                if(!empty($surveys)) {
+                    foreach($surveys as $survey){
+                        $survey->{'respondents'} = $this->surveyReportModel->surveyTaken($survey->id);
                     }
-                    else{
-                        array_push($pastSurvey,$survey);
+    
+                    $currentDate = date('Y-m-d');
+                    $activeSurvey = array();
+                    $pastSurvey = array();
+    
+                    foreach($surveys as $survey){
+                        if($survey->end_date >= $currentDate){
+                            array_push($activeSurvey,$survey);
+                        }
+                        else{
+                            array_push($pastSurvey,$survey);
+                        }
                     }
+    
+                    $data = [
+                        'activeSurvey' => $activeSurvey,
+                        'pastSurvey' => $pastSurvey
+                    ];
+                } else {
+                    $data = [
+                        'activeSurvey' => '',
+                        'pastSurvey' => ''
+                    ];
                 }
-
-                $data = [
-                    'activeSurvey' => $activeSurvey,
-                    'pastSurvey' => $pastSurvey
-                ];
 
                 $this->view('admin_d/survey_report', $data);
             } else {
                 $surveys = $this->surveyReportModel->searchSurvey($searchKey);
                 
-                foreach($surveys as $survey){
-                    $survey->{'respondents'} = $this->surveyReportModel->surveyTaken($survey->id);
-                }
-
-                $currentDate = date('Y-m-d');
-                $activeSurvey = array();
-
-                foreach($surveys as $survey){
-                    if($survey->end_date >= $currentDate){
-                        array_push($activeSurvey,$survey);
-                    }
-                }
-
                 //array_print($events);
-                if(!empty($survey)){
+                if(!empty($surveys)){
+                    foreach($surveys as $survey){
+                        $survey->{'respondents'} = $this->surveyReportModel->surveyTaken($survey->id);
+                    }
+    
+                    $currentDate = date('Y-m-d');
+                    $activeSurvey = array();
+    
+                    foreach($surveys as $survey){
+                        if($survey->end_date >= $currentDate){
+                            array_push($activeSurvey,$survey);
+                        }
+                    }
+
                     $data = ['activeSurvey'=> $surveys];
                 }
                 else{
