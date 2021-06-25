@@ -32,3 +32,4 @@
         </tr>
     <?php endforeach; ?>
     <?php endif;?>
+    <script src="<?php echo URLROOT;?>/js/index.js" defer></script>
