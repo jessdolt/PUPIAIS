@@ -145,7 +145,7 @@
                 } elseif(strlen($data['password']) < 7){
                     $data['password_error'] = 'Password must be at least 8 characters';
                 } elseif (preg_match($passwordValidation, $data['password'])) {
-                    $data['password_error'] = 'Password must be have at least one numeric value.';
+                    $data['password_error'] = 'Must have at least one numeric value.';
                 }
     
                 //Validate confirm password
