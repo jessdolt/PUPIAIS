@@ -41,7 +41,7 @@
                     <ul>
                         <li>
                             <span class="li-header">FIRST EMPLOYMENT</span>
-                            <?php if(!is_null($data['alumni']->first_employment)) :?>  
+                            <?php if(!is_null($data['alumni']->first_employment) || $data['alumni']->first_employment != 0000-00-00) :?>  
                             <p class="li-data"><?php echo date('F j' .','. ' Y ', strtotime($data['alumni']->first_employment))?></p>
                             <?php else: ?>
                             <p class="li-data">N/A</p>
@@ -49,7 +49,7 @@
                         </li>
                         <li>
                             <span class="li-header">CURRENT EMPLOYMENT</span>
-                            <?php if(!is_null($data['alumni']->current_employment)) :?>  
+                            <?php if(!is_null($data['alumni']->current_employment) || $data['alumni']->current_employment != 0000-00-00) :?>  
                             <p class="li-data"><?php echo date('F j' .','. ' Y ', strtotime($data['alumni']->current_employment))?></p>
                             <?php else: ?>
                             <p class="li-data">N/A</p>
