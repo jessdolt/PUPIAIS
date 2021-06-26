@@ -52,8 +52,8 @@
                                     <td <?php echo ($survey->s_type == "google_form") ? 'class="google-form"' :''?>></td>
                                     <td><p class="title"><?php  echo $survey->title?></p></td>
                                     <td><p class="Description"><?php echo $survey->description?></p></td>
-                                    <td><time datetime="0000-09-02"><?php echo $survey->start_date?></time></td>
-                                    <td><time datetime="0000-09-02"><?php echo $survey->end_date?></time></td>
+                                    <td><time datetime="0000-09-02"><?php echo date('F j' .','. ' Y ', strtotime($survey->start_date)) ?></time></td>
+                                    <td><time datetime="0000-09-02"><?php echo date('F j' .','. ' Y ', strtotime($survey->end_date)) ?></time></td>
                                     <td><div class="option icon" tabindex="0">
                                         <span class="optionSpan">&#8942</span>
                                         <div class="optionModal">
