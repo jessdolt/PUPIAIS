@@ -48,7 +48,7 @@
                             </button>
                         </div>
                     </div>
-                    <a href="#">
+                    <a href="<?php echo URLROOT;?>/galleries/editGallery/<?php echo $gal->id?>">
                         <?php foreach($data['images'] as $img):?>
                         <?php if($gal->id == $img->gallery_id):?>
                             <?php if($img->isCover == 1):?>

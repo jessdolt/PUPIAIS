@@ -65,7 +65,7 @@
                 <ul>
                     <?php foreach($data['oldEvents'] as $oldEvents) : ?>
                         <li>
-                            <a href="<?php echo URLROOT?>/pages/singleEvent/"<?php echo $oldEvents->id; ?>><?php echo $oldEvents->title; ?></a>
+                            <a href="<?php echo URLROOT?>/events/single/<?php echo $oldEvents->id; ?>"><?php echo $oldEvents->title; ?></a>
                         </li>
                     <?php endforeach; ?>
                 </ul>

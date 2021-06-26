@@ -20,5 +20,5 @@
         </div>
 </form>
 
-<script src="<?php echo URLROOT;?>/js/index.js" defer></script>
+<script src="<?php echo URLROOT;?>/js/index.js" defer></script> 
 <?php require APPROOT . '/views/inc/footer.php';?>
