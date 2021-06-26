@@ -11,6 +11,12 @@
     // define('DB_PASS', 'cfda578d');
     // define('DB_NAME', 'heroku_94e582ab40677b7');
 
+    //for presentation
+    // define('DB_HOST', 'us-cdbr-east-04.cleardb.com');
+    // define('DB_USER', 'bdc0d073cdccf6');
+    // define('DB_PASS', 'd4a05ee7');
+    // define('DB_NAME', 'heroku_84c25b156483496');
+
     //REmote mysql phpmyadmin
     // define('DB_HOST', 'remotemysql.com');
     // define('DB_USER', '9GFORLkQnc');
