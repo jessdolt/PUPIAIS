@@ -63,8 +63,7 @@
                                             $progress = ((isset($data['answers'][$row->id][$k]) ? count($data['answers'][$row->id][$k]) : 0) / $data['taken']) * 100;
                                             $progress = round($progress,2);
                                         }
-                                ?>
-                                    <li class="answer">
+                                ?> <li class="answer">
                                         <div class="flex-con">
                                             <p><?php echo $v?></p>
                                             <span class="answer-ratio"><?php echo isset($data['answers'][$row->id][$k]) ? count($data['answers'][$row->id][$k]) : 0 ?>/<?php echo $data['taken']?></span>

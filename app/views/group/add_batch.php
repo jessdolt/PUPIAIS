@@ -6,3 +6,4 @@
                 <input type="submit" value='Submit'>
             </form>
         </div>
+        <script src="<?php echo URLROOT;?>/js/index.js" defer></script>
