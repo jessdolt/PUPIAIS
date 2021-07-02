@@ -153,7 +153,7 @@
                         <label for="email-id" class="outsideLabel">Email:</label>
                         <div class="textFieldContainer">
                             <input type="email" name="email" id="email-id" value="<?php echo $data['email']?>" required>
-                            <span class="error"></span>
+                            <span class="error"><?php echo $data['email_err']?></span>
                         </div>
                     </div>
                     <div>

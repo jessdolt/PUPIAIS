@@ -22,7 +22,7 @@ use PHPMailer\PHPMailer\Exception;
                     'student_no' => trim($_POST['student_no']),
                     'last_name' => trim($_POST['lastName']),
                     'birth_date' => trim($_POST['birthDate']),
-                    'email' => trim ($_POST['email']),
+                    'email' => trim($_POST['email']),
                     'password' => trim($_POST['password']),
                     'confirm_password' => trim($_POST['confirm_password']),
                     'lastName_err' => '',
@@ -39,6 +39,10 @@ use PHPMailer\PHPMailer\Exception;
 
                 if(empty($data['email'])){
                     $data['email_err'] = 'Please enter your email';
+                } 
+
+                if($this->userModel->findUserByEmail($data['email'])) {
+                    $data['email_err'] = 'Email is already in use';
                 }
 
                 // Validate password on length, numeric values,
