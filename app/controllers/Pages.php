@@ -17,10 +17,8 @@ class Pages extends Controller{
                 } 
                  if($this->checkSurvey()){
                     redirect('survey_widget');
-                } 
+                }
             }
-
-            
         }
 
         // $this->checkVerify();
@@ -62,16 +60,17 @@ class Pages extends Controller{
         $user = $this->userModel->singleUserAlumniJoin($_SESSION['alumni_id']);
         $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
         $userData = $this->userModel->singleAcc($_SESSION['alumni_id']);
-        if($userData->privacyConsent != "Accept") {
-            return false;
-        }
+
+        if($userData->privacyConsent == "Accept" || $userData->privacyConsent == NULL) {
             if(empty($findRecord)) {
                 return true;
                 // redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
             } else {
                 return false;
             }
-
+        } else {
+            return false;
+        }
     }
 
 
