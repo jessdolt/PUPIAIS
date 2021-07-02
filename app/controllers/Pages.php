@@ -61,13 +61,16 @@ class Pages extends Controller{
     function isEmployed() {
         $user = $this->userModel->singleUserAlumniJoin($_SESSION['alumni_id']);
         $findRecord = $this->userModel->additionalVerify($_SESSION['alumni_id']);
-
-        if(empty($findRecord)) {
-            return true;
-            // redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
-        } else {
+        $userData = $this->userModel->singleAcc($_SESSION['alumni_id']);
+        if($userData->privacyConsent != "Accept") {
             return false;
         }
+            if(empty($findRecord)) {
+                return true;
+                // redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
+            } else {
+                return false;
+            }
 
     }
 
