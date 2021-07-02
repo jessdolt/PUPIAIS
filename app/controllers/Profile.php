@@ -246,21 +246,23 @@
                                 'file_error' => ''
             
                             ];
+
                             $file = $_FILES['newsImageInput'];
-                            if(!empty($file)) {
-                                $filename = $file['name'];
-                                $fileTmpName = $file['tmp_name'];
-                                $fileSize = $file['size'];
-                                $fileError = $file['error'];
-                                $fileType = $file['type'];
+                            $isUploaded = $_POST['isUploaded'];
+
+                            $filename = $file['name'];
+                            $fileTmpName = $file['tmp_name'];
+                            $fileSize = $file['size'];
+                            $fileError = $file['error'];
+                            $fileType = $file['type'];
+            
+                            $fileExt = explode ('.',$filename);
+                            $fileActualExt = strtolower(end($fileExt));
+                            $allowed = array('jpg','jpeg', 'png');
                 
-                                $fileExt = explode ('.',$filename);
-                                $fileActualExt = strtolower(end($fileExt));
-                                $allowed = array('jpg','jpeg', 'png');
-                
-                                if(in_array($fileActualExt, $allowed)){
-                                    if( $fileError === 0){
-                                        if($fileSize < 1000000){        
+                                if(in_array($fileActualExt, $allowed) && $isUploaded == 1){
+                                    if($fileError == 0){
+                                        if($fileSize < 1000000){
                                             $fileNameNew = uniqid('',true).".".$fileActualExt;
                                             $target = "uploads/". basename($fileNameNew);
                                             move_uploaded_file($fileTmpName, $target);
@@ -269,10 +271,9 @@
                                     } else {
                                         $data['file_error'] = 'File Size too big. Maximum of 1mb only';
                                     }
-                                } else {
+                                } elseif($isUploaded == 1){
                                     $data['file_error'] = 'There was a problem in uploading the file';
                                 }
-                            }
     
                             if(empty($data['eDate'])) {
                                 $data['eDate'] = NULL;

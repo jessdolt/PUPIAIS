@@ -68,7 +68,7 @@
                             <div>
                                 <label for="cur-monthly-income" class="outsideLabel">Current Monthly Income:</label>
                                 <div class="textFieldContainer">
-                                    <input type="number" name="mIncome" id="cur-monthly-income" value="<?php echo $data['mIncome']?>" required>
+                                    <input type="number" name="mIncome" id="cur-monthly-income" value="<?php echo $data['mIncome']?>">
                                     <span class="error"></span>
                                 </div>
                             </div>
@@ -98,6 +98,7 @@
                         </div>
                         
                     </div>
+                    <input type="hidden" name="isUploaded" id="hiddenBool">
                     <button>
                         Submit Response
                     </button>
@@ -106,18 +107,29 @@
         </section>
     </main>
 <script>
-const fileUpload = document.getElementById('news-image-input');
-const img_box = document.getElementById('myImg');
-const reader = new FileReader();
-fileUpload.addEventListener('change',function(event){
-    const files = event.target.files;
-    const file = files[0];
-    reader.readAsDataURL(file);
-    reader.addEventListener('load', function(event){
-        img_box.src = event.target.result;
-        img_box.alt = file.name; 
+    const fileUpload = document.getElementById('news-image-input');
+    const img_box = document.getElementById('myImg');
+    const reader = new FileReader();
+    const uploadInput = document.getElementById('hiddenBool');
+
+    fileUpload.addEventListener('change',function(event){
+        const files = event.target.files;
+        const file = files[0];
+        reader.readAsDataURL(file);
+        reader.addEventListener('load', function(event){
+            img_box.src = event.target.result;
+            img_box.alt = file.name; 
+        })
+        isUploaded();
     })
-})
+
+    function isUploaded(){
+        if(fileUpload.files.length == 0){
+            uploadInput.value = 0;
+        } else {
+            uploadInput.value = 1;
+        }
+    }
 </script>
     <div class="privacyModalCon <?php echo ($data['consent'] == NULL) ? 'show' : '' ?>">
         <div class="privacyModal">
