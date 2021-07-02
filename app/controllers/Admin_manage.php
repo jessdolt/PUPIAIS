@@ -80,6 +80,7 @@
 
                     if($this->adminModel->editProfile($data, $isUploaded)) {
                         $_SESSION['image'] = $data['file'];
+                        $_SESSION['name'] = $data['name'];
                         redirect('admin_manage/manage');
                     } else {
                         die("Something went wrong");

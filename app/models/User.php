@@ -235,8 +235,6 @@ class User {
         }
     }
 
-   
-
     public function singleUser($id){
         $this->db->query('SELECT * 
                         FROM alumni
@@ -471,6 +469,19 @@ class User {
             $this->db->query('UPDATE alumni SET employment=:employment WHERE alumni_id = :alumni_id');
             $this->db->bind(':employment', $data['status']);
             $this->db->bind(':alumni_id', $data['alumni_id']);
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function privacyConsent($data) {
+            $this->db->query('UPDATE users SET privacyConsent=:privacyConsent WHERE a_id = :alumni_id');
+            $this->db->bind(':privacyConsent', $data['privacyConsent']);
+            $this->db->bind(':alumni_id', $data['alumni_id']);
+
             if($this->db->execute()){
                 return true;
             }

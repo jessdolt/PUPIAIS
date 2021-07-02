@@ -218,103 +218,124 @@
         public function profileAdditionalAdd($id) {
             $this->accountPass();
             $user = $this->userModel->singleUser($id);
-                // If there is a record in employment
-                if($this->userModel->additionalVerify($id) == 1) {
-                    redirect('profile/viewProfile/'.$id);
-                } else {
+            $userData = $this->userModel->singleAlumni($id);
 
-                    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    
-                        $data = [
-                            'alumni_id' => $_SESSION['alumni_id'],
-                            'course' => $user->course_code,
-                            'gDate' => $_POST['gDate'],
-                            'status' => $_POST['cstatus'],
-                            'eDate' => $_POST['eDate'],
-                            'ceDate' => $_POST['ceDate'],
-                            'tWork' => $_POST['tWork'],
-                            'wPosition' => $_POST['wPosition'],
-                            'mIncome' => $_POST['mIncome'],
-                            'ifRelated' => $_POST['related'],
-                            'file' => '',
-                            'file_error' => ''
+                // If there is a record in employment
+                    if($this->userModel->additionalVerify($id) == 1) {
+                        redirect('profile/viewProfile/'.$id);
+                    } else {
+
+                        if($userData->privacyConsent == "Decline") {
+                            redirect('profile/viewProfile/'.$id);
+                        }
+
+                        if($_SERVER['REQUEST_METHOD'] == 'POST'){
         
-                        ];
-                        $file = $_FILES['newsImageInput'];
-                        if(!empty($file)) {
-                            $filename = $file['name'];
-                            $fileTmpName = $file['tmp_name'];
-                            $fileSize = $file['size'];
-                            $fileError = $file['error'];
-                            $fileType = $file['type'];
+                            $data = [
+                                'alumni_id' => $_SESSION['alumni_id'],
+                                'course' => $user->course_code,
+                                'gDate' => $_POST['gDate'],
+                                'status' => $_POST['cstatus'],
+                                'eDate' => $_POST['eDate'],
+                                'ceDate' => $_POST['ceDate'],
+                                'tWork' => $_POST['tWork'],
+                                'wPosition' => $_POST['wPosition'],
+                                'mIncome' => $_POST['mIncome'],
+                                'ifRelated' => $_POST['related'],
+                                'file' => '',
+                                'file_error' => ''
             
-                            $fileExt = explode ('.',$filename);
-                            $fileActualExt = strtolower(end($fileExt));
-                            $allowed = array('jpg','jpeg', 'png');
-            
-                            if(in_array($fileActualExt, $allowed)){
-                                if( $fileError === 0){
-                                    if($fileSize < 1000000){        
-                                        $fileNameNew = uniqid('',true).".".$fileActualExt;
-                                        $target = "uploads/". basename($fileNameNew);
-                                        move_uploaded_file($fileTmpName, $target);
-                                        $data['file'] = $fileNameNew;
+                            ];
+                            $file = $_FILES['newsImageInput'];
+                            if(!empty($file)) {
+                                $filename = $file['name'];
+                                $fileTmpName = $file['tmp_name'];
+                                $fileSize = $file['size'];
+                                $fileError = $file['error'];
+                                $fileType = $file['type'];
+                
+                                $fileExt = explode ('.',$filename);
+                                $fileActualExt = strtolower(end($fileExt));
+                                $allowed = array('jpg','jpeg', 'png');
+                
+                                if(in_array($fileActualExt, $allowed)){
+                                    if( $fileError === 0){
+                                        if($fileSize < 1000000){        
+                                            $fileNameNew = uniqid('',true).".".$fileActualExt;
+                                            $target = "uploads/". basename($fileNameNew);
+                                            move_uploaded_file($fileTmpName, $target);
+                                            $data['file'] = $fileNameNew;
+                                        }
+                                    } else {
+                                        $data['file_error'] = 'File Size too big. Maximum of 1mb only';
                                     }
                                 } else {
-                                    $data['file_error'] = 'File Size too big. Maximum of 1mb only';
+                                    $data['file_error'] = 'There was a problem in uploading the file';
                                 }
-                            } else {
-                                $data['file_error'] = 'There was a problem in uploading the file';
                             }
-                        }
+    
+                            if(empty($data['eDate'])) {
+                                $data['eDate'] = NULL;
+                            }
+    
+                            if(empty($data['ceDate'])) {
+                                $data['ceDate'] = NULL;
+                            }
+    
+                            if(empty($data['file_error'])){
 
-                        if(empty($data['eDate'])) {
-                            $data['eDate'] = NULL;
-                        }
-
-                        if(empty($data['ceDate'])) {
-                            $data['ceDate'] = NULL;
-                        }
-
-                        if(empty($data['file_error'])){
-                            if($this->userModel->profileAdditionalAdd($data)){
-
-                                if($data['status'] == "Student") {
-                                    $data['status'] = "Unemployed";
-                                }
-
-                                if($this->userModel->updateEmployment($data)) {
-                                redirect('profile/viewProfile/'.$_SESSION['alumni_id']);
+                                if($this->userModel->profileAdditionalAdd($data)){
+                                    if($data['status'] == "Student") {
+                                        $data['status'] = "Unemployed";
+                                    }
+                                    if($this->userModel->updateEmployment($data)) {
+                                    redirect('profile/viewProfile/'.$_SESSION['alumni_id']);
+                                    } else {
+                                        die("Something went wrong");
+                                    }
                                 } else {
                                     die("Something went wrong");
                                 }
-                        
+                            } else {
+                                $this->view('users/additionalProfileAdd', $data);
                             }
-                            else {
-                                die("Something went wrong");
-                            }
-                        } else{
-                            $this->view('users/additionalProfileAdd', $data);
+                        } else {
+                            $data = [
+                                'consent' => $userData->privacyConsent,
+                                'course' => $user->course_code,
+                                'gDate' => '',
+                                'status' => '',
+                                'eDate' => '',
+                                'ceDate' => '',
+                                'tWork' => '',
+                                'wPosition' => '',
+                                'mIncome' => '',
+                                'ifRelated' => '',
+                                'file' => '',
+                                'file_error' => ''
+                            ];
                         }
-                    }
-                    else{
-                        $data = [
-                            'course' => $user->course_code,
-                            'gDate' => '',
-                            'status' => '',
-                            'eDate' => '',
-                            'ceDate' => '',
-                            'tWork' => '',
-                            'wPosition' => '',
-                            'mIncome' => '',
-                            'ifRelated' => '',
-                            'file' => '',
-                            'file_error' => ''
-                        ];
-                    }
-                    
-                    $this->view('users/additionalProfileAdd', $data);
-                }
+                        
+                        $this->view('users/additionalProfileAdd', $data);
+                    } 
+        }
+
+        public function privacyConsent() {
+
+            $data = [
+                'alumni_id' => $_SESSION['alumni_id'],
+                'privacyConsent' => ''
+            ];
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $data = [
+                    'alumni_id' => $_SESSION['alumni_id'],
+                    'privacyConsent' => $_POST['privacyConsent']
+                ];
+
+                $this->userModel->privacyConsent($data);
+                redirect('profile/profileAdditionalAdd/'.$_SESSION['alumni_id']);
+            }
         }
 
     }
