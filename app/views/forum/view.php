@@ -3,10 +3,18 @@
         <section class="mainContent forumView">
             <div class="container forumCon">
                 <div class="forum-link">
-                    <?php if($data['user']->user_type == 1||$data['user']->user_type == 2):?>
-                    <img class="forum-image" src="<?php echo URLROOT;?>/uploads/<?php echo $data['admin']->image?>" id="myImg">
+                    <?php if($data['user']->user_type == 1 || $data['user']->user_type == 2 || $data['user']->user_type == 3):?>
+                        <?php if(!empty($data['admin']->image)) :?>
+                            <img class="forum-image" src="<?php echo URLROOT;?>/uploads/<?php echo $data['admin']->image?>" id="myImg">
+                        <?php else: ?>
+                            <img class="forum-image" src="<?php echo URLROOT;?>/images/official-default-avatar.svg" id="myImg">
+                        <?php endif; ?>
                     <?php else:?>
-                    <img class="forum-image" src="<?php echo URLROOT;?>/uploads/<?php echo $data['alumni']->image ?>" id="myImg">
+                        <?php if(!empty($data['alumni']->image)) :?>
+                            <img class="forum-image" src="<?php echo URLROOT;?>/uploads/<?php echo $data['alumni']->image ?>" id="myImg">
+                        <?php else: ?>
+                            <img class="forum-image" src="<?php echo URLROOT;?>/images/official-default-avatar.svg" id="myImg">
+                        <?php endif; ?>
                     <?php endif;?>
                     <div class="forum-details-con">
                         <div class="forum-details">
@@ -80,7 +88,11 @@
                     <?php endif;?>
                     <!-- primary comment -->
                     <form action="<?php echo URLROOT;?>/forum/comment/<?php echo $data['post']->topic_id;?>" method="POST" class="comment-con">
-                        <img src="<?php echo URLROOT;?>/uploads/<?php echo ($data['current']->image) ?>" >
+                        <?php if(!empty($data['current']->image)): ?>
+                            <img src="<?php echo URLROOT;?>/uploads/<?php echo ($data['current']->image) ?>" >
+                        <?php else: ?>
+                            <img src="<?php echo URLROOT;?>/images/official-default-avatar.svg">
+                        <?php endif; ?>
                         <div class="textFieldContainer">
                             <textarea name="comment" required></textarea>
                             <span class="error"></span>

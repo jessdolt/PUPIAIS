@@ -225,9 +225,10 @@ use PHPMailer\PHPMailer\Exception;
                 else {
                     $this->userModel->addLoginDate($date);
                     if ($loggedInUser) {
-
                         $this->createUserSession($loggedInUser);
+                        if(userType() == 'Alumni'){
                         $this->userModel->loginCount($date);
+                        }
                     }
                     else {
                         $data['passwordError'] = 'Password or email is incorrect.';
